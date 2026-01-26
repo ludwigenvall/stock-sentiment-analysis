@@ -1,0 +1,33 @@
+# Core data processing
+python-dotenv==1.0.0
+pandas>=2.2.0
+numpy>=1.26.0
+
+# Data collection
+requests==2.31.0
+beautifulsoup4==4.12.2
+praw==7.7.1
+yfinance==0.2.33
+
+# NLP & ML (scikit-learn tas bort tillfälligt)
+transformers>=4.40.0
+torch>=2.9.0
+# scikit-learn - installeras separat
+
+# Database
+#psycopg2-binary==2.9.9
+#sqlalchemy==2.0.25
+
+# Real-time streaming
+#redis==5.0.1
+#fastapi==0.108.0
+#uvicorn==0.25.0
+#websockets==12.0
+
+# Visualization
+streamlit>=1.30.0
+plotly>=5.18.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
