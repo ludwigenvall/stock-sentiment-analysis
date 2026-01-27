@@ -7,14 +7,6 @@ from datetime import datetime, timedelta
 import pandas as pd
 import yfinance as yf
 
-# Fix for Yahoo Finance rate limiting
-import requests
-session = requests.Session()
-session.headers.update({
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-})
-
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -54,7 +46,7 @@ class StockDataCollector:
 
         for ticker in self.tickers:
             try:
-                stock = yf.Ticker(ticker, session=session)
+                stock = yf.Ticker(ticker)
                 df = stock.history(start=start_date, end=end_date)
 
                 if df.empty:
@@ -128,7 +120,7 @@ if __name__ == "__main__":
     collector = StockDataCollector(tickers)
 
     # Get last 30 days
-    start = (datetime.now() - timedelta(days=90)).strftime('%Y-%m-%d')
+    start = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
     df = collector.get_historical_data(start)
 
     print(f"\nCollected {len(df)} rows")
@@ -136,11 +128,8 @@ if __name__ == "__main__":
 
     # Check if we got any data
     if df.empty:
-        print("\n❌ No data collected! This could be due to:")
-        print("   - Yahoo Finance rate limiting")
-        print("   - Network issues")
-        print("   - Weekend/market closed")
-        print("\nTry again in a few minutes or check your internet connection.")
+        print("\n❌ No data collected!")
+        print("   Try using create_mock_data.py instead.")
     else:
         # Calculate returns
         df = collector.calculate_returns(df)
