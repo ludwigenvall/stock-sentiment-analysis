@@ -1,17 +1,18 @@
 """
 Master script: Combine stock data, news, and sentiment analysis
 """
+import sys
+from pathlib import Path
+
+# Add src to path so we can import our modules (MUST be before other imports)
+sys.path.append(str(Path(__file__).parent / 'src'))
+
 import logging
 from datetime import datetime, timedelta
 import pandas as pd
 from sentiment.finbert_analyzer import FinBERTAnalyzer
 from data_pipeline.news_scraper import NewsCollector
 from data_pipeline.stock_data import StockDataCollector
-import sys
-from pathlib import Path
-
-# Add src to path so we can import our modules
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 
 logging.basicConfig(level=logging.INFO)
