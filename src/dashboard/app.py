@@ -43,6 +43,16 @@ def load_data():
     else:
         data['news'] = None
 
+    # Load Reddit posts
+    reddit_file = RAW_DIR / "reddit_posts.csv"
+    if reddit_file.exists():
+        df = pd.read_csv(reddit_file)
+        df['created_utc'] = pd.to_datetime(df['created_utc'])
+        df['date'] = df['created_utc'].dt.date
+        data['reddit'] = df
+    else:
+        data['reddit'] = None
+
     # Load stock prices
     stock_file = PROCESSED_DIR / "stock_prices.csv"
     if stock_file.exists():
@@ -60,6 +70,24 @@ def load_data():
         data['combined'] = df
     else:
         data['combined'] = None
+
+    # Load combined with Reddit (if available)
+    reddit_combined_file = PROCESSED_DIR / "stock_sentiment_reddit_combined.csv"
+    if reddit_combined_file.exists():
+        df = pd.read_csv(reddit_combined_file)
+        df['date'] = pd.to_datetime(df['date']).dt.date
+        data['reddit_combined'] = df
+    else:
+        data['reddit_combined'] = None
+
+    # Load all content with sentiment (News + Reddit)
+    all_content_file = PROCESSED_DIR / "all_content_with_sentiment.csv"
+    if all_content_file.exists():
+        df = pd.read_csv(all_content_file)
+        df['date'] = pd.to_datetime(df['date'])
+        data['all_content'] = df
+    else:
+        data['all_content'] = None
 
     # Load news with sentiment (if available)
     news_sentiment_file = PROCESSED_DIR / "news_with_sentiment.csv"
@@ -256,16 +284,23 @@ def main():
     data = load_data()
 
     # Check if we have any data
-    if data['news'] is None and data['stock'] is None:
-        st.error("❌ No data found! Please run `python analyze_news_sentiment.py` first.")
+    if data['news'] is None and data['stock'] is None and data['reddit'] is None:
+        st.error("❌ No data found! Please run `python analyze_news_sentiment.py` or `python analyze_with_reddit.py` first.")
         st.stop()
 
-    # Get last update time
+    # Get last update time and show data sources
+    sources = []
     if data['news'] is not None:
         last_update = data['news']['time_published'].max()
         st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d %H:%M:%S')}")
+        sources.append("Alpha Vantage (News)")
+    if data['reddit'] is not None:
+        sources.append("Reddit")
+    if data['stock'] is not None:
+        sources.append("Yahoo Finance (Stock Prices)")
+    sources.append("FinBERT (Sentiment)")
 
-    st.info("📌 Data sources: Alpha Vantage (News), Yahoo Finance (Stock Prices), FinBERT (Sentiment)")
+    st.info(f"📌 Data sources: {', '.join(sources)}")
 
     # Sidebar
     st.sidebar.header("⚙️ Settings")
@@ -283,6 +318,19 @@ def main():
         options=available_tickers,
         default=available_tickers[:3] if len(available_tickers) >= 3 else available_tickers
     )
+
+    # Content source filter
+    content_sources = []
+    if data['all_content'] is not None:
+        # Use all_content if available (has content_type column)
+        content_sources = ['News', 'Reddit', 'Both']
+        content_filter = st.sidebar.radio(
+            "Content Source",
+            options=content_sources,
+            index=2  # Default to "Both"
+        )
+    else:
+        content_filter = None
 
     # Date range
     if data['news'] is not None:
@@ -310,13 +358,19 @@ def main():
 
         **Features:**
         - Stock price tracking
-        - News sentiment analysis
+        - News sentiment analysis (Alpha Vantage)
+        - Reddit sentiment analysis
         - Correlation analysis
         - Multi-ticker comparison
 
         **Data Files:**
         - `data/raw/news_articles.csv`
+        - `data/raw/reddit_posts.csv`
         - `data/processed/stock_prices.csv`
+
+        **Run Analysis:**
+        - News only: `python analyze_news_sentiment.py`
+        - News + Reddit: `python analyze_with_reddit.py`
         """)
 
     # Filter data by selected tickers and date range
@@ -623,6 +677,26 @@ def main():
                     file_name=f"news_articles_{datetime.now().strftime('%Y%m%d')}.csv",
                     mime="text/csv"
                 )
+
+        # Reddit data
+        if data['reddit'] is not None:
+            reddit_filtered = data['reddit'][
+                (data['reddit']['ticker'].isin(selected_tickers)) &
+                (data['reddit']['date'] >= start_date) &
+                (data['reddit']['date'] <= end_date)
+            ].copy()
+
+            if len(reddit_filtered) > 0:
+                with st.expander("💬 Reddit Posts Data", expanded=False):
+                    st.dataframe(reddit_filtered, width="stretch", hide_index=True)
+
+                    csv = reddit_filtered.to_csv(index=False).encode('utf-8')
+                    st.download_button(
+                        label="Download Reddit Data CSV",
+                        data=csv,
+                        file_name=f"reddit_posts_{datetime.now().strftime('%Y%m%d')}.csv",
+                        mime="text/csv"
+                    )
 
         # Combined data
         if combined_filtered is not None and len(combined_filtered) > 0:
