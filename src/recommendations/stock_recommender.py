@@ -207,18 +207,34 @@ class StockRecommender:
         return rec_df
 
     def _add_to_history(self, recommendations_df: pd.DataFrame):
-        """Add recommendations to history"""
+        """Add recommendations to history with summary stats"""
         timestamp = datetime.now().isoformat()
+        date_str = timestamp[:10]
+
+        # Calculate summary stats
+        records = recommendations_df.to_dict('records')
+        buy_count = len([r for r in records if r.get('action') == 'buy'])
+        hold_count = len([r for r in records if r.get('action') == 'hold'])
+        sell_count = len([r for r in records if r.get('action') == 'sell'])
 
         history_entry = {
             'timestamp': timestamp,
-            'recommendations': recommendations_df.to_dict('records')
+            'date': date_str,
+            'recommendations': records,
+            'summary': {
+                'total': len(records),
+                'buy': buy_count,
+                'hold': hold_count,
+                'sell': sell_count,
+                'avg_confidence': float(recommendations_df['confidence'].mean()) if 'confidence' in recommendations_df.columns else 0
+            }
         }
 
-        self.history.append(history_entry)
+        # Keep only last 100 entries to avoid file bloat
+        self.history = self.history[-99:] + [history_entry]
         self._save_history()
 
-        logger.info(f"Added {len(recommendations_df)} recommendations to history")
+        logger.info(f"Added {len(recommendations_df)} recommendations to history (BUY: {buy_count}, HOLD: {hold_count}, SELL: {sell_count})")
 
     def get_top_picks(self, recommendations_df: pd.DataFrame, n: int = 5) -> pd.DataFrame:
         """

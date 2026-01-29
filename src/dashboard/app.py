@@ -4,14 +4,23 @@ Modern, Professional Data Science / ML Theme
 """
 import streamlit as st
 import pandas as pd
+import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime, timedelta
 from pathlib import Path
 import sys
+import json
 
 # Add src to path
 sys.path.append(str(Path(__file__).parent.parent.parent))
+
+# Import recommendation tracker
+try:
+    from src.analysis.recommendation_tracker import RecommendationTracker
+    TRACKER_AVAILABLE = True
+except ImportError:
+    TRACKER_AVAILABLE = False
 
 # =============================================================================
 # PAGE CONFIG & THEME
@@ -740,8 +749,8 @@ def main():
     # =============================================================================
     # TABS
     # =============================================================================
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "Overview", "Recommendations", "Price & Sentiment", "News Analysis", "Ticker Deep Dive", "Data Export"
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+        "Overview", "Recommendations", "Performance", "Price & Sentiment", "News Analysis", "Ticker Deep Dive", "Data Export"
     ])
 
     # -------------------------------------------------------------------------
@@ -884,9 +893,181 @@ def main():
             st.info("No recommendations available. Run the analysis script first.")
 
     # -------------------------------------------------------------------------
-    # TAB 3: PRICES & SENTIMENT
+    # TAB 3: PERFORMANCE TRACKING
     # -------------------------------------------------------------------------
     with tab3:
+        st.markdown('<p class="section-title">Investment Performance Simulator</p>', unsafe_allow_html=True)
+
+        if TRACKER_AVAILABLE and data['recommendations'] is not None:
+            # Initialize tracker
+            tracker = RecommendationTracker()
+
+            # Load recommendation history
+            history_file = PROJECT_ROOT / "data" / "recommendations" / "history.json"
+            if history_file.exists():
+                with open(history_file, 'r') as f:
+                    history_data = json.load(f)
+
+                rec_history = history_data.get("recommendations", [])
+
+                if rec_history:
+                    # Summary stats
+                    stats = tracker.get_summary_stats()
+
+                    cols = st.columns(4)
+                    with cols[0]:
+                        render_metric_card("Total Sessions", stats.get('total_sessions', 0), "accent")
+                    with cols[1]:
+                        render_metric_card("Total Signals", stats.get('total_recommendations', 0), "default")
+                    with cols[2]:
+                        dist = stats.get('signal_distribution', {})
+                        render_metric_card("BUY Signals", dist.get('BUY', 0), "positive")
+                    with cols[3]:
+                        render_metric_card("SELL Signals", dist.get('SELL', 0), "negative")
+
+                    render_divider()
+
+                    # Simulated Portfolio Performance
+                    st.markdown('<p class="section-title">Simulated Portfolio Returns</p>', unsafe_allow_html=True)
+
+                    col1, col2 = st.columns([1, 3])
+
+                    with col1:
+                        strategy = st.selectbox(
+                            "Strategy",
+                            options=["Follow BUY signals", "Follow all positive signals"],
+                            key="perf_strategy"
+                        )
+                        holding_days = st.slider("Holding Period (days)", 1, 30, 5, key="perf_holding")
+                        initial_capital = st.number_input("Initial Capital ($)", 10000, 1000000, 100000, step=10000)
+
+                    with col2:
+                        if stock_filtered is not None and len(stock_filtered) > 0:
+                            # Calculate performance
+                            strategy_type = "buy_signals" if "BUY" in strategy else "all_signals"
+
+                            try:
+                                perf = tracker.calculate_portfolio_performance(
+                                    stock_filtered,
+                                    strategy=strategy_type,
+                                    holding_days=holding_days,
+                                    position_size=0.1
+                                )
+
+                                if perf.get('num_trades', 0) > 0:
+                                    # Performance metrics
+                                    perf_cols = st.columns(4)
+                                    with perf_cols[0]:
+                                        total_return = perf.get('total_return_pct', 0)
+                                        card_type = "positive" if total_return > 0 else "negative"
+                                        render_metric_card("Total Return", f"{total_return:+.2f}%", card_type)
+                                    with perf_cols[1]:
+                                        render_metric_card("Win Rate", f"{perf.get('win_rate_pct', 0):.1f}%", "accent")
+                                    with perf_cols[2]:
+                                        render_metric_card("Trades", perf.get('num_trades', 0), "default")
+                                    with perf_cols[3]:
+                                        sharpe = perf.get('sharpe_ratio', 0)
+                                        render_metric_card("Sharpe Ratio", f"{sharpe:.2f}", "accent")
+
+                                    # Portfolio value chart
+                                    if perf.get('portfolio_history'):
+                                        portfolio_df = pd.DataFrame(perf['portfolio_history'])
+                                        portfolio_df['date'] = pd.to_datetime(portfolio_df['date'])
+
+                                        fig = go.Figure()
+                                        fig.add_trace(go.Scatter(
+                                            x=portfolio_df['date'],
+                                            y=portfolio_df['value'],
+                                            mode='lines',
+                                            name='Portfolio Value',
+                                            line=dict(color=CHART_COLORS['primary'], width=2.5),
+                                            fill='tozeroy',
+                                            fillcolor='rgba(59, 130, 246, 0.1)'
+                                        ))
+                                        fig.add_hline(y=initial_capital, line_dash="dash",
+                                                    line_color="rgba(148, 163, 184, 0.5)")
+                                        fig.update_layout(
+                                            title=dict(text="Portfolio Value Over Time",
+                                                      font=dict(size=18, color=CHART_COLORS['text'])),
+                                            xaxis_title="",
+                                            yaxis_title="Value ($)",
+                                            height=350,
+                                            **CHART_TEMPLATE['layout']
+                                        )
+                                        st.plotly_chart(fig, use_container_width=True)
+
+                                    # Trade details
+                                    if perf.get('trades'):
+                                        with st.expander("View Trade Details"):
+                                            trades_df = pd.DataFrame(perf['trades'])
+                                            trades_df['entry_date'] = pd.to_datetime(trades_df['entry_date']).dt.date
+                                            trades_df['exit_date'] = pd.to_datetime(trades_df['exit_date']).dt.date
+                                            st.dataframe(
+                                                trades_df[['ticker', 'entry_date', 'exit_date', 'entry_price',
+                                                          'exit_price', 'pnl_pct', 'confidence']],
+                                                use_container_width=True,
+                                                hide_index=True
+                                            )
+                                else:
+                                    st.info("No trades executed with current settings. Try adjusting parameters.")
+
+                            except Exception as e:
+                                st.warning(f"Could not calculate performance: {str(e)}")
+                        else:
+                            st.info("No price data available for performance calculation.")
+
+                    render_divider()
+
+                    # Recommendation History Timeline
+                    st.markdown('<p class="section-title">Recommendation History</p>', unsafe_allow_html=True)
+
+                    # Create timeline data
+                    timeline_data = []
+                    for entry in rec_history[-30:]:  # Last 30 entries
+                        summary = entry.get('summary', {})
+                        timeline_data.append({
+                            'date': entry.get('date'),
+                            'BUY': summary.get('buy', 0),
+                            'HOLD': summary.get('hold', 0),
+                            'SELL': summary.get('sell', 0),
+                            'total': summary.get('total', 0)
+                        })
+
+                    if timeline_data:
+                        timeline_df = pd.DataFrame(timeline_data)
+                        timeline_df['date'] = pd.to_datetime(timeline_df['date'])
+
+                        fig = go.Figure()
+                        fig.add_trace(go.Bar(name='BUY', x=timeline_df['date'], y=timeline_df['BUY'],
+                                            marker_color=CHART_COLORS['positive']))
+                        fig.add_trace(go.Bar(name='HOLD', x=timeline_df['date'], y=timeline_df['HOLD'],
+                                            marker_color=CHART_COLORS['accent']))
+                        fig.add_trace(go.Bar(name='SELL', x=timeline_df['date'], y=timeline_df['SELL'],
+                                            marker_color=CHART_COLORS['negative']))
+
+                        fig.update_layout(
+                            barmode='stack',
+                            title=dict(text="Signals by Date", font=dict(size=18, color=CHART_COLORS['text'])),
+                            xaxis_title="",
+                            yaxis_title="Count",
+                            height=300,
+                            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+                                       bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'])),
+                            **CHART_TEMPLATE['layout']
+                        )
+                        st.plotly_chart(fig, use_container_width=True)
+
+                else:
+                    st.info("No recommendation history yet. Run analysis multiple times to build history.")
+            else:
+                st.info("No recommendation history file found. Run `python analyze_with_recommendations.py` to generate data.")
+        else:
+            st.info("Performance tracking requires recommendation history. Run analysis first.")
+
+    # -------------------------------------------------------------------------
+    # TAB 4: PRICES & SENTIMENT
+    # -------------------------------------------------------------------------
+    with tab4:
         if stock_filtered is not None and len(stock_filtered) > 0:
             chart_ticker = st.selectbox("Select Ticker", options=selected_tickers, key='price_ticker')
 
@@ -926,9 +1107,9 @@ def main():
             st.info("No stock price data available for selected tickers.")
 
     # -------------------------------------------------------------------------
-    # TAB 4: NEWS ANALYSIS
+    # TAB 5: NEWS ANALYSIS
     # -------------------------------------------------------------------------
-    with tab4:
+    with tab5:
         if news_filtered is not None and len(news_filtered) > 0:
             news_filtered['sentiment_label'] = news_filtered['sentiment_score'].apply(get_sentiment_label)
 
@@ -985,9 +1166,9 @@ def main():
             st.info("No news data available for selected tickers.")
 
     # -------------------------------------------------------------------------
-    # TAB 5: TICKER DEEP DIVE
+    # TAB 6: TICKER DEEP DIVE
     # -------------------------------------------------------------------------
-    with tab5:
+    with tab6:
         if len(selected_tickers) > 0:
             ticker_choice = st.selectbox("Select Ticker for Analysis", options=selected_tickers, key='ticker_analysis')
 
@@ -1032,9 +1213,9 @@ def main():
             st.info("Select at least one ticker from the sidebar.")
 
     # -------------------------------------------------------------------------
-    # TAB 6: DATA EXPORT
+    # TAB 7: DATA EXPORT
     # -------------------------------------------------------------------------
-    with tab6:
+    with tab7:
         st.markdown('<p class="section-title">Export Data</p>', unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)

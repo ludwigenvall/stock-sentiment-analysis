@@ -66,6 +66,57 @@ DIVIDEND_STOCKS = [
     'MMM', 'CAT', 'HD', 'WMT', 'ABT'
 ]
 
+# Value Stocks (potentially undervalued, low P/E)
+VALUE_STOCKS = [
+    # Financials (often undervalued)
+    'BRK-B', 'JPM', 'BAC', 'C', 'WFC', 'USB', 'PNC', 'TFC', 'FITB', 'KEY',
+    # Energy (cyclical, often undervalued)
+    'XOM', 'CVX', 'COP', 'EOG', 'SLB', 'HAL', 'BKR', 'DVN', 'FANG', 'MRO',
+    # Healthcare value
+    'CVS', 'CI', 'HUM', 'ANTM', 'WBA', 'CAH', 'MCK',
+    # Industrial value
+    'GE', 'F', 'GM', 'DAL', 'UAL', 'LUV', 'AAL',
+    # Telecom (high dividend, potential value)
+    'T', 'VZ', 'TMUS', 'LUMN',
+    # Retail value
+    'KSS', 'M', 'GPS', 'BBY', 'DG', 'DLTR'
+]
+
+# Small/Mid Cap Growth Potential
+SMALL_MID_CAP = [
+    # Tech small caps
+    'CRWD', 'ZS', 'DDOG', 'NET', 'SNOW', 'MDB', 'CFLT', 'PATH', 'S', 'GTLB',
+    # Fintech
+    'SOFI', 'AFRM', 'UPST', 'HOOD', 'COIN', 'NU', 'BILL', 'TOST',
+    # Healthcare/Biotech small caps
+    'EXAS', 'HALO', 'RARE', 'BEAM', 'CRSP', 'NTLA', 'EDIT', 'VERV',
+    # Clean Energy
+    'ENPH', 'SEDG', 'RUN', 'NOVA', 'FSLR', 'PLUG', 'BE', 'CHPT', 'LCID', 'RIVN',
+    # E-commerce/Consumer
+    'SHOP', 'ETSY', 'CHWY', 'W', 'PTON', 'FVRR', 'UPWK'
+]
+
+# Emerging Sectors (AI, Quantum, Space, etc.)
+EMERGING_TECH = [
+    # AI & Machine Learning
+    'NVDA', 'AMD', 'GOOGL', 'MSFT', 'PLTR', 'AI', 'BBAI', 'SOUN', 'UPST',
+    # Semiconductors
+    'TSM', 'ASML', 'KLAC', 'LRCX', 'AMAT', 'MRVL', 'ON', 'SWKS', 'QRVO',
+    # Cybersecurity
+    'CRWD', 'PANW', 'ZS', 'FTNT', 'OKTA', 'CYBR', 'QLYS', 'TENB', 'RPD',
+    # Cloud Infrastructure
+    'AMZN', 'MSFT', 'GOOGL', 'SNOW', 'NET', 'DDOG', 'MDB', 'ESTC',
+    # Space & Defense Tech
+    'RKLB', 'SPCE', 'ASTS', 'RDW', 'LUNR', 'LMT', 'NOC', 'RTX', 'BA'
+]
+
+# Contrarian Picks (beaten down stocks that may recover)
+CONTRARIAN = [
+    'INTC', 'PARA', 'WBD', 'PYPL', 'SNAP', 'PINS', 'ZM', 'DOCU', 'PTON',
+    'ROKU', 'TWLO', 'OKTA', 'NET', 'U', 'RBLX', 'MTCH', 'BMBL', 'ABNB',
+    'DASH', 'LYFT', 'UBER', 'GRAB', 'SE', 'BABA', 'JD', 'PDD', 'NIO', 'XPEV', 'LI'
+]
+
 # All available ticker lists
 TICKER_LISTS = {
     'sp100': SP100_TICKERS,
@@ -73,7 +124,11 @@ TICKER_LISTS = {
     'original': ORIGINAL_TICKERS,
     'meme': MEME_STOCKS,
     'high_growth': HIGH_GROWTH,
-    'dividend': DIVIDEND_STOCKS
+    'dividend': DIVIDEND_STOCKS,
+    'value': VALUE_STOCKS,
+    'small_mid': SMALL_MID_CAP,
+    'emerging': EMERGING_TECH,
+    'contrarian': CONTRARIAN
 }
 
 
