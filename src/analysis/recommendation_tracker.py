@@ -1,7 +1,9 @@
 """
 Recommendation History Tracker
+Version: 2.0
 
 Tracks recommendations over time and calculates hypothetical portfolio performance.
+Supports both list and dict history formats.
 """
 
 import json

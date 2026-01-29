@@ -13,9 +13,9 @@ import sys
 import json
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-# Import recommendation tracker
+# Import recommendation tracker (v2.0)
 try:
     from src.analysis.recommendation_tracker import RecommendationTracker
     TRACKER_AVAILABLE = True
