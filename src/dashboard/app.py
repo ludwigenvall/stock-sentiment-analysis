@@ -20,8 +20,29 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Constants
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+# Constants - find project root dynamically
+def find_project_root():
+    """Find project root by looking for data directory"""
+    # Try relative to this file
+    path1 = Path(__file__).parent.parent.parent / "data"
+    if path1.exists():
+        return path1.parent
+
+    # Try current working directory
+    path2 = Path.cwd() / "data"
+    if path2.exists():
+        return Path.cwd()
+
+    # Try parent of cwd (sometimes Streamlit runs from src/)
+    path3 = Path.cwd().parent / "data"
+    if path3.exists():
+        return Path.cwd().parent
+
+    # Fallback to relative path
+    return Path(__file__).parent.parent.parent
+
+PROJECT_ROOT = find_project_root()
+DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
 
@@ -293,6 +314,17 @@ def main():
     # Check if we have any data
     if data['news'] is None and data['stock'] is None and data['reddit'] is None and data['all_content'] is None:
         st.error("❌ No data found! Please run `python analyze_news_sentiment.py` or `python analyze_with_reddit.py` first.")
+        # Debug info
+        with st.expander("🔧 Debug Info"):
+            st.write(f"**PROJECT_ROOT:** {PROJECT_ROOT}")
+            st.write(f"**DATA_DIR:** {DATA_DIR}")
+            st.write(f"**DATA_DIR exists:** {DATA_DIR.exists()}")
+            st.write(f"**PROCESSED_DIR:** {PROCESSED_DIR}")
+            st.write(f"**PROCESSED_DIR exists:** {PROCESSED_DIR.exists()}")
+            if PROCESSED_DIR.exists():
+                st.write(f"**Files in PROCESSED_DIR:** {list(PROCESSED_DIR.iterdir())}")
+            st.write(f"**CWD:** {Path.cwd()}")
+            st.write(f"**__file__:** {__file__}")
         st.stop()
 
     # Get last update time and show data sources
