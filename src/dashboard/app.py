@@ -22,6 +22,13 @@ try:
 except ImportError:
     TRACKER_AVAILABLE = False
 
+# Import backtester
+try:
+    from src.backtesting.backtester import Backtester, get_benchmark_data
+    BACKTESTER_AVAILABLE = True
+except ImportError:
+    BACKTESTER_AVAILABLE = False
+
 # =============================================================================
 # PAGE CONFIG & THEME
 # =============================================================================
@@ -749,8 +756,8 @@ def main():
     # =============================================================================
     # TABS
     # =============================================================================
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
-        "Overview", "Recommendations", "Performance", "Price & Sentiment", "News Analysis", "Ticker Deep Dive", "Data Export"
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+        "Overview", "Recommendations", "Performance", "Backtesting", "Price & Sentiment", "News Analysis", "Ticker Deep Dive", "Data Export"
     ])
 
     # -------------------------------------------------------------------------
@@ -1069,9 +1076,207 @@ def main():
             st.info("Performance tracking requires recommendation history. Run analysis first.")
 
     # -------------------------------------------------------------------------
-    # TAB 4: PRICES & SENTIMENT
+    # TAB 4: BACKTESTING WITH BENCHMARK
     # -------------------------------------------------------------------------
     with tab4:
+        st.markdown('<p class="section-title">Backtesting with S&P 500 Benchmark</p>', unsafe_allow_html=True)
+
+        if BACKTESTER_AVAILABLE:
+            # Backtesting settings
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                bt_initial_capital = st.number_input("Initial Capital ($)", 10000, 1000000, 100000, step=10000, key="bt_capital")
+            with col2:
+                bt_position_size = st.slider("Position Size (%)", 5, 50, 10, key="bt_position") / 100
+            with col3:
+                bt_holding_period = st.slider("Holding Period (days)", 1, 30, 5, key="bt_holding")
+
+            # Load backtest results if available
+            backtest_file = PROJECT_ROOT / "data" / "backtest" / "backtest_summary.csv"
+            portfolio_file = PROJECT_ROOT / "data" / "backtest" / "portfolio_history.csv"
+            benchmark_file = PROJECT_ROOT / "data" / "backtest" / "benchmark_history.csv"
+
+            run_backtest = st.button("Run Backtest", type="primary", key="run_bt")
+
+            if run_backtest and data['all_content'] is not None and stock_filtered is not None:
+                with st.spinner("Running backtest with benchmark comparison..."):
+                    try:
+                        backtester = Backtester(
+                            initial_capital=bt_initial_capital,
+                            position_size=bt_position_size,
+                            sentiment_threshold_buy=0.2,
+                            holding_period=bt_holding_period
+                        )
+
+                        # Prepare data
+                        sentiment_df = data['all_content'][['ticker', 'date', 'sentiment_score']].copy()
+                        price_df = stock_filtered[['ticker', 'date', 'close']].copy()
+
+                        results = backtester.run_backtest(
+                            sentiment_df,
+                            price_df,
+                            include_benchmark=True
+                        )
+
+                        backtester.save_results(results)
+                        st.success("Backtest completed!")
+                        st.rerun()
+
+                    except Exception as e:
+                        st.error(f"Backtest failed: {str(e)}")
+
+            render_divider()
+
+            # Display results
+            if backtest_file.exists():
+                summary_df = pd.read_csv(backtest_file)
+
+                if len(summary_df) > 0:
+                    summary = summary_df.iloc[0].to_dict()
+
+                    # KPI Row - Portfolio Performance
+                    cols = st.columns(4)
+                    with cols[0]:
+                        total_return = summary.get('total_return_pct', 0)
+                        card_type = "positive" if total_return > 0 else "negative"
+                        render_metric_card("Total Return", f"{total_return:+.2f}%", card_type)
+                    with cols[1]:
+                        render_metric_card("Sharpe Ratio", f"{summary.get('sharpe_ratio', 0):.2f}", "accent")
+                    with cols[2]:
+                        render_metric_card("Max Drawdown", f"{summary.get('max_drawdown_pct', 0):.2f}%", "negative")
+                    with cols[3]:
+                        render_metric_card("Win Rate", f"{summary.get('win_rate_pct', 0):.1f}%", "accent")
+
+                    render_divider()
+
+                    # Benchmark comparison metrics
+                    if 'benchmark_alpha' in summary:
+                        st.markdown('<p class="section-title">Benchmark Comparison (vs S&P 500)</p>', unsafe_allow_html=True)
+
+                        cols = st.columns(4)
+                        with cols[0]:
+                            alpha = summary.get('benchmark_alpha', 0)
+                            card_type = "positive" if alpha > 0 else "negative"
+                            render_metric_card("Alpha", f"{alpha:+.2f}%", card_type)
+                        with cols[1]:
+                            render_metric_card("Beta", f"{summary.get('benchmark_beta', 0):.2f}", "accent")
+                        with cols[2]:
+                            ir = summary.get('benchmark_information_ratio', 0)
+                            render_metric_card("Info Ratio", f"{ir:.2f}", "accent")
+                        with cols[3]:
+                            sortino = summary.get('benchmark_sortino_ratio', 0)
+                            render_metric_card("Sortino", f"{sortino:.2f}", "accent")
+
+                        # Additional benchmark info
+                        cols2 = st.columns(3)
+                        with cols2[0]:
+                            bench_return = summary.get('benchmark_benchmark_return', 0)
+                            render_metric_card("SPY Return", f"{bench_return:+.2f}%", "default")
+                        with cols2[1]:
+                            tracking_error = summary.get('benchmark_tracking_error', 0)
+                            render_metric_card("Tracking Error", f"{tracking_error:.2f}%", "default")
+                        with cols2[2]:
+                            bench_sharpe = summary.get('benchmark_benchmark_sharpe', 0)
+                            render_metric_card("SPY Sharpe", f"{bench_sharpe:.2f}", "default")
+
+                        render_divider()
+
+                    # Portfolio vs Benchmark Chart
+                    if portfolio_file.exists():
+                        portfolio_df = pd.read_csv(portfolio_file)
+                        portfolio_df['date'] = pd.to_datetime(portfolio_df['date'])
+
+                        # Calculate cumulative returns for portfolio
+                        initial_value = portfolio_df['total_value'].iloc[0]
+                        portfolio_df['cumulative_return'] = (portfolio_df['total_value'] / initial_value - 1) * 100
+
+                        fig = go.Figure()
+
+                        # Portfolio line
+                        fig.add_trace(go.Scatter(
+                            x=portfolio_df['date'],
+                            y=portfolio_df['cumulative_return'],
+                            mode='lines',
+                            name='Strategy',
+                            line=dict(color=CHART_COLORS['primary'], width=2.5)
+                        ))
+
+                        # Benchmark line
+                        if benchmark_file.exists():
+                            benchmark_df = pd.read_csv(benchmark_file)
+                            benchmark_df['date'] = pd.to_datetime(benchmark_df['date'])
+                            benchmark_df['cumulative_return'] = benchmark_df['cumulative_return'] * 100
+
+                            fig.add_trace(go.Scatter(
+                                x=benchmark_df['date'],
+                                y=benchmark_df['cumulative_return'],
+                                mode='lines',
+                                name='S&P 500 (SPY)',
+                                line=dict(color=CHART_COLORS['accent'], width=2, dash='dash')
+                            ))
+
+                        fig.add_hline(y=0, line_dash="dot", line_color="rgba(148, 163, 184, 0.5)")
+
+                        fig.update_layout(
+                            title=dict(text="Portfolio vs Benchmark Performance", font=dict(size=18, color=CHART_COLORS['text'])),
+                            xaxis_title="",
+                            yaxis_title="Cumulative Return (%)",
+                            height=400,
+                            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+                                       bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'])),
+                            **CHART_TEMPLATE['layout']
+                        )
+
+                        st.plotly_chart(fig, use_container_width=True)
+
+                    # Trade statistics
+                    st.markdown('<p class="section-title">Trade Statistics</p>', unsafe_allow_html=True)
+
+                    cols = st.columns(4)
+                    with cols[0]:
+                        render_metric_card("Total Trades", int(summary.get('num_trades', 0)), "default")
+                    with cols[1]:
+                        render_metric_card("Winning Trades", int(summary.get('winning_trades', 0)), "positive")
+                    with cols[2]:
+                        render_metric_card("Losing Trades", int(summary.get('losing_trades', 0)), "negative")
+                    with cols[3]:
+                        profit_factor = summary.get('profit_factor', 0)
+                        pf_display = f"{profit_factor:.2f}" if profit_factor < 100 else "∞"
+                        render_metric_card("Profit Factor", pf_display, "accent")
+
+                    # Trades table
+                    trades_file = PROJECT_ROOT / "data" / "backtest" / "trades.csv"
+                    if trades_file.exists():
+                        with st.expander("View All Trades"):
+                            trades_df = pd.read_csv(trades_file)
+                            trades_df['entry_date'] = pd.to_datetime(trades_df['entry_date']).dt.date
+                            trades_df['exit_date'] = pd.to_datetime(trades_df['exit_date']).dt.date
+
+                            display_cols = ['ticker', 'entry_date', 'exit_date', 'entry_price', 'exit_price', 'pnl', 'pnl_pct', 'sentiment']
+                            available_cols = [c for c in display_cols if c in trades_df.columns]
+
+                            st.dataframe(
+                                trades_df[available_cols].style.format({
+                                    'entry_price': '${:.2f}',
+                                    'exit_price': '${:.2f}',
+                                    'pnl': '${:+.2f}',
+                                    'pnl_pct': '{:+.2f}%',
+                                    'sentiment': '{:.3f}'
+                                }),
+                                use_container_width=True,
+                                hide_index=True
+                            )
+            else:
+                st.info("No backtest results available. Click 'Run Backtest' to generate results.")
+
+        else:
+            st.warning("Backtesting module not available. Ensure src/backtesting/backtester.py is accessible.")
+
+    # -------------------------------------------------------------------------
+    # TAB 5: PRICES & SENTIMENT
+    # -------------------------------------------------------------------------
+    with tab5:
         if stock_filtered is not None and len(stock_filtered) > 0:
             chart_ticker = st.selectbox("Select Ticker", options=selected_tickers, key='price_ticker')
 
@@ -1111,9 +1316,9 @@ def main():
             st.info("No stock price data available for selected tickers.")
 
     # -------------------------------------------------------------------------
-    # TAB 5: NEWS ANALYSIS
+    # TAB 6: NEWS ANALYSIS
     # -------------------------------------------------------------------------
-    with tab5:
+    with tab6:
         if news_filtered is not None and len(news_filtered) > 0:
             news_filtered['sentiment_label'] = news_filtered['sentiment_score'].apply(get_sentiment_label)
 
@@ -1170,9 +1375,9 @@ def main():
             st.info("No news data available for selected tickers.")
 
     # -------------------------------------------------------------------------
-    # TAB 6: TICKER DEEP DIVE
+    # TAB 7: TICKER DEEP DIVE
     # -------------------------------------------------------------------------
-    with tab6:
+    with tab7:
         if len(selected_tickers) > 0:
             ticker_choice = st.selectbox("Select Ticker for Analysis", options=selected_tickers, key='ticker_analysis')
 
@@ -1217,9 +1422,9 @@ def main():
             st.info("Select at least one ticker from the sidebar.")
 
     # -------------------------------------------------------------------------
-    # TAB 7: DATA EXPORT
+    # TAB 8: DATA EXPORT
     # -------------------------------------------------------------------------
-    with tab7:
+    with tab8:
         st.markdown('<p class="section-title">Export Data</p>', unsafe_allow_html=True)
 
         col1, col2 = st.columns(2)

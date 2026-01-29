@@ -5,6 +5,7 @@ This module provides:
 1. Buy/Sell/Hold recommendations based on sentiment scores
 2. Historical tracking of recommendations
 3. Performance analysis of past recommendations
+4. Optional ML-enhanced predictions
 """
 import logging
 import json
@@ -16,6 +17,14 @@ import numpy as np
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Optional ML integration
+try:
+    from src.ml.model_trainer import SentimentPredictor
+    from src.ml.feature_engineer import FeatureEngineer
+    HAS_ML = True
+except ImportError:
+    HAS_ML = False
 
 
 class StockRecommender:
@@ -30,16 +39,40 @@ class StockRecommender:
     - STRONG SELL: Very negative sentiment (< -0.5) + negative momentum
     """
 
-    def __init__(self, history_file: str = "data/recommendations/history.json"):
+    def __init__(
+        self,
+        history_file: str = "data/recommendations/history.json",
+        use_ml: bool = False,
+        ml_model_path: str = "models/sentiment_predictor.pkl",
+        ml_weight: float = 0.5
+    ):
         """
         Initialize the recommender.
 
         Args:
             history_file: Path to store recommendation history
+            use_ml: Whether to use ML predictions
+            ml_model_path: Path to trained ML model
+            ml_weight: Weight for ML predictions (0-1), rest is rule-based
         """
         self.history_file = Path(history_file)
         self.history_file.parent.mkdir(parents=True, exist_ok=True)
         self.history = self._load_history()
+
+        # ML integration
+        self.use_ml = use_ml and HAS_ML
+        self.ml_weight = ml_weight
+        self.ml_predictor = None
+        self.feature_engineer = None
+
+        if self.use_ml:
+            try:
+                self.ml_predictor = SentimentPredictor.load(ml_model_path)
+                self.feature_engineer = FeatureEngineer()
+                logger.info(f"ML model loaded from {ml_model_path}")
+            except Exception as e:
+                logger.warning(f"Could not load ML model: {e}. Using rule-based only.")
+                self.use_ml = False
 
         # Thresholds for recommendations
         self.thresholds = {
@@ -142,6 +175,49 @@ class StockRecommender:
 
         return (article_factor * 0.6 + consistency_factor * 0.4)
 
+    def _get_ml_predictions(
+        self,
+        sentiment_df: pd.DataFrame,
+        price_df: pd.DataFrame
+    ) -> Dict[str, float]:
+        """
+        Get ML model predictions for tickers.
+
+        Args:
+            sentiment_df: DataFrame with sentiment data
+            price_df: DataFrame with price data
+
+        Returns:
+            Dict mapping ticker to predicted return
+        """
+        if not self.use_ml or self.ml_predictor is None:
+            return {}
+
+        try:
+            # Create features (without target)
+            features_df = self.feature_engineer.create_features(
+                sentiment_df,
+                price_df,
+                include_target=False
+            )
+
+            if features_df.empty:
+                return {}
+
+            # Get feature columns
+            feature_cols = self.feature_engineer.get_feature_columns()
+            X = features_df[feature_cols]
+
+            # Get predictions
+            predictions = self.ml_predictor.predict(X)
+
+            # Map to tickers
+            return dict(zip(features_df['ticker'], predictions))
+
+        except Exception as e:
+            logger.warning(f"ML prediction failed: {e}")
+            return {}
+
     def generate_recommendations(
         self,
         sentiment_df: pd.DataFrame,
@@ -172,6 +248,13 @@ class StockRecommender:
         ticker_sentiment.columns = ['ticker', 'avg_sentiment', 'sentiment_std', 'num_articles']
         ticker_sentiment['sentiment_std'] = ticker_sentiment['sentiment_std'].fillna(0)
 
+        # Get ML predictions if available
+        ml_predictions = {}
+        if self.use_ml and stock_df is not None:
+            ml_predictions = self._get_ml_predictions(sentiment_df, stock_df)
+            if ml_predictions:
+                logger.info(f"Got ML predictions for {len(ml_predictions)} tickers")
+
         # Get price changes if stock data available
         price_changes = {}
         if stock_df is not None and not stock_df.empty:
@@ -184,13 +267,33 @@ class StockRecommender:
 
         # Generate recommendation for each ticker
         for _, row in ticker_sentiment.iterrows():
+            ticker = row['ticker']
+
+            # Combine rule-based sentiment with ML prediction
+            rule_based_score = row['avg_sentiment']
+            ml_pred = ml_predictions.get(ticker)
+
+            if ml_pred is not None:
+                # Blend rule-based and ML scores
+                # Convert ML prediction (return) to sentiment-like score (-1 to 1)
+                ml_score = np.clip(ml_pred * 10, -1, 1)  # Scale return to sentiment range
+                combined_score = (1 - self.ml_weight) * rule_based_score + self.ml_weight * ml_score
+            else:
+                combined_score = rule_based_score
+
             rec = self.get_recommendation(
-                ticker=row['ticker'],
-                sentiment_score=row['avg_sentiment'],
+                ticker=ticker,
+                sentiment_score=combined_score,
                 sentiment_std=row['sentiment_std'],
                 num_articles=int(row['num_articles']),
-                price_change_pct=price_changes.get(row['ticker'], 0)
+                price_change_pct=price_changes.get(ticker, 0)
             )
+
+            # Add ML info if available
+            if ml_pred is not None:
+                rec['ml_predicted_return'] = round(ml_pred * 100, 2)  # As percentage
+                rec['rule_based_sentiment'] = round(rule_based_score, 3)
+
             recommendations.append(rec)
 
         rec_df = pd.DataFrame(recommendations)
