@@ -1,5 +1,6 @@
 """
-Streamlit Dashboard för Stock Market Sentiment Analysis
+Streamlit Dashboard for Stock Market Sentiment Analysis
+Modern, Professional Data Science / ML Theme
 """
 import streamlit as st
 import pandas as pd
@@ -12,50 +13,299 @@ import sys
 # Add src to path
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-# Page config
+# =============================================================================
+# PAGE CONFIG & THEME
+# =============================================================================
 st.set_page_config(
     page_title="Stock Sentiment Analysis",
-    page_icon="📊",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Constants - find project root dynamically
+# =============================================================================
+# CUSTOM CSS - Modern Data Science Theme
+# =============================================================================
+# Design choices:
+# - Dark theme with blue accent (#3B82F6) for professional ML/DS look
+# - Card-based layout with subtle shadows for depth
+# - Consistent spacing (1rem = 16px base)
+# - Clean typography with good contrast
+# - Accent colors: Blue (primary), Green (positive), Red (negative), Gray (neutral)
+
+st.markdown("""
+<style>
+    /* === GLOBAL STYLES === */
+    .main .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        max-width: 1400px;
+    }
+
+    /* === HEADER STYLES === */
+    .main-header {
+        background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+        padding: 2rem 2.5rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .main-header h1 {
+        color: #f8fafc;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .main-header p {
+        color: #94a3b8;
+        font-size: 1rem;
+        margin: 0.5rem 0 0 0;
+    }
+
+    /* === METRIC CARDS === */
+    .metric-card {
+        background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-card .metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #f8fafc;
+        margin: 0;
+    }
+
+    .metric-card .metric-label {
+        font-size: 0.875rem;
+        color: #94a3b8;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .metric-card.positive .metric-value { color: #22c55e; }
+    .metric-card.negative .metric-value { color: #ef4444; }
+    .metric-card.accent .metric-value { color: #3b82f6; }
+
+    /* === SECTION CARDS === */
+    .section-card {
+        background: #0f172a;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        color: #f8fafc;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* === RECOMMENDATION CARDS === */
+    .rec-card {
+        background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        border-left: 4px solid #3b82f6;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .rec-card.buy { border-left-color: #22c55e; }
+    .rec-card.sell { border-left-color: #ef4444; }
+    .rec-card.hold { border-left-color: #f59e0b; }
+
+    .rec-ticker {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #f8fafc;
+    }
+
+    .rec-details {
+        display: flex;
+        gap: 1.5rem;
+        color: #94a3b8;
+        font-size: 0.875rem;
+    }
+
+    /* === BADGE STYLES === */
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .badge-buy { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .badge-sell { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .badge-hold { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+    .badge-positive { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+    .badge-negative { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+    .badge-neutral { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+    /* === SIDEBAR STYLES === */
+    [data-testid="stSidebar"] {
+        background: #0f172a;
+    }
+
+    [data-testid="stSidebar"] .stMarkdown h2 {
+        color: #f8fafc;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+
+    /* === TAB STYLES === */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 0.5rem;
+        background: #0f172a;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        background: transparent;
+        border-radius: 8px;
+        color: #94a3b8;
+        font-weight: 500;
+        padding: 0.75rem 1.25rem;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background: #1e293b;
+        color: #f8fafc;
+    }
+
+    /* === DATAFRAME STYLES === */
+    .stDataFrame {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* === DIVIDER === */
+    .custom-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+        margin: 1.5rem 0;
+    }
+
+    /* === PROGRESS BAR === */
+    .stProgress > div > div {
+        background: linear-gradient(90deg, #3b82f6, #22c55e);
+        border-radius: 10px;
+    }
+
+    /* === INFO/WARNING BOXES === */
+    .info-box {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        color: #93c5fd;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+        .main-header { padding: 1.5rem; }
+        .main-header h1 { font-size: 1.75rem; }
+        .metric-card .metric-value { font-size: 1.5rem; }
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# =============================================================================
+# CHART THEME - Consistent colors across all visualizations
+# =============================================================================
+# Color palette for charts
+CHART_COLORS = {
+    'primary': '#3B82F6',      # Blue
+    'secondary': '#8B5CF6',    # Purple
+    'positive': '#22C55E',     # Green
+    'negative': '#EF4444',     # Red
+    'neutral': '#64748B',      # Gray
+    'accent': '#F59E0B',       # Amber
+    'background': '#0F172A',   # Dark
+    'surface': '#1E293B',      # Dark surface
+    'text': '#F8FAFC',         # Light text
+    'text_muted': '#94A3B8',   # Muted text
+}
+
+# Plotly chart template
+CHART_TEMPLATE = {
+    'layout': {
+        'paper_bgcolor': 'rgba(0,0,0,0)',
+        'plot_bgcolor': 'rgba(0,0,0,0)',
+        'font': {'color': CHART_COLORS['text'], 'family': 'Inter, sans-serif'},
+        'title': {'font': {'size': 18, 'color': CHART_COLORS['text']}},
+        'xaxis': {
+            'gridcolor': 'rgba(148, 163, 184, 0.1)',
+            'linecolor': 'rgba(148, 163, 184, 0.2)',
+            'tickfont': {'color': CHART_COLORS['text_muted']}
+        },
+        'yaxis': {
+            'gridcolor': 'rgba(148, 163, 184, 0.1)',
+            'linecolor': 'rgba(148, 163, 184, 0.2)',
+            'tickfont': {'color': CHART_COLORS['text_muted']}
+        },
+        'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': CHART_COLORS['text_muted']}},
+        'margin': {'t': 60, 'b': 40, 'l': 60, 'r': 20}
+    }
+}
+
+# =============================================================================
+# PATH CONFIGURATION
+# =============================================================================
 def find_project_root():
     """Find project root by looking for data directory"""
-    # Try relative to this file
     path1 = Path(__file__).parent.parent.parent / "data"
     if path1.exists():
         return path1.parent
-
-    # Try current working directory
     path2 = Path.cwd() / "data"
     if path2.exists():
         return Path.cwd()
-
-    # Try parent of cwd (sometimes Streamlit runs from src/)
     path3 = Path.cwd().parent / "data"
     if path3.exists():
         return Path.cwd().parent
-
-    # Fallback to relative path
     return Path(__file__).parent.parent.parent
 
 PROJECT_ROOT = find_project_root()
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
-
 TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN', 'NVDA', 'META']
 
-
-@st.cache_data(ttl=300)  # Cache for 5 minutes, then refresh
+# =============================================================================
+# DATA LOADING (unchanged logic)
+# =============================================================================
+@st.cache_data(ttl=300)
 def load_data():
     """Load all available data files"""
-    # Use the dynamically computed paths
     processed_dir = PROJECT_ROOT / "data" / "processed"
     raw_dir = PROJECT_ROOT / "data" / "raw"
-
     data = {}
 
     # Load news articles
@@ -87,7 +337,7 @@ def load_data():
     else:
         data['stock'] = None
 
-    # Load combined data (if available)
+    # Load combined data
     combined_file = processed_dir / "stock_sentiment_combined.csv"
     if combined_file.exists():
         df = pd.read_csv(combined_file)
@@ -96,7 +346,7 @@ def load_data():
     else:
         data['combined'] = None
 
-    # Load combined with Reddit (if available)
+    # Load combined with Reddit
     reddit_combined_file = processed_dir / "stock_sentiment_reddit_combined.csv"
     if reddit_combined_file.exists():
         df = pd.read_csv(reddit_combined_file)
@@ -105,14 +355,13 @@ def load_data():
     else:
         data['reddit_combined'] = None
 
-    # Load all content with sentiment (News + Reddit + Twitter + SEC + Earnings)
+    # Load all content with sentiment
     all_content_file = processed_dir / "all_sentiment.csv"
     if all_content_file.exists():
         df = pd.read_csv(all_content_file)
         df['date'] = pd.to_datetime(df['date'])
         data['all_content'] = df
     else:
-        # Try alternate filename
         all_content_file = processed_dir / "all_content_with_sentiment.csv"
         if all_content_file.exists():
             df = pd.read_csv(all_content_file)
@@ -121,7 +370,7 @@ def load_data():
         else:
             data['all_content'] = None
 
-    # Load news with sentiment (if available)
+    # Load news with sentiment
     news_sentiment_file = processed_dir / "news_with_sentiment.csv"
     if news_sentiment_file.exists():
         df = pd.read_csv(news_sentiment_file)
@@ -142,7 +391,9 @@ def load_data():
 
     return data
 
-
+# =============================================================================
+# HELPER FUNCTIONS (unchanged logic)
+# =============================================================================
 def get_sentiment_label(score):
     """Convert sentiment score to label"""
     if score > 0.15:
@@ -152,130 +403,131 @@ def get_sentiment_label(score):
     else:
         return 'neutral'
 
-
 def get_sentiment_color(label):
     """Get color for sentiment label"""
     colors = {
-        'positive': '#00CC66',
-        'negative': '#FF4B4B',
-        'neutral': '#808080'
+        'positive': CHART_COLORS['positive'],
+        'negative': CHART_COLORS['negative'],
+        'neutral': CHART_COLORS['neutral']
     }
-    return colors.get(label, '#808080')
+    return colors.get(label, CHART_COLORS['neutral'])
 
-
+# =============================================================================
+# CHART FUNCTIONS (updated styling, same logic)
+# =============================================================================
 def create_price_chart(stock_df, selected_ticker):
-    """Create stock price line chart"""
+    """Create stock price line chart with modern styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
-
     fig.add_trace(go.Scatter(
         x=df['date'],
         y=df['close'],
         mode='lines',
         name='Close Price',
-        line=dict(color='#1f77b4', width=2)
+        line=dict(color=CHART_COLORS['primary'], width=2.5),
+        fill='tozeroy',
+        fillcolor='rgba(59, 130, 246, 0.1)'
     ))
 
     fig.update_layout(
-        title=f"{selected_ticker} Stock Price",
-        xaxis_title="Date",
+        title=dict(text=f"{selected_ticker} Stock Price", font=dict(size=18)),
+        xaxis_title="",
         yaxis_title="Price ($)",
         hovermode='x unified',
-        height=400
+        height=400,
+        **CHART_TEMPLATE['layout']
     )
-
     return fig
 
-
 def create_candlestick_chart(stock_df, selected_ticker):
-    """Create candlestick chart with volume"""
+    """Create candlestick chart with modern styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
-    # Create figure with secondary y-axis
     fig = go.Figure()
-
-    # Candlestick
     fig.add_trace(go.Candlestick(
         x=df['date'],
         open=df['open'],
         high=df['high'],
         low=df['low'],
         close=df['close'],
-        name='OHLC'
+        name='OHLC',
+        increasing_line_color=CHART_COLORS['positive'],
+        decreasing_line_color=CHART_COLORS['negative']
     ))
 
     fig.update_layout(
-        title=f"{selected_ticker} - OHLC Chart",
-        xaxis_title="Date",
+        title=dict(text=f"{selected_ticker} - OHLC Chart", font=dict(size=18)),
+        xaxis_title="",
         yaxis_title="Price ($)",
-        height=500,
-        xaxis_rangeslider_visible=False
+        height=450,
+        xaxis_rangeslider_visible=False,
+        **CHART_TEMPLATE['layout']
     )
-
     return fig
 
-
 def create_volume_chart(stock_df, selected_ticker):
-    """Create volume bar chart"""
+    """Create volume bar chart with modern styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
-
     fig.add_trace(go.Bar(
         x=df['date'],
         y=df['volume'],
         name='Volume',
-        marker_color='rgba(31, 119, 180, 0.5)'
+        marker_color=CHART_COLORS['primary'],
+        opacity=0.7
     ))
 
     fig.update_layout(
-        title=f"{selected_ticker} Trading Volume",
-        xaxis_title="Date",
+        title=dict(text=f"{selected_ticker} Trading Volume", font=dict(size=16)),
+        xaxis_title="",
         yaxis_title="Volume",
-        height=250
+        height=200,
+        **CHART_TEMPLATE['layout']
     )
-
     return fig
 
-
 def create_sentiment_timeline(news_df, selected_tickers):
-    """Create sentiment timeline for selected tickers"""
+    """Create sentiment timeline with modern styling"""
     df = news_df[news_df['ticker'].isin(selected_tickers)].copy()
-
-    # Group by date and ticker
     daily_sentiment = df.groupby(['date', 'ticker'])['sentiment_score'].mean().reset_index()
+
+    # Custom color sequence for multiple tickers
+    color_sequence = [CHART_COLORS['primary'], CHART_COLORS['secondary'],
+                      CHART_COLORS['accent'], CHART_COLORS['positive'], '#EC4899', '#06B6D4']
 
     fig = px.line(
         daily_sentiment,
         x='date',
         y='sentiment_score',
         color='ticker',
-        title='Sentiment Timeline',
-        labels={'sentiment_score': 'Avg Sentiment', 'date': 'Date'}
+        color_discrete_sequence=color_sequence
     )
 
-    fig.add_hline(y=0, line_dash="dash", line_color="gray")
-    fig.update_layout(height=400)
-
+    fig.add_hline(y=0, line_dash="dash", line_color="rgba(148, 163, 184, 0.5)", line_width=1)
+    fig.update_layout(
+        title=dict(text="Sentiment Timeline", font=dict(size=18)),
+        xaxis_title="",
+        yaxis_title="Avg Sentiment",
+        height=400,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        **CHART_TEMPLATE['layout']
+    )
     return fig
 
-
 def create_correlation_scatter(combined_df, selected_ticker):
-    """Create scatter plot for sentiment vs returns correlation"""
-    # Check if daily_return exists, calculate if not
+    """Create scatter plot with modern styling"""
     if 'daily_return' not in combined_df.columns and 'close' in combined_df.columns:
         combined_df = combined_df.sort_values(['ticker', 'date'])
         combined_df['daily_return'] = combined_df.groupby('ticker')['close'].pct_change() * 100
 
-    # Check if we have the required columns
     if 'daily_return' not in combined_df.columns or 'avg_sentiment' not in combined_df.columns:
         return None
 
     df = combined_df[combined_df['ticker'] == selected_ticker].dropna(
         subset=['avg_sentiment', 'daily_return']
     )
-
     if len(df) == 0:
         return None
 
@@ -283,476 +535,438 @@ def create_correlation_scatter(combined_df, selected_ticker):
         df,
         x='avg_sentiment',
         y='daily_return',
-        title=f'{selected_ticker} - Sentiment vs Daily Return',
-        labels={'avg_sentiment': 'Average Sentiment', 'daily_return': 'Daily Return (%)'},
-        trendline="ols"
+        trendline="ols",
+        color_discrete_sequence=[CHART_COLORS['primary']]
     )
 
-    fig.update_layout(height=400)
-
+    fig.update_traces(marker=dict(size=10, opacity=0.7))
+    fig.update_layout(
+        title=dict(text=f'{selected_ticker} - Sentiment vs Daily Return', font=dict(size=18)),
+        xaxis_title="Average Sentiment",
+        yaxis_title="Daily Return (%)",
+        height=400,
+        **CHART_TEMPLATE['layout']
+    )
     return fig
-
 
 def create_sentiment_distribution(news_df):
-    """Create pie chart for sentiment distribution"""
-    # Add sentiment labels
+    """Create donut chart for sentiment distribution with modern styling"""
     news_df['sentiment_label'] = news_df['sentiment_score'].apply(get_sentiment_label)
-
     sentiment_counts = news_df['sentiment_label'].value_counts()
 
-    fig = px.pie(
+    colors = [CHART_COLORS['positive'], CHART_COLORS['negative'], CHART_COLORS['neutral']]
+
+    fig = go.Figure(data=[go.Pie(
+        labels=sentiment_counts.index,
         values=sentiment_counts.values,
-        names=sentiment_counts.index,
-        title='Sentiment Distribution',
-        color=sentiment_counts.index,
-        color_discrete_map={
-            'positive': '#00CC66',
-            'negative': '#FF4B4B',
-            'neutral': '#808080'
-        }
+        hole=0.6,
+        marker=dict(colors=[
+            CHART_COLORS['positive'] if l == 'positive' else
+            CHART_COLORS['negative'] if l == 'negative' else
+            CHART_COLORS['neutral']
+            for l in sentiment_counts.index
+        ]),
+        textinfo='label+percent',
+        textfont=dict(size=14, color=CHART_COLORS['text']),
+        hovertemplate="<b>%{label}</b><br>Count: %{value}<br>Percent: %{percent}<extra></extra>"
+    )])
+
+    fig.update_layout(
+        title=dict(text="Sentiment Distribution", font=dict(size=18)),
+        height=400,
+        showlegend=True,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5),
+        **CHART_TEMPLATE['layout']
     )
-
-    fig.update_layout(height=400)
-
     return fig
 
+# =============================================================================
+# UI COMPONENTS
+# =============================================================================
+def render_metric_card(label, value, card_type="default"):
+    """Render a styled metric card"""
+    type_class = f" {card_type}" if card_type != "default" else ""
+    st.markdown(f"""
+    <div class="metric-card{type_class}">
+        <p class="metric-value">{value}</p>
+        <p class="metric-label">{label}</p>
+    </div>
+    """, unsafe_allow_html=True)
 
+def render_recommendation_card(ticker, sentiment, confidence, rec_type):
+    """Render a styled recommendation card"""
+    badge_class = rec_type.lower()
+    st.markdown(f"""
+    <div class="rec-card {badge_class}">
+        <div>
+            <span class="rec-ticker">{ticker}</span>
+            <span class="badge badge-{badge_class}" style="margin-left: 0.75rem;">{rec_type}</span>
+        </div>
+        <div class="rec-details">
+            <span>Sentiment: <strong>{sentiment:+.3f}</strong></span>
+            <span>Confidence: <strong>{confidence:.1%}</strong></span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+def render_header():
+    """Render the main header"""
+    st.markdown("""
+    <div class="main-header">
+        <h1>Stock Sentiment Analysis</h1>
+        <p>AI-powered market sentiment insights using FinBERT NLP</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+def render_divider():
+    """Render a styled divider"""
+    st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
+
+# =============================================================================
+# MAIN APPLICATION
+# =============================================================================
 def main():
-    # Header
-    st.title("📊 Stock Market Sentiment Analysis Dashboard")
+    # Render header
+    render_header()
 
     # Load data
     data = load_data()
 
     # Check if we have any data
     if data['news'] is None and data['stock'] is None and data['reddit'] is None and data['all_content'] is None:
-        st.error("❌ No data found! Please run `python analyze_news_sentiment.py` or `python analyze_with_reddit.py` first.")
-        # Debug info
-        with st.expander("🔧 Debug Info"):
+        st.error("No data found! Please run the analysis script first.")
+        with st.expander("Debug Info"):
             st.write(f"**PROJECT_ROOT:** {PROJECT_ROOT}")
-            st.write(f"**DATA_DIR:** {DATA_DIR}")
             st.write(f"**DATA_DIR exists:** {DATA_DIR.exists()}")
-            st.write(f"**PROCESSED_DIR:** {PROCESSED_DIR}")
             st.write(f"**PROCESSED_DIR exists:** {PROCESSED_DIR.exists()}")
             if PROCESSED_DIR.exists():
-                st.write(f"**Files in PROCESSED_DIR:** {list(PROCESSED_DIR.iterdir())}")
-            st.write(f"**CWD:** {Path.cwd()}")
-            st.write(f"**__file__:** {__file__}")
+                st.write(f"**Files:** {list(PROCESSED_DIR.iterdir())}")
         st.stop()
 
-    # Get last update time and show data sources
-    sources = []
-    if data['news'] is not None:
-        last_update = data['news']['time_published'].max()
-        st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d %H:%M:%S')}")
-        sources.append("News")
-    elif data['all_content'] is not None:
-        last_update = pd.to_datetime(data['all_content']['date']).max()
-        st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d')}")
-    if data['reddit'] is not None:
-        sources.append("Reddit")
-    if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
-        content_types = data['all_content']['content_type'].unique()
-        if 'sec_filing' in content_types:
-            sources.append("SEC Filings")
-        if 'earnings_call' in content_types:
-            sources.append("Earnings Calls")
-    if data['stock'] is not None:
-        sources.append("Stock Prices")
-    sources.append("FinBERT")
-
-    st.info(f"📌 Data sources: {', '.join(sources)}")
-
     # Sidebar
-    st.sidebar.header("⚙️ Settings")
+    with st.sidebar:
+        st.markdown("## FILTERS")
 
-    # Ticker selection
-    if data['news'] is not None:
-        available_tickers = sorted(data['news']['ticker'].unique())
-    elif data['stock'] is not None:
-        available_tickers = sorted(data['stock']['ticker'].unique())
-    else:
-        available_tickers = TICKERS
+        # Ticker selection
+        if data['news'] is not None:
+            available_tickers = sorted(data['news']['ticker'].unique())
+        elif data['stock'] is not None:
+            available_tickers = sorted(data['stock']['ticker'].unique())
+        elif data['all_content'] is not None:
+            available_tickers = sorted(data['all_content']['ticker'].unique())
+        else:
+            available_tickers = TICKERS
 
-    selected_tickers = st.sidebar.multiselect(
-        "Select Tickers",
-        options=available_tickers,
-        default=available_tickers[:3] if len(available_tickers) >= 3 else available_tickers
-    )
-
-    # Content source filter
-    content_sources = []
-    if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
-        # Get unique content types from data
-        available_types = data['all_content']['content_type'].unique().tolist()
-        type_labels = {
-            'news': 'News',
-            'reddit': 'Reddit',
-            'sec_filing': 'SEC Filings',
-            'earnings_call': 'Earnings Calls',
-            'earnings': 'Earnings'
-        }
-        content_sources = [type_labels.get(t, t.title()) for t in available_types]
-        content_sources.append('All Sources')
-
-        content_filter = st.sidebar.multiselect(
-            "Content Sources",
-            options=content_sources,
-            default=['All Sources']
+        selected_tickers = st.multiselect(
+            "Select Tickers",
+            options=available_tickers,
+            default=available_tickers[:5] if len(available_tickers) >= 5 else available_tickers
         )
-    else:
-        content_filter = None
 
-    # Date range
-    if data['news'] is not None:
-        min_date = data['news']['date'].min()
-        max_date = data['news']['date'].max()
-    elif data['stock'] is not None:
-        min_date = data['stock']['date'].min()
-        max_date = data['stock']['date'].max()
-    else:
-        min_date = datetime.now().date() - timedelta(days=30)
-        max_date = datetime.now().date()
+        # Content source filter
+        if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
+            available_types = data['all_content']['content_type'].unique().tolist()
+            type_labels = {
+                'news': 'News', 'reddit': 'Reddit', 'sec_filing': 'SEC Filings',
+                'earnings_call': 'Earnings Calls', 'earnings': 'Earnings'
+            }
+            content_sources = [type_labels.get(t, t.title()) for t in available_types]
+            content_sources.append('All Sources')
+            content_filter = st.multiselect("Content Sources", options=content_sources, default=['All Sources'])
+        else:
+            content_filter = None
 
-    date_range = st.sidebar.date_input(
-        "Date Range",
-        value=(min_date, max_date),
-        min_value=min_date,
-        max_value=max_date
-    )
+        # Date range
+        if data['news'] is not None:
+            min_date, max_date = data['news']['date'].min(), data['news']['date'].max()
+        elif data['stock'] is not None:
+            min_date, max_date = data['stock']['date'].min(), data['stock']['date'].max()
+        elif data['all_content'] is not None:
+            min_date = pd.to_datetime(data['all_content']['date']).min().date()
+            max_date = pd.to_datetime(data['all_content']['date']).max().date()
+        else:
+            min_date, max_date = datetime.now().date() - timedelta(days=30), datetime.now().date()
 
-    # Info button
-    st.sidebar.markdown("---")
-    with st.sidebar.expander("ℹ️ About"):
-        st.markdown("""
-        This dashboard visualizes stock market sentiment analysis.
+        date_range = st.date_input("Date Range", value=(min_date, max_date), min_value=min_date, max_value=max_date)
 
-        **Features:**
-        - Stock price tracking
-        - News sentiment analysis (Alpha Vantage)
-        - Reddit sentiment analysis
-        - SEC filings analysis
-        - Earnings data analysis
-        - AI-powered stock recommendations
-        - Correlation analysis
-        - Multi-ticker comparison
+        st.markdown("---")
 
-        **Data Sources:**
-        - Alpha Vantage (Financial News)
-        - Reddit (Social Sentiment)
-        - SEC EDGAR (Official Filings)
-        - Yahoo Finance (Stock Prices + Earnings)
-        - FinBERT (Sentiment Analysis)
+        # Data sources info
+        sources = []
+        if data['news'] is not None: sources.append("News")
+        if data['reddit'] is not None: sources.append("Reddit")
+        if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
+            if 'sec_filing' in data['all_content']['content_type'].unique(): sources.append("SEC")
+        if data['stock'] is not None: sources.append("Prices")
+        sources.append("FinBERT")
 
-        **Run Analysis:**
-        ```
-        python analyze_with_recommendations.py --list sp100
-        ```
-        """)
+        st.markdown(f"**Data Sources:** {' • '.join(sources)}")
 
-    # Filter data by selected tickers and date range
-    if len(date_range) == 2:
-        start_date, end_date = date_range
-    else:
-        start_date = end_date = date_range[0]
+        if data['all_content'] is not None:
+            last_update = pd.to_datetime(data['all_content']['date']).max()
+            st.caption(f"Last updated: {last_update.strftime('%Y-%m-%d')}")
 
-    # Filter news
+    # Filter data
+    start_date, end_date = (date_range[0], date_range[1]) if len(date_range) == 2 else (date_range[0], date_range[0])
+
+    news_filtered = None
     if data['news'] is not None:
         news_filtered = data['news'][
             (data['news']['ticker'].isin(selected_tickers)) &
             (data['news']['date'] >= start_date) &
             (data['news']['date'] <= end_date)
         ].copy()
-    else:
-        news_filtered = None
 
-    # Filter stock
+    stock_filtered = None
     if data['stock'] is not None:
         stock_filtered = data['stock'][
             (data['stock']['ticker'].isin(selected_tickers)) &
             (data['stock']['date'] >= start_date) &
             (data['stock']['date'] <= end_date)
         ].copy()
-    else:
-        stock_filtered = None
 
-    # Filter combined
+    combined_filtered = None
     if data['combined'] is not None:
         combined_filtered = data['combined'][
             (data['combined']['ticker'].isin(selected_tickers)) &
             (data['combined']['date'] >= start_date) &
             (data['combined']['date'] <= end_date)
         ].copy()
-    else:
-        combined_filtered = None
 
-    # Tabs
+    # =============================================================================
+    # TABS
+    # =============================================================================
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "📊 Overview",
-        "🎯 Recommendations",
-        "📈 Prices & Sentiment",
-        "📰 News Analysis",
-        "🔍 Per-Ticker Analysis",
-        "📁 Data Explorer"
+        "Overview", "Recommendations", "Price & Sentiment", "News Analysis", "Ticker Deep Dive", "Data Export"
     ])
 
+    # -------------------------------------------------------------------------
     # TAB 1: OVERVIEW
+    # -------------------------------------------------------------------------
     with tab1:
-        st.header("Overview")
-
-        # Use all_content if available (has multiple sources)
         overview_df = None
         if data['all_content'] is not None:
-            overview_df = data['all_content'][
-                (data['all_content']['ticker'].isin(selected_tickers))
-            ].copy()
+            overview_df = data['all_content'][data['all_content']['ticker'].isin(selected_tickers)].copy()
             if 'date' in overview_df.columns:
                 overview_df['date'] = pd.to_datetime(overview_df['date']).dt.date
-                overview_df = overview_df[
-                    (overview_df['date'] >= start_date) &
-                    (overview_df['date'] <= end_date)
-                ]
+                overview_df = overview_df[(overview_df['date'] >= start_date) & (overview_df['date'] <= end_date)]
         elif news_filtered is not None:
             overview_df = news_filtered
 
         if overview_df is not None and len(overview_df) > 0:
-            # KPIs
-            col1, col2, col3, col4 = st.columns(4)
-
-            with col1:
-                st.metric("Analyzed Tickers", len(selected_tickers))
-
-            with col2:
-                st.metric("Total Content", len(overview_df))
-
-            with col3:
+            # KPI Row
+            cols = st.columns(4)
+            with cols[0]:
+                render_metric_card("Tickers Analyzed", len(selected_tickers), "accent")
+            with cols[1]:
+                render_metric_card("Total Content", f"{len(overview_df):,}", "default")
+            with cols[2]:
                 avg_sentiment = overview_df['sentiment_score'].mean()
-                st.metric("Avg Sentiment", f"{avg_sentiment:.3f}")
-
-            with col4:
+                card_type = "positive" if avg_sentiment > 0.1 else "negative" if avg_sentiment < -0.1 else "default"
+                render_metric_card("Avg Sentiment", f"{avg_sentiment:+.3f}", card_type)
+            with cols[3]:
                 if 'sentiment_label' not in overview_df.columns:
                     overview_df['sentiment_label'] = overview_df['sentiment_score'].apply(get_sentiment_label)
                 positive_pct = (overview_df['sentiment_label'] == 'positive').sum() / len(overview_df) * 100
-                st.metric("Positive %", f"{positive_pct:.1f}%")
+                render_metric_card("Positive Rate", f"{positive_pct:.1f}%", "positive" if positive_pct > 50 else "default")
 
-            # Content type breakdown (if multiple sources)
+            render_divider()
+
+            # Content breakdown
             if 'content_type' in overview_df.columns:
-                st.subheader("Content by Source")
+                st.markdown('<p class="section-title">Content by Source</p>', unsafe_allow_html=True)
                 type_counts = overview_df['content_type'].value_counts()
-                type_labels = {
-                    'news': '📰 News',
-                    'reddit': '💬 Reddit',
-                    'sec_filing': '📋 SEC Filings',
-                    'earnings_call': '📞 Earnings Calls',
-                    'earnings': '📊 Earnings'
-                }
+                type_labels = {'news': 'News', 'reddit': 'Reddit', 'sec_filing': 'SEC Filings', 'earnings_call': 'Earnings', 'earnings': 'Earnings'}
 
                 cols = st.columns(len(type_counts))
                 for i, (ctype, count) in enumerate(type_counts.items()):
                     with cols[i]:
                         label = type_labels.get(ctype, ctype.title())
                         avg_sent = overview_df[overview_df['content_type'] == ctype]['sentiment_score'].mean()
-                        st.metric(label, count, f"Avg: {avg_sent:+.2f}")
+                        st.metric(label, count, f"{avg_sent:+.2f}")
 
-            # Sentiment distribution
-            st.plotly_chart(create_sentiment_distribution(overview_df), width="stretch")
+            # Charts row
+            col1, col2 = st.columns(2)
+            with col1:
+                st.plotly_chart(create_sentiment_distribution(overview_df), use_container_width=True)
+            with col2:
+                # Sentiment by ticker bar chart
+                ticker_sentiment = overview_df.groupby('ticker')['sentiment_score'].mean().sort_values(ascending=True)
 
-            # Sentiment by ticker
-            st.subheader("Sentiment by Ticker")
-            ticker_sentiment = overview_df.groupby('ticker').agg({
-                'sentiment_score': ['mean', 'std', 'count']
-            }).reset_index()
-            ticker_sentiment.columns = ['Ticker', 'Avg Sentiment', 'Std Dev', 'Content Count']
-            ticker_sentiment = ticker_sentiment.sort_values('Avg Sentiment', ascending=False)
-
-            st.dataframe(ticker_sentiment, width="stretch", hide_index=True)
+                fig = go.Figure(go.Bar(
+                    x=ticker_sentiment.values,
+                    y=ticker_sentiment.index,
+                    orientation='h',
+                    marker=dict(
+                        color=[CHART_COLORS['positive'] if v > 0 else CHART_COLORS['negative'] for v in ticker_sentiment.values],
+                        opacity=0.8
+                    )
+                ))
+                fig.update_layout(
+                    title=dict(text="Sentiment by Ticker", font=dict(size=18)),
+                    xaxis_title="Avg Sentiment",
+                    yaxis_title="",
+                    height=400,
+                    **CHART_TEMPLATE['layout']
+                )
+                st.plotly_chart(fig, use_container_width=True)
         else:
-            st.warning("No data available for selected filters.")
+            st.info("Select tickers from the sidebar to view analysis.")
 
+    # -------------------------------------------------------------------------
     # TAB 2: RECOMMENDATIONS
+    # -------------------------------------------------------------------------
     with tab2:
-        st.header("AI Stock Recommendations")
-
         if data['recommendations'] is not None:
             rec_df = data['recommendations'].copy()
 
-            # Summary metrics
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
+            # Summary KPIs
+            cols = st.columns(4)
+            with cols[0]:
                 buy_count = len(rec_df[rec_df['recommendation'] == 'BUY'])
-                st.metric("🟢 BUY", buy_count)
-            with col2:
+                render_metric_card("BUY Signals", buy_count, "positive")
+            with cols[1]:
                 hold_count = len(rec_df[rec_df['recommendation'] == 'HOLD'])
-                st.metric("🟡 HOLD", hold_count)
-            with col3:
+                render_metric_card("HOLD Signals", hold_count, "default")
+            with cols[2]:
                 sell_count = len(rec_df[rec_df['recommendation'] == 'SELL'])
-                st.metric("🔴 SELL", sell_count)
-            with col4:
+                render_metric_card("SELL Signals", sell_count, "negative")
+            with cols[3]:
                 avg_conf = rec_df['confidence'].mean()
-                st.metric("Avg Confidence", f"{avg_conf:.1%}")
+                render_metric_card("Avg Confidence", f"{avg_conf:.1%}", "accent")
 
-            st.divider()
+            render_divider()
 
             # Top Picks
-            st.subheader("🚀 Top Buy Recommendations")
-            top_buys = rec_df[rec_df['recommendation'] == 'BUY'].sort_values('confidence', ascending=False).head(10)
-            if len(top_buys) > 0:
-                for _, row in top_buys.iterrows():
-                    col1, col2, col3, col4 = st.columns([2, 2, 2, 4])
-                    with col1:
-                        st.markdown(f"**{row['ticker']}**")
-                    with col2:
-                        st.markdown(f"Sentiment: `{row['sentiment_score']:.3f}`")
-                    with col3:
-                        st.markdown(f"Confidence: `{row['confidence']:.1%}`")
-                    with col4:
-                        st.progress(row['confidence'])
-            else:
-                st.info("No BUY recommendations at this time.")
+            col1, col2 = st.columns(2)
 
-            st.divider()
+            with col1:
+                st.markdown('<p class="section-title">Top Buy Recommendations</p>', unsafe_allow_html=True)
+                top_buys = rec_df[rec_df['recommendation'] == 'BUY'].sort_values('confidence', ascending=False).head(8)
+                if len(top_buys) > 0:
+                    for _, row in top_buys.iterrows():
+                        render_recommendation_card(row['ticker'], row['sentiment_score'], row['confidence'], 'BUY')
+                else:
+                    st.info("No BUY recommendations available.")
 
-            # Stocks to Avoid
-            st.subheader("⚠️ Stocks to Avoid")
-            sells = rec_df[rec_df['recommendation'] == 'SELL'].sort_values('sentiment_score', ascending=True).head(5)
-            if len(sells) > 0:
-                for _, row in sells.iterrows():
-                    col1, col2, col3 = st.columns([2, 3, 5])
-                    with col1:
-                        st.markdown(f"**{row['ticker']}**")
-                    with col2:
-                        st.markdown(f"Sentiment: `{row['sentiment_score']:.3f}`")
-                    with col3:
-                        st.markdown(f"⚠️ {row['recommendation']}")
-            else:
-                st.success("No SELL recommendations - all analyzed stocks look positive!")
+            with col2:
+                st.markdown('<p class="section-title">Stocks to Watch</p>', unsafe_allow_html=True)
+                sells = rec_df[rec_df['recommendation'] == 'SELL'].sort_values('sentiment_score', ascending=True).head(5)
+                holds = rec_df[rec_df['recommendation'] == 'HOLD'].sort_values('confidence', ascending=False).head(3)
 
-            st.divider()
+                if len(sells) > 0:
+                    for _, row in sells.iterrows():
+                        render_recommendation_card(row['ticker'], row['sentiment_score'], row['confidence'], 'SELL')
+                if len(holds) > 0:
+                    for _, row in holds.iterrows():
+                        render_recommendation_card(row['ticker'], row['sentiment_score'], row['confidence'], 'HOLD')
+                if len(sells) == 0 and len(holds) == 0:
+                    st.success("All stocks show positive signals!")
+
+            render_divider()
 
             # Full table
-            st.subheader("📋 All Recommendations")
+            st.markdown('<p class="section-title">All Recommendations</p>', unsafe_allow_html=True)
             display_df = rec_df[['ticker', 'recommendation', 'sentiment_score', 'confidence', 'num_articles']].copy()
-            display_df.columns = ['Ticker', 'Recommendation', 'Sentiment', 'Confidence', 'Articles']
-            display_df['Confidence'] = display_df['Confidence'].apply(lambda x: f"{x:.1%}")
-            display_df['Sentiment'] = display_df['Sentiment'].apply(lambda x: f"{x:+.3f}")
+            display_df.columns = ['Ticker', 'Signal', 'Sentiment', 'Confidence', 'Articles']
 
-            st.dataframe(display_df, width="stretch", hide_index=True)
+            st.dataframe(
+                display_df.style.format({'Sentiment': '{:+.3f}', 'Confidence': '{:.1%}'}),
+                use_container_width=True,
+                hide_index=True,
+                height=400
+            )
         else:
-            st.warning("No recommendations available. Run `python analyze_with_recommendations.py` first.")
+            st.info("No recommendations available. Run the analysis script first.")
 
+    # -------------------------------------------------------------------------
     # TAB 3: PRICES & SENTIMENT
+    # -------------------------------------------------------------------------
     with tab3:
-        st.header("Stock Prices & Sentiment")
-
         if stock_filtered is not None and len(stock_filtered) > 0:
-            # Ticker selector for charts
-            chart_ticker = st.selectbox(
-                "Select ticker for detailed view",
-                options=selected_tickers,
-                key='price_ticker'
-            )
+            chart_ticker = st.selectbox("Select Ticker", options=selected_tickers, key='price_ticker')
 
-            # Price chart
-            st.plotly_chart(
-                create_price_chart(stock_filtered, chart_ticker),
-                width="stretch"
-            )
+            st.plotly_chart(create_price_chart(stock_filtered, chart_ticker), use_container_width=True)
 
-            # Sentiment timeline
             if news_filtered is not None and len(news_filtered) > 0:
-                st.plotly_chart(
-                    create_sentiment_timeline(news_filtered, selected_tickers),
-                    width="stretch"
-                )
+                st.plotly_chart(create_sentiment_timeline(news_filtered, selected_tickers), use_container_width=True)
 
-            # Correlation analysis
             if combined_filtered is not None and len(combined_filtered) > 0:
-                st.subheader("Correlation Analysis")
+                render_divider()
+                st.markdown('<p class="section-title">Correlation Analysis</p>', unsafe_allow_html=True)
 
-                col1, col2 = st.columns([2, 1])
-
+                col1, col2 = st.columns([3, 1])
                 with col1:
                     scatter_fig = create_correlation_scatter(combined_filtered, chart_ticker)
                     if scatter_fig:
-                        st.plotly_chart(scatter_fig, width="stretch")
+                        st.plotly_chart(scatter_fig, use_container_width=True)
                     else:
-                        st.info("Not enough data for correlation analysis")
-
+                        st.info("Not enough data for correlation analysis.")
                 with col2:
-                    # Calculate correlation
-                    # Calculate daily_return if not present
                     combined_temp = combined_filtered.copy()
                     if 'daily_return' not in combined_temp.columns and 'close' in combined_temp.columns:
                         combined_temp = combined_temp.sort_values(['ticker', 'date'])
                         combined_temp['daily_return'] = combined_temp.groupby('ticker')['close'].pct_change() * 100
 
                     if 'daily_return' in combined_temp.columns and 'avg_sentiment' in combined_temp.columns:
-                        ticker_data = combined_temp[combined_temp['ticker'] == chart_ticker].dropna(
-                            subset=['avg_sentiment', 'daily_return']
-                        )
+                        ticker_data = combined_temp[combined_temp['ticker'] == chart_ticker].dropna(subset=['avg_sentiment', 'daily_return'])
                         if len(ticker_data) > 1:
                             correlation = ticker_data['avg_sentiment'].corr(ticker_data['daily_return'])
-                            st.metric("Correlation Coefficient", f"{correlation:.3f}")
+                            render_metric_card("Correlation", f"{correlation:.3f}", "accent")
 
                             if abs(correlation) > 0.3:
                                 st.success("Moderate correlation detected")
                             else:
-                                st.info("Weak correlation (more data needed)")
-                        else:
-                            st.info("Not enough data points")
-                    else:
-                        st.info("Missing required columns for correlation")
-            else:
-                st.info("💡 Run `python analyze_news_sentiment.py` to generate correlation analysis")
+                                st.info("Weak correlation")
         else:
-            st.warning("No stock data available for selected filters.")
+            st.info("No stock price data available for selected tickers.")
 
+    # -------------------------------------------------------------------------
     # TAB 4: NEWS ANALYSIS
+    # -------------------------------------------------------------------------
     with tab4:
-        st.header("News Analysis")
-
         if news_filtered is not None and len(news_filtered) > 0:
-            # Add sentiment labels
             news_filtered['sentiment_label'] = news_filtered['sentiment_score'].apply(get_sentiment_label)
 
-            # Top positive news
-            with st.expander("📈 Top 5 Most Positive News", expanded=True):
-                top_positive = news_filtered.nlargest(5, 'sentiment_score')[
-                    ['ticker', 'title', 'sentiment_score', 'time_published', 'url']
-                ]
-                for idx, row in top_positive.iterrows():
-                    st.markdown(
-                        f"**[{row['ticker']}]** [{row['title']}]({row['url']}) "
-                        f"<span style='color: #00CC66;'>+{row['sentiment_score']:.3f}</span>",
-                        unsafe_allow_html=True
-                    )
-                    st.caption(f"📅 {row['time_published']}")
-                    st.markdown("---")
+            col1, col2 = st.columns(2)
 
-            # Top negative news
-            with st.expander("📉 Top 5 Most Negative News"):
-                top_negative = news_filtered.nsmallest(5, 'sentiment_score')[
-                    ['ticker', 'title', 'sentiment_score', 'time_published', 'url']
-                ]
-                for idx, row in top_negative.iterrows():
-                    st.markdown(
-                        f"**[{row['ticker']}]** [{row['title']}]({row['url']}) "
-                        f"<span style='color: #FF4B4B;'>{row['sentiment_score']:.3f}</span>",
-                        unsafe_allow_html=True
-                    )
-                    st.caption(f"📅 {row['time_published']}")
-                    st.markdown("---")
+            with col1:
+                st.markdown('<p class="section-title">Most Positive News</p>', unsafe_allow_html=True)
+                top_positive = news_filtered.nlargest(5, 'sentiment_score')
+                for _, row in top_positive.iterrows():
+                    st.markdown(f"""
+                    <div class="rec-card buy">
+                        <div>
+                            <span class="badge badge-positive">{row['ticker']}</span>
+                            <span style="color: #f8fafc; margin-left: 0.5rem;">{row['title'][:60]}...</span>
+                        </div>
+                        <span style="color: #22c55e; font-weight: 600;">+{row['sentiment_score']:.3f}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
 
-            # All news table
-            st.subheader("All News Articles")
+            with col2:
+                st.markdown('<p class="section-title">Most Negative News</p>', unsafe_allow_html=True)
+                top_negative = news_filtered.nsmallest(5, 'sentiment_score')
+                for _, row in top_negative.iterrows():
+                    st.markdown(f"""
+                    <div class="rec-card sell">
+                        <div>
+                            <span class="badge badge-negative">{row['ticker']}</span>
+                            <span style="color: #f8fafc; margin-left: 0.5rem;">{row['title'][:60]}...</span>
+                        </div>
+                        <span style="color: #ef4444; font-weight: 600;">{row['sentiment_score']:.3f}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
 
-            # Format for display
+            render_divider()
+
+            st.markdown('<p class="section-title">All News Articles</p>', unsafe_allow_html=True)
             display_df = news_filtered[['date', 'ticker', 'title', 'sentiment_score', 'sentiment_label', 'source']].copy()
             display_df = display_df.sort_values('date', ascending=False)
 
             st.dataframe(
                 display_df,
-                width="stretch",
+                use_container_width=True,
                 hide_index=True,
                 column_config={
                     "date": "Date",
@@ -764,136 +978,121 @@ def main():
                 }
             )
         else:
-            st.warning("No news data available for selected filters.")
+            st.info("No news data available for selected tickers.")
 
-    # TAB 5: PER-TICKER ANALYSIS
+    # -------------------------------------------------------------------------
+    # TAB 5: TICKER DEEP DIVE
+    # -------------------------------------------------------------------------
     with tab5:
-        st.header("Per-Ticker Analysis")
-
         if len(selected_tickers) > 0:
-            ticker_choice = st.selectbox(
-                "Select Ticker",
-                options=selected_tickers,
-                key='ticker_analysis'
-            )
+            ticker_choice = st.selectbox("Select Ticker for Analysis", options=selected_tickers, key='ticker_analysis')
 
-            col1, col2 = st.columns(2)
+            # Metrics row
+            col1, col2, col3, col4 = st.columns(4)
 
-            # Stock metrics
             if stock_filtered is not None:
                 ticker_stock = stock_filtered[stock_filtered['ticker'] == ticker_choice]
-
                 if len(ticker_stock) > 0:
                     with col1:
-                        st.subheader("Stock Metrics")
                         latest_price = ticker_stock.iloc[-1]['close']
-                        price_change = ticker_stock['daily_return'].iloc[-1] if 'daily_return' in ticker_stock.columns else 0
-
-                        st.metric("Latest Price", f"${latest_price:.2f}", f"{price_change:.2%}")
-
+                        render_metric_card("Latest Price", f"${latest_price:.2f}", "accent")
+                    with col2:
                         avg_volume = ticker_stock['volume'].mean()
-                        st.metric("Avg Volume", f"{avg_volume:,.0f}")
+                        render_metric_card("Avg Volume", f"{avg_volume:,.0f}", "default")
 
-            # Sentiment metrics
             if news_filtered is not None:
                 ticker_news = news_filtered[news_filtered['ticker'] == ticker_choice]
-
                 if len(ticker_news) > 0:
-                    with col2:
-                        st.subheader("Sentiment Metrics")
+                    with col3:
                         avg_sent = ticker_news['sentiment_score'].mean()
-                        std_sent = ticker_news['sentiment_score'].std()
+                        card_type = "positive" if avg_sent > 0.1 else "negative" if avg_sent < -0.1 else "default"
+                        render_metric_card("Avg Sentiment", f"{avg_sent:+.3f}", card_type)
+                    with col4:
+                        render_metric_card("Article Count", len(ticker_news), "default")
 
-                        st.metric("Avg Sentiment", f"{avg_sent:.3f}")
-                        st.metric("Std Deviation", f"{std_sent:.3f}")
-                        st.metric("Article Count", len(ticker_news))
+            render_divider()
 
             # Charts
             if stock_filtered is not None and len(stock_filtered[stock_filtered['ticker'] == ticker_choice]) > 0:
-                st.plotly_chart(
-                    create_candlestick_chart(stock_filtered, ticker_choice),
-                    width="stretch"
-                )
+                st.plotly_chart(create_candlestick_chart(stock_filtered, ticker_choice), use_container_width=True)
+                st.plotly_chart(create_volume_chart(stock_filtered, ticker_choice), use_container_width=True)
 
-                st.plotly_chart(
-                    create_volume_chart(stock_filtered, ticker_choice),
-                    width="stretch"
-                )
-
-            # News for this ticker
+            # News table
             if news_filtered is not None:
                 ticker_news = news_filtered[news_filtered['ticker'] == ticker_choice]
-
                 if len(ticker_news) > 0:
-                    st.subheader(f"News for {ticker_choice}")
-
+                    st.markdown(f'<p class="section-title">Recent News for {ticker_choice}</p>', unsafe_allow_html=True)
                     news_display = ticker_news[['date', 'title', 'sentiment_score', 'source']].sort_values('date', ascending=False)
-                    st.dataframe(news_display, width="stretch", hide_index=True)
+                    st.dataframe(news_display, use_container_width=True, hide_index=True)
         else:
-            st.warning("Please select at least one ticker from the sidebar.")
+            st.info("Select at least one ticker from the sidebar.")
 
-    # TAB 6: DATA EXPLORER
+    # -------------------------------------------------------------------------
+    # TAB 6: DATA EXPORT
+    # -------------------------------------------------------------------------
     with tab6:
-        st.header("Data Explorer")
+        st.markdown('<p class="section-title">Export Data</p>', unsafe_allow_html=True)
 
-        # Stock data
-        if stock_filtered is not None and len(stock_filtered) > 0:
-            with st.expander("📊 Stock Prices Data", expanded=False):
-                st.dataframe(stock_filtered, width="stretch", hide_index=True)
+        col1, col2 = st.columns(2)
 
+        with col1:
+            if stock_filtered is not None and len(stock_filtered) > 0:
                 csv = stock_filtered.to_csv(index=False).encode('utf-8')
                 st.download_button(
-                    label="Download Stock Data CSV",
+                    label="Download Stock Prices",
                     data=csv,
                     file_name=f"stock_prices_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
+                    mime="text/csv",
+                    use_container_width=True
                 )
 
-        # News data
-        if news_filtered is not None and len(news_filtered) > 0:
-            with st.expander("📰 News Articles Data", expanded=False):
-                st.dataframe(news_filtered, width="stretch", hide_index=True)
+            if data['recommendations'] is not None:
+                csv = data['recommendations'].to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="Download Recommendations",
+                    data=csv,
+                    file_name=f"recommendations_{datetime.now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
 
+        with col2:
+            if news_filtered is not None and len(news_filtered) > 0:
                 csv = news_filtered.to_csv(index=False).encode('utf-8')
                 st.download_button(
-                    label="Download News Data CSV",
+                    label="Download News Data",
                     data=csv,
                     file_name=f"news_articles_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
+                    mime="text/csv",
+                    use_container_width=True
                 )
 
-        # Reddit data
-        if data['reddit'] is not None:
-            reddit_filtered = data['reddit'][
-                (data['reddit']['ticker'].isin(selected_tickers)) &
-                (data['reddit']['date'] >= start_date) &
-                (data['reddit']['date'] <= end_date)
-            ].copy()
-
-            if len(reddit_filtered) > 0:
-                with st.expander("💬 Reddit Posts Data", expanded=False):
-                    st.dataframe(reddit_filtered, width="stretch", hide_index=True)
-
-                    csv = reddit_filtered.to_csv(index=False).encode('utf-8')
-                    st.download_button(
-                        label="Download Reddit Data CSV",
-                        data=csv,
-                        file_name=f"reddit_posts_{datetime.now().strftime('%Y%m%d')}.csv",
-                        mime="text/csv"
-                    )
-
-        # Combined data
-        if combined_filtered is not None and len(combined_filtered) > 0:
-            with st.expander("🔗 Combined Stock + Sentiment Data", expanded=False):
-                st.dataframe(combined_filtered, width="stretch", hide_index=True)
-
+            if combined_filtered is not None and len(combined_filtered) > 0:
                 csv = combined_filtered.to_csv(index=False).encode('utf-8')
                 st.download_button(
-                    label="Download Combined Data CSV",
+                    label="Download Combined Data",
                     data=csv,
-                    file_name=f"stock_sentiment_combined_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
+                    file_name=f"combined_data_{datetime.now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv",
+                    use_container_width=True
                 )
+
+        render_divider()
+
+        # Data preview
+        st.markdown('<p class="section-title">Data Preview</p>', unsafe_allow_html=True)
+
+        preview_option = st.selectbox("Select data to preview",
+            ["Stock Prices", "News Articles", "Recommendations", "All Sentiment"])
+
+        if preview_option == "Stock Prices" and stock_filtered is not None:
+            st.dataframe(stock_filtered.head(100), use_container_width=True, hide_index=True)
+        elif preview_option == "News Articles" and news_filtered is not None:
+            st.dataframe(news_filtered.head(100), use_container_width=True, hide_index=True)
+        elif preview_option == "Recommendations" and data['recommendations'] is not None:
+            st.dataframe(data['recommendations'], use_container_width=True, hide_index=True)
+        elif preview_option == "All Sentiment" and data['all_content'] is not None:
+            st.dataframe(data['all_content'].head(100), use_container_width=True, hide_index=True)
 
 
 if __name__ == "__main__":
