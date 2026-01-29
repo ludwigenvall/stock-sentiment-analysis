@@ -1,0 +1,46 @@
+name: Daily Stock Analysis
+
+on:
+  schedule:
+    # Kör varje vardag kl 14:00 UTC (15:00 Stockholm, efter US market open)
+    - cron: '0 14 * * 1-5'
+  workflow_dispatch:  # Tillåt manuell körning
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy requests beautifulsoup4 yfinance python-dotenv
+          pip install torch transformers --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Run analysis
+        env:
+          ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: stock_sentiment_bot
+        run: |
+          python analyze_with_recommendations.py --list top_tech --days 7
+
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/processed/ data/recommendations/
+          git diff --staged --quiet || git commit -m "Daily analysis update $(date +'%Y-%m-%d')"
+          git push
