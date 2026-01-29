@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas numpy requests beautifulsoup4 yfinance python-dotenv
+          pip install pandas numpy requests beautifulsoup4 yfinance python-dotenv praw
           pip install torch transformers --index-url https://download.pytorch.org/whl/cpu
 
       - name: Run analysis
@@ -36,6 +36,7 @@ jobs:
           REDDIT_USER_AGENT: stock_sentiment_bot
         run: |
           python analyze_with_recommendations.py --list top_tech --days 7
+        continue-on-error: false
 
       - name: Commit and push results
         run: |
