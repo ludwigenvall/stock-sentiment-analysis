@@ -407,20 +407,31 @@ class RecommendationTracker:
         if not history:
             return {"error": "No history available"}
 
-        total_recs = sum(len(h.get("recommendations", [])) for h in history)
         total_sessions = len(history)
 
-        # Count by signal type
+        # Count by signal type - handle both nested and flat formats
         all_recs = []
         for h in history:
-            all_recs.extend(h.get("recommendations", []))
+            # Check if entry has nested recommendations or is flat
+            if "recommendations" in h and isinstance(h["recommendations"], list):
+                all_recs.extend(h["recommendations"])
+            elif "ticker" in h:
+                # Entry is itself a recommendation
+                all_recs.append(h)
+
+        total_recs = len(all_recs)
 
         buy_count = len([r for r in all_recs if r.get("recommendation") == "BUY"])
         hold_count = len([r for r in all_recs if r.get("recommendation") == "HOLD"])
         sell_count = len([r for r in all_recs if r.get("recommendation") == "SELL"])
 
-        # Date range
-        dates = [h["date"] for h in history]
+        # Date range - handle both 'date' and 'timestamp' keys
+        dates = []
+        for h in history:
+            if "date" in h:
+                dates.append(h["date"])
+            elif "timestamp" in h:
+                dates.append(h["timestamp"][:10])  # Extract date from timestamp
 
         return {
             "total_sessions": total_sessions,
