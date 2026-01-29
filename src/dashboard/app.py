@@ -49,13 +49,17 @@ PROCESSED_DIR = DATA_DIR / "processed"
 TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN', 'NVDA', 'META']
 
 
-@st.cache_data
+@st.cache_data(ttl=300)  # Cache for 5 minutes, then refresh
 def load_data():
     """Load all available data files"""
+    # Use the dynamically computed paths
+    processed_dir = PROJECT_ROOT / "data" / "processed"
+    raw_dir = PROJECT_ROOT / "data" / "raw"
+
     data = {}
 
     # Load news articles
-    news_file = RAW_DIR / "news_articles.csv"
+    news_file = raw_dir / "news_articles.csv"
     if news_file.exists():
         df = pd.read_csv(news_file)
         df['time_published'] = pd.to_datetime(df['time_published'])
@@ -65,7 +69,7 @@ def load_data():
         data['news'] = None
 
     # Load Reddit posts
-    reddit_file = RAW_DIR / "reddit_posts.csv"
+    reddit_file = raw_dir / "reddit_posts.csv"
     if reddit_file.exists():
         df = pd.read_csv(reddit_file)
         df['created_utc'] = pd.to_datetime(df['created_utc'])
@@ -75,7 +79,7 @@ def load_data():
         data['reddit'] = None
 
     # Load stock prices
-    stock_file = PROCESSED_DIR / "stock_prices.csv"
+    stock_file = processed_dir / "stock_prices.csv"
     if stock_file.exists():
         df = pd.read_csv(stock_file)
         df['date'] = pd.to_datetime(df['date']).dt.date
@@ -84,7 +88,7 @@ def load_data():
         data['stock'] = None
 
     # Load combined data (if available)
-    combined_file = PROCESSED_DIR / "stock_sentiment_combined.csv"
+    combined_file = processed_dir / "stock_sentiment_combined.csv"
     if combined_file.exists():
         df = pd.read_csv(combined_file)
         df['date'] = pd.to_datetime(df['date']).dt.date
@@ -93,7 +97,7 @@ def load_data():
         data['combined'] = None
 
     # Load combined with Reddit (if available)
-    reddit_combined_file = PROCESSED_DIR / "stock_sentiment_reddit_combined.csv"
+    reddit_combined_file = processed_dir / "stock_sentiment_reddit_combined.csv"
     if reddit_combined_file.exists():
         df = pd.read_csv(reddit_combined_file)
         df['date'] = pd.to_datetime(df['date']).dt.date
@@ -102,14 +106,14 @@ def load_data():
         data['reddit_combined'] = None
 
     # Load all content with sentiment (News + Reddit + Twitter + SEC + Earnings)
-    all_content_file = PROCESSED_DIR / "all_sentiment.csv"
+    all_content_file = processed_dir / "all_sentiment.csv"
     if all_content_file.exists():
         df = pd.read_csv(all_content_file)
         df['date'] = pd.to_datetime(df['date'])
         data['all_content'] = df
     else:
         # Try alternate filename
-        all_content_file = PROCESSED_DIR / "all_content_with_sentiment.csv"
+        all_content_file = processed_dir / "all_content_with_sentiment.csv"
         if all_content_file.exists():
             df = pd.read_csv(all_content_file)
             df['date'] = pd.to_datetime(df['date'])
@@ -118,7 +122,7 @@ def load_data():
             data['all_content'] = None
 
     # Load news with sentiment (if available)
-    news_sentiment_file = PROCESSED_DIR / "news_with_sentiment.csv"
+    news_sentiment_file = processed_dir / "news_with_sentiment.csv"
     if news_sentiment_file.exists():
         df = pd.read_csv(news_sentiment_file)
         df['time_published'] = pd.to_datetime(df['time_published'])
