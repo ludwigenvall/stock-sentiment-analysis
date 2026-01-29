@@ -6,6 +6,9 @@ on:
     - cron: '0 14 * * 1-5'
   workflow_dispatch:  # Tillåt manuell körning
 
+permissions:
+  contents: write
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
