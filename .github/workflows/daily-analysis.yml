@@ -46,7 +46,7 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_USER_AGENT: stock_sentiment_bot
         run: |
-          python analyze_with_recommendations.py --list original --days 3
+          python analyze_with_recommendations.py --list sp100 --days 7
 
       - name: Commit and push results
         run: |
