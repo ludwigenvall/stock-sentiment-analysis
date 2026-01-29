@@ -1,0 +1,107 @@
+[
+  {
+    "timestamp": "2026-01-29T08:02:07.968350",
+    "recommendations": [
+      {
+        "ticker": "NVDA",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.493,
+        "confidence": 0.756,
+        "sentiment_score": 0.493,
+        "num_articles": 40,
+        "timestamp": "2026-01-29T08:02:07.963494"
+      },
+      {
+        "ticker": "META",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.491,
+        "confidence": 0.754,
+        "sentiment_score": 0.491,
+        "num_articles": 34,
+        "timestamp": "2026-01-29T08:02:07.963385"
+      },
+      {
+        "ticker": "GOOGL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.416,
+        "confidence": 0.729,
+        "sentiment_score": 0.416,
+        "num_articles": 33,
+        "timestamp": "2026-01-29T08:02:07.963332"
+      },
+      {
+        "ticker": "AAPL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.34,
+        "confidence": 0.726,
+        "sentiment_score": 0.34,
+        "num_articles": 52,
+        "timestamp": "2026-01-29T08:02:07.963038"
+      },
+      {
+        "ticker": "CRM",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.26,
+        "confidence": 0.72,
+        "sentiment_score": 0.26,
+        "num_articles": 41,
+        "timestamp": "2026-01-29T08:02:07.963278"
+      },
+      {
+        "ticker": "MSFT",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.244,
+        "confidence": 0.72,
+        "sentiment_score": 0.244,
+        "num_articles": 48,
+        "timestamp": "2026-01-29T08:02:07.963439"
+      },
+      {
+        "ticker": "ADBE",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": -0.12,
+        "num_articles": 49,
+        "timestamp": "2026-01-29T08:02:07.963110"
+      },
+      {
+        "ticker": "AMZN",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": 0.197,
+        "num_articles": 40,
+        "timestamp": "2026-01-29T08:02:07.963169"
+      },
+      {
+        "ticker": "AVGO",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.612,
+        "sentiment_score": -0.025,
+        "num_articles": 2,
+        "timestamp": "2026-01-29T08:02:07.963224"
+      },
+      {
+        "ticker": "TSLA",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": 0.131,
+        "num_articles": 42,
+        "timestamp": "2026-01-29T08:02:07.963549"
+      }
+    ]
+  }
+]

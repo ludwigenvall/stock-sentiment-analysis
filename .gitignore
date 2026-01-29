@@ -181,6 +181,12 @@ cython_debug/
 .cursorindexingignore
 
 # Project specific
-data/
+data/raw/
+data/backtest/
+data/*.db
 .claude/
 analysis_output.log
+
+# Keep processed data for Streamlit Cloud
+!data/processed/
+!data/recommendations/
