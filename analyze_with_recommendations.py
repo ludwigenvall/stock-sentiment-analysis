@@ -5,6 +5,8 @@ Combines:
 - Stock data collection
 - News sentiment analysis
 - Reddit sentiment analysis (if configured)
+- SEC filings analysis (free, no API key needed)
+- Earnings data from Yahoo Finance (free)
 - AI-powered stock recommendations
 - Historical performance tracking
 """
@@ -107,6 +109,51 @@ def run_full_analysis(tickers: list, days_back: int = 7):
         logger.warning(f"Reddit scraping failed: {e}")
         reddit_df = pd.DataFrame()
 
+    # ==================== STEP 3b: SEC FILINGS ====================
+    logger.info("\nSTEP 3b: Fetching SEC filings...")
+
+    try:
+        from data_pipeline.sec_collector import SECCollector
+
+        sec_collector = SECCollector()
+        sec_df = sec_collector.collect_for_tickers(
+            tickers=tickers,
+            filing_types=['10-K', '10-Q', '8-K'],
+            limit_per_ticker=2
+        )
+        logger.info(f"Collected SEC filings: {len(sec_df)}")
+    except Exception as e:
+        logger.warning(f"SEC collection failed: {e}")
+        sec_df = pd.DataFrame()
+
+    # ==================== STEP 3c: EARNINGS DATA ====================
+    logger.info("\nSTEP 3c: Fetching earnings data...")
+
+    try:
+        from data_pipeline.earnings_collector import EarningsCollector, YahooEarningsCollector
+
+        # Try FMP first (requires premium), fallback to Yahoo
+        earnings_collector = EarningsCollector()
+        if earnings_collector.is_configured:
+            earnings_df = earnings_collector.collect_for_tickers(
+                tickers=tickers[:30],
+                limit_per_ticker=2
+            )
+            if earnings_df.empty:
+                logger.info("FMP returned no data, trying Yahoo fallback...")
+                yahoo_collector = YahooEarningsCollector()
+                earnings_df = yahoo_collector.collect_for_tickers(tickers[:30])
+        else:
+            # Use Yahoo fallback (free, no API key needed)
+            logger.info("Using Yahoo Finance for earnings data (free)")
+            yahoo_collector = YahooEarningsCollector()
+            earnings_df = yahoo_collector.collect_for_tickers(tickers[:30])
+
+        logger.info(f"Collected earnings data: {len(earnings_df)}")
+    except Exception as e:
+        logger.warning(f"Earnings collection failed: {e}")
+        earnings_df = pd.DataFrame()
+
     # ==================== STEP 4: SENTIMENT ANALYSIS ====================
     logger.info("\nSTEP 4: Running FinBERT sentiment analysis...")
 
@@ -132,6 +179,35 @@ def run_full_analysis(tickers: list, days_back: int = 7):
         all_content.append(reddit_df[['ticker', 'date', 'sentiment_score', 'sentiment_label',
                                        'content_type', 'title']])
         logger.info(f"Analyzed {len(reddit_df)} Reddit posts")
+
+    # Analyze SEC filings
+    if not sec_df.empty:
+        sec_df['combined_text'] = sec_df['title'] + ' ' + sec_df['text'].fillna('')
+        sec_df = analyzer.analyze_dataframe(sec_df, text_column='combined_text')
+        sec_df['content_type'] = 'sec_filing'
+        sec_df['date'] = pd.to_datetime(sec_df['date_filed']).dt.date
+        all_content.append(sec_df[['ticker', 'date', 'sentiment_score', 'sentiment_label',
+                                    'content_type', 'title']])
+        logger.info(f"Analyzed {len(sec_df)} SEC filings")
+
+    # Analyze Earnings data
+    if not earnings_df.empty:
+        # Handle both FMP format (title, text) and Yahoo format (title, text from _create_earnings_text)
+        if 'text' in earnings_df.columns:
+            earnings_df['combined_text'] = earnings_df['title'].fillna('') + ' ' + earnings_df['text'].fillna('')
+        else:
+            earnings_df['combined_text'] = earnings_df['title'].fillna('')
+
+        earnings_df = analyzer.analyze_dataframe(earnings_df, text_column='combined_text')
+        earnings_df['content_type'] = 'earnings'
+
+        # Ensure date column exists
+        if 'date' not in earnings_df.columns:
+            earnings_df['date'] = pd.Timestamp.now().date()
+
+        all_content.append(earnings_df[['ticker', 'date', 'sentiment_score', 'sentiment_label',
+                                         'content_type', 'title']])
+        logger.info(f"Analyzed {len(earnings_df)} earnings records")
 
     if not all_content:
         logger.error("No content to analyze!")

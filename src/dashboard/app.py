@@ -80,14 +80,21 @@ def load_data():
     else:
         data['reddit_combined'] = None
 
-    # Load all content with sentiment (News + Reddit)
-    all_content_file = PROCESSED_DIR / "all_content_with_sentiment.csv"
+    # Load all content with sentiment (News + Reddit + Twitter + SEC + Earnings)
+    all_content_file = PROCESSED_DIR / "all_sentiment.csv"
     if all_content_file.exists():
         df = pd.read_csv(all_content_file)
         df['date'] = pd.to_datetime(df['date'])
         data['all_content'] = df
     else:
-        data['all_content'] = None
+        # Try alternate filename
+        all_content_file = PROCESSED_DIR / "all_content_with_sentiment.csv"
+        if all_content_file.exists():
+            df = pd.read_csv(all_content_file)
+            df['date'] = pd.to_datetime(df['date'])
+            data['all_content'] = df
+        else:
+            data['all_content'] = None
 
     # Load news with sentiment (if available)
     news_sentiment_file = PROCESSED_DIR / "news_with_sentiment.csv"
@@ -293,12 +300,18 @@ def main():
     if data['news'] is not None:
         last_update = data['news']['time_published'].max()
         st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d %H:%M:%S')}")
-        sources.append("Alpha Vantage (News)")
+        sources.append("News")
     if data['reddit'] is not None:
         sources.append("Reddit")
+    if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
+        content_types = data['all_content']['content_type'].unique()
+        if 'sec_filing' in content_types:
+            sources.append("SEC Filings")
+        if 'earnings_call' in content_types:
+            sources.append("Earnings Calls")
     if data['stock'] is not None:
-        sources.append("Yahoo Finance (Stock Prices)")
-    sources.append("FinBERT (Sentiment)")
+        sources.append("Stock Prices")
+    sources.append("FinBERT")
 
     st.info(f"📌 Data sources: {', '.join(sources)}")
 
@@ -321,13 +334,23 @@ def main():
 
     # Content source filter
     content_sources = []
-    if data['all_content'] is not None:
-        # Use all_content if available (has content_type column)
-        content_sources = ['News', 'Reddit', 'Both']
-        content_filter = st.sidebar.radio(
-            "Content Source",
+    if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
+        # Get unique content types from data
+        available_types = data['all_content']['content_type'].unique().tolist()
+        type_labels = {
+            'news': 'News',
+            'reddit': 'Reddit',
+            'sec_filing': 'SEC Filings',
+            'earnings_call': 'Earnings Calls',
+            'earnings': 'Earnings'
+        }
+        content_sources = [type_labels.get(t, t.title()) for t in available_types]
+        content_sources.append('All Sources')
+
+        content_filter = st.sidebar.multiselect(
+            "Content Sources",
             options=content_sources,
-            index=2  # Default to "Both"
+            default=['All Sources']
         )
     else:
         content_filter = None
@@ -360,17 +383,23 @@ def main():
         - Stock price tracking
         - News sentiment analysis (Alpha Vantage)
         - Reddit sentiment analysis
+        - SEC filings analysis
+        - Earnings data analysis
+        - AI-powered stock recommendations
         - Correlation analysis
         - Multi-ticker comparison
 
-        **Data Files:**
-        - `data/raw/news_articles.csv`
-        - `data/raw/reddit_posts.csv`
-        - `data/processed/stock_prices.csv`
+        **Data Sources:**
+        - Alpha Vantage (Financial News)
+        - Reddit (Social Sentiment)
+        - SEC EDGAR (Official Filings)
+        - Yahoo Finance (Stock Prices + Earnings)
+        - FinBERT (Sentiment Analysis)
 
         **Run Analysis:**
-        - News only: `python analyze_news_sentiment.py`
-        - News + Reddit: `python analyze_with_reddit.py`
+        ```
+        python analyze_with_recommendations.py --list sp100
+        ```
         """)
 
     # Filter data by selected tickers and date range
@@ -422,7 +451,22 @@ def main():
     with tab1:
         st.header("Overview")
 
-        if news_filtered is not None and len(news_filtered) > 0:
+        # Use all_content if available (has multiple sources)
+        overview_df = None
+        if data['all_content'] is not None:
+            overview_df = data['all_content'][
+                (data['all_content']['ticker'].isin(selected_tickers))
+            ].copy()
+            if 'date' in overview_df.columns:
+                overview_df['date'] = pd.to_datetime(overview_df['date']).dt.date
+                overview_df = overview_df[
+                    (overview_df['date'] >= start_date) &
+                    (overview_df['date'] <= end_date)
+                ]
+        elif news_filtered is not None:
+            overview_df = news_filtered
+
+        if overview_df is not None and len(overview_df) > 0:
             # KPIs
             col1, col2, col3, col4 = st.columns(4)
 
@@ -430,31 +474,51 @@ def main():
                 st.metric("Analyzed Tickers", len(selected_tickers))
 
             with col2:
-                st.metric("News Articles", len(news_filtered))
+                st.metric("Total Content", len(overview_df))
 
             with col3:
-                avg_sentiment = news_filtered['sentiment_score'].mean()
+                avg_sentiment = overview_df['sentiment_score'].mean()
                 st.metric("Avg Sentiment", f"{avg_sentiment:.3f}")
 
             with col4:
-                news_filtered['sentiment_label'] = news_filtered['sentiment_score'].apply(get_sentiment_label)
-                positive_pct = (news_filtered['sentiment_label'] == 'positive').sum() / len(news_filtered) * 100
+                if 'sentiment_label' not in overview_df.columns:
+                    overview_df['sentiment_label'] = overview_df['sentiment_score'].apply(get_sentiment_label)
+                positive_pct = (overview_df['sentiment_label'] == 'positive').sum() / len(overview_df) * 100
                 st.metric("Positive %", f"{positive_pct:.1f}%")
 
+            # Content type breakdown (if multiple sources)
+            if 'content_type' in overview_df.columns:
+                st.subheader("Content by Source")
+                type_counts = overview_df['content_type'].value_counts()
+                type_labels = {
+                    'news': '📰 News',
+                    'reddit': '💬 Reddit',
+                    'sec_filing': '📋 SEC Filings',
+                    'earnings_call': '📞 Earnings Calls',
+                    'earnings': '📊 Earnings'
+                }
+
+                cols = st.columns(len(type_counts))
+                for i, (ctype, count) in enumerate(type_counts.items()):
+                    with cols[i]:
+                        label = type_labels.get(ctype, ctype.title())
+                        avg_sent = overview_df[overview_df['content_type'] == ctype]['sentiment_score'].mean()
+                        st.metric(label, count, f"Avg: {avg_sent:+.2f}")
+
             # Sentiment distribution
-            st.plotly_chart(create_sentiment_distribution(news_filtered), width="stretch")
+            st.plotly_chart(create_sentiment_distribution(overview_df), width="stretch")
 
             # Sentiment by ticker
             st.subheader("Sentiment by Ticker")
-            ticker_sentiment = news_filtered.groupby('ticker').agg({
+            ticker_sentiment = overview_df.groupby('ticker').agg({
                 'sentiment_score': ['mean', 'std', 'count']
             }).reset_index()
-            ticker_sentiment.columns = ['Ticker', 'Avg Sentiment', 'Std Dev', 'Article Count']
+            ticker_sentiment.columns = ['Ticker', 'Avg Sentiment', 'Std Dev', 'Content Count']
             ticker_sentiment = ticker_sentiment.sort_values('Avg Sentiment', ascending=False)
 
             st.dataframe(ticker_sentiment, width="stretch", hide_index=True)
         else:
-            st.warning("No news data available for selected filters.")
+            st.warning("No data available for selected filters.")
 
     # TAB 2: PRICES & SENTIMENT
     with tab2:
