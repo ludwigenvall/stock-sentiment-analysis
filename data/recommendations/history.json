@@ -103,5 +103,88 @@
         "timestamp": "2026-01-29T08:02:07.963549"
       }
     ]
+  },
+  {
+    "timestamp": "2026-01-29T12:21:36.418445",
+    "date": "2026-01-29",
+    "recommendations": [
+      {
+        "ticker": "GOOGL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.491,
+        "confidence": 0.533,
+        "sentiment_score": 0.491,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416412"
+      },
+      {
+        "ticker": "MSFT",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.485,
+        "confidence": 0.536,
+        "sentiment_score": 0.485,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416535"
+      },
+      {
+        "ticker": "AMZN",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.478,
+        "confidence": 0.538,
+        "sentiment_score": 0.478,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416361"
+      },
+      {
+        "ticker": "META",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.478,
+        "confidence": 0.548,
+        "sentiment_score": 0.478,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416484"
+      },
+      {
+        "ticker": "NVDA",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.469,
+        "confidence": 0.544,
+        "sentiment_score": 0.469,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416585"
+      },
+      {
+        "ticker": "TSLA",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.464,
+        "confidence": 0.553,
+        "sentiment_score": 0.464,
+        "num_articles": 6,
+        "timestamp": "2026-01-29T12:21:36.416632"
+      },
+      {
+        "ticker": "AAPL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.351,
+        "confidence": 0.723,
+        "sentiment_score": 0.351,
+        "num_articles": 56,
+        "timestamp": "2026-01-29T12:21:36.416299"
+      }
+    ],
+    "summary": {
+      "total": 7,
+      "buy": 7,
+      "hold": 0,
+      "sell": 0,
+      "avg_confidence": 0.5678571428571428
+    }
   }
 ]
