@@ -42,7 +42,11 @@ class RecommendationTracker:
         """Load history from file."""
         if self.history_file.exists():
             with open(self.history_file, 'r') as f:
-                return json.load(f)
+                data = json.load(f)
+            # Handle both list format and dict format
+            if isinstance(data, list):
+                return {"recommendations": data, "portfolios": {}}
+            return data
         return {"recommendations": [], "portfolios": {}}
 
     def _save_history(self):

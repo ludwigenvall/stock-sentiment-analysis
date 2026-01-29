@@ -908,7 +908,11 @@ def main():
                 with open(history_file, 'r') as f:
                     history_data = json.load(f)
 
-                rec_history = history_data.get("recommendations", [])
+                # Handle both list format and dict format
+                if isinstance(history_data, list):
+                    rec_history = history_data
+                else:
+                    rec_history = history_data.get("recommendations", [])
 
                 if rec_history:
                     # Summary stats
