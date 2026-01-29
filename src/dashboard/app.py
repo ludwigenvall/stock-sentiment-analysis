@@ -255,12 +255,12 @@ CHART_COLORS = {
 }
 
 # Plotly chart template
+# Base chart template - excludes title/legend to avoid conflicts with explicit settings
 CHART_TEMPLATE = {
     'layout': {
         'paper_bgcolor': 'rgba(0,0,0,0)',
         'plot_bgcolor': 'rgba(0,0,0,0)',
         'font': {'color': CHART_COLORS['text'], 'family': 'Inter, sans-serif'},
-        'title': {'font': {'size': 18, 'color': CHART_COLORS['text']}},
         'xaxis': {
             'gridcolor': 'rgba(148, 163, 184, 0.1)',
             'linecolor': 'rgba(148, 163, 184, 0.2)',
@@ -271,7 +271,6 @@ CHART_TEMPLATE = {
             'linecolor': 'rgba(148, 163, 184, 0.2)',
             'tickfont': {'color': CHART_COLORS['text_muted']}
         },
-        'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': CHART_COLORS['text_muted']}},
         'margin': {'t': 60, 'b': 40, 'l': 60, 'r': 20}
     }
 }
@@ -431,7 +430,7 @@ def create_price_chart(stock_df, selected_ticker):
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} Stock Price", font=dict(size=18)),
+        title=dict(text=f"{selected_ticker} Stock Price", font=dict(size=18, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Price ($)",
         hovermode='x unified',
@@ -457,7 +456,7 @@ def create_candlestick_chart(stock_df, selected_ticker):
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} - OHLC Chart", font=dict(size=18)),
+        title=dict(text=f"{selected_ticker} - OHLC Chart", font=dict(size=18, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Price ($)",
         height=450,
@@ -480,7 +479,7 @@ def create_volume_chart(stock_df, selected_ticker):
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} Trading Volume", font=dict(size=16)),
+        title=dict(text=f"{selected_ticker} Trading Volume", font=dict(size=16, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Volume",
         height=200,
@@ -507,11 +506,12 @@ def create_sentiment_timeline(news_df, selected_tickers):
 
     fig.add_hline(y=0, line_dash="dash", line_color="rgba(148, 163, 184, 0.5)", line_width=1)
     fig.update_layout(
-        title=dict(text="Sentiment Timeline", font=dict(size=18)),
+        title=dict(text="Sentiment Timeline", font=dict(size=18, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Avg Sentiment",
         height=400,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+                   bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'])),
         **CHART_TEMPLATE['layout']
     )
     return fig
@@ -541,7 +541,7 @@ def create_correlation_scatter(combined_df, selected_ticker):
 
     fig.update_traces(marker=dict(size=10, opacity=0.7))
     fig.update_layout(
-        title=dict(text=f'{selected_ticker} - Sentiment vs Daily Return', font=dict(size=18)),
+        title=dict(text=f'{selected_ticker} - Sentiment vs Daily Return', font=dict(size=18, color=CHART_COLORS['text'])),
         xaxis_title="Average Sentiment",
         yaxis_title="Daily Return (%)",
         height=400,
@@ -572,11 +572,15 @@ def create_sentiment_distribution(news_df):
     )])
 
     fig.update_layout(
-        title=dict(text="Sentiment Distribution", font=dict(size=18)),
+        title=dict(text="Sentiment Distribution", font=dict(size=18, color=CHART_COLORS['text'])),
         height=400,
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5),
-        **CHART_TEMPLATE['layout']
+        legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5,
+                   font=dict(color=CHART_COLORS['text_muted'])),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(color=CHART_COLORS['text'], family='Inter, sans-serif'),
+        margin=dict(t=60, b=60, l=20, r=20)
     )
     return fig
 
@@ -803,7 +807,7 @@ def main():
                     )
                 ))
                 fig.update_layout(
-                    title=dict(text="Sentiment by Ticker", font=dict(size=18)),
+                    title=dict(text="Sentiment by Ticker", font=dict(size=18, color=CHART_COLORS['text'])),
                     xaxis_title="Avg Sentiment",
                     yaxis_title="",
                     height=400,
