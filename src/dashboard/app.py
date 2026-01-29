@@ -291,7 +291,7 @@ def main():
     data = load_data()
 
     # Check if we have any data
-    if data['news'] is None and data['stock'] is None and data['reddit'] is None:
+    if data['news'] is None and data['stock'] is None and data['reddit'] is None and data['all_content'] is None:
         st.error("❌ No data found! Please run `python analyze_news_sentiment.py` or `python analyze_with_reddit.py` first.")
         st.stop()
 
@@ -301,6 +301,9 @@ def main():
         last_update = data['news']['time_published'].max()
         st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d %H:%M:%S')}")
         sources.append("News")
+    elif data['all_content'] is not None:
+        last_update = pd.to_datetime(data['all_content']['date']).max()
+        st.caption(f"📅 Last updated: {last_update.strftime('%Y-%m-%d')}")
     if data['reddit'] is not None:
         sources.append("Reddit")
     if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
