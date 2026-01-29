@@ -28,6 +28,13 @@ jobs:
           pip install pandas numpy requests beautifulsoup4 yfinance python-dotenv praw
           pip install torch transformers --index-url https://download.pytorch.org/whl/cpu
 
+      - name: Debug environment
+        run: |
+          pwd
+          ls -la
+          python --version
+          echo "ALPHA_VANTAGE_KEY is set: ${{ secrets.ALPHA_VANTAGE_KEY != '' }}"
+
       - name: Run analysis
         env:
           ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
@@ -35,8 +42,7 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_USER_AGENT: stock_sentiment_bot
         run: |
-          python analyze_with_recommendations.py --list top_tech --days 7
-        continue-on-error: false
+          python analyze_with_recommendations.py --list original --days 3
 
       - name: Commit and push results
         run: |
