@@ -131,6 +131,15 @@ def load_data():
     else:
         data['news_sentiment'] = None
 
+    # Load recommendations
+    recommendations_dir = PROJECT_ROOT / "data" / "recommendations"
+    recommendations_file = recommendations_dir / "latest_recommendations.csv"
+    if recommendations_file.exists():
+        df = pd.read_csv(recommendations_file)
+        data['recommendations'] = df
+    else:
+        data['recommendations'] = None
+
     return data
 
 
@@ -478,12 +487,13 @@ def main():
         combined_filtered = None
 
     # Tabs
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "📊 Overview",
+        "🎯 Recommendations",
         "📈 Prices & Sentiment",
         "📰 News Analysis",
-        "🎯 Per-Ticker Analysis",
-        "🔍 Data Explorer"
+        "🔍 Per-Ticker Analysis",
+        "📁 Data Explorer"
     ])
 
     # TAB 1: OVERVIEW
@@ -559,8 +569,79 @@ def main():
         else:
             st.warning("No data available for selected filters.")
 
-    # TAB 2: PRICES & SENTIMENT
+    # TAB 2: RECOMMENDATIONS
     with tab2:
+        st.header("AI Stock Recommendations")
+
+        if data['recommendations'] is not None:
+            rec_df = data['recommendations'].copy()
+
+            # Summary metrics
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                buy_count = len(rec_df[rec_df['recommendation'] == 'BUY'])
+                st.metric("🟢 BUY", buy_count)
+            with col2:
+                hold_count = len(rec_df[rec_df['recommendation'] == 'HOLD'])
+                st.metric("🟡 HOLD", hold_count)
+            with col3:
+                sell_count = len(rec_df[rec_df['recommendation'] == 'SELL'])
+                st.metric("🔴 SELL", sell_count)
+            with col4:
+                avg_conf = rec_df['confidence'].mean()
+                st.metric("Avg Confidence", f"{avg_conf:.1%}")
+
+            st.divider()
+
+            # Top Picks
+            st.subheader("🚀 Top Buy Recommendations")
+            top_buys = rec_df[rec_df['recommendation'] == 'BUY'].sort_values('confidence', ascending=False).head(10)
+            if len(top_buys) > 0:
+                for _, row in top_buys.iterrows():
+                    col1, col2, col3, col4 = st.columns([2, 2, 2, 4])
+                    with col1:
+                        st.markdown(f"**{row['ticker']}**")
+                    with col2:
+                        st.markdown(f"Sentiment: `{row['sentiment_score']:.3f}`")
+                    with col3:
+                        st.markdown(f"Confidence: `{row['confidence']:.1%}`")
+                    with col4:
+                        st.progress(row['confidence'])
+            else:
+                st.info("No BUY recommendations at this time.")
+
+            st.divider()
+
+            # Stocks to Avoid
+            st.subheader("⚠️ Stocks to Avoid")
+            sells = rec_df[rec_df['recommendation'] == 'SELL'].sort_values('sentiment_score', ascending=True).head(5)
+            if len(sells) > 0:
+                for _, row in sells.iterrows():
+                    col1, col2, col3 = st.columns([2, 3, 5])
+                    with col1:
+                        st.markdown(f"**{row['ticker']}**")
+                    with col2:
+                        st.markdown(f"Sentiment: `{row['sentiment_score']:.3f}`")
+                    with col3:
+                        st.markdown(f"⚠️ {row['recommendation']}")
+            else:
+                st.success("No SELL recommendations - all analyzed stocks look positive!")
+
+            st.divider()
+
+            # Full table
+            st.subheader("📋 All Recommendations")
+            display_df = rec_df[['ticker', 'recommendation', 'sentiment_score', 'confidence', 'num_articles']].copy()
+            display_df.columns = ['Ticker', 'Recommendation', 'Sentiment', 'Confidence', 'Articles']
+            display_df['Confidence'] = display_df['Confidence'].apply(lambda x: f"{x:.1%}")
+            display_df['Sentiment'] = display_df['Sentiment'].apply(lambda x: f"{x:+.3f}")
+
+            st.dataframe(display_df, width="stretch", hide_index=True)
+        else:
+            st.warning("No recommendations available. Run `python analyze_with_recommendations.py` first.")
+
+    # TAB 3: PRICES & SENTIMENT
+    with tab3:
         st.header("Stock Prices & Sentiment")
 
         if stock_filtered is not None and len(stock_filtered) > 0:
@@ -626,8 +707,8 @@ def main():
         else:
             st.warning("No stock data available for selected filters.")
 
-    # TAB 3: NEWS ANALYSIS
-    with tab3:
+    # TAB 4: NEWS ANALYSIS
+    with tab4:
         st.header("News Analysis")
 
         if news_filtered is not None and len(news_filtered) > 0:
@@ -685,8 +766,8 @@ def main():
         else:
             st.warning("No news data available for selected filters.")
 
-    # TAB 4: PER-TICKER ANALYSIS
-    with tab4:
+    # TAB 5: PER-TICKER ANALYSIS
+    with tab5:
         st.header("Per-Ticker Analysis")
 
         if len(selected_tickers) > 0:
@@ -751,8 +832,8 @@ def main():
         else:
             st.warning("Please select at least one ticker from the sidebar.")
 
-    # TAB 5: DATA EXPLORER
-    with tab5:
+    # TAB 6: DATA EXPLORER
+    with tab6:
         st.header("Data Explorer")
 
         # Stock data
