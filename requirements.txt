@@ -18,14 +18,12 @@ torch>=2.9.0
 # scikit-learn - installeras separat
 
 # Database
-#psycopg2-binary==2.9.9
-#sqlalchemy==2.0.25
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.25
 
-# Real-time streaming
-#redis==5.0.1
-#fastapi==0.108.0
-#uvicorn==0.25.0
-#websockets==12.0
+# API
+fastapi>=0.108.0
+uvicorn>=0.25.0
 
 # Visualization
 streamlit>=1.30.0
