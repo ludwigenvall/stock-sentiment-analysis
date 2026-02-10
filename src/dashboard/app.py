@@ -1735,11 +1735,24 @@ def main():
         else:
             filtered_tickers = available_tickers
 
+        # Select All checkbox
+        select_all = st.checkbox(
+            f"Select All ({len(filtered_tickers)} tickers)",
+            value=False,
+            help="Select all available tickers"
+        )
+
+        # Determine default selection based on checkbox
+        if select_all:
+            default_tickers = filtered_tickers
+        else:
+            default_tickers = filtered_tickers[:5] if len(filtered_tickers) >= 5 else filtered_tickers
+
         selected_tickers = st.multiselect(
             "Select Tickers",
             options=filtered_tickers,
-            default=filtered_tickers[:5] if len(filtered_tickers) >= 5 else filtered_tickers,
-            help="Select up to 10 tickers for analysis"
+            default=default_tickers,
+            help="Select tickers for analysis"
         )
 
         # Date range
