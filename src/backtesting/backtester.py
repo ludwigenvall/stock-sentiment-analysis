@@ -167,6 +167,71 @@ class Backtester:
         self.trades = []
         self.portfolio_history = []
         self.benchmark_data = None
+        self.buy_hold_history = []
+
+    def _calculate_buy_hold(
+        self,
+        price_df: pd.DataFrame,
+        tickers: List[str],
+        dates: List
+    ) -> List[Dict]:
+        """
+        Calculate Buy & Hold strategy returns.
+
+        Simulates buying equal amounts of all tickers at the start
+        and holding throughout the period.
+
+        Args:
+            price_df: DataFrame with price data
+            tickers: List of tickers to include
+            dates: List of dates in the backtest period
+
+        Returns:
+            List of daily portfolio values
+        """
+        if not dates or not tickers:
+            return []
+
+        # Get starting prices for each ticker
+        start_date = dates[0]
+        start_prices = {}
+        for ticker in tickers:
+            ticker_data = price_df[
+                (price_df['ticker'] == ticker) &
+                (price_df['date'] == start_date)
+            ]
+            if not ticker_data.empty:
+                start_prices[ticker] = ticker_data['close'].iloc[0]
+
+        if not start_prices:
+            return []
+
+        # Calculate shares per ticker (equal weight)
+        capital_per_ticker = self.initial_capital / len(start_prices)
+        shares = {
+            ticker: capital_per_ticker / price
+            for ticker, price in start_prices.items()
+        }
+
+        # Calculate daily values
+        buy_hold_history = []
+        for date in dates:
+            daily_value = 0
+            for ticker, num_shares in shares.items():
+                ticker_data = price_df[
+                    (price_df['ticker'] == ticker) &
+                    (price_df['date'] == date)
+                ]
+                if not ticker_data.empty:
+                    daily_value += num_shares * ticker_data['close'].iloc[0]
+
+            buy_hold_history.append({
+                'date': date,
+                'total_value': daily_value,
+                'return_pct': (daily_value / self.initial_capital - 1) * 100
+            })
+
+        return buy_hold_history
 
     def run_backtest(
         self,
@@ -324,6 +389,10 @@ class Backtester:
                 'num_positions': len(positions)
             })
 
+        # Calculate Buy & Hold strategy for comparison
+        tickers_in_data = merged['ticker'].unique().tolist()
+        self.buy_hold_history = self._calculate_buy_hold(price_df, tickers_in_data, dates)
+
         # Calculate results
         return self._calculate_results()
 
@@ -372,6 +441,13 @@ class Backtester:
             num_trades = winning_trades = losing_trades = 0
             win_rate = avg_win = avg_loss = profit_factor = avg_return_per_trade = 0
 
+        # Calculate Buy & Hold metrics
+        buy_hold_return = 0
+        buy_hold_final = initial_value
+        if self.buy_hold_history:
+            buy_hold_final = self.buy_hold_history[-1]['total_value']
+            buy_hold_return = (buy_hold_final / initial_value - 1) * 100
+
         results = {
             'initial_capital': initial_value,
             'final_value': final_value,
@@ -387,7 +463,13 @@ class Backtester:
             'profit_factor': profit_factor,
             'avg_return_per_trade_pct': avg_return_per_trade,
             'portfolio_history': portfolio_df.to_dict('records'),
-            'trades': trades_df.to_dict('records') if not trades_df.empty else []
+            'trades': trades_df.to_dict('records') if not trades_df.empty else [],
+            # Buy & Hold comparison
+            'buy_hold_return_pct': buy_hold_return,
+            'buy_hold_final_value': buy_hold_final,
+            'buy_hold_history': self.buy_hold_history,
+            # Strategy vs Buy & Hold
+            'excess_return_vs_hold': total_return - buy_hold_return
         }
 
         # Add benchmark comparison if available
@@ -433,7 +515,11 @@ class Backtester:
             'portfolio_history': [],
             'trades': [],
             'benchmark': None,
-            'benchmark_history': []
+            'benchmark_history': [],
+            'buy_hold_return_pct': 0,
+            'buy_hold_final_value': self.initial_capital,
+            'buy_hold_history': [],
+            'excess_return_vs_hold': 0
         }
 
     def print_results(self, results: Dict):
@@ -448,6 +534,18 @@ class Backtester:
         print(f"  Total Return:       {results['total_return_pct']:+.2f}%")
         print(f"  Sharpe Ratio:       {results['sharpe_ratio']:.2f}")
         print(f"  Max Drawdown:       {results['max_drawdown_pct']:.2f}%")
+
+        # Buy & Hold comparison
+        print(f"\nSTRATEGY COMPARISON:")
+        print(f"  Sentiment Strategy: {results['total_return_pct']:+.2f}%")
+        print(f"  Buy & Hold:         {results.get('buy_hold_return_pct', 0):+.2f}%")
+        print(f"  Cash (No Invest):   0.00%")
+        excess = results.get('excess_return_vs_hold', 0)
+        print(f"  Excess vs B&H:      {excess:+.2f}%")
+        if excess > 0:
+            print(f"  → Strategy outperformed Buy & Hold")
+        elif excess < 0:
+            print(f"  → Buy & Hold outperformed Strategy")
 
         # Benchmark comparison
         if results.get('benchmark'):
@@ -493,9 +591,14 @@ class Backtester:
             benchmark_df = pd.DataFrame(results['benchmark_history'])
             benchmark_df.to_csv(output_path / "benchmark_history.csv", index=False)
 
+        # Save buy & hold history if available
+        if results.get('buy_hold_history'):
+            buy_hold_df = pd.DataFrame(results['buy_hold_history'])
+            buy_hold_df.to_csv(output_path / "buy_hold_history.csv", index=False)
+
         # Save summary (flatten benchmark metrics)
         summary = {k: v for k, v in results.items()
-                   if k not in ['portfolio_history', 'trades', 'benchmark', 'benchmark_history']}
+                   if k not in ['portfolio_history', 'trades', 'benchmark', 'benchmark_history', 'buy_hold_history']}
         if results.get('benchmark'):
             for key, value in results['benchmark'].items():
                 summary[f'benchmark_{key}'] = value

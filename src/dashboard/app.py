@@ -2167,6 +2167,25 @@ def main():
         st.markdown('<p class="section-title">Backtesting with S&P 500 Benchmark</p>', unsafe_allow_html=True)
 
         if BACKTESTER_AVAILABLE:
+            # Period selector
+            st.markdown("#### Select Analysis Period")
+            period_options = {
+                "Last 7 days": 7,
+                "Last 14 days": 14,
+                "Last 30 days": 30,
+                "Last 60 days": 60,
+                "Last 90 days": 90,
+                "All available data": 0
+            }
+            selected_period = st.selectbox(
+                "Backtest Period",
+                options=list(period_options.keys()),
+                index=2,  # Default: 30 days
+                key="bt_period"
+            )
+            bt_days = period_options[selected_period]
+
+            st.markdown("#### Backtesting Settings")
             # Backtesting settings
             col1, col2, col3 = st.columns(3)
 
@@ -2181,6 +2200,7 @@ def main():
             backtest_file = PROJECT_ROOT / "data" / "backtest" / "backtest_summary.csv"
             portfolio_file = PROJECT_ROOT / "data" / "backtest" / "portfolio_history.csv"
             benchmark_file = PROJECT_ROOT / "data" / "backtest" / "benchmark_history.csv"
+            buy_hold_file = PROJECT_ROOT / "data" / "backtest" / "buy_hold_history.csv"
 
             run_backtest = st.button("Run Backtest", type="primary", key="run_bt")
 
@@ -2198,9 +2218,18 @@ def main():
                         sentiment_df = data['all_content'][['ticker', 'date', 'sentiment_score']].copy()
                         price_df = stock_filtered[['ticker', 'date', 'close']].copy()
 
+                        # Filter by selected period
+                        start_date = None
+                        end_date = None
+                        if bt_days > 0:
+                            end_date = datetime.now().strftime('%Y-%m-%d')
+                            start_date = (datetime.now() - timedelta(days=bt_days)).strftime('%Y-%m-%d')
+
                         results = backtester.run_backtest(
                             sentiment_df,
                             price_df,
+                            start_date=start_date,
+                            end_date=end_date,
                             include_benchmark=True
                         )
 
@@ -2220,18 +2249,47 @@ def main():
                 if len(summary_df) > 0:
                     summary = summary_df.iloc[0].to_dict()
 
-                    # KPI Row - Portfolio Performance
+                    # Strategy Comparison Section
+                    st.markdown('<p class="section-title">Strategy Comparison</p>', unsafe_allow_html=True)
+
+                    total_return = summary.get('total_return_pct', 0)
+                    buy_hold_return = summary.get('buy_hold_return_pct', 0)
+                    excess_return = summary.get('excess_return_vs_hold', total_return - buy_hold_return)
+
                     cols = st.columns(4)
                     with cols[0]:
-                        total_return = summary.get('total_return_pct', 0)
                         card_type = "positive" if total_return > 0 else "negative"
-                        render_metric_card("Total Return", f"{total_return:+.2f}%", card_type)
+                        render_metric_card("Sentiment Strategy", f"{total_return:+.2f}%", card_type)
                     with cols[1]:
-                        render_metric_card("Sharpe Ratio", f"{summary.get('sharpe_ratio', 0):.2f}", "accent")
+                        card_type = "positive" if buy_hold_return > 0 else "negative"
+                        render_metric_card("Buy & Hold", f"{buy_hold_return:+.2f}%", card_type)
                     with cols[2]:
-                        render_metric_card("Max Drawdown", f"{summary.get('max_drawdown_pct', 0):.2f}%", "negative")
+                        render_metric_card("Cash (No Invest)", "0.00%", "default")
                     with cols[3]:
+                        card_type = "positive" if excess_return > 0 else "negative"
+                        render_metric_card("Strategy Alpha", f"{excess_return:+.2f}%", card_type)
+
+                    # Show which strategy won
+                    if total_return > buy_hold_return and total_return > 0:
+                        st.success(f"✅ Sentiment strategy outperformed Buy & Hold by {excess_return:+.2f}%")
+                    elif buy_hold_return > total_return and buy_hold_return > 0:
+                        st.warning(f"📊 Buy & Hold outperformed the strategy by {-excess_return:+.2f}%")
+                    elif total_return < 0 and buy_hold_return < 0:
+                        st.error("📉 Both strategies showed negative returns - cash was the best option")
+
+                    render_divider()
+
+                    # KPI Row - Portfolio Performance
+                    st.markdown('<p class="section-title">Portfolio Metrics</p>', unsafe_allow_html=True)
+                    cols = st.columns(4)
+                    with cols[0]:
+                        render_metric_card("Sharpe Ratio", f"{summary.get('sharpe_ratio', 0):.2f}", "accent")
+                    with cols[1]:
+                        render_metric_card("Max Drawdown", f"{summary.get('max_drawdown_pct', 0):.2f}%", "negative")
+                    with cols[2]:
                         render_metric_card("Win Rate", f"{summary.get('win_rate_pct', 0):.1f}%", "accent")
+                    with cols[3]:
+                        render_metric_card("Total Trades", int(summary.get('num_trades', 0)), "default")
 
                     render_divider()
 
@@ -2287,7 +2345,20 @@ def main():
                             line=dict(color=CHART_COLORS['primary'], width=2.5)
                         ))
 
-                        # Benchmark line
+                        # Buy & Hold line
+                        if buy_hold_file.exists():
+                            buy_hold_df = pd.read_csv(buy_hold_file)
+                            buy_hold_df['date'] = pd.to_datetime(buy_hold_df['date'])
+
+                            fig.add_trace(go.Scatter(
+                                x=buy_hold_df['date'],
+                                y=buy_hold_df['return_pct'],
+                                mode='lines',
+                                name='Buy & Hold',
+                                line=dict(color='#F59E0B', width=2)  # Amber color
+                            ))
+
+                        # Benchmark line (S&P 500)
                         if benchmark_file.exists():
                             benchmark_df = pd.read_csv(benchmark_file)
                             benchmark_df['date'] = pd.to_datetime(benchmark_df['date'])
@@ -2301,14 +2372,16 @@ def main():
                                 line=dict(color=CHART_COLORS['accent'], width=2, dash='dash')
                             ))
 
-                        fig.add_hline(y=0, line_dash="dot", line_color="rgba(148, 163, 184, 0.5)")
+                        # Cash baseline (0% return)
+                        fig.add_hline(y=0, line_dash="dot", line_color="rgba(148, 163, 184, 0.5)",
+                                     annotation_text="Cash", annotation_position="right")
 
                         fig.update_layout(
-                            title=dict(text="Portfolio vs Benchmark Performance", font=dict(size=18, color=CHART_COLORS['text'])),
+                            title=dict(text="Strategy Comparison: Sentiment vs Buy & Hold vs Cash", font=dict(size=18, color=CHART_COLORS['text'])),
                             xaxis_title="",
                             yaxis_title="Cumulative Return (%)",
-                            height=400,
-                            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+                            height=450,
+                            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5,
                                        bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'])),
                             **CHART_TEMPLATE['layout']
                         )
