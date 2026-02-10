@@ -529,6 +529,7 @@ CHART_COLORS = {
     'negative': '#FF4B4B',     # Coral Red
     'neutral': '#94A3B8',      # Slate Gray
     'warning': '#FFB020',      # Amber
+    'accent': '#FFB020',       # Amber (alias for backward compatibility)
     'cyan': '#00B4D8',         # Cyan
     'pink': '#F472B6',         # Pink
     'background': '#0E1117',   # Deep Dark
