@@ -1,6 +1,6 @@
 """
-Stock Sentiment AI - Dark Finance Terminal Dashboard
-Inspired by Bloomberg Terminal / Refinitiv Eikon
+Stock Sentiment AI - Premium Dark Finance Terminal
+Inspired by Bloomberg Terminal / Refinitiv Eikon / Linear.app
 
 A professional, portfolio-worthy dashboard for AI-powered stock sentiment analysis.
 Built with FinBERT NLP + Machine Learning.
@@ -45,183 +45,407 @@ st.set_page_config(
 )
 
 # =============================================================================
-# CUSTOM CSS - Dark Finance Terminal Theme
+# PREMIUM CSS - Dark Finance Terminal Theme
 # =============================================================================
-# Inspired by Bloomberg Terminal / Refinitiv Eikon
-# - Deep dark background (#0E1117) with subtle panel accents (#1A1F2E)
-# - Teal/mint accent (#00D4AA) for positive signals
-# - Coral red (#FF4B4B) for negative signals
-# - Professional typography with DM Sans
-# - Subtle terminal-like aesthetics
+# Inspired by Bloomberg Terminal / Refinitiv Eikon / Linear.app
+# - Deep dark background with subtle panel accents
+# - Teal/mint accent for positive signals
+# - Premium animations and micro-interactions
+# - Professional typography with Inter + JetBrains Mono
 
 st.markdown("""
 <style>
-    /* === IMPORTS & RESETS === */
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    /* ═══════════════════════════════════════════════════════════════════════
+       IMPORTS & FONTS
+       ═══════════════════════════════════════════════════════════════════════ */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-    /* Hide Streamlit branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* ═══════════════════════════════════════════════════════════════════════
+       HIDE STREAMLIT DEFAULTS
+       ═══════════════════════════════════════════════════════════════════════ */
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; }
+    header[data-testid="stHeader"] { background: transparent; }
+    .stDeployButton { display: none; }
 
-    /* === ROOT VARIABLES === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       CSS VARIABLES - DESIGN SYSTEM
+       ═══════════════════════════════════════════════════════════════════════ */
     :root {
-        --bg-primary: #0E1117;
-        --bg-secondary: #1A1F2E;
-        --bg-tertiary: #252B3B;
-        --accent-positive: #00D4AA;
-        --accent-negative: #FF4B4B;
-        --accent-warning: #FFB020;
-        --accent-info: #3B82F6;
-        --text-primary: #FAFAFA;
-        --text-secondary: #94A3B8;
-        --text-muted: #4A5568;
-        --border-subtle: rgba(255, 255, 255, 0.06);
-        --border-accent: rgba(0, 212, 170, 0.3);
-        --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+        /* Backgrounds */
+        --bg-primary: #0B0F19;
+        --bg-secondary: #111827;
+        --bg-tertiary: #1F2937;
+        --bg-elevated: #1A1F2E;
+
+        /* Accents */
+        --accent-primary: #00D4AA;
+        --accent-secondary: #3B82F6;
+        --accent-warning: #F59E0B;
+        --accent-danger: #EF4444;
+        --accent-purple: #8B5CF6;
+
+        /* Gradients */
+        --gradient-hero: linear-gradient(135deg, #00D4AA 0%, #3B82F6 50%, #8B5CF6 100%);
+        --gradient-card-border: linear-gradient(135deg, rgba(0,212,170,0.3), rgba(59,130,246,0.3));
+        --gradient-glow: radial-gradient(ellipse at center, rgba(0,212,170,0.15) 0%, transparent 70%);
+
+        /* Text */
+        --text-primary: #F9FAFB;
+        --text-secondary: #9CA3AF;
+        --text-muted: #6B7280;
+
+        /* Borders */
+        --border-subtle: rgba(255,255,255,0.06);
+        --border-accent: rgba(0,212,170,0.2);
     }
 
-    /* === GLOBAL STYLES === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       ANIMATIONS
+       ═══════════════════════════════════════════════════════════════════════ */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes borderGlow {
+        0%, 100% { border-color: rgba(0,212,170,0.2); box-shadow: 0 0 10px rgba(0,212,170,0.1); }
+        50% { border-color: rgba(0,212,170,0.5); box-shadow: 0 0 20px rgba(0,212,170,0.2); }
+    }
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    @keyframes livePulse {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+            transform: scale(1);
+        }
+        50% {
+            box-shadow: 0 0 0 6px rgba(0, 212, 170, 0);
+            transform: scale(1.1);
+        }
+    }
+
+    /* Stagger animations */
+    .stagger-1 { animation: fadeInUp 0.6s ease-out 0.1s both; }
+    .stagger-2 { animation: fadeInUp 0.6s ease-out 0.2s both; }
+    .stagger-3 { animation: fadeInUp 0.6s ease-out 0.3s both; }
+    .stagger-4 { animation: fadeInUp 0.6s ease-out 0.4s both; }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       GLOBAL STYLES
+       ═══════════════════════════════════════════════════════════════════════ */
     .main .block-container {
-        padding: 2rem 2rem 4rem 2rem;
+        padding: 1.5rem 2rem 4rem 2rem;
         max-width: 1600px;
     }
 
     * {
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     code, .stCode, pre {
         font-family: 'JetBrains Mono', monospace !important;
     }
 
-    /* === TERMINAL-STYLE HEADER === */
-    .terminal-header {
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, #0D1321 100%);
-        padding: 2rem 2.5rem;
-        border-radius: 16px;
-        margin-bottom: 2rem;
+    /* ═══════════════════════════════════════════════════════════════════════
+       PREMIUM HERO HEADER
+       ═══════════════════════════════════════════════════════════════════════ */
+    .hero-container {
+        background: linear-gradient(180deg, rgba(0,212,170,0.03) 0%, transparent 100%);
         border: 1px solid var(--border-subtle);
+        border-radius: 20px;
+        padding: 32px 40px;
+        margin-bottom: 2rem;
         position: relative;
         overflow: hidden;
+        animation: fadeInUp 0.8s ease-out;
     }
 
-    .terminal-header::before {
+    .hero-container::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent-positive), var(--accent-info), var(--accent-positive));
-    }
-
-    .terminal-header::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 200px;
-        height: 100%;
-        background: radial-gradient(ellipse at top right, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(ellipse at 30% 0%, rgba(0,212,170,0.06) 0%, transparent 50%);
         pointer-events: none;
     }
 
-    .header-content {
+    .hero-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 1.5rem;
+        position: relative;
+        z-index: 1;
     }
 
-    .header-title {
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .hero-title-row {
         display: flex;
         align-items: center;
         gap: 1rem;
+        flex-wrap: wrap;
     }
 
-    .header-title h1 {
-        color: var(--text-primary);
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin: 0;
+    .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #F9FAFB 0%, #00D4AA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1.1;
     }
 
-    .header-title .terminal-cursor {
+    .terminal-cursor {
         display: inline-block;
         width: 3px;
-        height: 1.5rem;
-        background: var(--accent-positive);
+        height: 2rem;
+        background: var(--accent-primary);
         animation: blink 1.2s step-end infinite;
-        margin-left: 0.25rem;
+        margin-left: 4px;
+        border-radius: 1px;
     }
 
-    @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-
-    .header-subtitle {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        margin: 0.5rem 0 0 0;
-    }
-
-    .header-subtitle .highlight {
-        color: var(--accent-positive);
-        font-weight: 600;
-    }
-
-    .header-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(0, 212, 170, 0.1);
-        border: 1px solid rgba(0, 212, 170, 0.2);
-        color: var(--accent-positive);
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
+    .finbert-badge {
+        background: rgba(0,212,170,0.1);
+        border: 1px solid rgba(0,212,170,0.3);
+        border-radius: 20px;
+        padding: 6px 14px;
+        backdrop-filter: blur(10px);
+        animation: borderGlow 3s ease-in-out infinite;
         font-size: 0.75rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        color: var(--accent-primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
     }
 
-    .header-stats {
+    .live-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0,212,170,0.08);
+        border: 1px solid rgba(0,212,170,0.2);
+        border-radius: 16px;
+        padding: 4px 10px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent-primary);
+    }
+
+    .live-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent-primary);
+        border-radius: 50%;
+        animation: livePulse 2s ease-in-out infinite;
+    }
+
+    .hero-subtitle {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+
+    .hero-subtitle .highlight {
+        color: var(--accent-primary);
+        font-weight: 600;
+    }
+
+    .hero-stats {
         display: flex;
         gap: 2rem;
         align-items: center;
     }
 
-    .header-stat {
+    .hero-stat {
         text-align: right;
+        padding-left: 1.5rem;
+        border-left: 1px solid var(--border-subtle);
     }
 
-    .header-stat-value {
-        color: var(--text-primary);
-        font-size: 1.1rem;
-        font-weight: 600;
+    .hero-stat:first-child {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .hero-stat-value {
         font-family: 'JetBrains Mono', monospace;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
     }
 
-    .header-stat-label {
-        color: var(--text-muted);
-        font-size: 0.7rem;
+    .hero-stat-label {
+        font-size: 0.65rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
+        color: var(--text-muted);
+        margin-top: 4px;
+        font-weight: 500;
     }
 
-    /* === KPI METRIC CARDS === */
+    .hero-divider {
+        height: 2px;
+        background: linear-gradient(90deg, #00D4AA, #3B82F6, #8B5CF6, #00D4AA);
+        background-size: 300% 100%;
+        animation: gradientFlow 4s ease infinite;
+        border-radius: 2px;
+        margin-top: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       GLASSMORPHISM KPI CARDS
+       ═══════════════════════════════════════════════════════════════════════ */
+    .kpi-card {
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-elevated));
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .kpi-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gradient-hero);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .kpi-card:hover {
+        border-color: rgba(0,212,170,0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 40px rgba(0,212,170,0.08);
+    }
+
+    .kpi-card:hover::before {
+        opacity: 1;
+    }
+
+    .kpi-card .kpi-icon {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(0,212,170,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+
+    .kpi-card .kpi-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+    }
+
+    .kpi-card .kpi-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+        margin: 0;
+    }
+
+    .kpi-card .kpi-delta {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 8px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .kpi-card .kpi-delta.positive { color: var(--accent-primary); }
+    .kpi-card .kpi-delta.negative { color: var(--accent-danger); }
+    .kpi-card .kpi-delta.neutral { color: var(--text-muted); }
+
+    /* KPI Card Variants */
+    .kpi-card.positive .kpi-value { color: var(--accent-primary); }
+    .kpi-card.positive .kpi-icon { background: rgba(0,212,170,0.15); color: var(--accent-primary); }
+
+    .kpi-card.negative .kpi-value { color: var(--accent-danger); }
+    .kpi-card.negative .kpi-icon { background: rgba(239,68,68,0.15); color: var(--accent-danger); }
+
+    .kpi-card.accent .kpi-value { color: var(--accent-secondary); }
+    .kpi-card.accent .kpi-icon { background: rgba(59,130,246,0.15); color: var(--accent-secondary); }
+
+    .kpi-card.warning .kpi-value { color: var(--accent-warning); }
+    .kpi-card.warning .kpi-icon { background: rgba(245,158,11,0.15); color: var(--accent-warning); }
+
+    /* Legacy metric-card support */
     .metric-card {
-        background: var(--bg-secondary);
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-elevated));
         padding: 1.5rem;
-        border-radius: 12px;
+        border-radius: 14px;
         border: 1px solid var(--border-subtle);
         text-align: center;
-        transition: all 0.25s ease;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        overflow: hidden;
     }
 
     .metric-card::before {
@@ -231,15 +455,15 @@ st.markdown("""
         left: 0;
         right: 0;
         height: 2px;
-        background: var(--accent-info);
-        opacity: 0.5;
-        border-radius: 12px 12px 0 0;
+        background: var(--accent-secondary);
+        opacity: 0.6;
+        border-radius: 14px 14px 0 0;
     }
 
     .metric-card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(0, 212, 170, 0.2);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        transform: translateY(-3px);
+        border-color: rgba(0,212,170,0.25);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 30px rgba(0,212,170,0.06);
     }
 
     .metric-card .metric-value {
@@ -252,29 +476,31 @@ st.markdown("""
     }
 
     .metric-card .metric-label {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
         color: var(--text-muted);
         margin-top: 0.5rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 500;
+        letter-spacing: 0.12em;
+        font-weight: 600;
     }
 
-    .metric-card.positive .metric-value { color: var(--accent-positive); }
-    .metric-card.positive::before { background: var(--accent-positive); }
+    .metric-card.positive .metric-value { color: var(--accent-primary); }
+    .metric-card.positive::before { background: var(--accent-primary); }
 
-    .metric-card.negative .metric-value { color: var(--accent-negative); }
-    .metric-card.negative::before { background: var(--accent-negative); }
+    .metric-card.negative .metric-value { color: var(--accent-danger); }
+    .metric-card.negative::before { background: var(--accent-danger); }
 
-    .metric-card.accent .metric-value { color: var(--accent-info); }
-    .metric-card.accent::before { background: var(--accent-info); }
+    .metric-card.accent .metric-value { color: var(--accent-secondary); }
+    .metric-card.accent::before { background: var(--accent-secondary); }
 
-    /* === SECTION STYLING === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       SECTION TITLES
+       ═══════════════════════════════════════════════════════════════════════ */
     .section-title {
         color: var(--text-primary);
         font-size: 1.1rem;
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -283,34 +509,37 @@ st.markdown("""
     }
 
     .section-title::before {
-        content: '›';
-        color: var(--accent-positive);
-        font-size: 1.25rem;
-        font-weight: 700;
+        content: '';
+        width: 4px;
+        height: 1.1rem;
+        background: var(--accent-primary);
+        border-radius: 2px;
     }
 
-    /* === RECOMMENDATION CARDS === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       RECOMMENDATION CARDS
+       ═══════════════════════════════════════════════════════════════════════ */
     .rec-card {
-        background: var(--bg-secondary);
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-elevated));
         padding: 1rem 1.25rem;
-        border-radius: 10px;
-        border-left: 3px solid var(--accent-info);
+        border-radius: 12px;
+        border: 1px solid var(--border-subtle);
+        border-left-width: 3px;
         margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        transition: all 0.2s ease;
-        border: 1px solid var(--border-subtle);
-        border-left-width: 3px;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .rec-card:hover {
-        transform: translateX(4px);
+        transform: translateX(6px);
         background: var(--bg-tertiary);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
 
-    .rec-card.buy { border-left-color: var(--accent-positive); }
-    .rec-card.sell { border-left-color: var(--accent-negative); }
+    .rec-card.buy { border-left-color: var(--accent-primary); }
+    .rec-card.sell { border-left-color: var(--accent-danger); }
     .rec-card.hold { border-left-color: var(--accent-warning); }
 
     .rec-ticker {
@@ -327,126 +556,379 @@ st.markdown("""
         font-size: 0.85rem;
     }
 
-    /* === BADGES === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       BADGES
+       ═══════════════════════════════════════════════════════════════════════ */
     .badge {
         display: inline-block;
-        padding: 0.25rem 0.6rem;
-        border-radius: 4px;
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
         font-size: 0.65rem;
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
     }
 
-    .badge-buy {
-        background: rgba(0, 212, 170, 0.15);
-        color: var(--accent-positive);
-        border: 1px solid rgba(0, 212, 170, 0.3);
+    .badge-buy, .badge-positive {
+        background: rgba(0, 212, 170, 0.12);
+        color: var(--accent-primary);
+        border: 1px solid rgba(0, 212, 170, 0.25);
     }
-    .badge-sell {
-        background: rgba(255, 75, 75, 0.15);
-        color: var(--accent-negative);
-        border: 1px solid rgba(255, 75, 75, 0.3);
+    .badge-sell, .badge-negative {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--accent-danger);
+        border: 1px solid rgba(239, 68, 68, 0.25);
     }
     .badge-hold {
-        background: rgba(255, 176, 32, 0.15);
+        background: rgba(245, 158, 11, 0.12);
         color: var(--accent-warning);
-        border: 1px solid rgba(255, 176, 32, 0.3);
+        border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
-    /* === SIDEBAR === */
+    /* Tech stack badges */
+    .tech-badge {
+        background: rgba(59,130,246,0.1);
+        border: 1px solid rgba(59,130,246,0.2);
+        border-radius: 20px;
+        padding: 5px 14px;
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--accent-secondary);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.2s ease;
+    }
+
+    .tech-badge:hover {
+        background: rgba(59,130,246,0.2);
+        transform: translateY(-1px);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════════════════════════════════ */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        background: linear-gradient(180deg, #0B0F19 0%, #0E1420 100%);
+        border-right: 1px solid var(--border-subtle);
     }
 
     [data-testid="stSidebar"] .stMarkdown h2 {
-        color: var(--text-primary);
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.15em;
+        color: var(--accent-primary);
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid var(--border-subtle);
     }
 
     [data-testid="stSidebar"] .stMarkdown h3 {
-        color: var(--accent-positive);
-        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-size: 0.68rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         margin: 1.5rem 0 0.75rem 0;
     }
 
-    /* === TAB STYLES === */
+    /* Sidebar ticker tags */
+    span[data-baseweb="tag"] {
+        background: rgba(0,212,170,0.12) !important;
+        border: 1px solid rgba(0,212,170,0.25) !important;
+        border-radius: 8px !important;
+        color: var(--accent-primary) !important;
+        font-family: 'JetBrains Mono', monospace !important;
+        font-weight: 500 !important;
+        font-size: 0.8rem !important;
+        transition: all 0.2s ease !important;
+    }
+
+    span[data-baseweb="tag"]:hover {
+        background: rgba(0,212,170,0.2) !important;
+        border-color: rgba(0,212,170,0.4) !important;
+        box-shadow: 0 0 12px rgba(0,212,170,0.15) !important;
+    }
+
+    /* Sidebar inputs */
+    .stTextInput input {
+        background: var(--bg-tertiary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-radius: 10px !important;
+        color: var(--text-primary) !important;
+        font-family: 'Inter', sans-serif !important;
+        padding: 10px 14px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .stTextInput input:focus {
+        border-color: rgba(0,212,170,0.5) !important;
+        box-shadow: 0 0 0 3px rgba(0,212,170,0.1) !important;
+    }
+
+    .stTextInput input::placeholder {
+        color: var(--text-muted) !important;
+    }
+
+    /* Sidebar quick stats */
+    .sidebar-stats {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-subtle);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+
+    .sidebar-stats-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       TAB NAVIGATION
+       ═══════════════════════════════════════════════════════════════════════ */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0;
         background: var(--bg-secondary);
-        padding: 0.25rem;
-        border-radius: 8px;
+        border-radius: 12px;
+        padding: 4px;
+        gap: 4px;
         border: 1px solid var(--border-subtle);
     }
 
     .stTabs [data-baseweb="tab"] {
-        background: transparent;
-        border-radius: 6px;
-        color: var(--text-muted);
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 0.85rem;
-        padding: 0.6rem 1rem;
-        transition: all 0.15s ease;
+        color: var(--text-muted);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        letter-spacing: 0.01em;
     }
 
     .stTabs [data-baseweb="tab"]:hover {
         color: var(--text-secondary);
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--bg-tertiary);
     }
 
     .stTabs [aria-selected="true"] {
-        background: var(--bg-tertiary) !important;
-        color: var(--text-primary) !important;
+        background: rgba(0,212,170,0.1) !important;
+        color: var(--accent-primary) !important;
+        font-weight: 600 !important;
+        border: 1px solid rgba(0,212,170,0.2) !important;
+        box-shadow: 0 0 20px rgba(0,212,170,0.1) !important;
     }
 
-    /* === DATAFRAME === */
+    .stTabs [data-baseweb="tab-highlight"] {
+        background: transparent !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════════════════════════════════════ */
+    .stButton > button {
+        background: linear-gradient(135deg, #00D4AA, #00B894) !important;
+        color: #0B0F19 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+        border: none !important;
+        border-radius: 10px !important;
+        padding: 10px 24px !important;
+        font-size: 0.88rem !important;
+        letter-spacing: 0.02em;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 24px rgba(0,212,170,0.35) !important;
+    }
+
+    .stButton > button:active {
+        transform: translateY(0px) !important;
+        box-shadow: 0 2px 8px rgba(0,212,170,0.2) !important;
+    }
+
+    /* Download buttons */
+    .stDownloadButton > button {
+        background: rgba(59,130,246,0.1) !important;
+        border: 1px solid rgba(59,130,246,0.25) !important;
+        color: var(--accent-secondary) !important;
+        border-radius: 10px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .stDownloadButton > button:hover {
+        background: rgba(59,130,246,0.2) !important;
+        box-shadow: 0 4px 15px rgba(59,130,246,0.2) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       SELECTBOX / DROPDOWNS
+       ═══════════════════════════════════════════════════════════════════════ */
+    .stSelectbox > div > div {
+        background: var(--bg-tertiary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-radius: 10px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .stSelectbox > div > div:hover {
+        border-color: rgba(0,212,170,0.3) !important;
+    }
+
+    [data-baseweb="popover"] {
+        background: var(--bg-secondary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4) !important;
+        animation: scaleIn 0.2s ease-out;
+    }
+
+    [data-baseweb="menu"] li:hover {
+        background: rgba(0,212,170,0.08) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       DATE INPUT / SLIDERS
+       ═══════════════════════════════════════════════════════════════════════ */
+    .stDateInput input {
+        background: var(--bg-tertiary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-radius: 10px !important;
+        color: var(--text-primary) !important;
+        font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    .stDateInput input:focus {
+        border-color: rgba(0,212,170,0.5) !important;
+        box-shadow: 0 0 0 3px rgba(0,212,170,0.1) !important;
+    }
+
+    .stSlider > div > div > div {
+        background: rgba(0,212,170,0.3) !important;
+    }
+
+    .stSlider > div > div > div > div {
+        background: var(--accent-primary) !important;
+        box-shadow: 0 0 10px rgba(0,212,170,0.4) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       EXPANDERS / ACCORDIONS
+       ═══════════════════════════════════════════════════════════════════════ */
+    .streamlit-expanderHeader {
+        background: var(--bg-secondary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-radius: 12px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 600 !important;
+        color: var(--text-primary) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .streamlit-expanderHeader:hover {
+        background: var(--bg-tertiary) !important;
+        border-color: rgba(0,212,170,0.2) !important;
+    }
+
+    .streamlit-expanderContent {
+        background: var(--bg-secondary) !important;
+        border: 1px solid var(--border-subtle) !important;
+        border-top: none !important;
+        border-radius: 0 0 12px 12px !important;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .streamlit-expanderHeader svg {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       DATAFRAMES / TABLES
+       ═══════════════════════════════════════════════════════════════════════ */
     .stDataFrame {
-        border-radius: 8px;
+        border-radius: 12px !important;
         overflow: hidden;
         border: 1px solid var(--border-subtle);
     }
 
-    /* === DIVIDER === */
+    .stDataFrame thead th {
+        background: var(--bg-tertiary) !important;
+        color: var(--text-muted) !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.72rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        font-weight: 600 !important;
+        padding: 12px 16px !important;
+    }
+
+    .stDataFrame tbody td {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.85rem !important;
+        color: var(--text-primary) !important;
+        padding: 12px 16px !important;
+        border-bottom: 1px solid var(--border-subtle) !important;
+    }
+
+    .stDataFrame tbody tr:nth-child(even) {
+        background: rgba(255,255,255,0.02) !important;
+    }
+
+    .stDataFrame tbody tr:hover {
+        background: rgba(0,212,170,0.05) !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       DIVIDER
+       ═══════════════════════════════════════════════════════════════════════ */
     .custom-divider {
         height: 1px;
         background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-        margin: 1.5rem 0;
+        margin: 1.75rem 0;
     }
 
-    /* === BUTTONS === */
-    .stButton > button {
-        background: linear-gradient(135deg, var(--accent-positive) 0%, #00B894 100%);
-        color: var(--bg-primary);
-        border: none;
-        padding: 0.6rem 1.5rem;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        transition: all 0.2s ease;
+    .gradient-divider {
+        height: 2px;
+        background: linear-gradient(90deg, #00D4AA, #3B82F6, #8B5CF6, #00D4AA);
+        background-size: 300% 100%;
+        animation: gradientFlow 4s ease infinite;
+        border-radius: 2px;
+        margin: 2rem 0;
     }
 
-    .stButton > button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
-    }
-
-    /* === FOOTER === */
-    .terminal-footer {
-        background: var(--bg-secondary);
-        padding: 1.5rem 2rem;
-        border-radius: 12px;
-        margin-top: 3rem;
+    /* ═══════════════════════════════════════════════════════════════════════
+       PREMIUM FOOTER
+       ═══════════════════════════════════════════════════════════════════════ */
+    .premium-footer {
+        background: linear-gradient(180deg, var(--bg-secondary) 0%, #080C14 100%);
         border: 1px solid var(--border-subtle);
-        text-align: center;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .premium-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #00D4AA, #3B82F6, #8B5CF6, #00D4AA);
+        background-size: 300% 100%;
+        animation: gradientFlow 4s ease infinite;
     }
 
     .footer-content {
@@ -454,118 +936,218 @@ st.markdown("""
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
-    .footer-brand {
+    .footer-tech-stack {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
     }
 
-    .footer-brand span {
-        color: var(--text-secondary);
-        font-size: 0.85rem;
-    }
-
-    .footer-brand .highlight {
-        color: var(--accent-positive);
-        font-weight: 600;
+    .footer-tech-stack span {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
     }
 
     .footer-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
-    .footer-links a {
-        color: var(--text-muted);
+    .footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(59,130,246,0.1);
+        border: 1px solid rgba(59,130,246,0.2);
+        border-radius: 8px;
+        padding: 8px 14px;
+        color: var(--accent-secondary);
         text-decoration: none;
         font-size: 0.8rem;
-        transition: color 0.2s ease;
+        font-weight: 500;
+        transition: all 0.25s ease;
     }
 
-    .footer-links a:hover {
-        color: var(--accent-positive);
+    .footer-link:hover {
+        background: rgba(59,130,246,0.2);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(59,130,246,0.15);
     }
 
     .footer-author {
+        text-align: right;
+    }
+
+    .footer-author-label {
         color: var(--text-muted);
-        font-size: 0.75rem;
+        font-size: 0.72rem;
+        margin-bottom: 2px;
     }
 
-    .footer-author strong {
-        color: var(--text-secondary);
+    .footer-author-name {
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        font-weight: 600;
     }
 
-    /* === LOADING ANIMATION === */
+    .footer-author-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--accent-secondary);
+        text-decoration: none;
+        font-size: 0.78rem;
+        margin-left: 8px;
+        transition: color 0.2s ease;
+    }
+
+    .footer-author-link:hover {
+        color: var(--accent-primary);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       SCROLLBAR
+       ═══════════════════════════════════════════════════════════════════════ */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--bg-tertiary);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0,212,170,0.3);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       LOADING / SKELETON STATES
+       ═══════════════════════════════════════════════════════════════════════ */
+    .skeleton {
+        background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s ease-in-out infinite;
+        border-radius: 8px;
+    }
+
+    .skeleton-kpi { height: 120px; }
+    .skeleton-chart { height: 300px; }
+    .skeleton-text { height: 16px; margin-bottom: 8px; }
+
     .loading-pulse {
         animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-
-    /* === RESPONSIVE === */
+    /* ═══════════════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════════════ */
     @media (max-width: 768px) {
-        .terminal-header { padding: 1.25rem; }
-        .header-title h1 { font-size: 1.25rem; }
-        .header-stats { display: none; }
+        .hero-container { padding: 20px; }
+        .hero-title { font-size: 1.5rem; }
+        .hero-stats { display: none; }
+        .hero-stat { padding-left: 1rem; }
+        .kpi-card .kpi-value { font-size: 1.6rem; }
         .metric-card .metric-value { font-size: 1.5rem; }
         .footer-content { flex-direction: column; text-align: center; }
+        .footer-author { text-align: center; }
+        .footer-tech-stack { justify-content: center; }
     }
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================
-# CHART THEME - Bloomberg Terminal-Inspired Color Palette
+# CHART THEME - Premium Dark Finance Color Palette
 # =============================================================================
 CHART_COLORS = {
-    'primary': '#3B82F6',      # Blue
-    'secondary': '#8B5CF6',    # Purple
-    'positive': '#00D4AA',     # Teal/Mint (Bloomberg green)
-    'negative': '#FF4B4B',     # Coral Red
-    'neutral': '#94A3B8',      # Slate Gray
-    'warning': '#FFB020',      # Amber
-    'accent': '#FFB020',       # Amber (alias for backward compatibility)
+    # Primary colors
+    'primary': '#3B82F6',      # Blue - secondary accent
+    'secondary': '#8B5CF6',    # Purple - highlights
+    'positive': '#00D4AA',     # Teal/Mint - positive signals, CTAs
+    'negative': '#EF4444',     # Red - negative signals
+    'neutral': '#9CA3AF',      # Gray - neutral
+    'warning': '#F59E0B',      # Amber - warnings
+    'accent': '#F59E0B',       # Amber (alias for backward compatibility)
+
+    # Extended palette
     'cyan': '#00B4D8',         # Cyan
     'pink': '#F472B6',         # Pink
-    'background': '#0E1117',   # Deep Dark
-    'surface': '#1A1F2E',      # Panel Dark
-    'text': '#FAFAFA',         # Primary Text
-    'text_muted': '#4A5568',   # Muted Text
-    'grid': 'rgba(255, 255, 255, 0.05)',
+    'purple': '#8B5CF6',       # Purple
+
+    # Backgrounds
+    'background': '#0B0F19',   # Deep Dark
+    'surface': '#111827',      # Panel Dark
+    'elevated': '#1A1F2E',     # Elevated panels
+
+    # Text
+    'text': '#F9FAFB',         # Primary Text
+    'text_secondary': '#9CA3AF', # Secondary Text
+    'text_muted': '#6B7280',   # Muted Text
+
+    # Grid and borders
+    'grid': 'rgba(255, 255, 255, 0.04)',
+    'border': 'rgba(255, 255, 255, 0.06)',
 }
 
-# Plotly chart template - Dark terminal style
+# Plotly chart template - Premium dark style
 CHART_TEMPLATE = {
     'layout': {
         'paper_bgcolor': 'rgba(0,0,0,0)',
         'plot_bgcolor': 'rgba(0,0,0,0)',
-        'font': {'color': CHART_COLORS['text'], 'family': 'DM Sans, sans-serif', 'size': 12},
+        'font': {
+            'color': CHART_COLORS['text'],
+            'family': 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+            'size': 12
+        },
+        'title': {
+            'font': {'size': 16, 'color': CHART_COLORS['text'], 'family': 'Inter'},
+            'x': 0,
+            'xanchor': 'left'
+        },
         'xaxis': {
             'gridcolor': CHART_COLORS['grid'],
-            'linecolor': 'rgba(255, 255, 255, 0.1)',
-            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11},
+            'linecolor': 'rgba(255, 255, 255, 0.08)',
+            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11, 'family': 'Inter'},
             'showgrid': True,
             'zeroline': False,
+            'showline': True,
         },
         'yaxis': {
             'gridcolor': CHART_COLORS['grid'],
-            'linecolor': 'rgba(255, 255, 255, 0.1)',
-            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11},
+            'linecolor': 'rgba(255, 255, 255, 0.08)',
+            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11, 'family': 'Inter'},
             'showgrid': True,
             'zeroline': False,
+            'showline': True,
         },
         'margin': {'t': 50, 'b': 40, 'l': 50, 'r': 20},
         'hoverlabel': {
-            'bgcolor': CHART_COLORS['surface'],
-            'bordercolor': 'rgba(255, 255, 255, 0.1)',
-            'font': {'color': CHART_COLORS['text'], 'family': 'DM Sans, sans-serif'}
+            'bgcolor': '#1F2937',
+            'bordercolor': 'rgba(0,212,170,0.3)',
+            'font': {'color': CHART_COLORS['text'], 'family': 'Inter', 'size': 13}
+        },
+        'legend': {
+            'bgcolor': 'rgba(0,0,0,0)',
+            'font': {'color': CHART_COLORS['text_secondary'], 'size': 11}
         }
     }
+}
+
+# Chart config - hide mode bar except download
+CHART_CONFIG = {
+    'displayModeBar': True,
+    'modeBarButtonsToRemove': ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 'zoomIn2d',
+                                'zoomOut2d', 'autoScale2d', 'resetScale2d'],
+    'displaylogo': False
 }
 
 # =============================================================================
@@ -708,7 +1290,7 @@ def get_sentiment_color(label):
 # CHART FUNCTIONS (updated styling, same logic)
 # =============================================================================
 def create_price_chart(stock_df, selected_ticker):
-    """Create stock price line chart with terminal styling"""
+    """Create stock price line chart with premium styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
@@ -717,13 +1299,18 @@ def create_price_chart(stock_df, selected_ticker):
         y=df['close'],
         mode='lines',
         name='Close Price',
-        line=dict(color=CHART_COLORS['positive'], width=2),
+        line=dict(color=CHART_COLORS['positive'], width=2.5),
         fill='tozeroy',
-        fillcolor='rgba(0, 212, 170, 0.08)'
+        fillcolor='rgba(0, 212, 170, 0.06)',
+        hovertemplate='<b>%{x|%b %d, %Y}</b><br>Price: $%{y:.2f}<extra></extra>'
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} Price", font=dict(size=14, color=CHART_COLORS['text'])),
+        title=dict(
+            text=f"<b>{selected_ticker}</b> Price",
+            font=dict(size=16, color=CHART_COLORS['text'], family='Inter'),
+            x=0, xanchor='left'
+        ),
         xaxis_title="",
         yaxis_title="Price ($)",
         hovermode='x unified',
@@ -873,66 +1460,119 @@ def create_correlation_scatter(combined_df, selected_ticker):
     return fig
 
 def create_sentiment_distribution(news_df):
-    """Create donut chart for sentiment distribution with terminal styling"""
+    """Create premium donut chart for sentiment distribution"""
     news_df['sentiment_label'] = news_df['sentiment_score'].apply(get_sentiment_label)
     sentiment_counts = news_df['sentiment_label'].value_counts()
 
-    # Terminal-style color mapping
+    # Premium color mapping
     color_map = {
-        'positive': CHART_COLORS['positive'],  # Teal
-        'negative': CHART_COLORS['negative'],  # Red
-        'neutral': CHART_COLORS['neutral']     # Gray
+        'positive': CHART_COLORS['positive'],   # Teal
+        'negative': CHART_COLORS['negative'],   # Red
+        'neutral': '#4B5563'                    # Darker gray
     }
 
     fig = go.Figure(data=[go.Pie(
         labels=sentiment_counts.index,
         values=sentiment_counts.values,
-        hole=0.65,
+        hole=0.68,
         marker=dict(
             colors=[color_map.get(l, CHART_COLORS['neutral']) for l in sentiment_counts.index],
-            line=dict(color=CHART_COLORS['background'], width=2)
+            line=dict(color=CHART_COLORS['background'], width=3)
         ),
         textinfo='percent',
-        textfont=dict(size=12, color=CHART_COLORS['text'], family='JetBrains Mono'),
-        hovertemplate="<b>%{label}</b><br>Count: %{value:,}<br>Share: %{percent}<extra></extra>"
+        textfont=dict(size=13, color=CHART_COLORS['text'], family='JetBrains Mono'),
+        hovertemplate="<b>%{label}</b><br>Count: %{value:,}<br>Share: %{percent}<extra></extra>",
+        pull=[0.02 if l == 'positive' else 0 for l in sentiment_counts.index]  # Pull effect on positive
     )])
 
-    # Add center annotation
+    # Add center annotation with premium styling
     total = sentiment_counts.sum()
     fig.add_annotation(
-        text=f"<b>{total:,}</b><br><span style='font-size:10px;color:#4A5568'>Total</span>",
+        text=f"<b style='font-size:22px;font-family:JetBrains Mono'>{total:,}</b><br><span style='font-size:11px;color:#6B7280;font-family:Inter'>Total</span>",
         x=0.5, y=0.5,
-        font=dict(size=16, color=CHART_COLORS['text'], family='JetBrains Mono'),
+        font=dict(size=18, color=CHART_COLORS['text'], family='JetBrains Mono'),
         showarrow=False
     )
 
     fig.update_layout(
-        title=dict(text="Sentiment Distribution", font=dict(size=14, color=CHART_COLORS['text'])),
-        height=350,
+        title=dict(
+            text="<b>Sentiment Distribution</b>",
+            font=dict(size=16, color=CHART_COLORS['text'], family='Inter'),
+            x=0, xanchor='left'
+        ),
+        height=380,
         showlegend=True,
         legend=dict(
-            orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5,
-            font=dict(color=CHART_COLORS['text_muted'], size=11)
+            orientation="h", yanchor="bottom", y=-0.12, xanchor="center", x=0.5,
+            font=dict(color=CHART_COLORS['text_secondary'], size=12, family='Inter'),
+            bgcolor='rgba(0,0,0,0)'
         ),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(color=CHART_COLORS['text'], family='DM Sans, sans-serif'),
-        margin=dict(t=50, b=50, l=20, r=20)
+        font=dict(color=CHART_COLORS['text'], family='Inter'),
+        margin=dict(t=60, b=50, l=20, r=20)
     )
     return fig
 
 # =============================================================================
-# UI COMPONENTS
+# UI COMPONENTS - Premium Design
 # =============================================================================
-def render_metric_card(label, value, card_type="default"):
-    """Render a styled metric card"""
+
+# Icon mapping for KPI cards
+KPI_ICONS = {
+    'tickers': '📊',
+    'content': '📄',
+    'sentiment': '📈',
+    'positive': '✅',
+    'negative': '⚠️',
+    'buy': '🟢',
+    'sell': '🔴',
+    'hold': '🟡',
+    'return': '💰',
+    'sharpe': '📐',
+    'trades': '🔄',
+    'win_rate': '🎯',
+    'default': '📋'
+}
+
+def render_metric_card(label, value, card_type="default", icon=None, stagger=0, delta=None):
+    """Render a premium styled metric card with optional stagger animation"""
     type_class = f" {card_type}" if card_type != "default" else ""
+    stagger_class = f" stagger-{stagger}" if stagger > 0 else ""
+
+    # Get icon
+    icon_key = icon if icon else card_type if card_type in KPI_ICONS else 'default'
+    icon_emoji = KPI_ICONS.get(icon_key, KPI_ICONS['default'])
+
+    # Delta display
+    delta_html = ""
+    if delta is not None:
+        delta_class = "positive" if delta > 0 else "negative" if delta < 0 else "neutral"
+        delta_symbol = "↑" if delta > 0 else "↓" if delta < 0 else "→"
+        delta_html = f'<div class="kpi-delta {delta_class}">{delta_symbol} {abs(delta):.1f}%</div>'
+
     st.markdown(f"""
-    <div class="metric-card{type_class}">
-        <p class="metric-value">{value}</p>
-        <p class="metric-label">{label}</p>
+    <div class="kpi-card{type_class}{stagger_class}">
+        <div class="kpi-icon">{icon_emoji}</div>
+        <div class="kpi-label">{label}</div>
+        <p class="kpi-value">{value}</p>
+        {delta_html}
     </div>
     """, unsafe_allow_html=True)
+
+def render_kpi_row(metrics, cols=4):
+    """Render a row of KPI cards with stagger animation"""
+    columns = st.columns(cols)
+    for i, metric in enumerate(metrics):
+        with columns[i % cols]:
+            render_metric_card(
+                label=metric.get('label', ''),
+                value=metric.get('value', ''),
+                card_type=metric.get('type', 'default'),
+                icon=metric.get('icon'),
+                stagger=i + 1,
+                delta=metric.get('delta')
+            )
 
 def render_recommendation_card(ticker, sentiment, confidence, rec_type):
     """Render a styled recommendation card"""
@@ -951,7 +1591,7 @@ def render_recommendation_card(ticker, sentiment, confidence, rec_type):
     """, unsafe_allow_html=True)
 
 def render_header(data=None):
-    """Render the terminal-style header with live stats"""
+    """Render the premium hero header with live stats and animations"""
     current_date = datetime.now().strftime("%b %d, %Y")
     current_time = datetime.now().strftime("%H:%M")
 
@@ -963,53 +1603,97 @@ def render_header(data=None):
         total_articles = len(data['all_content'])
 
     st.markdown(f"""
-    <div class="terminal-header">
-        <div class="header-content">
-            <div>
-                <div class="header-title">
-                    <h1>Stock Sentiment AI<span class="terminal-cursor"></span></h1>
-                    <span class="header-badge">🤖 FinBERT</span>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-title-row">
+                    <span class="live-indicator">
+                        <span class="live-dot"></span>
+                        LIVE
+                    </span>
+                    <h1 class="hero-title">Stock Sentiment AI</h1>
+                    <span class="terminal-cursor"></span>
+                    <span class="finbert-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        FinBERT NLP
+                    </span>
                 </div>
-                <p class="header-subtitle">
+                <p class="hero-subtitle">
                     AI-powered market sentiment analysis using <span class="highlight">Natural Language Processing</span> and <span class="highlight">Machine Learning</span>
                 </p>
             </div>
-            <div class="header-stats">
-                <div class="header-stat">
-                    <div class="header-stat-value">{total_tickers}</div>
-                    <div class="header-stat-label">Tickers</div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{total_tickers}</div>
+                    <div class="hero-stat-label">Tickers</div>
                 </div>
-                <div class="header-stat">
-                    <div class="header-stat-value">{total_articles:,}</div>
-                    <div class="header-stat-label">Data Points</div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{total_articles:,}</div>
+                    <div class="hero-stat-label">Data Points</div>
                 </div>
-                <div class="header-stat">
-                    <div class="header-stat-value">{current_date}</div>
-                    <div class="header-stat-label">{current_time} UTC</div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{current_date}</div>
+                    <div class="hero-stat-label">{current_time} UTC</div>
                 </div>
             </div>
         </div>
+        <div class="hero-divider"></div>
     </div>
     """, unsafe_allow_html=True)
 
-def render_divider():
-    """Render a styled divider"""
-    st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
+def render_divider(gradient=False):
+    """Render a styled divider, optionally with animated gradient"""
+    if gradient:
+        st.markdown('<div class="gradient-divider"></div>', unsafe_allow_html=True)
+    else:
+        st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
 def render_footer():
-    """Render the terminal-style footer"""
+    """Render the premium footer with tech badges and links"""
     st.markdown("""
-    <div class="terminal-footer">
+    <div class="premium-footer">
         <div class="footer-content">
-            <div class="footer-brand">
-                <span>Built with <span class="highlight">FinBERT</span> + <span class="highlight">Streamlit</span></span>
+            <div class="footer-tech-stack">
+                <span>Built with</span>
+                <span class="tech-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Python
+                </span>
+                <span class="tech-badge">
+                    🤗 FinBERT
+                </span>
+                <span class="tech-badge">
+                    📊 Streamlit
+                </span>
+                <span class="tech-badge">
+                    📈 Plotly
+                </span>
+                <span class="tech-badge">
+                    🌲 LightGBM
+                </span>
             </div>
             <div class="footer-links">
-                <a href="https://github.com/ludwigenvall/stock-sentiment-analysis" target="_blank">📂 GitHub</a>
-                <a href="https://huggingface.co/ProsusAI/finbert" target="_blank">🤗 FinBERT Model</a>
+                <a href="https://github.com/ludwigenvall/stock-sentiment-analysis" target="_blank" class="footer-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://huggingface.co/ProsusAI/finbert" target="_blank" class="footer-link">
+                    🤗 FinBERT
+                </a>
             </div>
             <div class="footer-author">
-                Created by <strong>Ludwig Envall</strong>
+                <div class="footer-author-label">Created by</div>
+                <span class="footer-author-name">Ludwig Envall</span>
+                <a href="https://www.linkedin.com/in/ludwigenvall/" target="_blank" class="footer-author-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
             </div>
         </div>
     </div>
