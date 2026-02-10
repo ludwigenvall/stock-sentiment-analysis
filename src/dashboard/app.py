@@ -1099,6 +1099,7 @@ CHART_COLORS = {
 }
 
 # Plotly chart template - Premium dark style
+# Note: 'title' is excluded to allow each chart to set its own title without conflicts
 CHART_TEMPLATE = {
     'layout': {
         'paper_bgcolor': 'rgba(0,0,0,0)',
@@ -1107,11 +1108,6 @@ CHART_TEMPLATE = {
             'color': CHART_COLORS['text'],
             'family': 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
             'size': 12
-        },
-        'title': {
-            'font': {'size': 16, 'color': CHART_COLORS['text'], 'family': 'Inter'},
-            'x': 0,
-            'xanchor': 'left'
         },
         'xaxis': {
             'gridcolor': CHART_COLORS['grid'],
