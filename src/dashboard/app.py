@@ -486,7 +486,7 @@ def load_data():
     news_file = raw_dir / "news_articles.csv"
     if news_file.exists():
         df = pd.read_csv(news_file)
-        df['time_published'] = pd.to_datetime(df['time_published'])
+        df['time_published'] = pd.to_datetime(df['time_published'], format='mixed')
         df['date'] = df['time_published'].dt.date
         data['news'] = df
     else:
@@ -496,7 +496,7 @@ def load_data():
     reddit_file = raw_dir / "reddit_posts.csv"
     if reddit_file.exists():
         df = pd.read_csv(reddit_file)
-        df['created_utc'] = pd.to_datetime(df['created_utc'])
+        df['created_utc'] = pd.to_datetime(df['created_utc'], format='mixed')
         df['date'] = df['created_utc'].dt.date
         data['reddit'] = df
     else:
@@ -506,7 +506,7 @@ def load_data():
     stock_file = processed_dir / "stock_prices.csv"
     if stock_file.exists():
         df = pd.read_csv(stock_file)
-        df['date'] = pd.to_datetime(df['date']).dt.date
+        df['date'] = pd.to_datetime(df['date'], format='mixed').dt.date
         data['stock'] = df
     else:
         data['stock'] = None
@@ -515,7 +515,7 @@ def load_data():
     combined_file = processed_dir / "stock_sentiment_combined.csv"
     if combined_file.exists():
         df = pd.read_csv(combined_file)
-        df['date'] = pd.to_datetime(df['date']).dt.date
+        df['date'] = pd.to_datetime(df['date'], format='mixed').dt.date
         data['combined'] = df
     else:
         data['combined'] = None
@@ -524,7 +524,7 @@ def load_data():
     reddit_combined_file = processed_dir / "stock_sentiment_reddit_combined.csv"
     if reddit_combined_file.exists():
         df = pd.read_csv(reddit_combined_file)
-        df['date'] = pd.to_datetime(df['date']).dt.date
+        df['date'] = pd.to_datetime(df['date'], format='mixed').dt.date
         data['reddit_combined'] = df
     else:
         data['reddit_combined'] = None
@@ -533,13 +533,13 @@ def load_data():
     all_content_file = processed_dir / "all_sentiment.csv"
     if all_content_file.exists():
         df = pd.read_csv(all_content_file)
-        df['date'] = pd.to_datetime(df['date'])
+        df['date'] = pd.to_datetime(df['date'], format='mixed')
         data['all_content'] = df
     else:
         all_content_file = processed_dir / "all_content_with_sentiment.csv"
         if all_content_file.exists():
             df = pd.read_csv(all_content_file)
-            df['date'] = pd.to_datetime(df['date'])
+            df['date'] = pd.to_datetime(df['date'], format='mixed')
             data['all_content'] = df
         else:
             data['all_content'] = None
@@ -548,7 +548,7 @@ def load_data():
     news_sentiment_file = processed_dir / "news_with_sentiment.csv"
     if news_sentiment_file.exists():
         df = pd.read_csv(news_sentiment_file)
-        df['time_published'] = pd.to_datetime(df['time_published'])
+        df['time_published'] = pd.to_datetime(df['time_published'], format='mixed')
         df['date'] = df['time_published'].dt.date
         data['news_sentiment'] = df
     else:
