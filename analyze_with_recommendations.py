@@ -218,8 +218,15 @@ def run_full_analysis(tickers: list, days_back: int = 7):
     # ==================== STEP 5: GENERATE RECOMMENDATIONS ====================
     logger.info("\nSTEP 5: Generating stock recommendations...")
 
-    recommender = StockRecommender()
+    # Use ML-enhanced recommendations if model exists
+    ml_model_path = Path("models/sentiment_predictor.pkl")
+    use_ml = ml_model_path.exists()
+
+    recommender = StockRecommender(use_ml=use_ml, ml_weight=0.3)
     recommendations = recommender.generate_recommendations(combined_sentiment, stock_df)
+
+    if use_ml:
+        logger.info("Using ML-enhanced recommendations (30% ML, 70% rule-based)")
 
     logger.info(f"Generated {len(recommendations)} recommendations")
 

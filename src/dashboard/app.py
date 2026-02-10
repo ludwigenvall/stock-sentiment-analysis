@@ -52,196 +52,353 @@ st.set_page_config(
 st.markdown("""
 <style>
     /* === GLOBAL STYLES === */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
     .main .block-container {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         padding-bottom: 2rem;
-        max-width: 1400px;
+        max-width: 1500px;
     }
 
-    /* === HEADER STYLES === */
+    * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* === ANIMATED BACKGROUND GRADIENT === */
     .main-header {
-        background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
-        padding: 2rem 2.5rem;
-        border-radius: 16px;
+        background: linear-gradient(135deg, #0c1929 0%, #1a365d 50%, #0f172a 100%);
+        padding: 2.5rem 3rem;
+        border-radius: 20px;
         margin-bottom: 2rem;
-        border: 1px solid rgba(59, 130, 246, 0.2);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .main-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(ellipse at top right, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                    radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        pointer-events: none;
     }
 
     .main-header h1 {
         color: #f8fafc;
-        font-size: 2.25rem;
-        font-weight: 700;
+        font-size: 2.5rem;
+        font-weight: 800;
         margin: 0;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        z-index: 1;
     }
 
     .main-header p {
-        color: #94a3b8;
-        font-size: 1rem;
-        margin: 0.5rem 0 0 0;
+        color: #64748b;
+        font-size: 1.05rem;
+        margin: 0.75rem 0 0 0;
+        position: relative;
+        z-index: 1;
     }
 
-    /* === METRIC CARDS === */
+    .main-header .subtitle-highlight {
+        color: #60a5fa;
+        font-weight: 600;
+    }
+
+    /* === GLASSMORPHISM METRIC CARDS === */
     .metric-card {
-        background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(148, 163, 184, 0.1);
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 1.75rem;
+        border-radius: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.08);
         text-align: center;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .metric-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .metric-card:hover::before {
+        opacity: 1;
     }
 
     .metric-card .metric-value {
-        font-size: 2rem;
-        font-weight: 700;
+        font-size: 2.25rem;
+        font-weight: 800;
         color: #f8fafc;
         margin: 0;
+        line-height: 1.2;
     }
 
     .metric-card .metric-label {
-        font-size: 0.875rem;
-        color: #94a3b8;
-        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.08em;
+        font-weight: 600;
     }
 
-    .metric-card.positive .metric-value { color: #22c55e; }
-    .metric-card.negative .metric-value { color: #ef4444; }
-    .metric-card.accent .metric-value { color: #3b82f6; }
+    .metric-card.positive .metric-value {
+        color: #4ade80;
+        text-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+    }
+    .metric-card.positive::before {
+        background: linear-gradient(90deg, #22c55e, #4ade80);
+    }
 
-    /* === SECTION CARDS === */
+    .metric-card.negative .metric-value {
+        color: #f87171;
+        text-shadow: 0 0 30px rgba(248, 113, 113, 0.3);
+    }
+    .metric-card.negative::before {
+        background: linear-gradient(90deg, #ef4444, #f87171);
+    }
+
+    .metric-card.accent .metric-value {
+        color: #60a5fa;
+        text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+    }
+    .metric-card.accent::before {
+        background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    }
+
+    /* === SECTION STYLING === */
     .section-card {
-        background: #0f172a;
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(148, 163, 184, 0.1);
-        margin-bottom: 1rem;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 1.75rem;
+        border-radius: 16px;
+        border: 1px solid rgba(148, 163, 184, 0.08);
+        margin-bottom: 1.25rem;
     }
 
     .section-title {
-        color: #f8fafc;
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+        color: #f1f5f9;
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.75rem;
+        letter-spacing: -0.01em;
     }
 
-    /* === RECOMMENDATION CARDS === */
+    .section-title::before {
+        content: '';
+        width: 4px;
+        height: 24px;
+        background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    /* === PREMIUM RECOMMENDATION CARDS === */
     .rec-card {
-        background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-        padding: 1rem 1.25rem;
-        border-radius: 10px;
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+        backdrop-filter: blur(8px);
+        padding: 1.25rem 1.5rem;
+        border-radius: 14px;
         border-left: 4px solid #3b82f6;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.875rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        transition: all 0.25s ease;
+        border: 1px solid rgba(148, 163, 184, 0.05);
+        border-left-width: 4px;
     }
 
-    .rec-card.buy { border-left-color: #22c55e; }
-    .rec-card.sell { border-left-color: #ef4444; }
-    .rec-card.hold { border-left-color: #f59e0b; }
+    .rec-card:hover {
+        transform: translateX(4px);
+        background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .rec-card.buy {
+        border-left-color: #4ade80;
+        box-shadow: -4px 0 20px rgba(74, 222, 128, 0.1);
+    }
+    .rec-card.sell {
+        border-left-color: #f87171;
+        box-shadow: -4px 0 20px rgba(248, 113, 113, 0.1);
+    }
+    .rec-card.hold {
+        border-left-color: #fbbf24;
+        box-shadow: -4px 0 20px rgba(251, 191, 36, 0.1);
+    }
 
     .rec-ticker {
-        font-size: 1.125rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: #f8fafc;
+        letter-spacing: -0.01em;
     }
 
     .rec-details {
         display: flex;
-        gap: 1.5rem;
+        gap: 2rem;
         color: #94a3b8;
-        font-size: 0.875rem;
+        font-size: 0.9rem;
     }
 
-    /* === BADGE STYLES === */
+    /* === POLISHED BADGES === */
     .badge {
         display: inline-block;
-        padding: 0.25rem 0.75rem;
+        padding: 0.35rem 0.9rem;
         border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.7rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
     }
 
-    .badge-buy { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
-    .badge-sell { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-    .badge-hold { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
-    .badge-positive { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
-    .badge-negative { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-    .badge-neutral { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+    .badge-buy {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(74, 222, 128, 0.15) 100%);
+        color: #4ade80;
+        border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+    .badge-sell {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(248, 113, 113, 0.15) 100%);
+        color: #f87171;
+        border: 1px solid rgba(248, 113, 113, 0.2);
+    }
+    .badge-hold {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(251, 191, 36, 0.15) 100%);
+        color: #fbbf24;
+        border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    .badge-positive {
+        background: rgba(34, 197, 94, 0.15);
+        color: #4ade80;
+    }
+    .badge-negative {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+    }
+    .badge-neutral {
+        background: rgba(148, 163, 184, 0.15);
+        color: #94a3b8;
+    }
 
-    /* === SIDEBAR STYLES === */
+    /* === SIDEBAR STYLING === */
     [data-testid="stSidebar"] {
-        background: #0f172a;
+        background: linear-gradient(180deg, #0c1929 0%, #0f172a 100%);
     }
 
     [data-testid="stSidebar"] .stMarkdown h2 {
-        color: #f8fafc;
-        font-size: 1rem;
-        font-weight: 600;
+        color: #e2e8f0;
+        font-size: 0.85rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 1rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
     }
 
-    /* === TAB STYLES === */
+    /* === PREMIUM TAB STYLES === */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0.5rem;
-        background: #0f172a;
+        gap: 0.25rem;
+        background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
         padding: 0.5rem;
-        border-radius: 10px;
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.08);
     }
 
     .stTabs [data-baseweb="tab"] {
         background: transparent;
-        border-radius: 8px;
+        border-radius: 10px;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.85rem 1.5rem;
+        transition: all 0.2s ease;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
         color: #94a3b8;
-        font-weight: 500;
-        padding: 0.75rem 1.25rem;
+        background: rgba(148, 163, 184, 0.05);
     }
 
     .stTabs [aria-selected="true"] {
-        background: #1e293b;
+        background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
         color: #f8fafc;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     /* === DATAFRAME STYLES === */
     .stDataFrame {
-        border-radius: 10px;
+        border-radius: 14px;
         overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.1);
     }
 
-    /* === DIVIDER === */
+    /* === ELEGANT DIVIDER === */
     .custom-divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
-        margin: 1.5rem 0;
+        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), transparent);
+        margin: 2rem 0;
     }
 
     /* === PROGRESS BAR === */
     .stProgress > div > div {
-        background: linear-gradient(90deg, #3b82f6, #22c55e);
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #22c55e);
         border-radius: 10px;
     }
 
-    /* === INFO/WARNING BOXES === */
+    /* === INFO BOX === */
     .info-box {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 10px;
-        padding: 1rem 1.25rem;
+        background: linear-gradient(145deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
         color: #93c5fd;
+    }
+
+    /* === BUTTONS === */
+    .stButton > button {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
     }
 
     /* === RESPONSIVE === */
@@ -258,12 +415,14 @@ st.markdown("""
 # =============================================================================
 # Color palette for charts
 CHART_COLORS = {
-    'primary': '#3B82F6',      # Blue
-    'secondary': '#8B5CF6',    # Purple
-    'positive': '#22C55E',     # Green
-    'negative': '#EF4444',     # Red
-    'neutral': '#64748B',      # Gray
-    'accent': '#F59E0B',       # Amber
+    'primary': '#60A5FA',      # Bright Blue
+    'secondary': '#A78BFA',    # Bright Purple
+    'positive': '#4ADE80',     # Bright Green
+    'negative': '#F87171',     # Bright Red
+    'neutral': '#94A3B8',      # Gray
+    'accent': '#FBBF24',       # Bright Amber
+    'cyan': '#22D3D1',         # Cyan
+    'pink': '#F472B6',         # Pink
     'background': '#0F172A',   # Dark
     'surface': '#1E293B',      # Dark surface
     'text': '#F8FAFC',         # Light text
@@ -630,11 +789,20 @@ def render_recommendation_card(ticker, sentiment, confidence, rec_type):
     """, unsafe_allow_html=True)
 
 def render_header():
-    """Render the main header"""
-    st.markdown("""
+    """Render the main header with live stats"""
+    current_date = datetime.now().strftime("%B %d, %Y")
+    st.markdown(f"""
     <div class="main-header">
-        <h1>Stock Sentiment Analysis</h1>
-        <p>AI-powered market sentiment insights using FinBERT NLP</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1>Stock Sentiment Analysis</h1>
+                <p>AI-powered market insights using <span class="subtitle-highlight">FinBERT NLP</span> + <span class="subtitle-highlight">Machine Learning</span></p>
+            </div>
+            <div style="text-align: right; color: #64748b; font-size: 0.85rem;">
+                <div style="color: #94a3b8; font-weight: 600;">{current_date}</div>
+                <div style="margin-top: 0.25rem;">S&P 100 Coverage</div>
+            </div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
