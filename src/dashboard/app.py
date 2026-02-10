@@ -1099,7 +1099,7 @@ CHART_COLORS = {
 }
 
 # Plotly chart template - Premium dark style
-# Note: 'title' is excluded to allow each chart to set its own title without conflicts
+# Note: 'title' and 'legend' are excluded to allow each chart to set its own without conflicts
 CHART_TEMPLATE = {
     'layout': {
         'paper_bgcolor': 'rgba(0,0,0,0)',
@@ -1130,10 +1130,6 @@ CHART_TEMPLATE = {
             'bgcolor': '#1F2937',
             'bordercolor': 'rgba(0,212,170,0.3)',
             'font': {'color': CHART_COLORS['text'], 'family': 'Inter', 'size': 13}
-        },
-        'legend': {
-            'bgcolor': 'rgba(0,0,0,0)',
-            'font': {'color': CHART_COLORS['text_secondary'], 'size': 11}
         }
     }
 }
