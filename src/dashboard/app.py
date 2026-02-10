@@ -1,6 +1,11 @@
 """
-Streamlit Dashboard for Stock Market Sentiment Analysis
-Modern, Professional Data Science / ML Theme
+Stock Sentiment AI - Dark Finance Terminal Dashboard
+Inspired by Bloomberg Terminal / Refinitiv Eikon
+
+A professional, portfolio-worthy dashboard for AI-powered stock sentiment analysis.
+Built with FinBERT NLP + Machine Learning.
+
+Author: Ludwig Envall
 """
 import streamlit as st
 import pandas as pd
@@ -30,103 +35,193 @@ except ImportError:
     BACKTESTER_AVAILABLE = False
 
 # =============================================================================
-# PAGE CONFIG & THEME
+# PAGE CONFIG
 # =============================================================================
 st.set_page_config(
-    page_title="Stock Sentiment Analysis",
-    page_icon="📈",
+    page_title="Stock Sentiment AI",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # =============================================================================
-# CUSTOM CSS - Modern Data Science Theme
+# CUSTOM CSS - Dark Finance Terminal Theme
 # =============================================================================
-# Design choices:
-# - Dark theme with blue accent (#3B82F6) for professional ML/DS look
-# - Card-based layout with subtle shadows for depth
-# - Consistent spacing (1rem = 16px base)
-# - Clean typography with good contrast
-# - Accent colors: Blue (primary), Green (positive), Red (negative), Gray (neutral)
+# Inspired by Bloomberg Terminal / Refinitiv Eikon
+# - Deep dark background (#0E1117) with subtle panel accents (#1A1F2E)
+# - Teal/mint accent (#00D4AA) for positive signals
+# - Coral red (#FF4B4B) for negative signals
+# - Professional typography with DM Sans
+# - Subtle terminal-like aesthetics
 
 st.markdown("""
 <style>
-    /* === GLOBAL STYLES === */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    /* === IMPORTS & RESETS === */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+
+    /* === ROOT VARIABLES === */
+    :root {
+        --bg-primary: #0E1117;
+        --bg-secondary: #1A1F2E;
+        --bg-tertiary: #252B3B;
+        --accent-positive: #00D4AA;
+        --accent-negative: #FF4B4B;
+        --accent-warning: #FFB020;
+        --accent-info: #3B82F6;
+        --text-primary: #FAFAFA;
+        --text-secondary: #94A3B8;
+        --text-muted: #4A5568;
+        --border-subtle: rgba(255, 255, 255, 0.06);
+        --border-accent: rgba(0, 212, 170, 0.3);
+        --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* === GLOBAL STYLES === */
     .main .block-container {
-        padding-top: 1.5rem;
-        padding-bottom: 2rem;
-        max-width: 1500px;
+        padding: 2rem 2rem 4rem 2rem;
+        max-width: 1600px;
     }
 
     * {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* === ANIMATED BACKGROUND GRADIENT === */
-    .main-header {
-        background: linear-gradient(135deg, #0c1929 0%, #1a365d 50%, #0f172a 100%);
-        padding: 2.5rem 3rem;
-        border-radius: 20px;
+    code, .stCode, pre {
+        font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    /* === TERMINAL-STYLE HEADER === */
+    .terminal-header {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, #0D1321 100%);
+        padding: 2rem 2.5rem;
+        border-radius: 16px;
         margin-bottom: 2rem;
-        border: 1px solid rgba(59, 130, 246, 0.15);
+        border: 1px solid var(--border-subtle);
         position: relative;
         overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
-    .main-header::before {
+    .terminal-header::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: radial-gradient(ellipse at top right, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                    radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-positive), var(--accent-info), var(--accent-positive));
+    }
+
+    .terminal-header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100%;
+        background: radial-gradient(ellipse at top right, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
         pointer-events: none;
     }
 
-    .main-header h1 {
-        color: #f8fafc;
-        font-size: 2.5rem;
-        font-weight: 800;
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .header-title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header-title h1 {
+        color: var(--text-primary);
+        font-size: 1.75rem;
+        font-weight: 700;
         margin: 0;
-        letter-spacing: -0.03em;
-        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        position: relative;
-        z-index: 1;
+        letter-spacing: -0.02em;
     }
 
-    .main-header p {
-        color: #64748b;
-        font-size: 1.05rem;
-        margin: 0.75rem 0 0 0;
-        position: relative;
-        z-index: 1;
+    .header-title .terminal-cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.5rem;
+        background: var(--accent-positive);
+        animation: blink 1.2s step-end infinite;
+        margin-left: 0.25rem;
     }
 
-    .main-header .subtitle-highlight {
-        color: #60a5fa;
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    .header-subtitle {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin: 0.5rem 0 0 0;
+    }
+
+    .header-subtitle .highlight {
+        color: var(--accent-positive);
         font-weight: 600;
     }
 
-    /* === GLASSMORPHISM METRIC CARDS === */
+    .header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 212, 170, 0.1);
+        border: 1px solid rgba(0, 212, 170, 0.2);
+        color: var(--accent-positive);
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .header-stats {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .header-stat {
+        text-align: right;
+    }
+
+    .header-stat-value {
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .header-stat-label {
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* === KPI METRIC CARDS === */
     .metric-card {
-        background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 1.75rem;
-        border-radius: 16px;
-        border: 1px solid rgba(148, 163, 184, 0.08);
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-subtle);
         text-align: center;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.25s ease;
         position: relative;
-        overflow: hidden;
     }
 
     .metric-card::before {
@@ -135,318 +230,340 @@ st.markdown("""
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        height: 2px;
+        background: var(--accent-info);
+        opacity: 0.5;
+        border-radius: 12px 12px 0 0;
     }
 
     .metric-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        border-color: rgba(59, 130, 246, 0.2);
-    }
-
-    .metric-card:hover::before {
-        opacity: 1;
+        transform: translateY(-2px);
+        border-color: rgba(0, 212, 170, 0.2);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
     .metric-card .metric-value {
-        font-size: 2.25rem;
-        font-weight: 800;
-        color: #f8fafc;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
         margin: 0;
         line-height: 1.2;
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .metric-card .metric-label {
-        font-size: 0.8rem;
-        color: #64748b;
-        margin-top: 0.75rem;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 600;
+        letter-spacing: 0.1em;
+        font-weight: 500;
     }
 
-    .metric-card.positive .metric-value {
-        color: #4ade80;
-        text-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
-    }
-    .metric-card.positive::before {
-        background: linear-gradient(90deg, #22c55e, #4ade80);
-    }
+    .metric-card.positive .metric-value { color: var(--accent-positive); }
+    .metric-card.positive::before { background: var(--accent-positive); }
 
-    .metric-card.negative .metric-value {
-        color: #f87171;
-        text-shadow: 0 0 30px rgba(248, 113, 113, 0.3);
-    }
-    .metric-card.negative::before {
-        background: linear-gradient(90deg, #ef4444, #f87171);
-    }
+    .metric-card.negative .metric-value { color: var(--accent-negative); }
+    .metric-card.negative::before { background: var(--accent-negative); }
 
-    .metric-card.accent .metric-value {
-        color: #60a5fa;
-        text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
-    }
-    .metric-card.accent::before {
-        background: linear-gradient(90deg, #3b82f6, #60a5fa);
-    }
+    .metric-card.accent .metric-value { color: var(--accent-info); }
+    .metric-card.accent::before { background: var(--accent-info); }
 
     /* === SECTION STYLING === */
-    .section-card {
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(10px);
-        padding: 1.75rem;
-        border-radius: 16px;
-        border: 1px solid rgba(148, 163, 184, 0.08);
-        margin-bottom: 1.25rem;
-    }
-
     .section-title {
-        color: #f1f5f9;
-        font-size: 1.35rem;
-        font-weight: 700;
-        margin-bottom: 1.25rem;
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        letter-spacing: -0.01em;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border-subtle);
     }
 
     .section-title::before {
-        content: '';
-        width: 4px;
-        height: 24px;
-        background: linear-gradient(180deg, #3b82f6, #8b5cf6);
-        border-radius: 2px;
+        content: '›';
+        color: var(--accent-positive);
+        font-size: 1.25rem;
+        font-weight: 700;
     }
 
-    /* === PREMIUM RECOMMENDATION CARDS === */
+    /* === RECOMMENDATION CARDS === */
     .rec-card {
-        background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-        backdrop-filter: blur(8px);
-        padding: 1.25rem 1.5rem;
-        border-radius: 14px;
-        border-left: 4px solid #3b82f6;
-        margin-bottom: 0.875rem;
+        background: var(--bg-secondary);
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        border-left: 3px solid var(--accent-info);
+        margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        transition: all 0.25s ease;
-        border: 1px solid rgba(148, 163, 184, 0.05);
-        border-left-width: 4px;
+        transition: all 0.2s ease;
+        border: 1px solid var(--border-subtle);
+        border-left-width: 3px;
     }
 
     .rec-card:hover {
         transform: translateX(4px);
-        background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        background: var(--bg-tertiary);
     }
 
-    .rec-card.buy {
-        border-left-color: #4ade80;
-        box-shadow: -4px 0 20px rgba(74, 222, 128, 0.1);
-    }
-    .rec-card.sell {
-        border-left-color: #f87171;
-        box-shadow: -4px 0 20px rgba(248, 113, 113, 0.1);
-    }
-    .rec-card.hold {
-        border-left-color: #fbbf24;
-        box-shadow: -4px 0 20px rgba(251, 191, 36, 0.1);
-    }
+    .rec-card.buy { border-left-color: var(--accent-positive); }
+    .rec-card.sell { border-left-color: var(--accent-negative); }
+    .rec-card.hold { border-left-color: var(--accent-warning); }
 
     .rec-ticker {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #f8fafc;
-        letter-spacing: -0.01em;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .rec-details {
         display: flex;
-        gap: 2rem;
-        color: #94a3b8;
-        font-size: 0.9rem;
+        gap: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
     }
 
-    /* === POLISHED BADGES === */
+    /* === BADGES === */
     .badge {
         display: inline-block;
-        padding: 0.35rem 0.9rem;
-        border-radius: 9999px;
-        font-size: 0.7rem;
-        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.65rem;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.05em;
     }
 
     .badge-buy {
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(74, 222, 128, 0.15) 100%);
-        color: #4ade80;
-        border: 1px solid rgba(74, 222, 128, 0.2);
+        background: rgba(0, 212, 170, 0.15);
+        color: var(--accent-positive);
+        border: 1px solid rgba(0, 212, 170, 0.3);
     }
     .badge-sell {
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(248, 113, 113, 0.15) 100%);
-        color: #f87171;
-        border: 1px solid rgba(248, 113, 113, 0.2);
+        background: rgba(255, 75, 75, 0.15);
+        color: var(--accent-negative);
+        border: 1px solid rgba(255, 75, 75, 0.3);
     }
     .badge-hold {
-        background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(251, 191, 36, 0.15) 100%);
-        color: #fbbf24;
-        border: 1px solid rgba(251, 191, 36, 0.2);
-    }
-    .badge-positive {
-        background: rgba(34, 197, 94, 0.15);
-        color: #4ade80;
-    }
-    .badge-negative {
-        background: rgba(239, 68, 68, 0.15);
-        color: #f87171;
-    }
-    .badge-neutral {
-        background: rgba(148, 163, 184, 0.15);
-        color: #94a3b8;
+        background: rgba(255, 176, 32, 0.15);
+        color: var(--accent-warning);
+        border: 1px solid rgba(255, 176, 32, 0.3);
     }
 
-    /* === SIDEBAR STYLING === */
+    /* === SIDEBAR === */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0c1929 0%, #0f172a 100%);
+        background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     }
 
     [data-testid="stSidebar"] .stMarkdown h2 {
-        color: #e2e8f0;
-        font-size: 0.85rem;
-        font-weight: 700;
+        color: var(--text-primary);
+        font-size: 0.75rem;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        margin-bottom: 1.25rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-subtle);
     }
 
-    /* === PREMIUM TAB STYLES === */
+    [data-testid="stSidebar"] .stMarkdown h3 {
+        color: var(--accent-positive);
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    /* === TAB STYLES === */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0.25rem;
-        background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
-        padding: 0.5rem;
-        border-radius: 14px;
-        border: 1px solid rgba(148, 163, 184, 0.08);
+        gap: 0;
+        background: var(--bg-secondary);
+        padding: 0.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-subtle);
     }
 
     .stTabs [data-baseweb="tab"] {
         background: transparent;
-        border-radius: 10px;
-        color: #64748b;
-        font-weight: 600;
-        font-size: 0.9rem;
-        padding: 0.85rem 1.5rem;
-        transition: all 0.2s ease;
+        border-radius: 6px;
+        color: var(--text-muted);
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+        transition: all 0.15s ease;
     }
 
     .stTabs [data-baseweb="tab"]:hover {
-        color: #94a3b8;
-        background: rgba(148, 163, 184, 0.05);
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.03);
     }
 
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #1e3a5f 0%, #1e293b 100%);
-        color: #f8fafc;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        background: var(--bg-tertiary) !important;
+        color: var(--text-primary) !important;
     }
 
-    /* === DATAFRAME STYLES === */
+    /* === DATAFRAME === */
     .stDataFrame {
-        border-radius: 14px;
+        border-radius: 8px;
         overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.1);
+        border: 1px solid var(--border-subtle);
     }
 
-    /* === ELEGANT DIVIDER === */
+    /* === DIVIDER === */
     .custom-divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), transparent);
-        margin: 2rem 0;
-    }
-
-    /* === PROGRESS BAR === */
-    .stProgress > div > div {
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #22c55e);
-        border-radius: 10px;
-    }
-
-    /* === INFO BOX === */
-    .info-box {
-        background: linear-gradient(145deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
-        border: 1px solid rgba(59, 130, 246, 0.2);
-        border-radius: 14px;
-        padding: 1.25rem 1.5rem;
-        color: #93c5fd;
+        background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        margin: 1.5rem 0;
     }
 
     /* === BUTTONS === */
     .stButton > button {
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-positive) 0%, #00B894 100%);
+        color: var(--bg-primary);
         border: none;
-        padding: 0.75rem 2rem;
-        border-radius: 10px;
+        padding: 0.6rem 1.5rem;
+        border-radius: 6px;
         font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
     }
 
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    }
+
+    /* === FOOTER === */
+    .terminal-footer {
+        background: var(--bg-secondary);
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        margin-top: 3rem;
+        border: 1px solid var(--border-subtle);
+        text-align: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .footer-brand span {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+    }
+
+    .footer-brand .highlight {
+        color: var(--accent-positive);
+        font-weight: 600;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.8rem;
+        transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-positive);
+    }
+
+    .footer-author {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+    }
+
+    .footer-author strong {
+        color: var(--text-secondary);
+    }
+
+    /* === LOADING ANIMATION === */
+    .loading-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
     }
 
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
-        .main-header { padding: 1.5rem; }
-        .main-header h1 { font-size: 1.75rem; }
+        .terminal-header { padding: 1.25rem; }
+        .header-title h1 { font-size: 1.25rem; }
+        .header-stats { display: none; }
         .metric-card .metric-value { font-size: 1.5rem; }
+        .footer-content { flex-direction: column; text-align: center; }
     }
 </style>
 """, unsafe_allow_html=True)
 
 # =============================================================================
-# CHART THEME - Consistent colors across all visualizations
+# CHART THEME - Bloomberg Terminal-Inspired Color Palette
 # =============================================================================
-# Color palette for charts
 CHART_COLORS = {
-    'primary': '#60A5FA',      # Bright Blue
-    'secondary': '#A78BFA',    # Bright Purple
-    'positive': '#4ADE80',     # Bright Green
-    'negative': '#F87171',     # Bright Red
-    'neutral': '#94A3B8',      # Gray
-    'accent': '#FBBF24',       # Bright Amber
-    'cyan': '#22D3D1',         # Cyan
+    'primary': '#3B82F6',      # Blue
+    'secondary': '#8B5CF6',    # Purple
+    'positive': '#00D4AA',     # Teal/Mint (Bloomberg green)
+    'negative': '#FF4B4B',     # Coral Red
+    'neutral': '#94A3B8',      # Slate Gray
+    'warning': '#FFB020',      # Amber
+    'cyan': '#00B4D8',         # Cyan
     'pink': '#F472B6',         # Pink
-    'background': '#0F172A',   # Dark
-    'surface': '#1E293B',      # Dark surface
-    'text': '#F8FAFC',         # Light text
-    'text_muted': '#94A3B8',   # Muted text
+    'background': '#0E1117',   # Deep Dark
+    'surface': '#1A1F2E',      # Panel Dark
+    'text': '#FAFAFA',         # Primary Text
+    'text_muted': '#4A5568',   # Muted Text
+    'grid': 'rgba(255, 255, 255, 0.05)',
 }
 
-# Plotly chart template
-# Base chart template - excludes title/legend to avoid conflicts with explicit settings
+# Plotly chart template - Dark terminal style
 CHART_TEMPLATE = {
     'layout': {
         'paper_bgcolor': 'rgba(0,0,0,0)',
         'plot_bgcolor': 'rgba(0,0,0,0)',
-        'font': {'color': CHART_COLORS['text'], 'family': 'Inter, sans-serif'},
+        'font': {'color': CHART_COLORS['text'], 'family': 'DM Sans, sans-serif', 'size': 12},
         'xaxis': {
-            'gridcolor': 'rgba(148, 163, 184, 0.1)',
-            'linecolor': 'rgba(148, 163, 184, 0.2)',
-            'tickfont': {'color': CHART_COLORS['text_muted']}
+            'gridcolor': CHART_COLORS['grid'],
+            'linecolor': 'rgba(255, 255, 255, 0.1)',
+            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11},
+            'showgrid': True,
+            'zeroline': False,
         },
         'yaxis': {
-            'gridcolor': 'rgba(148, 163, 184, 0.1)',
-            'linecolor': 'rgba(148, 163, 184, 0.2)',
-            'tickfont': {'color': CHART_COLORS['text_muted']}
+            'gridcolor': CHART_COLORS['grid'],
+            'linecolor': 'rgba(255, 255, 255, 0.1)',
+            'tickfont': {'color': CHART_COLORS['text_muted'], 'size': 11},
+            'showgrid': True,
+            'zeroline': False,
         },
-        'margin': {'t': 60, 'b': 40, 'l': 60, 'r': 20}
+        'margin': {'t': 50, 'b': 40, 'l': 50, 'r': 20},
+        'hoverlabel': {
+            'bgcolor': CHART_COLORS['surface'],
+            'bordercolor': 'rgba(255, 255, 255, 0.1)',
+            'font': {'color': CHART_COLORS['text'], 'family': 'DM Sans, sans-serif'}
+        }
     }
 }
 
@@ -590,7 +707,7 @@ def get_sentiment_color(label):
 # CHART FUNCTIONS (updated styling, same logic)
 # =============================================================================
 def create_price_chart(stock_df, selected_ticker):
-    """Create stock price line chart with modern styling"""
+    """Create stock price line chart with terminal styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
@@ -599,23 +716,23 @@ def create_price_chart(stock_df, selected_ticker):
         y=df['close'],
         mode='lines',
         name='Close Price',
-        line=dict(color=CHART_COLORS['primary'], width=2.5),
+        line=dict(color=CHART_COLORS['positive'], width=2),
         fill='tozeroy',
-        fillcolor='rgba(59, 130, 246, 0.1)'
+        fillcolor='rgba(0, 212, 170, 0.08)'
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} Stock Price", font=dict(size=18, color=CHART_COLORS['text'])),
+        title=dict(text=f"{selected_ticker} Price", font=dict(size=14, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Price ($)",
         hovermode='x unified',
-        height=400,
+        height=350,
         **CHART_TEMPLATE['layout']
     )
     return fig
 
 def create_candlestick_chart(stock_df, selected_ticker):
-    """Create candlestick chart with modern styling"""
+    """Create candlestick chart with terminal styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
@@ -627,21 +744,23 @@ def create_candlestick_chart(stock_df, selected_ticker):
         close=df['close'],
         name='OHLC',
         increasing_line_color=CHART_COLORS['positive'],
-        decreasing_line_color=CHART_COLORS['negative']
+        decreasing_line_color=CHART_COLORS['negative'],
+        increasing_fillcolor=CHART_COLORS['positive'],
+        decreasing_fillcolor=CHART_COLORS['negative']
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} - OHLC Chart", font=dict(size=18, color=CHART_COLORS['text'])),
+        title=dict(text=f"{selected_ticker} OHLC", font=dict(size=14, color=CHART_COLORS['text'])),
         xaxis_title="",
         yaxis_title="Price ($)",
-        height=450,
+        height=400,
         xaxis_rangeslider_visible=False,
         **CHART_TEMPLATE['layout']
     )
     return fig
 
 def create_volume_chart(stock_df, selected_ticker):
-    """Create volume bar chart with modern styling"""
+    """Create volume bar chart with terminal styling"""
     df = stock_df[stock_df['ticker'] == selected_ticker].copy()
 
     fig = go.Figure()
@@ -650,26 +769,33 @@ def create_volume_chart(stock_df, selected_ticker):
         y=df['volume'],
         name='Volume',
         marker_color=CHART_COLORS['primary'],
-        opacity=0.7
+        opacity=0.6
     ))
 
     fig.update_layout(
-        title=dict(text=f"{selected_ticker} Trading Volume", font=dict(size=16, color=CHART_COLORS['text'])),
+        title=dict(text=f"{selected_ticker} Volume", font=dict(size=12, color=CHART_COLORS['text_muted'])),
         xaxis_title="",
-        yaxis_title="Volume",
-        height=200,
+        yaxis_title="",
+        height=150,
+        showlegend=False,
         **CHART_TEMPLATE['layout']
     )
     return fig
 
 def create_sentiment_timeline(news_df, selected_tickers):
-    """Create sentiment timeline with modern styling"""
+    """Create sentiment timeline with terminal styling"""
     df = news_df[news_df['ticker'].isin(selected_tickers)].copy()
     daily_sentiment = df.groupby(['date', 'ticker'])['sentiment_score'].mean().reset_index()
 
-    # Custom color sequence for multiple tickers
-    color_sequence = [CHART_COLORS['primary'], CHART_COLORS['secondary'],
-                      CHART_COLORS['accent'], CHART_COLORS['positive'], '#EC4899', '#06B6D4']
+    # Terminal-style color sequence
+    color_sequence = [
+        CHART_COLORS['positive'],   # Teal
+        CHART_COLORS['primary'],    # Blue
+        CHART_COLORS['warning'],    # Amber
+        CHART_COLORS['secondary'],  # Purple
+        CHART_COLORS['cyan'],       # Cyan
+        CHART_COLORS['pink']        # Pink
+    ]
 
     fig = px.line(
         daily_sentiment,
@@ -679,20 +805,31 @@ def create_sentiment_timeline(news_df, selected_tickers):
         color_discrete_sequence=color_sequence
     )
 
-    fig.add_hline(y=0, line_dash="dash", line_color="rgba(148, 163, 184, 0.5)", line_width=1)
+    # Update line styling
+    fig.update_traces(line=dict(width=2))
+
+    # Add zero line
+    fig.add_hline(y=0, line_dash="dot", line_color="rgba(255, 255, 255, 0.2)", line_width=1)
+
+    # Add positive/negative regions
+    fig.add_hrect(y0=0, y1=1, fillcolor="rgba(0, 212, 170, 0.03)", line_width=0)
+    fig.add_hrect(y0=-1, y1=0, fillcolor="rgba(255, 75, 75, 0.03)", line_width=0)
+
     fig.update_layout(
-        title=dict(text="Sentiment Timeline", font=dict(size=18, color=CHART_COLORS['text'])),
+        title=dict(text="Sentiment Timeline", font=dict(size=14, color=CHART_COLORS['text'])),
         xaxis_title="",
-        yaxis_title="Avg Sentiment",
-        height=400,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
-                   bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'])),
+        yaxis_title="Sentiment Score",
+        height=350,
+        legend=dict(
+            orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1,
+            bgcolor='rgba(0,0,0,0)', font=dict(color=CHART_COLORS['text_muted'], size=11)
+        ),
         **CHART_TEMPLATE['layout']
     )
     return fig
 
 def create_correlation_scatter(combined_df, selected_ticker):
-    """Create scatter plot with modern styling"""
+    """Create scatter plot with terminal styling"""
     if 'daily_return' not in combined_df.columns and 'close' in combined_df.columns:
         combined_df = combined_df.sort_values(['ticker', 'date'])
         combined_df['daily_return'] = combined_df.groupby('ticker')['close'].pct_change() * 100
@@ -711,51 +848,75 @@ def create_correlation_scatter(combined_df, selected_ticker):
         x='avg_sentiment',
         y='daily_return',
         trendline="ols",
-        color_discrete_sequence=[CHART_COLORS['primary']]
+        color_discrete_sequence=[CHART_COLORS['positive']]
     )
 
-    fig.update_traces(marker=dict(size=10, opacity=0.7))
+    # Update point styling
+    fig.update_traces(marker=dict(size=8, opacity=0.7, line=dict(width=1, color=CHART_COLORS['background'])))
+
+    # Update trendline color
+    fig.data[1].line.color = CHART_COLORS['warning']
+    fig.data[1].line.width = 2
+
+    # Add zero lines
+    fig.add_vline(x=0, line_dash="dot", line_color="rgba(255, 255, 255, 0.1)")
+    fig.add_hline(y=0, line_dash="dot", line_color="rgba(255, 255, 255, 0.1)")
+
     fig.update_layout(
-        title=dict(text=f'{selected_ticker} - Sentiment vs Daily Return', font=dict(size=18, color=CHART_COLORS['text'])),
-        xaxis_title="Average Sentiment",
+        title=dict(text=f'{selected_ticker} Sentiment vs Return', font=dict(size=14, color=CHART_COLORS['text'])),
+        xaxis_title="Sentiment Score",
         yaxis_title="Daily Return (%)",
-        height=400,
+        height=350,
         **CHART_TEMPLATE['layout']
     )
     return fig
 
 def create_sentiment_distribution(news_df):
-    """Create donut chart for sentiment distribution with modern styling"""
+    """Create donut chart for sentiment distribution with terminal styling"""
     news_df['sentiment_label'] = news_df['sentiment_score'].apply(get_sentiment_label)
     sentiment_counts = news_df['sentiment_label'].value_counts()
 
-    colors = [CHART_COLORS['positive'], CHART_COLORS['negative'], CHART_COLORS['neutral']]
+    # Terminal-style color mapping
+    color_map = {
+        'positive': CHART_COLORS['positive'],  # Teal
+        'negative': CHART_COLORS['negative'],  # Red
+        'neutral': CHART_COLORS['neutral']     # Gray
+    }
 
     fig = go.Figure(data=[go.Pie(
         labels=sentiment_counts.index,
         values=sentiment_counts.values,
-        hole=0.6,
-        marker=dict(colors=[
-            CHART_COLORS['positive'] if l == 'positive' else
-            CHART_COLORS['negative'] if l == 'negative' else
-            CHART_COLORS['neutral']
-            for l in sentiment_counts.index
-        ]),
-        textinfo='label+percent',
-        textfont=dict(size=14, color=CHART_COLORS['text']),
-        hovertemplate="<b>%{label}</b><br>Count: %{value}<br>Percent: %{percent}<extra></extra>"
+        hole=0.65,
+        marker=dict(
+            colors=[color_map.get(l, CHART_COLORS['neutral']) for l in sentiment_counts.index],
+            line=dict(color=CHART_COLORS['background'], width=2)
+        ),
+        textinfo='percent',
+        textfont=dict(size=12, color=CHART_COLORS['text'], family='JetBrains Mono'),
+        hovertemplate="<b>%{label}</b><br>Count: %{value:,}<br>Share: %{percent}<extra></extra>"
     )])
 
+    # Add center annotation
+    total = sentiment_counts.sum()
+    fig.add_annotation(
+        text=f"<b>{total:,}</b><br><span style='font-size:10px;color:#4A5568'>Total</span>",
+        x=0.5, y=0.5,
+        font=dict(size=16, color=CHART_COLORS['text'], family='JetBrains Mono'),
+        showarrow=False
+    )
+
     fig.update_layout(
-        title=dict(text="Sentiment Distribution", font=dict(size=18, color=CHART_COLORS['text'])),
-        height=400,
+        title=dict(text="Sentiment Distribution", font=dict(size=14, color=CHART_COLORS['text'])),
+        height=350,
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5,
-                   font=dict(color=CHART_COLORS['text_muted'])),
+        legend=dict(
+            orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5,
+            font=dict(color=CHART_COLORS['text_muted'], size=11)
+        ),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(color=CHART_COLORS['text'], family='Inter, sans-serif'),
-        margin=dict(t=60, b=60, l=20, r=20)
+        font=dict(color=CHART_COLORS['text'], family='DM Sans, sans-serif'),
+        margin=dict(t=50, b=50, l=20, r=20)
     )
     return fig
 
@@ -788,19 +949,43 @@ def render_recommendation_card(ticker, sentiment, confidence, rec_type):
     </div>
     """, unsafe_allow_html=True)
 
-def render_header():
-    """Render the main header with live stats"""
-    current_date = datetime.now().strftime("%B %d, %Y")
+def render_header(data=None):
+    """Render the terminal-style header with live stats"""
+    current_date = datetime.now().strftime("%b %d, %Y")
+    current_time = datetime.now().strftime("%H:%M")
+
+    # Calculate live stats if data available
+    total_tickers = 0
+    total_articles = 0
+    if data and data.get('all_content') is not None:
+        total_tickers = data['all_content']['ticker'].nunique()
+        total_articles = len(data['all_content'])
+
     st.markdown(f"""
-    <div class="main-header">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+    <div class="terminal-header">
+        <div class="header-content">
             <div>
-                <h1>Stock Sentiment Analysis</h1>
-                <p>AI-powered market insights using <span class="subtitle-highlight">FinBERT NLP</span> + <span class="subtitle-highlight">Machine Learning</span></p>
+                <div class="header-title">
+                    <h1>Stock Sentiment AI<span class="terminal-cursor"></span></h1>
+                    <span class="header-badge">🤖 FinBERT</span>
+                </div>
+                <p class="header-subtitle">
+                    AI-powered market sentiment analysis using <span class="highlight">Natural Language Processing</span> and <span class="highlight">Machine Learning</span>
+                </p>
             </div>
-            <div style="text-align: right; color: #64748b; font-size: 0.85rem;">
-                <div style="color: #94a3b8; font-weight: 600;">{current_date}</div>
-                <div style="margin-top: 0.25rem;">S&P 100 Coverage</div>
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-value">{total_tickers}</div>
+                    <div class="header-stat-label">Tickers</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value">{total_articles:,}</div>
+                    <div class="header-stat-label">Data Points</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value">{current_date}</div>
+                    <div class="header-stat-label">{current_time} UTC</div>
+                </div>
             </div>
         </div>
     </div>
@@ -810,15 +995,34 @@ def render_divider():
     """Render a styled divider"""
     st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
+def render_footer():
+    """Render the terminal-style footer"""
+    st.markdown("""
+    <div class="terminal-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span>Built with <span class="highlight">FinBERT</span> + <span class="highlight">Streamlit</span></span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/ludwigenvall/stock-sentiment-analysis" target="_blank">📂 GitHub</a>
+                <a href="https://huggingface.co/ProsusAI/finbert" target="_blank">🤗 FinBERT Model</a>
+            </div>
+            <div class="footer-author">
+                Created by <strong>Ludwig Envall</strong>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 # =============================================================================
 # MAIN APPLICATION
 # =============================================================================
 def main():
-    # Render header
-    render_header()
-
-    # Load data
+    # Load data first
     data = load_data()
+
+    # Render header with data stats
+    render_header(data)
 
     # Check if we have any data
     if data['news'] is None and data['stock'] is None and data['reddit'] is None and data['all_content'] is None:
@@ -831,7 +1035,7 @@ def main():
                 st.write(f"**Files:** {list(PROCESSED_DIR.iterdir())}")
         st.stop()
 
-    # Sidebar
+    # Sidebar - Minimalist design
     with st.sidebar:
         st.markdown("## FILTERS")
 
@@ -845,26 +1049,24 @@ def main():
         else:
             available_tickers = TICKERS
 
+        # Quick search for ticker
+        ticker_search = st.text_input("🔍 Search ticker", placeholder="e.g., AAPL")
+
+        # Filter available tickers based on search
+        if ticker_search:
+            filtered_tickers = [t for t in available_tickers if ticker_search.upper() in t]
+        else:
+            filtered_tickers = available_tickers
+
         selected_tickers = st.multiselect(
             "Select Tickers",
-            options=available_tickers,
-            default=available_tickers[:5] if len(available_tickers) >= 5 else available_tickers
+            options=filtered_tickers,
+            default=filtered_tickers[:5] if len(filtered_tickers) >= 5 else filtered_tickers,
+            help="Select up to 10 tickers for analysis"
         )
 
-        # Content source filter
-        if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
-            available_types = data['all_content']['content_type'].unique().tolist()
-            type_labels = {
-                'news': 'News', 'reddit': 'Reddit', 'sec_filing': 'SEC Filings',
-                'earnings_call': 'Earnings Calls', 'earnings': 'Earnings'
-            }
-            content_sources = [type_labels.get(t, t.title()) for t in available_types]
-            content_sources.append('All Sources')
-            content_filter = st.multiselect("Content Sources", options=content_sources, default=['All Sources'])
-        else:
-            content_filter = None
-
         # Date range
+        st.markdown("### DATE RANGE")
         if data['news'] is not None:
             min_date, max_date = data['news']['date'].min(), data['news']['date'].max()
         elif data['stock'] is not None:
@@ -875,24 +1077,49 @@ def main():
         else:
             min_date, max_date = datetime.now().date() - timedelta(days=30), datetime.now().date()
 
-        date_range = st.date_input("Date Range", value=(min_date, max_date), min_value=min_date, max_value=max_date)
+        date_range = st.date_input("", value=(min_date, max_date), min_value=min_date, max_value=max_date)
+
+        # Content source filter (simplified)
+        content_filter = None
+        if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
+            st.markdown("### DATA SOURCES")
+            available_types = data['all_content']['content_type'].unique().tolist()
+            type_labels = {
+                'news': '📰 News', 'reddit': '💬 Reddit', 'sec_filing': '📋 SEC',
+                'earnings_call': '📊 Earnings', 'earnings': '📊 Earnings', 'synthetic': '🤖 ML'
+            }
+            content_sources = [type_labels.get(t, t.title()) for t in available_types]
+            content_sources.insert(0, '📁 All Sources')
+            content_filter = st.multiselect("", options=content_sources, default=['📁 All Sources'])
 
         st.markdown("---")
 
-        # Data sources info
-        sources = []
-        if data['news'] is not None: sources.append("News")
-        if data['reddit'] is not None: sources.append("Reddit")
-        if data['all_content'] is not None and 'content_type' in data['all_content'].columns:
-            if 'sec_filing' in data['all_content']['content_type'].unique(): sources.append("SEC")
-        if data['stock'] is not None: sources.append("Prices")
-        sources.append("FinBERT")
-
-        st.markdown(f"**Data Sources:** {' • '.join(sources)}")
-
+        # Status indicators
+        status_items = []
+        if data['news'] is not None:
+            status_items.append(f"📰 {len(data['news']):,} articles")
+        if data['stock'] is not None:
+            status_items.append(f"📈 {data['stock']['ticker'].nunique()} tickers")
         if data['all_content'] is not None:
             last_update = pd.to_datetime(data['all_content']['date']).max()
-            st.caption(f"Last updated: {last_update.strftime('%Y-%m-%d')}")
+            status_items.append(f"🕐 {last_update.strftime('%Y-%m-%d')}")
+
+        for item in status_items:
+            st.caption(item)
+
+        # About section at bottom
+        with st.expander("ℹ️ About"):
+            st.markdown("""
+            **Stock Sentiment AI** uses FinBERT, a pre-trained NLP model for financial text, to analyze sentiment from news articles, SEC filings, and social media.
+
+            **Tech Stack:**
+            - 🤗 FinBERT (NLP)
+            - 📊 LightGBM (ML)
+            - 🎨 Streamlit
+            - 📈 Plotly
+
+            **Author:** Ludwig Envall
+            """)
 
     # Filter data
     start_date, end_date = (date_range[0], date_range[1]) if len(date_range) == 2 else (date_range[0], date_range[0])
@@ -1655,6 +1882,11 @@ def main():
             st.dataframe(data['recommendations'], use_container_width=True, hide_index=True)
         elif preview_option == "All Sentiment" and data['all_content'] is not None:
             st.dataframe(data['all_content'].head(100), use_container_width=True, hide_index=True)
+
+    # =============================================================================
+    # FOOTER
+    # =============================================================================
+    render_footer()
 
 
 if __name__ == "__main__":
