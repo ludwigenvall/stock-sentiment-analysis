@@ -45636,5 +45636,918 @@
       "sell": 1,
       "avg_confidence": 0.6074719101123596
     }
+  },
+  {
+    "timestamp": "2026-04-10T14:46:48.688351",
+    "date": "2026-04-10",
+    "recommendations": [
+      {
+        "ticker": "GOOG",
+        "recommendation": "STRONG BUY",
+        "action": "buy",
+        "strength": 0.972,
+        "confidence": 0.66,
+        "sentiment_score": 0.772,
+        "num_articles": 4,
+        "timestamp": "2026-04-10T14:46:48.683682"
+      },
+      {
+        "ticker": "AMAT",
+        "recommendation": "STRONG BUY",
+        "action": "buy",
+        "strength": 0.893,
+        "confidence": 0.827,
+        "sentiment_score": 0.693,
+        "num_articles": 55,
+        "timestamp": "2026-04-10T14:46:48.682313"
+      },
+      {
+        "ticker": "MCD",
+        "recommendation": "STRONG BUY",
+        "action": "buy",
+        "strength": 0.715,
+        "confidence": 0.54,
+        "sentiment_score": 0.515,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684285"
+      },
+      {
+        "ticker": "HD",
+        "recommendation": "STRONG BUY",
+        "action": "buy",
+        "strength": 0.71,
+        "confidence": 0.534,
+        "sentiment_score": 0.51,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683807"
+      },
+      {
+        "ticker": "GOOGL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.497,
+        "confidence": 0.534,
+        "sentiment_score": 0.497,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683724"
+      },
+      {
+        "ticker": "QCOM",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.494,
+        "confidence": 0.536,
+        "sentiment_score": 0.494,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.685132"
+      },
+      {
+        "ticker": "TXN",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.493,
+        "confidence": 0.539,
+        "sentiment_score": 0.493,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.685579"
+      },
+      {
+        "ticker": "AMZN",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.49,
+        "confidence": 0.538,
+        "sentiment_score": 0.49,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.682454"
+      },
+      {
+        "ticker": "ADBE",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.489,
+        "confidence": 0.536,
+        "sentiment_score": 0.489,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.682191"
+      },
+      {
+        "ticker": "AVGO",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.489,
+        "confidence": 0.541,
+        "sentiment_score": 0.489,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.682496"
+      },
+      {
+        "ticker": "INTC",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.488,
+        "confidence": 0.547,
+        "sentiment_score": 0.488,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683931"
+      },
+      {
+        "ticker": "MSFT",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.485,
+        "confidence": 0.536,
+        "sentiment_score": 0.485,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684587"
+      },
+      {
+        "ticker": "TGT",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.485,
+        "confidence": 0.545,
+        "sentiment_score": 0.485,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.685411"
+      },
+      {
+        "ticker": "CRM",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.482,
+        "confidence": 0.528,
+        "sentiment_score": 0.482,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683146"
+      },
+      {
+        "ticker": "CSCO",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.481,
+        "confidence": 0.532,
+        "sentiment_score": 0.481,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683188"
+      },
+      {
+        "ticker": "NVDA",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.481,
+        "confidence": 0.549,
+        "sentiment_score": 0.481,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684756"
+      },
+      {
+        "ticker": "ADI",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.48,
+        "confidence": 0.536,
+        "sentiment_score": 0.48,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.682238"
+      },
+      {
+        "ticker": "AMD",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.475,
+        "confidence": 0.542,
+        "sentiment_score": 0.475,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.682364"
+      },
+      {
+        "ticker": "MU",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.47,
+        "confidence": 0.551,
+        "sentiment_score": 0.47,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684629"
+      },
+      {
+        "ticker": "ORCL",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.466,
+        "confidence": 0.546,
+        "sentiment_score": 0.466,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684798"
+      },
+      {
+        "ticker": "SBUX",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.454,
+        "confidence": 0.555,
+        "sentiment_score": 0.454,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.685215"
+      },
+      {
+        "ticker": "NKE",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.452,
+        "confidence": 0.549,
+        "sentiment_score": 0.452,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684713"
+      },
+      {
+        "ticker": "IBM",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.446,
+        "confidence": 0.56,
+        "sentiment_score": 0.446,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.683890"
+      },
+      {
+        "ticker": "WMT",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.444,
+        "confidence": 0.549,
+        "sentiment_score": 0.444,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.685906"
+      },
+      {
+        "ticker": "D",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.403,
+        "confidence": 0.777,
+        "sentiment_score": 0.403,
+        "num_articles": 49,
+        "timestamp": "2026-04-10T14:46:48.683345"
+      },
+      {
+        "ticker": "GILD",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.397,
+        "confidence": 0.773,
+        "sentiment_score": 0.397,
+        "num_articles": 50,
+        "timestamp": "2026-04-10T14:46:48.683640"
+      },
+      {
+        "ticker": "TSLA",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.34,
+        "confidence": 0.728,
+        "sentiment_score": 0.34,
+        "num_articles": 53,
+        "timestamp": "2026-04-10T14:46:48.685537"
+      },
+      {
+        "ticker": "ACN",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.338,
+        "confidence": 0.763,
+        "sentiment_score": 0.338,
+        "num_articles": 56,
+        "timestamp": "2026-04-10T14:46:48.682142"
+      },
+      {
+        "ticker": "COST",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.338,
+        "confidence": 0.72,
+        "sentiment_score": 0.338,
+        "num_articles": 56,
+        "timestamp": "2026-04-10T14:46:48.683103"
+      },
+      {
+        "ticker": "META",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.316,
+        "confidence": 0.723,
+        "sentiment_score": 0.316,
+        "num_articles": 50,
+        "timestamp": "2026-04-10T14:46:48.684376"
+      },
+      {
+        "ticker": "VZ",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.303,
+        "confidence": 0.731,
+        "sentiment_score": 0.303,
+        "num_articles": 50,
+        "timestamp": "2026-04-10T14:46:48.685824"
+      },
+      {
+        "ticker": "GE",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.276,
+        "confidence": 0.736,
+        "sentiment_score": 0.276,
+        "num_articles": 51,
+        "timestamp": "2026-04-10T14:46:48.683598"
+      },
+      {
+        "ticker": "SCHW",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.27,
+        "confidence": 0.731,
+        "sentiment_score": 0.27,
+        "num_articles": 52,
+        "timestamp": "2026-04-10T14:46:48.685276"
+      },
+      {
+        "ticker": "VLO",
+        "recommendation": "BUY",
+        "action": "buy",
+        "strength": 0.223,
+        "confidence": 0.72,
+        "sentiment_score": 0.223,
+        "num_articles": 46,
+        "timestamp": "2026-04-10T14:46:48.685783"
+      },
+      {
+        "ticker": "AAPL",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": 0.15,
+        "num_articles": 56,
+        "timestamp": "2026-04-10T14:46:48.681977"
+      },
+      {
+        "ticker": "ABBV",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": 0.073,
+        "num_articles": 52,
+        "timestamp": "2026-04-10T14:46:48.682043"
+      },
+      {
+        "ticker": "ABT",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.031,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682095"
+      },
+      {
+        "ticker": "AMGN",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.613,
+        "sentiment_score": -0.024,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682410"
+      },
+      {
+        "ticker": "AXP",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.619,
+        "sentiment_score": -0.06,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682539"
+      },
+      {
+        "ticker": "BA",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.613,
+        "sentiment_score": -0.027,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682581"
+      },
+      {
+        "ticker": "BAC",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.612,
+        "sentiment_score": -0.025,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682623"
+      },
+      {
+        "ticker": "BMY",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.041,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682665"
+      },
+      {
+        "ticker": "C",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.615,
+        "sentiment_score": -0.025,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682708"
+      },
+      {
+        "ticker": "CAT",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.615,
+        "sentiment_score": -0.024,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682751"
+      },
+      {
+        "ticker": "CHTR",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.609,
+        "sentiment_score": -0.049,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682793"
+      },
+      {
+        "ticker": "CI",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.62,
+        "sentiment_score": -0.056,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682834"
+      },
+      {
+        "ticker": "CL",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.74,
+        "sentiment_score": 0.122,
+        "num_articles": 50,
+        "timestamp": "2026-04-10T14:46:48.682876"
+      },
+      {
+        "ticker": "CMCSA",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.04,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682918"
+      },
+      {
+        "ticker": "COF",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.058,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.682965"
+      },
+      {
+        "ticker": "COP",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.606,
+        "sentiment_score": -0.044,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683021"
+      },
+      {
+        "ticker": "CVS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.61,
+        "sentiment_score": -0.028,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683230"
+      },
+      {
+        "ticker": "CVX",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.622,
+        "sentiment_score": -0.032,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683297"
+      },
+      {
+        "ticker": "DE",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.622,
+        "sentiment_score": -0.058,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683387"
+      },
+      {
+        "ticker": "DHR",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.612,
+        "sentiment_score": -0.032,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683430"
+      },
+      {
+        "ticker": "DIS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.038,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683472"
+      },
+      {
+        "ticker": "EMR",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.619,
+        "sentiment_score": -0.06,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683514"
+      },
+      {
+        "ticker": "EOG",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.033,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683557"
+      },
+      {
+        "ticker": "GS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.052,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683765"
+      },
+      {
+        "ticker": "HON",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.62,
+        "sentiment_score": -0.045,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683848"
+      },
+      {
+        "ticker": "JNJ",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.609,
+        "sentiment_score": -0.034,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.683972"
+      },
+      {
+        "ticker": "JPM",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.612,
+        "sentiment_score": -0.043,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684013"
+      },
+      {
+        "ticker": "KO",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.031,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684054"
+      },
+      {
+        "ticker": "LLY",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.614,
+        "sentiment_score": -0.017,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684095"
+      },
+      {
+        "ticker": "LMT",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.615,
+        "sentiment_score": -0.019,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684136"
+      },
+      {
+        "ticker": "MA",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.028,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684221"
+      },
+      {
+        "ticker": "MDT",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.62,
+        "sentiment_score": -0.07,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684333"
+      },
+      {
+        "ticker": "MMM",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.609,
+        "sentiment_score": -0.046,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684419"
+      },
+      {
+        "ticker": "MPC",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.023,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684462"
+      },
+      {
+        "ticker": "MRK",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.039,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684504"
+      },
+      {
+        "ticker": "MS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.611,
+        "sentiment_score": -0.043,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684545"
+      },
+      {
+        "ticker": "NFLX",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.616,
+        "sentiment_score": -0.015,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684671"
+      },
+      {
+        "ticker": "OXY",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.617,
+        "sentiment_score": -0.047,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684841"
+      },
+      {
+        "ticker": "PEP",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.618,
+        "sentiment_score": -0.03,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684883"
+      },
+      {
+        "ticker": "PFE",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.613,
+        "sentiment_score": -0.024,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684925"
+      },
+      {
+        "ticker": "PG",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.056,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.684967"
+      },
+      {
+        "ticker": "PNC",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.608,
+        "sentiment_score": -0.048,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685008"
+      },
+      {
+        "ticker": "PSX",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.622,
+        "sentiment_score": -0.039,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685049"
+      },
+      {
+        "ticker": "RTX",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.615,
+        "sentiment_score": -0.019,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685174"
+      },
+      {
+        "ticker": "SLB",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.62,
+        "sentiment_score": -0.057,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685325"
+      },
+      {
+        "ticker": "T",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.613,
+        "sentiment_score": -0.04,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685369"
+      },
+      {
+        "ticker": "TMO",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.61,
+        "sentiment_score": -0.034,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685454"
+      },
+      {
+        "ticker": "TMUS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.066,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685495"
+      },
+      {
+        "ticker": "UNH",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.061,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685620"
+      },
+      {
+        "ticker": "UPS",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.61,
+        "sentiment_score": -0.038,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685662"
+      },
+      {
+        "ticker": "USB",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.622,
+        "sentiment_score": -0.058,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685703"
+      },
+      {
+        "ticker": "V",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.62,
+        "sentiment_score": -0.057,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685743"
+      },
+      {
+        "ticker": "WFC",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.621,
+        "sentiment_score": -0.073,
+        "num_articles": 2,
+        "timestamp": "2026-04-10T14:46:48.685865"
+      },
+      {
+        "ticker": "XOM",
+        "recommendation": "HOLD",
+        "action": "hold",
+        "strength": 0.5,
+        "confidence": 0.72,
+        "sentiment_score": 0.111,
+        "num_articles": 52,
+        "timestamp": "2026-04-10T14:46:48.685947"
+      },
+      {
+        "ticker": "LOW",
+        "recommendation": "SELL",
+        "action": "sell",
+        "strength": 0.684,
+        "confidence": 0.58,
+        "sentiment_score": -0.684,
+        "num_articles": 6,
+        "timestamp": "2026-04-10T14:46:48.684179"
+      },
+      {
+        "ticker": "PYPL",
+        "recommendation": "SELL",
+        "action": "sell",
+        "strength": 0.301,
+        "confidence": 0.747,
+        "sentiment_score": -0.301,
+        "num_articles": 49,
+        "timestamp": "2026-04-10T14:46:48.685091"
+      }
+    ],
+    "summary": {
+      "total": 90,
+      "buy": 34,
+      "hold": 54,
+      "sell": 2,
+      "avg_confidence": 0.6202777777777778
+    }
   }
 ]
