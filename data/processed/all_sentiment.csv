@@ -1,562 +1,859 @@
 ticker,date,sentiment_score,sentiment_label,content_type,title
+AAPL,2026-04-14,0.8293352094478905,positive,news,Garmin Fenix 7: Multisport Powerhouse Faces Evolving Fitness Tech Demands
+AAPL,2026-04-14,0.17068997025489807,neutral,news,Nvidia RTX 5090 runs on macOS with new custom driver from Tiny Corp
+AAPL,2026-04-14,0.9309530835598707,positive,news,Apple Gets a Price Target Boost From BofA: Is a Big iPhone and Services Beat Coming?
+AAPL,2026-04-14,0.8857238199561834,positive,news,"Amazon to Acquire Globalstar, Strike Apple Deal to Expand Satellite iPhone Connectivity"
+AAPL,2026-04-14,0.7585197682492435,positive,news,Amazon buys the satellite internet company behind Apple’s SOS system
+AAPL,2026-04-14,0.7845210488885641,positive,news,Amazon buying Globalstar; Apple satellite services to use Amazon Leo
+AAPL,2026-04-14,0.8714775759726763,positive,news,Amazon to acquire Globalstar and expand Amazon Leo satellite network
+AAPL,2026-04-14,-0.08291542530059814,negative,news,Apple Inc. $AAPL is Nilsine Partners LLC's 2nd Largest Position
+AAPL,2026-04-14,0.9293060898780823,positive,news,"Monument Group Wealth Advisors LLC Acquires 22,172 Shares of Apple Inc. $AAPL"
+AAPL,2026-04-14,0.6875758925452828,positive,news,Powerhouse Assets LLC Makes New Investment in Apple Inc. $AAPL
+AAPL,2026-04-14,0.3935311986133456,neutral,news,The Fortress and the Future: An In-Depth Research Report on JPMorgan Chase & Co. (JPM)
+AAPL,2026-04-14,0.8652314189821482,positive,news,Roundhill AAPL WeeklyPay ETF announces weekly distribution of $0.2464
+AAPL,2026-04-14,0.9077352033928037,positive,news,Corning Inc. stock (US2193501051): Does its optical connectivity edge now drive AI infrastructure up
+AAPL,2026-04-14,-0.9509249003604054,negative,news,iShares MSCI World ETF Braces for a Historic Portfolio Reshuffle
+AAPL,2026-04-14,0.9371430724859238,positive,news,"FEDERATED HERMES, INC. Expands Stake in Advance Auto Parts Inc"
+AAPL,2026-04-14,0.8828818807378411,positive,news,Amazon nears deal to acquire Globalstar in push to rival Musk's Starlink
+AAPL,2026-04-14,0.32088954001665115,neutral,news,Spotify Premium: Price Hikes Face User Backlash Amid AI Push
+AAPL,2026-04-14,-0.9572173273190856,negative,news,Invesco Ltd. Reduces Stake in Herc Holdings Inc.
+AAPL,2026-04-13,-0.7016055546700954,negative,news,Apple Turns to Samsung for Evidence in US Antitrust Showdown
+AAPL,2026-04-13,0.926015087403357,positive,news,Verizon Communications Inc. stock (US92343V1044): Is 5G infrastructure now the real test for sustain
+AAPL,2026-04-13,0.697528513148427,positive,news,"Astronics Launches Qi2 Wireless Charging Module, Delivering Future-Proof Technology for Modern Aircraft Cabins"
+AAPL,2026-04-13,0.9258040729910135,positive,news,S&P Global Inc Stock (SPGI) Moved Up by 3.04% on Apr 13: Drivers Behind the Movement
+AAPL,2026-04-13,0.4175872653722763,positive,news,Biggest US airline adds support for iOS 26 boarding passes in Wallet
+AAPL,2026-04-13,-0.952908038161695,negative,news,TMDE Stock Soars 62% Premarket As Oil Prices Spike
+AAPL,2026-04-13,-0.06697586551308632,neutral,news,Alphabet Inc. Class A Trade Ideas — BSESOF:ABEA
+AAPL,2026-04-13,0.8480852283537388,positive,news,"iShares MSCI World ETF: A High-Wire Act of Earnings, Tariffs, and Index Overhaul"
+AAPL,2026-04-13,0.4009925425052643,positive,news,Can Strong iPhone and Mac Portfolio Help Apple Stock Recover in FY26?
+AAPL,2026-04-13,0.7193221338093281,positive,news,"Wearable ECG Monitors Industry to More Than Double During 2026-2030, Exceeding $13.6 Billion Total Revenue - Rising Demand for AI-Driven Diagnostics and Home-Based Cardiac Monitoring"
+AAPL,2026-04-13,0.9140568012371659,positive,news,How Jabil uses AI and robotics to bolster its decarbonization agenda
 AAPL,2026-04-13,-0.9603049578145146,negative,news,Alphabet Stock Dips in Pre-Market as AI Spending and Antitrust Pressures Weigh on GOOG
 AAPL,2026-04-13,0.925336929038167,positive,news,Corning Stock Is Up 311% Over the Past Year. Is It a Buy in 2026?
+AAPL,2026-04-13,0.8823599312454462,positive,news,Taiwan Strait Tensions Push Countries to Diversify Semiconductor Supply Chains
+AAPL,2026-04-13,0.024093162268400192,neutral,news,GAB_r|Gabelli Equity Trust Rights Exp 14 April 2026 When Issued|Price:0.055|Chg%:0.00
+AAPL,2026-04-13,-0.8553395159542561,negative,news,QUCY|Mainz Biomed N V Ord Shs|Price:0.443|Chg%:-0.03
+AAPL,2026-04-13,-0.3209206759929657,neutral,news,ACAA|Averin Capital Acquisition Unit|Price:10.050|
+AAPL,2026-04-13,0.9185964316129684,positive,news,"Xena Financial Planning LLC Buys Shares of 36,284 Apple Inc. $AAPL"
 AAPL,2026-04-13,0.888715535402298,positive,news,Apple Inc. $AAPL Holdings Boosted by Westmount Partners LLC
 AAPL,2026-04-13,0.8719606585800648,positive,news,"Applied Materials to construct new buildings for manufacturing, logistics operations in expansion"
 AAPL,2026-04-13,0.25723642855882645,neutral,news,The Fortress and the Future: A Comprehensive Research Feature on JPMorgan Chase & Co. (JPM)
+AAPL,2026-04-13,-0.39770981669425964,negative,news,"iShares MSCI World ETF Navigates Earnings, Geopolitics, and Structural Shifts"
+AAPL,2026-04-13,-0.7647038698196411,negative,news,iShares MSCI World ETF: A High-Stakes Balancing Act
+AAPL,2026-04-13,0.864156499505043,positive,news,"iShares MSCI World ETF: A High-Wire Act of Earnings, Tariffs, and Index Overhaul"
 AAPL,2026-04-13,0.8894591806456447,positive,news,Qualcomm expands Snap and Bosch partnerships
 AAPL,2026-04-13,0.9199462030082941,positive,news,My Personal CFO LLC Increases Position in Apple Inc. $AAPL
+AAPL,2026-04-13,-0.9174058213829994,negative,news,Apple Inc. $AAPL is Rockland Trust Co.'s 5th Largest Position
 AAPL,2026-04-13,0.5808738591149449,positive,news,"Apple testing four designs, mulls oval camera lenses for its AI glasses - report"
+AAPL,2026-04-13,0.4877538410946727,positive,news,"Shrier Wealth Management LLC Purchases Shares of 13,738 Apple Inc. $AAPL"
+AAPL,2026-04-13,0.9099141722545028,positive,news,"Nisa Investment Advisors LLC Buys 178,391 Shares of Apple Inc. $AAPL"
+AAPL,2026-04-13,0.5691935298964381,positive,news,AI: Apple readies range of AI Smart Glasses. RTZ #1055
 AAPL,2026-04-13,0.8704749159514904,positive,news,iShares MSCI World ETF: SpaceX-Börsengang!
-AAPL,2026-04-12,-0.9355354197323322,negative,news,Applied Materials Sees Stake Decrease from HF Advisory Group
-AAPL,2026-04-12,0.6765905376523733,positive,news,The 5 Best Perks That Come With The Apple Card
-AAPL,2026-04-12,0.8836165843531489,positive,news,Warren Buffett’s bold American Express bet pays off
-AAPL,2026-04-12,0.49352454766631126,positive,news,"AI Cyber Risks Trigger White House Talks with Microsoft, Alphabet, and Major Banks"
-AAPL,2026-04-12,-0.8372539095580578,negative,news,"Robeco Institutional Asset Management B.V. Has $226.60 Million Stake in VeriSign, Inc. $VRSN"
-AAPL,2026-04-12,0.8886711020022631,positive,news,Better Warren Buffett Stock: American Express vs. Visa
-AAPL,2026-04-12,-0.9188946885988116,negative,news,iShares MSCI World ETF Braces for a Triple Threat of Change
-AAPL,2026-04-12,-0.9453593930229545,negative,news,Carnegie Investment Counsel Has $6.99 Million Position in Taiwan Semiconductor Manufacturing Company Ltd. $TSM
-AAPL,2026-04-12,-0.9313804395496845,negative,news,"Birch Financial Group LLC Sells 2,391 Shares of Apple Inc. $AAPL"
-AAPL,2026-04-12,0.004476344212889671,neutral,news,"Fidelity Yield Enhanced Equity ETF ETF Price, Holdings, & News (BATS:FYEE)"
-AAPL,2026-04-12,0.014058751985430717,neutral,news,"Investar Holding Corp Stock Live Price, Chart, Analysis, News & Forecast – Buy, Sell & Trade US Equities Today"
-AAPL,2026-04-11,0.03974846005439758,positive,news,Tech Valuations Back to Pre-AI Boom Levels
-AAPL,2026-04-11,0.7897102860733867,positive,news,Best Buy Co. Inc. stock (US0865161014): Is its consumer electronics moat strong enough to unlock new upside?
-AAPL,2026-04-11,0.14887088257819414,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
-AAPL,2026-04-11,0.9202229455113411,positive,news,TUG ETF Volume Surges as Nvidia Options Bear Bites
-AAPL,2026-04-11,-0.6111476682126522,negative,news,"Micron Technology, Inc. Trade Ideas — BSESOF:MTE"
-AAPL,2026-04-11,-0.9119103625416756,negative,news,iShares MSCI World ETF Braces for a Dual Shock
-AAPL,2026-04-11,-0.9219284579157829,negative,news,"Towson Apple store closure “perplexes” leader, shoppers split"
-AAPL,2026-04-11,0.932247607037425,positive,news,Inflation ETF Posts Gains as March CPI Jumps to 3.3%
-AAPL,2026-04-11,0.9380696304142475,positive,news,Westend Capital Management LLC Increases Position in Apple Inc. $AAPL
-AAPL,2026-04-11,0.9376798961311579,positive,news,Garmin Ltd. Experiences Revision in Its Stock Evaluation Amid Strong Financial Performance
-AAPL,2026-04-11,0.21227332949638367,positive,news,Supreme Court Ruling Bolsters Xiao-I’s Legal Battle Against Apple
-AAPL,2026-04-11,-0.008720723912119865,neutral,news,Applied Finance Valuation Large Cap ETF (VSLU) ETF Holders - Institutional Ownership
-AAPL,2026-04-11,-0.9556950498372316,negative,news,Apple Inc. $AAPL Shares Sold by Orrstown Financial Services Inc.
-AAPL,2026-04-11,0.8988176975399256,positive,news,Snap partners with Qualcomm to power upcoming AI glasses release
-AAPL,2026-04-11,0.9256965294480324,positive,news,Apple MacBook Neo opens the door to $32bn TAM: BofA
-AAPL,2026-04-11,-0.9246143773198128,negative,news,Brookstone Capital Management Reduces Stock Holdings in Apple Inc. $AAPL
-AAPL,2026-04-11,0.01190563291311264,neutral,news,SCHX ETF | Schwab U.S. Large-Cap ETF
-AAPL,2026-04-11,0.7508814632892609,positive,news,Assessing Cellebrite DI (CLBT) Valuation After Its Spring 2026 Digital Forensics Release
-AAPL,2026-04-11,0.3126502921804786,neutral,news,"Could Investing $10,000 in SCHB Make You a Millionaire?"
-AAPL,2026-04-11,0.4049522094428539,neutral,news,"Could Investing $10,000 in SCHB Make You a Millionaire?"
-AAPL,2026-04-11,-0.9286585822701454,negative,news,iShares MSCI World ETF: A Fee Fight and a Forced Reshuffle
-AAPL,2026-04-11,-3.906339406967163e-05,neutral,news,"Roundhill AAPL WeeklyPay ETF To Go Ex-Dividend On April 13th, 2026 With 0.24642 USD Dividend Per Share"
-AAPL,2026-04-11,-0.9647238249890506,negative,news,News | Apple closes three stores at malls it claims are ‘declining’
-AAPL,2026-04-10,0.7840331010520458,positive,news,Qualcomm just gave us a reason to take Snap's AR smart glasses more seriously
-AAPL,2026-04-10,0.021180374547839165,neutral,news,Roundhill AAPL WeeklyPay ETF announces weekly distribution of $0.2464
-AAPL,2026-04-10,-0.9596602004021406,negative,news,Apple is closing stores in three states as it begins to pull back on mall locations
-AAPL,2026-04-10,-0.8838690258562565,negative,news,Boston Scientific Corporation (BSX) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit
-AAPL,2026-04-10,0.9342131391167641,positive,news,Intel Stock Gains 50% in 8 Days. Why the Company Has a ‘Renewed Lease on Life.’
-AAPL,2026-04-10,-0.9587536361068487,negative,news,Apple Makes Rare Decision to Shut Down 3 Stores. It Points to a Growing Problem
-AAPL,2026-04-10,0.9235605308786035,positive,news,HP Inc. stock (US40434L1052): Is PC market recovery strong enough to drive sustainable gains?
-AMD,2026-04-13,0.6155957635492086,positive,news,"Supermicro Introduces Compact, Energy-Efficient Systems to Accelerate Adoption of Intelligent Edge AI"
-AMD,2026-04-13,0.704989050514996,positive,news,"Supermicro Introduces Compact, Energy-Efficient Systems to Accelerate Adoption of Intelligent Edge AI"
-AMD,2026-04-13,0.4174652248620987,neutral,news,A 2.5L server and two more: Supermicro pushes AI to stores and clinics
-AMD,2026-04-13,0.9140321295708418,positive,news,The Great Silicon Resurgence: An In-Depth Research Report on Intel Corporation (INTC)
-AMD,2026-04-13,0.9344093948602676,positive,news,"Robeco Institutional Asset Management B.V. Purchases 82,295 Shares of Comfort Systems USA, Inc. $FIX"
-AMD,2026-04-13,0.8922258950769901,positive,news,"Zacks Industry Outlook Highlights Micron Technology, Advanced Micro Devices, Hewlett Packard and Agilysys"
-AMD,2026-04-13,0.3470567539334297,neutral,news,"Advanced Micro Devices, Inc. stock (US0079031078): Is AI demand acceleration now the real test for sustained growth?"
-AMD,2026-04-13,0.9274292290210724,positive,news,AMD.SW Stock Surges 490% in Pre-Market: High Volume Mover Alert
-AMD,2026-04-13,0.8337070355191827,positive,news,POSCO : DX Accelerates Manufacturing AI Innovation with Domestic NPU Instead of GPU
-AMD,2026-04-12,0.8269418105483055,positive,news,Evaluating Cirrus Logic (CRUS) After A Strong Share Price Run And Mixed Valuation Signals
-AMD,2026-04-12,0.5617358833551407,positive,news,Here’s What The Street Thinks About Advanced Micro Devices (AMD)
-AMD,2026-04-12,0.0010922010987997055,neutral,news,AMYY Options Volatility — NASDAQ:AMYY
-AMD,2026-04-12,0.7971488684415817,positive,news,Celestica Stock (CLS) Opinions on Technical Breakout and AI Momentum
-AMD,2026-04-12,0.8907488519325852,positive,news,"Advanced Micro Devices, Inc. stock (US0079031078): Is AI dominance strong enough to unlock new upsid"
-AMD,2026-04-12,0.00272369384765625,neutral,news,AMDG Options Volatility — NASDAQ:AMDG
-AMD,2026-04-12,0.9273322355002165,positive,news,"Applied Materials, Inc. stock (US0382221051): Is semiconductor equipment demand strong enough to unlock new upside?"
-AMD,2026-04-12,0.899428553879261,positive,news,Plug Power (PLUG) Surges 25% After Earnings Beat — Can the Momentum Continue?
-AMD,2026-04-12,0.006289934739470482,neutral,news,AMDG Options Chain — NASDAQ:AMDG
-AMD,2026-04-12,0.07538966834545135,neutral,news,"Micron Technology, Inc. Trade Ideas — TURQUOISE:MUN"
-AMD,2026-04-12,0.1862228810787201,positive,news,"Comfort Systems USA, Inc. $FIX Shares Sold by Beacon Harbor Wealth Advisors Inc."
-AMD,2026-04-12,0.09040920436382294,neutral,news,"Micron Technology, Inc. Trade Ideas — BSESOF:MTE"
-AMD,2026-04-12,-0.0034969598054885864,neutral,news,"ALBT SEC Filings - Avalon Globocare Corp 10-K, 10-Q, 8-K Forms"
-AMD,2026-04-12,0.567125647328794,positive,news,"Cathie Wood’s ARK buys Palantir stock, sells AMD shares"
-AMD,2026-04-11,0.9292028658092022,positive,news,Bitcoin News: Morgan Stanley Just Launched the Cheapest Bitcoin ETF on the Market
-AMD,2026-04-11,0.9370302185416222,positive,news,What's Going On With Advanced Micro Devices Stock Friday?
-AMD,2026-04-11,-0.012150172144174576,neutral,news,"Advanced Micro Devices, Inc. Shs Cert Deposito Arg Repr 0.1 Shs Trade Ideas — BCBA:AMD"
-AMD,2026-04-11,0.9285794831812382,positive,news,"Ritholtz Wealth Management Acquires 1,146 Shares of ASML Holding N.V. $ASML"
-AMD,2026-04-11,0.8612745590507984,positive,news,Wall Street Analysts Are Bullish on Top Technology Picks
-AMD,2026-04-11,0.9263813905417919,positive,news,8-Day Rally Sends Advanced Micro Devices Stock Up 25%
-AMD,2026-04-11,0.5349861374124885,positive,news,Riot Board Shift Gives Shareholders More Say On AI Pivot Risks
-AMD,2026-04-11,-0.003911301493644714,neutral,news,"ON Stock Price, Quote & Chart | ON SEMICONDUCTOR (NASDAQ:ON)"
-AMD,2026-04-10,-0.42000383138656616,negative,news,Advanced Micro Devices Inc (AMD) Stock Up 3.5% but GF Value Says Overvalued -- GF Score: 93/100
-AMD,2026-04-10,-0.08147014863789082,neutral,news,What's going on with Advanced Micro Devices stock Friday?
-AMD,2026-04-10,0.899516673758626,positive,news,A Look At Texas Instruments (TXN) Valuation After A High Profile Analyst Upgrade To Buy
-AMD,2026-04-10,0.9378157882019877,positive,news,This Semiconductor Stock Is All You Need To Be Buying
-AMD,2026-04-10,0.9366492684930563,positive,news,Linde plc stock (IE000S9YS4E6): Is its industrial gases dominance strong enough for U.S. investor upside?
-AMD,2026-04-10,0.9350237399339676,positive,news,"AMD Gains 4%, Broadcom Climbs 5%: The AI Chip Rally Has Two Very Different Winners Today"
-AMD,2026-04-10,0.9349283836781979,positive,news,Advanced Micro Devices (AMD) Stock Surges 6% Following TSMC's Impressive Q1 Revenue Report
-AMD,2026-04-10,0.9261521603912115,positive,news,Advanced Micro Devices (AMD) Stock Rises 6% After TSMC Reports 35% Sales Jump
-AMD,2026-04-10,0.8853821447119117,positive,news,Bank of America Says Marvell and AMD Are 2 Top ‘AI Compute’ Stocks to Buy Now
-AMD,2026-04-10,0.9358784016221762,positive,news,Montes Archimedes Acquisition (ROIV) Raised to Buy: Key Information You Need
-AMD,2026-04-10,0.8012636676430702,positive,news,ASE Technology (NYSE:ASX) Reaches New 1-Year High - Here's What Happened
-AMD,2026-04-10,0.9322971068322659,positive,news,AMD Stock Is Soaring This Morning. Here's Why Investors Are Excited
-AMD,2026-04-10,-0.7678413018584251,negative,news,"Is AMD Stock's 31.42X P/E Still Worth it? Buy, Sell or Hold?"
-AMD,2026-04-10,-0.39097803831100464,negative,news,"Is AMD Stock's 31.42X P/E Still Worth it? Buy, Sell or Hold?"
-AMD,2026-04-10,-0.966601051390171,negative,news,Intuit Inc Stock (INTU) Moved Down by 3.42% on Apr 10: Drivers Behind the Movement
-AMD,2026-04-10,0.8407799005508423,positive,news,"Is AMD Stock's 31.42X P/E Still Worth it? Buy, Sell or Hold?"
-AMD,2026-04-10,0.7397819682955742,positive,news,"Is AMD Stock's 31.42X P/E Still Worth it? Buy, Sell or Hold?"
-AMD,2026-04-10,0.8556884303689003,positive,news,Taiwan Semiconductor Stock Soars 20% YTD: Time to Hold or Book Profit?
-WMT,2026-04-13,0.6844493271782994,positive,news,The Infrastructure Giant: A Comprehensive 2026 Research Feature on Amazon.com (AMZN)
-WMT,2026-04-13,0.939215955324471,positive,news,Costco's International Sales Surge Signals Shift in Growth Mix
-WMT,2026-04-13,0.9274569619446993,positive,news,"Stanley Laman Group Ltd. Purchases 3,655 Shares of Caterpillar Inc. $CAT"
-WMT,2026-04-13,0.890942114405334,positive,news,Zacks Industry Outlook Highlights Walmart and Kroger
-WMT,2026-04-13,-0.9078197330236435,negative,news,Walmart Inc. $WMT Shares Sold by Factory Mutual Insurance Co.
-WMT,2026-04-13,-0.4341993033885956,negative,news,Diversify Advisory Services LLC Reduces Stake in Walmart Inc. $WMT
-WMT,2026-04-13,0.9328718036413193,positive,news,Carnegie Investment Counsel Grows Holdings in Walmart Inc. $WMT
-WMT,2026-04-12,0.9360106671229005,positive,news,Alcon Inc stock (CH0432492467): Is vision care dominance strong enough to unlock new upside?
-WMT,2026-04-12,0.9276904938742518,positive,news,Walmart Inc. stock (US9311421039): Is e-commerce acceleration strong enough to unlock new upside?
-WMT,2026-04-12,0.9135973146185279,positive,news,Walmart Inc. stock (US9311421039): Is e-commerce acceleration strong enough to unlock new upside?
-WMT,2026-04-12,-0.19528589397668839,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
-WMT,2026-04-12,0.9338180013000965,positive,news,Spirepoint Private Client LLC Raises Holdings in Walmart Inc. $WMT
-WMT,2026-04-12,0.9117362489923835,positive,news,Triad Wealth Partners LLC Has $4.50 Million Stock Position in Walmart Inc. $WMT
-WMT,2026-04-12,0.28207405004650354,neutral,news,"Coca-Cola offers state-specific collectible can designs, including Kansas"
-WMT,2026-04-12,-0.890824269503355,negative,news,Brookwood Investment Group LLC Cuts Stake in Walmart Inc. $WMT
-WMT,2026-04-12,0.0080504659563303,neutral,news,"UPBD.O Stock News Today | Earnings, Events & Price Alerts"
-WMT,2026-04-12,-0.08121884800493717,neutral,news,"GODN Stock News Today | Earnings, Events & Price Alerts"
-WMT,2026-04-12,0.22331449389457703,positive,news,Is WWW’s Ms. Rachel Footwear Tie-Up a Signal About Its Long-Term Brand Momentum Strategy?
-WMT,2026-04-12,-0.7935308143496513,negative,news,The ‘Snackflation’ Breaking Point: Why Your $7 Bag of Chips Is About to Get Cheaper
-WMT,2026-04-11,-0.9625379899516702,negative,news,Dollar Tree Inc. stock underperforms Tuesday when compared to competitors
-WMT,2026-04-11,0.7724987780675292,positive,news,Ulta Beauty Inc. stock (US90384S3031): Is its beauty retail dominance strong enough to unlock new upside?
-WMT,2026-04-11,0.9066839418374002,positive,news,Ulta Beauty Extends Reach With Space NK Deal And Messi Fragrances
-WMT,2026-04-11,-0.8948938678950071,negative,news,The Reason You Don't See McDonald's Inside Walmart Stores Anymore
-WMT,2026-04-11,-0.012423710897564888,neutral,news,American Tower Corporation Trade Ideas — MIL:1AMT
-WMT,2026-04-11,-0.22289004921913147,negative,news,These Florida grocery stores are cheaper than Walmart. Is Publix?
-WMT,2026-04-11,-0.9460345599800348,negative,news,OFI Invest Asset Management Lowers Holdings in Walmart Inc. $WMT
-WMT,2026-04-11,0.71091572009027,positive,news,Institutional Case for Sotera Health: Quality-Adjusted Valuation Reflects a 25% Projected Discount to Anticipated Cash Flow
-WMT,2026-04-11,0.9315103329718113,positive,news,Walmart Inc. $WMT Shares Acquired by Jackson Square Capital LLC
-WMT,2026-04-11,0.1386164091527462,neutral,news,Your next can of Coke might have Mount Rushmore on it
-WMT,2026-04-11,0.9216506704688072,positive,news,"Cliftonlarsonallen Wealth Advisors LLC Purchases 10,074 Shares of Walmart Inc. $WMT"
-WMT,2026-04-11,0.07329113595187664,neutral,news,Columbia Variable Portfolio - Balanced Fund's PepsiCo Inc(PEP) Holding History
-WMT,2026-04-11,-0.29542189836502075,negative,news,Addenda Capital Inc. Has $9.50 Million Holdings in Walmart Inc. $WMT
-WMT,2026-04-11,-0.01633254811167717,neutral,news,WMT Stock Chart | WALMART INC (NASDAQ:WMT)
-WMT,2026-04-11,0.3907162044197321,neutral,news,"La Tiara taco shells return: Gladstone, General Mills celebrate factory reopening"
-WMT,2026-04-11,0.8462273087352514,positive,news,Casey's General Stores Joins S&P 500 As Investor Base Evolves
-WMT,2026-04-10,-0.9660020377486944,negative,news,"H-1B visa demand falls: Walmart, Amazon, JPMorgan Chase cut hiring"
-WMT,2026-04-10,0.00577240064740181,neutral,news,WWW (Wolverine World Wide) EPS (Diluted) : $1.13 (TTM As of Dec. 2025)
-WMT,2026-04-10,0.46650894079357386,neutral,news,Walmart Inc stock (US9311421039): Is everyday low pricing still the unbeatable edge for U.S. investo
-WMT,2026-04-10,0.9169520437717438,positive,news,The Bull Case For Costco (COST) Could Change Following March’s Double-Digit Sales And E-Commerce Surge
-WMT,2026-04-10,0.12283681891858578,neutral,news,Walmart Inc. stock (US9311421039): Is its everyday low price strategy still the real test amid U.S. retail shifts?
-WMT,2026-04-10,0.9387227203696966,positive,news,Costco's Comparable Sales Stay Resilient Despite Calendar Headwind
-WMT,2026-04-10,0.8670164495706558,positive,news,Walmart vs. Costco: Which Store Actually Has Better Prices?
-WMT,2026-04-10,0.7296422244980931,positive,news,Kroger expands program to help shoppers save on groceries
-WMT,2026-04-10,0.8156744567677379,positive,news,Sealed Air Corp. stock (US81211K1007): Is its packaging resilience strong enough for U.S. investor portfolios now?
-WMT,2026-04-10,0.27943951543420553,neutral,news,Home Depot Ranks on NRF Top 50 Global Retailers List
-WMT,2026-04-10,0.9110955484211445,positive,news,CVS Health Corp. stock (US1266501006): Is its pharmacy-retail model strong enough to unlock new upsi
-WMT,2026-04-10,0.5527816768735647,positive,news,Clorox Co. stock (US1890541097): Is consumer staples stability strong enough for upside now?
-WMT,2026-04-10,0.8935701949521899,positive,news,Amazon.com Inc. stock (US0231351067): Is AWS growth strong enough to unlock new upside?
-WMT,2026-04-10,0.9059350080788136,positive,news,Costco Wholesale Corporation stock (US22160K1051): Is membership renewal strength now the real test
-WMT,2026-04-10,0.0032272785902023315,neutral,news,Investors heavily search Walmart Inc. (WMT): Here is what you need to know
-PNC,2026-04-13,0.7179987207055092,positive,news,Chemed secures $450 million revolving credit facility
-PNC,2026-04-13,0.8402782091870904,positive,news,Chemed locks in a $450M credit line with room to add $250M
-PNC,2026-04-13,0.82660977775231,positive,news,Chemed Corporation Announces a Five-Year $450 Million Amended and Restated Credit Agreement
-PNC,2026-04-13,-0.6640584766864777,negative,news,"Sumitomo Mitsui Trust Group Inc. Trims Stock Position in The PNC Financial Services Group, Inc $PNC"
-PNC,2026-04-13,0.12891198694705963,neutral,news,Ennis (EBF) Expected to Announce Quarterly Earnings on Monday
-PNC,2026-04-13,-0.010537361726164818,neutral,news,PNC Financial Gears Up For Q1 Print; Here Are The Recent Forecast Changes From Wall Street's Most Accurat
-PNC,2026-04-12,0.7439475581049919,positive,news,"The PNC Financial Services Group, Inc (NYSE:PNC) Announces $1.70 Quarterly Dividend"
-PNC,2026-04-12,0.9260420817881823,positive,news,PNC Financial Announces $1.70 Quarterly Dividend
-PNC,2026-04-12,-0.8894098866730928,negative,news,Cambiar Investors Reduces Stake in PNC Financial Services Group
-PNC,2026-04-12,-0.9410604145377874,negative,news,"Cambiar Investors LLC Sells 5,827 Shares of The PNC Financial Services Group, Inc $PNC"
-PNC,2026-04-12,0.9348464915528893,positive,news,Banco Bilbao Vizcaya Argentaria S.A. stock (ES0113211835): Is its U.S. expansion strong enough to un
-PNC,2026-04-11,-0.39115166664123535,negative,news,S&T Bancorp Receives Average 'Hold' Rating from Analysts
-PNC,2026-04-11,0.012701768428087234,neutral,news,Wall Street's insights into key metrics ahead of the PNC Financial Services Group (PNC) Q1 earnings
-PNC,2026-04-11,-0.8003226295113564,negative,news,"Massachusetts Financial Services Co. MA Sells 73,129 Shares of The PNC Financial Services Group, Inc $PNC"
-PNC,2026-04-11,-0.42279553413391113,negative,news,Riverview Bancorp Shares Cross 200-Day Average
-PNC,2026-04-11,-0.8249010257422924,negative,news,Buska Wealth Management LLC Lowers Stake in Invesco QQQ $QQQ
-PNC,2026-04-10,-0.0012247003614902496,neutral,news,Will Procter & Gamble (PG) beat quarterly earnings? Predi...
-PNC,2026-04-10,0.9355072611942887,positive,news,OFI Invest Asset Management Boosts PNC Financial Holdings
-PNC,2026-04-10,-0.055360227823257446,negative,news,"51,347 Shares in Rayonier Inc. $RYN Bought by Oak Thistle LLC"
-PNC,2026-04-10,0.9337993636727333,positive,news,"OFI Invest Asset Management Raises Stock Holdings in The PNC Financial Services Group, Inc $PNC"
-PNC,2026-04-10,0.9242137316614389,positive,news,BNC Wealth Management Boosts Stake in PNC Financial Services
-PNC,2026-04-10,0.9117758516222239,positive,news,What Bank OZK (OZK)'s 63rd Straight Dividend Increase Means For Shareholders
-PNC,2026-04-10,0.813045752234757,positive,news,"Tudor Investment Corp ET AL Buys Shares of 320,067 Pattern Group Inc. $PTRN"
-PNC,2026-04-10,0.5786854270845652,positive,news,Univest Financial Corp stock: What you should know before investing now
-PNC,2026-04-10,0.9309262745082378,positive,news,"113,099 Shares in Suzano S.A. Sponsored ADR $SUZ Purchased by Aberdeen Group plc"
-PNC,2026-04-09,0.7442788816988468,positive,news,PNC Bank Saves with LOGAN and SBCubs | Cubs
-PNC,2026-04-09,0.014879781752824783,neutral,news,"Net revenue of PNC Financial Services Group, Inc. (The) – NYSE:PNC"
-PNC,2026-04-09,0.8805516827851534,positive,news,BlueLinx (NYSE: BXC) proxy details 750K-share incentive plan boost
-PNC,2026-04-09,0.14852655120193958,neutral,news,Citizens hires PNC veteran to drive treasury growth in two regions
-PNC,2026-04-09,0.9310270640999079,positive,news,PNC Financial Services Group Inc. stock outperforms competitors on strong trading day
-PNC,2026-04-09,0.5270220693200827,positive,news,Regions Financial Corp stock: What investors should know now
-PNC,2026-04-09,0.037329720333218575,neutral,news,PNC Lead Arranger for $600 Million Credit Facility for Phoenix Service Partners
-PNC,2026-04-09,0.9263627594336867,positive,news,Texas gas-compression company secures up to $600M to expand
-PNC,2026-04-09,0.9089781455695629,positive,news,Pure Cycle (NASDAQ:PCYO) Share Price Passes Above Two Hundred Day Moving Average - Should You Sell?
-PNC,2026-04-09,0.8312560468912125,positive,news,"Mister Car Wash, Inc. (NYSE:MCW) Receives Consensus Recommendation of ""Hold"" from Analysts"
-PNC,2026-04-09,0.9305557273328304,positive,news,"BIP Wealth LLC Invests $1.24 Million in The PNC Financial Services Group, Inc $PNC"
-PNC,2026-04-09,-0.029324164614081383,neutral,news,"Net revenue after provisions of PNC Financial Services Group, Inc. (The) – NYSE:PNC"
-PNC,2026-04-09,0.03915516659617424,neutral,news,"The PNC Financial Services Group, Inc (PNC) earnings expected to grow: What to know ahead of next week's release"
-PNC,2026-04-09,0.8717708280310035,positive,news,KeyCorp Uses Financial Mobility Insights To Deepen Advisory Led Banking Relationships
-PNC,2026-04-09,0.013772903010249138,neutral,news,Marex Group plc Ordinary Shares (MRX) Stock Trends and Sentiment 2026 $MRX
-PNC,2026-04-08,0.9255571532994509,positive,news,Goldman Sachs Sees Opportunity in PNC After Recent Bank Selloff
-PNC,2026-04-08,0.8717327453196049,positive,news,PNC Surpasses Community Benefits Plan Commitment With $119 Billion in Community Investments
-PNC,2026-04-08,0.8930590711534023,positive,news,PNC Financial Services Group Inc. stock underperforms Wednesday when compared to competitors despite daily gains
-PNC,2026-04-08,0.9236801527440548,positive,news,F.N.B. Corp stock: What investors need to know in 2026
-PNC,2026-04-08,0.878296690993011,positive,news,"Jefferies Adjusts Price Target on PNC Financial Services to $255 From $250, Maintains Buy Rating"
-PNC,2026-04-08,0.8756280951201916,positive,news,PNC Surpasses Community Benefits Plan Commitment With $119 Billion in Community Investments
-PNC,2026-04-08,0.9289933796972036,positive,news,"The PNC Financial Services Group, Inc (PNC) Earnings Expected to Grow: What to Know Ahead of Next Week's Release"
-PNC,2026-04-08,0.41814884543418884,positive,news,Assessing PNC Financial Services Group (PNC) Valuation After Recent Share Price Moves
-PNC,2026-04-08,0.8302685879170895,positive,news,The PNC Financial Services Group (PNC) Expected to Announce Earnings on Wednesday
-PNC,2026-04-08,-0.06688126921653748,neutral,news,"DFNL Stock News Today | Earnings, Events & Price Alerts"
-CVS,2026-04-13,-0.9451712854206562,negative,news,Sumitomo Mitsui Trust Group Inc. Cuts Holdings in CVS Health Corporation $CVS
-CVS,2026-04-13,0.928704054094851,positive,news,Johnson & Johnson stock (US4781601046): Is its pharma pivot strong enough to drive U.S. investor ret
-CVS,2026-04-12,0.9193138377740979,positive,news,UnitedHealth Group Incorporated stock (US91324P1021): Is its integrated care model strong enough to unlock new upside?
-CVS,2026-04-12,0.4793232399970293,positive,news,CVS Health Corporation (CVS): Legal Clarity and Core Strengths Support the Bull Case
-CVS,2026-04-12,0.9259329065680504,positive,news,UnitedHealth Group Incorporated stock (US91324P1021): Is its integrated care model strong enough to unlock new upside?
-CVS,2026-04-12,0.9401238355785608,positive,news,Robeco Institutional Asset Management B.V. Raises Position in CVS Health Corporation $CVS
-CVS,2026-04-12,-0.9529827730730176,negative,news,Burney Co. Trims Stake in CVS Health
-CVS,2026-04-12,0.05210542120039463,neutral,news,Carnegie Investment Counsel Purchases New Shares in CVS Health Corporation $CVS
-CVS,2026-04-11,-0.894098561257124,negative,news,Trump Administration Walks Back Key Claims in New York Health Fraud Case: Report
-CVS,2026-04-11,0.9354607742279768,positive,news,CVS Health Tops Daily Volume Chart as Medicare Boost and Institutional Buying Surge Past $540 Million
-CVS,2026-04-11,-0.7046116143465042,negative,news,Coerente Capital Management Trims Stock Position in CVS Health Corporation $CVS
-CVS,2026-04-11,-0.7982428446412086,negative,news,CVS Health Corporation $CVS Shares Sold by Factory Mutual Insurance Co.
-CVS,2026-04-11,0.9256452731788158,positive,news,CVS Health Corp. Stock Hits Day High with Strong 6.74% Surge
-CVS,2026-04-11,0.9374752007424831,positive,news,CVS Health Tops Daily Volume Chart as Medicare Boost and Institutional Buying Surge Past $540 Million
-CVS,2026-04-10,0.7231273213401437,positive,news,CVS Health Corp. stock (US1266501006): Is its pharmacy-retail model strong enough to unlock new upside?
-CVS,2026-04-10,0.9309834763407707,positive,news,UnitedHealth Stock Edges Higher After Medicare Advantage Payment Update
-CVS,2026-04-10,-0.9493111604824662,negative,news,FOCUS-Patients scramble to find estrogen patches as shortage worsens after US FDA champions use
-CVS,2026-04-10,0.7854078691452742,positive,news,2 Recession Resistant Dividend Stocks to Buy Now While They're Still Cheap
-CVS,2026-04-10,0.3211810290813446,positive,news,Douglas Lane & Associates LLC Cuts Holdings in CVS Health Corporation $CVS
-CVS,2026-04-10,0.7847934365272522,positive,news,Flagship Capital Management Inc. Invests $2.16 Million in CVS Health Corporation $CVS
-CVS,2026-04-10,0.7983508985489607,positive,news,Jim Cramer Says “CVS Is Real”
-CVS,2026-04-09,0.6879051849246025,positive,news,Baxter Launches Pilot Program for Therapy Animals in Healthcare Settings
-CVS,2026-04-09,-0.9434327580966055,negative,news,"AVAH Stock Price, Quote & Chart | AVEANNA HEALTHCARE HOLDINGS (NASDAQ:AVAH)"
-CVS,2026-04-09,-0.5765468776226044,negative,news,"CVS Health, US Seek Tax-Refund Suit Stay Pending Deal Approval"
-CVS,2026-04-09,-0.6569536551833153,negative,news,"CVS Health, US Seek Tax-Refund Suit Stay Pending Deal Approval"
-CVS,2026-04-09,0.9191527152433991,positive,news,Sonoma Pharmaceuticals enters manufacturing agreement with Kenvue Brands By Investing.com
-CVS,2026-04-09,0.49706811644136906,positive,news,Aetna Better Health® of Virginia opens new community resource center in Roanoke
-CVS,2026-04-08,0.911620763130486,positive,news,Providers say paperwork is health care's top problem in Aetna survey
-CVS,2026-04-08,0.4392775595188141,positive,news,Insulet (NasdaqGS:PODD) Stock Price
-CVS,2026-04-08,-0.31937867403030396,negative,news,CVS Health Corporation $CVS Shares Sold by Yousif Capital Management LLC
-CVS,2026-04-08,0.8964131744578481,positive,news,Mail Order Pharmacy Market to Get an Explosive Growth | CVS Health
-CVS,2026-04-08,0.8862884985283017,positive,news,Aetna Provider Survey Reveals Optimism and Opportunities to Simplify Health Care
-CVS,2026-04-08,0.9222767483443022,positive,news,Aetna Provider Survey Reveals Optimism and Opportunities to Simplify Health Care
-CVS,2026-04-08,0.07298839092254639,neutral,news,"Goldman Sachs Adjusts Price Target on Colgate-Palmolive to $98 From $100, Maintains Buy Rating"
-CVS,2026-04-08,0.931612391024828,positive,news,Elevance Health Stock Soars After 2.48% Medicare Rate Increase
-CVS,2026-04-08,0.9318948946893215,positive,news,CVS Stock Rises After CMS Medicare Advantage Update
-CVS,2026-04-07,0.9311255346983671,positive,news,"Humana, CVS Climb After Medicare Finalizes 2.48% Rate Hike (1)"
-CVS,2026-04-07,0.4194119991734624,neutral,news,"UNIFI®, Makers of REPREVE®, Celebrates Recycled and Circular Innovation with Ninth Annual REPREVE® Champions of Sustainability Awards"
-CVS,2026-04-07,0.9165543541312218,positive,news,"UnitedHealth Rockets 11%, Humana Climbs 9% as Medicare Advantage Rate Decision Crushes Regulatory Fears"
-CVS,2026-04-07,0.9331278782337904,positive,news,Humana Stock Pops 11% As CMS Finalizes 2027 Medicare Advantage Rates
-CVS,2026-04-07,0.9280215743929148,positive,news,"Alignment Healthcare, Centene, CVS Health, Elevance Health, and Clover Health Stocks Trade Up, What You Need To Know"
-CVS,2026-04-07,0.9239017385989428,positive,news,"Alignment Healthcare, Centene, CVS Health, Elevance Health, and Clover Health Stocks Trade Up, What You Need To Know"
-CVS,2026-04-07,0.9281488843262196,positive,news,Alignment Healthcare Stock Rockets 18% as Medicare Advantage Growth Momentum Ignites Investor Rally
-CVS,2026-04-07,0.9309538751840591,positive,news,CVS Health Stock Surges 7% on Positive Medicare Outlook as Turnaround Gains Momentum
-CVS,2026-04-07,0.9303349871188402,positive,news,Alignment Healthcare Jumps More Than 16% During the Day – What’s Driving This Rally?
-CVS,2026-04-07,0.9312897399067879,positive,news,United Health Group – The Medicaid decision supports the price
-CVS,2026-04-07,0.9359927661716938,positive,news,"UnitedHealth, Humana, CVS Jump As CMS Boosts Medicare Payments"
-COP,2026-04-13,0.9055060837417841,positive,news,The Permian Juggernaut: A Comprehensive Research Feature on Diamondback Energy (FANG)
-COP,2026-04-13,0.8953418545424938,positive,news,"Bernstein Adjusts Price Target on ConocoPhillips to $121 From $98, Maintains Outperform Rating"
-COP,2026-04-13,-0.9530015829950571,negative,news,Morgan Stanley maintains oil price forecasts and predicts slow recovery in supply
-COP,2026-04-13,0.9178702188655734,positive,news,UK oil giants BP tap into Africa’s next major oil hotspot with new exploration licenses
-COP,2026-04-13,-0.9145369455218315,negative,news,Sumitomo Mitsui Trust Group Inc. Lowers Stake in ConocoPhillips $COP
-COP,2026-04-13,0.8760155914351344,positive,news,The Permian Juggernaut: A Comprehensive Research Feature on Diamondback Energy (FANG)
-COP,2026-04-13,0.8054090314544737,positive,news,Chevron confirms oil discovery at Bandit prospect in Gulf of America
-COP,2026-04-12,0.9238088093698025,positive,news,"Oil Surges 7% on Hormuz Blockade, U.S. Gulf Tanker Rush — 3 Stocks to Buy Now"
-COP,2026-04-12,-0.9459082596004009,negative,news,Talos Energy (TALO) Is Down 7.2% After Iran Ceasefire Pressures Oil Prices Has The Bull Case Changed?
-COP,2026-04-11,-0.9289970528334379,negative,news,True North Advisors Cuts Stake in ConocoPhillips
-COP,2026-04-11,-0.9577604262158275,negative,news,Garrison Bradford & Associates Inc. Trims Quanta Services Stake
-COP,2026-04-11,-0.9555619768798351,negative,news,RFG Bristol Wealth Advisors Reduces Stake in Waste Management
-COP,2026-04-11,0.9369455222040415,positive,news,Wells Fargo Raises Magnolia Oil & Gas Price Target to $32
-COP,2026-04-11,0.5190317593514919,positive,news,A self-proclaimed “Permian nerd” looks ahead at ConocoPhillips
-COP,2026-04-11,-0.9628532715141773,negative,news,Cantor Fitzgerald Trims Holdings in ConocoPhillips
-COP,2026-04-11,-0.9411457236856222,negative,news,"True North Advisors LLC Sells 12,061 Shares of ConocoPhillips $COP"
-COP,2026-04-11,0.9349690424278378,positive,news,Coerente Capital Management Boosts EOG Resources Stake
-COP,2026-04-11,-0.915290255099535,negative,news,Massachusetts Financial Services Co. MA Trims Stock Position in ConocoPhillips $COP
-COP,2026-04-11,-0.9601069297641516,negative,news,Cantor Fitzgerald Investment Advisors L.P. Trims Holdings in ConocoPhillips $COP
-COP,2026-04-11,0.24932381603866816,neutral,news,ConocoPhillips Weighs Venezuela Return And Portfolio Risks For Investors
-COP,2026-04-11,-0.7204073965549469,negative,news,"ConocoPhillips (NYSE:COP) Receives Consensus Recommendation of ""Moderate Buy"" from Brokerages"
-COP,2026-04-11,-0.9625998120754957,negative,news,Kosmos Energy Stock Plummets After Downgrade and Public Offering - News and Statistics
-COP,2026-04-10,0.8501796312630177,positive,news,ConocoPhillips Evaluates Venezuela Drilling Return in 2026 - News and Statistics
-COP,2026-04-10,-0.9382134322077036,negative,news,Texas Pacific Land Shares Plummet Amid Board Member’s Passing
-COP,2026-04-10,0.9397257659584284,positive,news,Is Magnolia Oil & Gas Corp (MGY) Stock Performing Better Than Other Oils-Energy Companies This Year?
-COP,2026-04-10,0.6582308690994978,positive,news,ConocoPhillips Assessing Oil Opportunities in Venezuela
-COP,2026-04-10,0.8432359844446182,positive,news,"Is It a Good Time to Invest in Devon Energy Corporation (DVN), One of the Most Popular Stocks?"
-COP,2026-04-10,0.9014383275061846,positive,news,Is ConocoPhillips Positioned to Capitalize on Rising LNG Demand?
-COP,2026-04-10,0.8982139620929956,positive,news,BMO Capital Remains a Buy on Phillips 66 (PSX)
-COP,2026-04-10,0.717350859194994,positive,news,BMO Capital Remains a Buy on Phillips 66 (PSX)
-COP,2026-04-10,0.9351897053420544,positive,news,Is ConocoPhillips Positioned to Capitalize on Rising LNG Demand?
-COP,2026-04-10,-0.9111007042229176,negative,news,Barclays Sticks to Their Buy Rating for Schlumberger (SLB)
-COP,2026-04-10,0.12343896925449371,neutral,news,ConocoPhillips visits Venezuela to evaluate oil opportunities
-COP,2026-04-10,-0.4253918081521988,negative,news,Ceasefire Reframes ConocoPhillips Qatar LNG Disruption And Valuation Upside
-COP,2026-04-10,-0.04536145552992821,neutral,news,ConocoPhillips sends team to Venezuela to evaluate oil prospects
-COP,2026-04-10,0.9365797154605389,positive,news,Oil Staying Above $90: A Growth Catalyst for EOG Resources?
-COP,2026-04-10,-0.8517025485634804,negative,news,A Look At Woodside Energy Group’s Valuation After Oil Price Pullback On Easing Supply Fears
-COP,2026-04-09,0.9216808155179024,positive,news,EOG Resources raises Q1 2026 tax expense outlook on higher oil prices
-COP,2026-04-09,0.06281879357993603,neutral,news,ConocoPhillips sends team to Venezuela to evaluate oil prospects - Bloomberg news
-COP,2026-04-09,-0.06004556268453598,neutral,news,ConocoPhillips Sends Team To Venezuela To Evaluate Oil Prospects - Bloomberg News
-COP,2026-04-09,0.564100724644959,positive,news,ConocoPhillips Sends Team to Venezuela to Evaluate Oil Prospects
-COP,2026-04-09,-0.24100838601589203,neutral,news,Iran war fuels rush to energy ETFs. Climate investors see no reason to chase returns.
-COP,2026-04-09,0.5612514270469546,positive,news,ConocoPhillips goes to Venezuela to evaluate oil opportunities (COP:NYSE)
-COP,2026-04-09,0.8993877423927188,positive,news,Entergy Texas breaks ground on Legend and Lone Star power stations
-COP,2026-04-09,-0.8765310384333134,negative,news,Is It Too Late To Consider Canadian Natural Resources (TSX:CNQ) After Its 71% One-Year Rally?
-COP,2026-04-09,-0.7948997914791107,negative,news,"Oil Prices Could Surge Even if Hormuz Reopens, Warns Morgan Stanley"
-COP,2026-04-09,0.6393079534173012,positive,news,"MVO Stock Price, Quote & Chart | MV OIL TRUST (NYSE:MVO)"
-COP,2026-04-09,0.9303086576983333,positive,news,Is ConocoPhillips Positioned to Benefit From Elevated Oil Prices?
-COP,2026-04-09,0.9446568256244063,positive,news,Is ConocoPhillips Positioned to Benefit From Elevated Oil Prices?
-COP,2026-04-09,0.9241856671869755,positive,news,Oil Staying Above $90: A Growth Catalyst for EOG Resources?
-CHTR,2026-04-11,0.8253727983683348,positive,news,8-Day Rally Sends Canadian Imperial Bank of Commerce Stock Up 12%
-CHTR,2026-04-11,0.9329493809491396,positive,news,Liberty Broadband Stock Rises Above 50-Day Moving Average
-CHTR,2026-04-11,-0.9659214913845062,negative,news,"JPMorgan Chase & Co. Sells 99,910 Shares of Liberty Broadband Corporation $LBRDA"
-CHTR,2026-04-11,0.9309492502361536,positive,news,"Toronto-Dominion Bank Stock Surges 11%, With A 9-Day Winning Spree"
-CHTR,2026-04-11,-0.9443483185023069,negative,news,Liberty Broadband (NASDAQ:LBRDK) Stock Price Passes Above Fifty Day Moving Average - Here's Why
-CHTR,2026-04-11,0.903326041996479,positive,news,Palo Alto Networks Stock at Support Zone – Bargain or Trap?
-CHTR,2026-04-11,0.8231134628877044,positive,news,6-Day Rally Sends Astera Labs Stock Up 40%
-CHTR,2026-04-11,-0.43927209079265594,negative,news,"Microchip Technology Stock Surges 19%, With A 8-Day Winning Spree"
-CHTR,2026-04-11,0.8279171707108617,positive,news,8-Day Rally Sends Canadian Imperial Bank of Commerce Stock Up 12%
-CHTR,2026-04-10,0.8680692128837109,positive,news,7-Day Rally Sends Microchip Technology Stock Up 19%
-CHTR,2026-04-10,0.9267450366169214,positive,news,Fox Corp. (Class B) stock (US35137L2043): Is its media content moat strong enough for streaming wars
-CHTR,2026-04-10,0.9146186038851738,positive,news,Akamai Technologies Inc. stock (US00971T1016): Is its edge computing shift strong enough to unlock n
-CHTR,2026-04-10,0.9214516943320632,positive,news,Millicom taps TAM-1 to boost connectivity
-CHTR,2026-04-10,0.9154681973159313,positive,news,Aehr Test Systems (+9.0%): Record Bookings Overshadow Q3 Earnings Miss
-CHTR,2026-04-10,-0.8922443855553865,negative,news,Federal judge extends restraining order on $6.2B merger of local TV giants Nexstar and Tegna
-CHTR,2026-04-10,0.5811913758516312,positive,news,"TFI International Stock Surges 19%, With A 8-Day Winning Spree"
-CHTR,2026-04-10,0.2441098988056183,positive,news,"TFI International Stock Surges 19%, With A 8-Day Winning Spree"
-CHTR,2026-04-10,0.6778397113084793,positive,news,7-Day Rally Sends Microchip Technology Stock Up 19%
-CHTR,2026-04-09,0.005359577015042305,neutral,news,SVC Stock Fund Price and Chart — NASDAQ:SVC
-CHTR,2026-04-09,0.08542759530246258,neutral,news,Liberty Broadband Corp stock: What you need to know for smart investing now
-CHTR,2026-04-09,0.45104134269058704,neutral,news,Liberty Broadband Corp stock: What you need to know for smart investing now
-CHTR,2026-04-09,-0.9659341499209404,negative,news,Liberty Broadband (NASDAQ:LBRDA) Stock Price Crosses Above 50-Day Moving Average - Time to Sell?
-CHTR,2026-04-08,-0.03295635059475899,neutral,news,"LBRDB Stock News Today | Earnings, Events & Price Alerts"
-CHTR,2026-04-08,0.9193229824304581,positive,news,Lenoir City Public Utility Makes Speedy Progress On Tennessee Fiber Build
-CHTR,2026-04-08,-0.9543002350255847,negative,news,"Nexstar asks states, including Colorado, for $150M bond to cover damages from order slowing merger with Tegna"
-CHTR,2026-04-08,0.9238806879147887,positive,news,Did SG Americas’ Stake Surge Just Shift Liberty Broadband’s (LBRD.K) Charter-Linked Investment Narrative?
-CHTR,2026-04-07,0.924832814373076,positive,news,T-Mobile US Bundles Mint Mobile And Expands 5G As Shares Lag Targets
-CHTR,2026-04-07,0.8672505170106888,positive,news,T-Mobile’s Mint Launches New Bundles Targeting Cable
-CHTR,2026-04-07,0.33632546477019787,neutral,news,$45 a month now buys home internet and unlimited wireless
-CHTR,2026-04-06,0.9339019320905209,positive,news,Did SG Americas’ Stake Surge Just Shift Liberty Broadband’s (LBRD.K) Charter-Linked Investment Narrative?
-CHTR,2026-04-06,-0.22360584139823914,negative,news,How Investors May Respond To Charter Communications (CHTR) Push For Political Spending Disclosure And AI Initiatives
-CHTR,2026-04-05,-0.9640291263349354,negative,news,The Communication Services Select Sector SPDR Fund : XLC
-CHTR,2026-04-05,0.0183670986443758,neutral,news,"EchoStar Corporation (SATS) stock price, news, quote and history"
-CHTR,2026-04-04,0.0032928790897130966,neutral,news,Free cash flow per share of Liberty Broadband Corp. Class A – TRADEGATE:8L8
-CHTR,2026-04-04,0.9173824163153768,positive,news,Is RingCentral’s (RNG) Cox AI Contact Center Deal Quietly Reframing Its Competitive Moat?
-CHTR,2026-04-04,0.03560347855091095,neutral,news,Charter Communications (NASDAQ: CHTR) sees $965M exchangeable debt repaid in cash
-CHTR,2026-04-03,0.9268414545804262,positive,news,Liberty Broadband Stake Increased by SG Americas Securities
-CHTR,2026-04-03,0.30178604181855917,neutral,news,Microbulk Gas Supply System Market Is Going to Boom | Linde plc • Messer Group GmbH • Praxair Technology Inc
-CHTR,2026-04-02,0.039186013862490654,neutral,news,Liberty Broadband cuts Charter (NASDAQ: CHTR) stake by 643K shares
-CHTR,2026-04-02,-0.020171988755464554,neutral,news,"OMI.N Stock: Price, Forecast, Financials & AI Analysis"
-CHTR,2026-04-02,-0.6471969485282898,negative,news,A Look At Charter Communications (CHTR) Valuation After Q1 Pressure And New AI Leadership Move
-CHTR,2026-04-01,0.2495992761105299,neutral,news,Catalyst for Girls Award recipients to be honored at luncheon | NONPROFIT REGISTER
-CHTR,2026-04-01,0.9145535873249173,positive,news,T-Mobile might buy Uniti Group's Kinetic fiber assets
-CHTR,2026-04-01,0.9050094624981284,positive,news,T-Mobile might buy Uniti Group's Kinetic fiber assets
-CHTR,2026-04-01,-0.6571124494075775,negative,news,AT&T Shares Rise 6.9% in Six Months: How to Play the Stock?
-CHTR,2026-04-01,0.8187149576842785,positive,news,Evercore ISI reiterates In Line rating on AT&T stock at $28
-CHTR,2026-04-01,0.8461602618917823,positive,news,Cable One Inc Stock: Business Model Resilience and Investor Considerations Amid Broadband Sector Shi
-CHTR,2026-04-01,0.8444533166475594,positive,news,Cable One Inc Stock: Business Model Resilience and Investor Considerations Amid Broadband Sector Shi
-CHTR,2026-04-01,0.22081820107996464,neutral,news,"31,650 Shares in Liberty Broadband Corporation $LBRDK Bought by Elser Financial Planning Inc"
-CHTR,2026-04-01,-0.11955729126930237,negative,news,XLC ETF’s Unsteady Surge Depends on Oil Prices and Fed Policy—Be Alert for a Sudden Reversal
-AEP,2026-04-13,0.9290195032954216,positive,news,BMO Capital raises American Electric Power stock price target to $141
-AEP,2026-04-13,-0.2919105887413025,negative,news,"HBW Advisory Services LLC Sells 9,045 Shares of American Electric Power Company, Inc. $AEP"
-AEP,2026-04-13,0.7386946231126785,positive,news,"Sumitomo Mitsui Trust Group Inc. Sells 33,841 Shares of American Electric Power Company, Inc. $AEP"
-AEP,2026-04-12,0.8551351497881114,positive,news,American Electric Power Increases Hybrid Fleet
-AEP,2026-04-12,-0.8738165311515331,negative,news,Kansas ranchers fight transmission line
-AEP,2026-04-12,0.12228510901331902,neutral,news,"Analysts Are Bullish on These Energy Stocks: Valero Energy (VLO), Propetro Holding (PUMP)"
-AEP,2026-04-11,0.9331681858748198,positive,news,American Electric Power Shares Acquired by SpringVest Wealth Management
-AEP,2026-04-11,0.9360648766160011,positive,news,Howard Capital Boosts Stake in American Electric Power
-AEP,2026-04-11,0.9303911896422505,positive,news,"American Electric Power Company, Inc. $AEP Shares Acquired by SpringVest Wealth Management LLC"
-AEP,2026-04-10,0.19530805479735136,neutral,news,"CEG Stock Price, Quote & Chart | CONSTELLATION ENERGY (NASDAQ:CEG)"
-AEP,2026-04-10,-0.2253773808479309,negative,news,Bloom Energy Corporation Class A Trade Ideas — VIE:BE
-AEP,2026-04-09,0.9276953712105751,positive,news,American Electric Power Co. Inc. stock outperforms competitors on strong trading day
-AEP,2026-04-09,0.9343972057104111,positive,news,American Electric Power stock hits all-time high at 135.11 USD
-AEP,2026-04-09,-0.007922809571027756,neutral,news,"NextEra Energy will post Q1 results April 23, webcast at 9 a.m. ET"
-AEP,2026-04-09,0.11469981353729963,neutral,news,Should You Consider Adding Franklin U.S. Low Volatility High Dividend Index ETF (LVHD) to Your Investment Portfolio?
-AEP,2026-04-08,0.9243843760341406,positive,news,"American Electric Power Co. Inc. stock rises Wednesday, still underperforms market"
-AEP,2026-04-08,-0.8480982594192028,negative,news,Consumers Energy execs grilled on dam sale: How does it make sense?
-AEP,2026-04-08,0.9136372720822692,positive,news,Georgia Power needs 200 lineworkers a year as grid expansion grows
-AEP,2026-04-08,-0.9193312395364046,negative,news,Jefferies Keeps Their Buy Rating on Xcel Energy (XEL)
-AEP,2026-04-08,0.9210938289761543,positive,news,OGE Energy Corp stock: Steady growth in a stable utility sector
-AEP,2026-04-08,0.4620648082345724,neutral,news,American Electric Power Company (NasdaqGS:AEP) Stock Forecast & Analyst Predictions
-AEP,2026-04-08,-0.9651835574768484,negative,news,The amount of electricity sold by Korea Electric Power Corporation (KEPCO) to manufacturing companie..
-AEP,2026-04-07,0.06487270165234804,neutral,news,Precision Trading with American Electric Power Company Inc. (AEP) Risk Zones
-AEP,2026-04-07,0.8307479918003082,positive,news,"NextEra Energy, Inc. Experiences Revision in Its Stock Evaluation Amid Competitive Market Dynamics"
-AEP,2026-04-06,-0.9371938668191433,negative,news,"Consumers group challenges AEP, FirstEnergy transmission project as power demand surges"
-AEP,2026-04-06,0.900760967284441,positive,news,Georgia Power says grid upgrades cut outages in half in some areas
-AEP,2026-04-06,0.873726075515151,positive,news,Quanta Services Just Unveiled Its Most Ambitious 5-Year Plan Yet. Here’s What It Means for Investors
-AEP,2026-04-06,0.9020887496881187,positive,news,Anterix Expands Private Wireless Leadership with New 10 MHz Grid Deployment
-AEP,2026-04-06,-0.7024708241224289,negative,news,"Aberdeen Group plc Reduces Holdings in American Electric Power Company, Inc. $AEP"
-AEP,2026-04-05,-0.11052378639578819,neutral,news,"Tennessee Valley Authority president, CEO announces plans to retire"
-AEP,2026-04-05,0.4015427976846695,positive,news,The Korea Electric Power Corporation (KEPCO) announced on the 5th that it will reduce about 513 giga..
-AEP,2026-04-05,0.7459962964057922,positive,news,Korea Electric Power Corporation has pledged to cut total energy consumption by approximately 5% from last year's levels.
-AEP,2026-04-05,-0.0589277446269989,neutral,news,"Kepco, power group CEOs slash energy use to confront Middle East crisis - CHOSUNBIZ"
-AEP,2026-04-04,0.7462762761861086,positive,news,Privately Funded 765-kV Grid Build for Ohio Data Campus Might Change The Case For Investing In American Electric Power Company (AEP)
-AEP,2026-04-04,0.9048064686357975,positive,news,WEC Energy Near 52-Week Highs as 3.9 Gigawatts of Data Center Load Drives 2028 Acceleration
-AEP,2026-04-03,0.028946188278496265,neutral,news,"American Electric Power Company (AEP): US Department of Energy, SB Energy, and AEP Ohio announce planned investments"
-AEP,2026-04-03,0.4881493244320154,positive,news,"AEP Financials: Revenue Breakdown, Margins & Competitor Comparison"
-AEP,2026-04-03,0.9346565715968609,positive,news,American Electric Power’s $72 Billion Capital Plan Just Got Bigger: Why It Could Set New Highs in 2026
-AEP,2026-04-03,-0.17107161693274975,neutral,news,"National Grid plc (NGG) stock price, news, quote and history"
-AEP,2026-04-03,0.9177038576453924,positive,news,"AEP CEO's compensation could hit $36.6M, topping region's highest-paid public company leader"
-AEP,2026-04-03,0.5734060555696487,positive,news,"Between American Electric Power and Constellation Energy, Which Stock Looks Set to Break Out?"
-AEP,2026-04-03,0.1623246343806386,neutral,news,American Electric Power (AEP) director granted 324 phantom stock units
-AEP,2026-04-02,0.1727690901607275,neutral,news,AEP (AEP) director Sandra Beach Lin granted new phantom stock units
-AEP,2026-04-02,0.08871343079954386,neutral,news,AEP (AEP) director receives phantom stock unit award tied to 324 shares
-AEP,2026-04-02,0.2369299056008458,neutral,news,AEP (NYSE: AEP) director receives new phantom stock unit award
-AEP,2026-04-02,0.32867766357958317,neutral,news,AEP (AEP) director receives phantom stock unit grant tied to shares
-AEP,2026-04-02,0.02533207554370165,neutral,news,AEP (AEP) director Von Thaer receives phantom stock unit award
-AEP,2026-04-02,0.08014385495334864,neutral,news,American Electric Power (AEP) director receives phantom stock grant
-AEP,2026-04-02,0.001057719811797142,neutral,news,American Electric Power (AEP) director granted 324 phantom stock-linked units
-AEP,2026-04-02,0.8157905675470829,positive,news,PUCO approves AEP request to raise Ohio electric bills by about $8 a month
+ADBE,2026-04-14,0.9410564098507166,positive,news,"Norris Perne & French LLP MI Purchases 6,451 Shares of Adobe Inc. $ADBE"
+ADBE,2026-04-14,-0.5649324506521225,negative,news,"Sumitomo Mitsui Trust Group Inc. Has $128.27 Million Stock Holdings in Fortinet, Inc. $FTNT"
+ADBE,2026-04-14,-0.8604244515299797,negative,news,"Organizations Warned of Exploited Windows, Adobe Acrobat Vulnerabilities"
+ADBE,2026-04-14,0.928023723885417,positive,news,Adobe Inc. stock (US00724F1012): Is AI innovation strong enough to unlock new upside?
+ADBE,2026-04-13,-0.9250453170388937,negative,news,A Look at Adobe Inc (ADBE) After 6.5% Gain -- GF Value $617.88 v
+ADBE,2026-04-13,0.5772654004395008,positive,news,"Lenovo deploys AI data agent for marketing, UX, e-commerce"
+ADBE,2026-04-13,0.9325785934925079,positive,news,Fair Isaac Shares Surge 7.7% on Earnings Beat
+ADBE,2026-04-13,0.4075610553845763,neutral,news,"Salesforce, Inc. stock (US79466L3024): Is AI innovation strong enough to unlock new upside?"
+ADBE,2026-04-13,0.8034946210682392,positive,news,Adobe & Tesco Enter Strategic AI Partnership to Personalise Experiences and Reward Loyalty for Tesco’s Customers
+ADBE,2026-04-13,0.9291195049881935,positive,news,"Synopsys, Inc. Jumps 5.0% Amid Sector-Wide Selling"
+ADBE,2026-04-13,0.9303709622472525,positive,news,Adobe Inc. stock outperforms competitors on strong trading day
+ADBE,2026-04-13,0.9252503206953406,positive,news,Adobe and Figma initiated with Neutral ratings from BTIG
+ADBE,2026-04-13,0.8565225722268224,positive,news,Adobe Inc. (ADBE): Navigating the Generative Frontier – A 2026 Comprehensive Analysis
+ADBE,2026-04-13,0.3053944893181324,neutral,news,The front office is being rebuilt around AI workflows
+ADBE,2026-04-13,-0.6310136336833239,negative,news,Simply opening a PDF could trigger this Adobe Reader zero-day
+ADBE,2026-04-13,0.9098315117880702,positive,news,Tesco partners with Adobe to ramp up AI‑driven personalised marketing
+ADBE,2026-04-13,-0.29228609800338745,neutral,news,"Alleged Police Tipline Data Sale, iOS and Adobe Exploits, RDWeb Access Listings, and Gunra Recruitment"
+ADBE,2026-04-13,-0.12826111912727356,neutral,news,"Here Are Monday’s Top Wall Street Analyst Research Calls: Adobe, Best Buy, Bilibili, Constellation Brands, CoreWeave, Nike, Starbucks, T-Mobile, and More"
+ADBE,2026-04-13,-0.477771133184433,negative,news,CVE-2026-34621: Adobe Acrobat Reader Zero-Day Enables Arbitrary Code Execution via Crafted PDF
+ADBE,2026-04-13,0.1543560866266489,neutral,news,Adobe Summit 2026: How Adobe hopes to redesign marketing and creativity with AI
+ADBE,2026-04-13,0.9409837191924453,positive,news,"Choreo LLC Boosts Holdings in ServiceNow, Inc. $NOW"
+ADBE,2026-04-13,0.9284330327063799,positive,news,Why Adobe Is A 'Strong Buy' Despite The AI Boogeyman (NASDAQ:ADBE)
+ADBE,2026-04-12,-0.6592159252613783,negative,news,Adobe Reader Releases Emergency Patch For Zero-Day Vulnerability CVE-2026-34621
+ADBE,2026-04-12,-0.3475991189479828,negative,news,"Robeco Institutional Asset Management B.V. Buys 21,914 Shares of Adobe Inc. $ADBE"
+ADBE,2026-04-12,-0.950029855594039,negative,news,"Sumitomo Mitsui Trust Group Inc. Sells 238,867 Shares of Adobe Inc. $ADBE"
+ADBE,2026-04-12,-0.7344980537891388,negative,news,NIQ Growth Pathways Launch Tests AI Upside For Struggling Share Price
+ADBE,2026-04-12,-0.9598888782784343,negative,news,Carnegie Investment Counsel Trims Stake in Adobe Inc.
+ADBE,2026-04-12,-0.9592447746545076,negative,news,Carnegie Investment Counsel Trims Stake in Adobe Inc. $ADBE
+ADBE,2026-04-12,0.022557897493243217,neutral,news,Adobe Inc. Trade Ideas — LS:871981
+ADBE,2026-04-12,0.19516967236995697,neutral,news,Josh Rosen on the AI Hype Cycle: Why Human Strategy Still Determines Media Success
+ADBE,2026-04-12,-0.8553753923624754,negative,news,Adobe users are outraged over vague new policy's AI implications
+ADBE,2026-04-12,-0.9612089935690165,negative,news,Fair Isaac (FICO) Is Down 15.4% After Credit Score Pricing Probe And Rising AI Competition - Has The Bull Case Changed?
+ADBE,2026-04-11,0.8184581473469734,positive,news,HubSpot TikTok Integration Tests B2B Value As Share Price Struggles
+ADBE,2026-04-11,-0.04720135033130646,neutral,news,DOCU - DocuSign Inc Stock Price and Quote
+ADBE,2026-04-11,-0.3093805704265833,neutral,news,Microsoft SharePoint Venom Attack Targets C-Suite Executives By Name
+ADBE,2026-04-11,-0.9612688971683383,negative,news,Adobe Stock Hits New 12-Month Low
+ADBE,2026-04-11,-0.22128517553210258,neutral,news,"RSAC 2026: End-user AI agents are here, but invisible"
+ADBE,2026-04-11,0.9341318868100643,positive,news,"Eagle Strategies LLC Buys 5,397 Shares of Adobe Inc. $ADBE"
+ADBE,2026-04-11,0.09983598813414574,neutral,news,"MANH Stock Price, Quote & Chart | MANHATTAN ASSOCIATES INC (NASDAQ:MANH)"
+ADBE,2026-04-11,0.4184286091476679,neutral,news,Spectral AI taps ex‑Solo Brands exec for C-suite role as leadership evolves
+ADBE,2026-04-11,0.9360018912702799,positive,news,Trilogy Capital Boosts Stake in Adobe Inc.
+ADBE,2026-04-11,-0.9681648230180144,negative,news,"HubSpot and Braze Stocks Trade Down, What You Need To Know"
+ADBE,2026-04-11,0.03476100042462349,neutral,news,ADBG Options Volatility — NASDAQ:ADBG
+ADBE,2026-04-10,0.02432120032608509,neutral,news,ADBG Options Chain — NASDAQ:ADBG
+ADBE,2026-04-10,0.721092514693737,positive,news,How Adobe is Involved in SJSU Careers | SJSU NewsCenter | SJSU
+ADBE,2026-04-10,0.446267232298851,positive,news,Here’s What You Should Understand Besides the Reasons Adobe Inc. (ADBE) is Gaining Attention
+ADBE,2026-04-10,-0.9659698968753219,negative,news,"HubSpot and Braze Stocks Trade Down, What You Need To Know"
+ADBE,2026-04-10,-0.9657265692949295,negative,news,Adobe Inc. stock falls to new 52-week low
+ADBE,2026-04-10,0.8917928263545036,positive,news,2026 Gartner® Magic Quadrant™ for MDM Solutions: Salesforce (Informatica) is Once Again Recognized as a Leader
+ADBE,2026-04-10,0.05055151507258415,neutral,news,"ATMP SEC Filings - Barclays ETN+ Select MLP 10-K, 10-Q, 8-K Forms"
+TXN,2026-04-14,-0.9079341478645802,negative,news,Memflation Meltdown: Accelerating Chip Costs Trigger Goldman Downgrade of Best Buy
+TXN,2026-04-14,0.8764266967773438,positive,news,"Tyche Wealth Partners LLC Buys 5,557 Shares of Texas Instruments Incorporated $TXN"
+TXN,2026-04-14,-0.0285232774913311,neutral,news,"Third View Private Wealth LLC Purchases Shares of 26,226 Texas Instruments Incorporated $TXN"
+TXN,2026-04-13,-0.9540327209979296,negative,news,"State of Alaska Department of Revenue Sells 9,230 Shares of Texas Instruments Incorporated $TXN"
+TXN,2026-04-13,0.8424560935236514,positive,news,NVE Corp stock (US62945V1044): Is its sensor tech edge strong enough for U.S. industrial growth?
+TXN,2026-04-13,0.7182607101276517,positive,news,NVE Corp stock (US62945V1044): Is its sensor tech edge strong enough for U.S. industrial growth?
+TXN,2026-04-13,0.9370801541954279,positive,news,ASML Holding N.V. $ASML Shares Acquired by Hardman Johnston Global Advisors LLC
+TXN,2026-04-13,0.8986416598781943,positive,news,Texas Instruments (TXN) Is Entering A Critical Phase – What The $250 Price Target Suggests
+TXN,2026-04-13,-0.778252586722374,negative,news,Eric Swider exits Trump Media board as leadership reshuffle continues
+TXN,2026-04-13,-0.957567997276783,negative,news,"Baillie Gifford & Co. Sells 105,905 Shares of Texas Instruments Incorporated $TXN"
+TXN,2026-04-13,-0.9638192830607295,negative,news,"Baillie Gifford & Co. Sells 339,086 Shares of ON Semiconductor Corporation $ON"
+TXN,2026-04-12,0.9095576014369726,positive,news,This Dividend ETF Has Outperformed Many Actively Managed Funds Over a Decade
+TXN,2026-04-12,0.8622848205268383,positive,news,This Dividend ETF Has Outperformed Many Actively Managed Funds Over a Decade
+TXN,2026-04-12,0.9314652197062969,positive,news,Cambiar Investors Boosts Stake in Texas Instruments
+TXN,2026-04-12,0.9187918938696384,positive,news,Texas Instruments Incorporated $TXN is Cambiar Investors LLC's 8th Largest Position
+TXN,2026-04-12,0.9024046994745731,positive,news,How Strong Results and Big-Money Inflows At Tower Semiconductor (TSEM) Have Changed Its Investment Story
+TXN,2026-04-11,0.9348246306180954,positive,news,Factory Mutual Insurance Boosts Texas Instruments Holdings
+TXN,2026-04-11,-0.929324621334672,negative,news,Massachusetts Financial Services Co. MA Has $1.10 Billion Stock Holdings in Texas Instruments Incorporated $TXN
+TXN,2026-04-11,-0.9616695772856474,negative,news,Cantor Fitzgerald Trims Stake in Atmos Energy
+TXN,2026-04-11,0.9299948513507843,positive,news,Factory Mutual Insurance Co. Has $18.60 Million Stock Holdings in Texas Instruments Incorporated $TXN
+TXN,2026-04-11,-0.9582233736291528,negative,news,"Silicon Laboratories, Inc. (NASDAQ:SLAB) Receives Consensus Recommendation of ""Hold"" from Analysts"
+TXN,2026-04-11,0.24062636494636536,positive,news,A Look At Tower Semiconductor (NasdaqGS:TSEM) Valuation After Strong Institutional Inflows And Solid Profitability
+TXN,2026-04-10,0.8229796886444092,positive,news,Silicon Laboratories stock hits 52-week high at 211.68 USD
+TXN,2026-04-10,0.899516673758626,positive,news,A Look At Texas Instruments (TXN) Valuation After A High Profile Analyst Upgrade To Buy
+TXN,2026-04-10,0.8853567028418183,positive,news,Analog Devices Inc. stock (US0326541051): Is industrial and automotive strength enough to drive sustained U.S. investor gains?
+TXN,2026-04-10,0.8700063568539917,positive,news,Analog Devices Inc. stock (US0326541051): Is industrial and automotive strength enough to drive sust
+TXN,2026-04-10,0.8434810563921928,positive,news,Silicon Laboratories stock hits 52-week high at 211.68 USD By Investing.com
+TXN,2026-04-10,0.876011623069644,positive,news,"Impedance Matching Networks Market is Booming Worldwide | Major Giants Analog Devices, Coilcraft Inc, Qorvo Inc"
+TXN,2026-04-10,-0.8184221088886261,negative,news,Roffman Miller Associates Inc. PA Has $40.66 Million Stake in Texas Instruments Incorporated $TXN
+TXN,2026-04-10,0.9369494188576937,positive,news,Micron Rallies 123% in Six Months: Should You Still Buy the Stock?
+TXN,2026-04-09,0.6142719238996506,positive,news,A Look at Texas Instruments Inc (TXN) After 2.9% Gain -- GF Value $190.85 vs Price $214.99
+TXN,2026-04-09,0.9355219313874841,positive,news,Texas Instruments (TXN) Surpasses Market Returns: Some Facts Worth Knowing
+TXN,2026-04-09,0.9356838166713715,positive,news,"Texas Instruments (TXN) Stock Is Up, What You Need To Know"
+TXN,2026-04-09,0.9362000096589327,positive,news,"Texas Instruments (TXN) Stock Is Up, What You Need To Know"
+TXN,2026-04-09,0.8687502536922693,positive,news,Texas Instruments Joins NVIDIA To Target Humanoid Robots And AI Infrastructure
+TXN,2026-04-09,0.9318164698779583,positive,news,Texas Instruments Inc. stock outperforms competitors on strong trading day
+TXN,2026-04-09,0.9407385149970651,positive,news,Texas Instruments Inc Stock (TXN) Moved Up by 3.07% on Apr 9: What Signal Does It Send?
+TXN,2026-04-09,0.9355590716004372,positive,news,Texas Instruments Upgraded to Buy at Stifel Nicolaus
+TXN,2026-04-09,0.9063990190625191,positive,news,Stifel Sets a $250 Price Target on Texas Instruments. Is This Semiconductor Giant Ready to Run?
+TXN,2026-04-09,0.24124544858932495,neutral,news,Texas Instruments To Rally Around 20%? Here Are 10 Top Analyst Forecasts For Thursday
+TXN,2026-04-09,0.9390402920544147,positive,news,Micron Rallies 123% in Six Months: Should You Still Buy the Stock?
+TXN,2026-04-09,-0.11536499857902527,neutral,news,"Here Are Thursday’s Top Wall Street Analyst Research Calls: Alcoa, AppLovin, Circle Internet, CoreWeave, Datadog, Marvell Technology, Netflix, Texas Instruments, and More"
+TXN,2026-04-09,0.36619694344699383,neutral,news,This Alcoa Analyst Turns Bullish; Here Are Top 5 Upgrades For Thursday
+TXN,2026-04-09,0.867996237706393,positive,news,NXP Semiconductors NV stock: Why it's a key player in secure chips for you now
+TXN,2026-04-09,0.23011801857501268,neutral,news,NXP Semiconductors NV stock: Why it's a key player in secure chips for you now
+TXN,2026-04-09,0.9397191228345037,positive,news,Texas Instruments (TXN) Receives Rating Upgrade from Stifel | TX
+TXN,2026-04-09,0.8488237010315061,positive,news,Texas Instruments Inc stock: What you need to know for smart investing now
+TXN,2026-04-09,0.9328540358692408,positive,news,What Makes Texas Instruments Incorporated (TXN) an Investment Bet?
+TXN,2026-04-09,-0.9263224508613348,negative,news,Hunter Associates Investment Management LLC Cuts Holdings in Texas Instruments Incorporated $TXN
+SBUX,2026-04-14,0.9268952114507556,positive,news,Third View Private Wealth LLC Makes New Investment in Starbucks Corporation $SBUX
+SBUX,2026-04-14,0.6285356525331736,positive,news,Coca-Cola names Tapaswee Chandele as global chief people officer By Investing.com
+SBUX,2026-04-14,-0.944372040219605,negative,news,Baillie Gifford Trims Starbucks Stake in Q4
+SBUX,2026-04-14,0.9027290595695376,positive,news,Allen Wealth Management LLC Makes New Investment in Kimberly-Clark Corporation $KMB
+SBUX,2026-04-14,0.93157266266644,positive,news,McDonald's Corporation stock (US5801351017): Is franchise resilience strong enough to unlock new ups
+SBUX,2026-04-13,0.9323033764958382,positive,news,Starbucks (NASDAQ:SBUX) Upgraded by Jefferies Financial Group to Hold Rating
+SBUX,2026-04-13,-0.8748674560338259,negative,news,"Sumitomo Mitsui Trust Group Inc. Sells 54,954 Shares of Starbucks Corporation $SBUX"
+SBUX,2026-04-13,0.9337358437478542,positive,news,McDonald’s Fell Over 6% Past Month— Can New Energy Drinks Line Up Spark A Stock Rebound? - McDonald's (NY
+SBUX,2026-04-11,0.010800115764141083,neutral,news,9 Chains You Might Not Know Have A Sister Restaurant
+SBUX,2026-04-11,0.9162117270752788,positive,news,Can Domino's (DPZ) Shinola Tie-In Reveal How Far Its Brand Elevation Strategy Can Stretch?
+SBUX,2026-04-11,0.5585183203220367,positive,news,Starbucks Is Selling a New Protein-Packed Breakfast Item
+SBUX,2026-04-10,0.9312007706612349,positive,news,"Starbucks' Prudent Brand Investment Is Luring Consumers, but Near-Term Costs Are Hefty"
+SBUX,2026-04-10,0.887591346167028,positive,news,"Advantage Solutions Inc Today's Market Trends | ADV Stock Real-Time Quotes, Trading Strategies & Related Analysis | TradingKey"
+SBUX,2026-04-10,0.93828110024333,positive,news,Chipotle Mexican Grill stock (US1696561059): Is its digital and menu innovation strong enough to unlock new upside?
+SBUX,2026-04-10,0.9331662338227034,positive,news,Chipotle Mexican Grill stock (US1696561059): Is its digital and menu innovation strong enough to unl
+SBUX,2026-04-10,-0.5254361778497696,negative,news,V Square Quantitative Management LLC Purchases New Shares in Starbucks Corporation $SBUX
+SBUX,2026-04-10,0.160597562789917,neutral,news,"13,642 Shares in Starbucks Corporation $SBUX Bought by Oak Thistle LLC"
+SBUX,2026-04-10,0.9040328823029995,positive,news,Apple Outperforms In Tough Q1 Even As Memory Crunch Drags Global Smartphone Shipments
+SBUX,2026-04-10,0.8692463804036379,positive,news,Starbucks Appoints New Design Officer to Drive Growth Strategy
+SBUX,2026-04-10,-0.9523586509749293,negative,news,"Apple to close Maryland store, union outraged"
+SBUX,2026-04-10,0.7714918777346611,positive,news,A Look At Restaurant Brands International (QSR) Valuation After Its Recent Share Price Performance
+SBUX,2026-04-10,-0.9466739604249597,negative,news,Apple to shutter its first unionized US store in Maryland
+SBUX,2026-04-09,0.28671297430992126,positive,news,GIFT - Giftify ($GIFT): A Small-Cap Incentives Platform with More ScaleThan Its Valuation Suggests
+SBUX,2026-04-09,-0.1108747348189354,neutral,news,Did Starbucks Corporation Insiders Breach their Fiduciary Duties to Shareholders?
+SBUX,2026-04-09,-0.9601533561944962,negative,news,Starbucks Union Complaint Signals Rough Start to Latest Round of Talks
+SBUX,2026-04-09,0.10640839580446482,neutral,news,"SBUX Financials: Revenue Breakdown, Margins & Competitor Comparison"
+SBUX,2026-04-09,0.7739231614395976,positive,news,Starbucks (SBUX) Steals Another Executive from Chipotle. This Time to Improve Its Brand Design
+SBUX,2026-04-09,0.4162738621234894,positive,news,National HealthCare Corp stock hits all-time high of 175.11 USD By Investing.com
+SBUX,2026-04-09,-0.07069299556314945,neutral,news,Did Starbucks Corporation Insiders Breach their Fiduciary Duties to Shareholders?
+SBUX,2026-04-09,0.20664325915277004,neutral,news,Yum China’s 2025 ESG Push Reframes Food Safety And Cost Risks
+SBUX,2026-04-09,-0.7382717318832874,negative,news,"Starbucks, Valtrus Jointly Drop Suit Over Alleged Patent Misuse"
+SBUX,2026-04-09,-0.8862705919891596,negative,news,"Starbucks, Valtrus Jointly Drop Suit Over Alleged Patent Misuse"
+SBUX,2026-04-09,0.5600574687123299,positive,news,Gap to AI-enable supply chain for traceability
+SBUX,2026-04-09,0.871970425825566,positive,news,Stifel reiterates Starbucks stock buy rating on China JV strategy
+SBUX,2026-04-09,-0.9559841742739081,negative,news,CCLA Investment Management Reduces Stake in McDonald's
+SBUX,2026-04-09,0.00685371458530426,neutral,news,SBUX Price History for Starbucks Corp Stock
+SBUX,2026-04-08,0.00022087804973125458,neutral,news,"Starbucks (SBUX) exec sells 1,641 shares under Rule 10b5-1 plan"
+SBUX,2026-04-08,0.9236633311957121,positive,news,"Starbucks Corp. stock rises Wednesday, still underperforms market"
+SBUX,2026-04-08,0.22653722949326038,neutral,news,PAR Technology launches PAR Intelligence AI Platform for multi-unit operators
+SBUX,2026-04-08,0.9019711017608643,positive,news,Will McDonald's Digital Sales Mix Drive Its Next Phase of Growth?
+SBUX,2026-04-08,0.8943567401729524,positive,news,Atos drives Alsea’s SAP modernization with a strategic migration to SAP RISE on AWS
+SBUX,2026-04-07,0.14715539384633303,neutral,news,"Marcus & Millichap Arranges Sale, Financing of Starbucks Property in Joliet"
+SBUX,2026-04-07,0.33719433564692736,neutral,news,Pumpkin Spice Latte: Starbucks' Iconic Fall Beverage
+SBUX,2026-04-07,0.2730997446924448,neutral,news,Starbucks Quietly Launches New Spring Drinks—Including a Caffeinated “Energy Refresher” Line
+SBUX,2026-04-07,0.4503766717389226,neutral,news,Starbucks Quietly Launches New Spring Drinks—Including a Caffeinated “Energy Refresher” Line
+SBUX,2026-04-07,0.9355924855917692,positive,news,Starbucks Corp. stock outperforms competitors on strong trading day
+SBUX,2026-04-07,0.41260965168476105,neutral,news,Marcus & Millichap closes sale of Chipotle property in Wausau
+SBUX,2026-04-07,-0.9425303563475609,negative,news,"Albion Financial Group UT Sells 18,033 Shares of Starbucks Corporation $SBUX"
+SBUX,2026-04-07,-0.2498251348733902,neutral,news,Is McDonald's (MCD) Fairly Priced After Recent Focus On Its Core Global Brand?
+SBUX,2026-04-07,0.8634046036750078,positive,news,Starbucks Launches New Energy Refreshers in U.S. Stores
+GS,2026-04-14,0.8717177771031857,positive,news,"S&P 500 Just Erased Seven Weeks Of War Losses, Nasdaq 100 Heads For 10th Consecutive Gain"
+GS,2026-04-14,-0.17966067790985107,negative,news,Live Nation Entertainment (NYSE:LYV) Price Target Raised to $206.00
+GS,2026-04-14,0.4918949156999588,positive,news,"Goldman Sachs Adjusts Price Target on Franklin Resources to $30.50 From $28, Maintains Buy Rating"
+GS,2026-04-14,-0.6452523171901703,negative,news,"Goldman Sachs Downgrades Ero Copper to Neutral From Buy, Adjusts Price Target to CA$42.77 From CA$45.85"
+GS,2026-04-14,0.9390676263719797,positive,news,"Tower View Wealth Management LLC Boosts Stock Position in Netflix, Inc. $NFLX"
+GS,2026-04-14,0.9367033187299967,positive,news,XRP News: $584B MassMutual Expands Crypto Exposure with New Bitwise XRP ETF Holdings
+GS,2026-04-14,0.16632774472236633,positive,news,State of Alaska Department of Revenue Has $11.05 Million Stake in Parker-Hannifin Corporation $PH
+GS,2026-04-14,-0.6928012873977423,negative,news,"Goldman Sachs Maintains Aptiv PLC(APTV.US) With Buy Rating, Cuts Target Price to $74"
+GS,2026-04-14,0.9422217812389135,positive,news,"Robeco Institutional Asset Management B.V. Boosts Stock Holdings in Assurant, Inc. $AIZ"
+GS,2026-04-14,-0.9626073045656085,negative,news,"Robeco Institutional Asset Management B.V. Reduces Position in Equinix, Inc. $EQIX"
+GS,2026-04-14,0.9293910786509514,positive,news,Goldman Sachs Earnings: Strong Results Encounter Insatiable Expectations
+GS,2026-04-14,-0.9602979682385921,negative,news,"Baillie Gifford & Co. Sells 203,569 Shares of Banco De Chile $BCH"
+GS,2026-04-14,0.923485697247088,positive,news,"Calavo Growers, Inc. $CVGW Stock Position Raised by Deprince Race & Zollo Inc."
+GS,2026-04-14,-0.5398452281951904,negative,news,"Baillie Gifford & Co. Trims Holdings in Tetra Tech, Inc. $TTEK"
+GS,2026-04-14,-0.9425144176930189,negative,news,ARM Holdings PLC Sponsored ADR $ARM Holdings Reduced by Blue Fin Capital Inc.
+GS,2026-04-14,0.9318316224962473,positive,news,Williams Sonoma Stock Gains After Goldman Sachs Upgrades Retailer To Buy
+GS,2026-04-14,0.915788484737277,positive,news,"Assetmark Inc. Increases Holdings in PulteGroup, Inc. $PHM"
+GS,2026-04-14,0.24857611116021872,neutral,news,MSCI Inc. stock (US55354G1004): Is index dominance still the unbeatable edge in a data-driven market
+GS,2026-04-14,0.13100002147257328,neutral,news,WesBanco (WSBC) Projected to Post Quarterly Earnings on Tuesday
+GS,2026-04-14,0.9237598963081837,positive,news,"Equinix, Inc. (NASDAQ:EQIX) Given Average Rating of ""Moderate Buy"" by Analysts"
+GS,2026-04-14,0.9242663206532598,positive,news,Nicolet Bankshares (NIC) Expected to Announce Quarterly Earnings on Tuesday
+GS,2026-04-14,0.0022470448166131973,neutral,news,"Goldman Sachs, Ardian acquire China Investment Corporation’s $1B US private equity stake: report"
+GS,2026-04-14,0.03400212153792381,neutral,news,Allogene Therapeutics Announces Proposed Public Offering of $175 Million of Common Stock
+GS,2026-04-14,0.9219317976385355,positive,news,Goldman Sachs Reaffirms Buy Rating on Cognex Corp. (CGNX)
+GS,2026-04-14,0.3268937561661005,neutral,news,Ulta Beauty Inc. stock (US90384S3031): Is its beauty retail model resilient enough amid shifting con
+GS,2026-04-14,-0.8995261639356613,negative,news,Direxion Daily MU Bull 2X Shares (NASDAQ:MUU) Short Interest Down 49.1% in March
+GS,2026-04-13,-0.9513424346223474,negative,news,UBS Faces New Pressure on Nazi Accounts From Senate Panel Chair
+GS,2026-04-13,0.7771349400281906,positive,news,Goldman Sachs reinstates Aptiv stock rating at Buy with $74 target
+GS,2026-04-13,0.9047154495492578,positive,news,UBS Group AG stock (CH0244767585): Is wealth management strength enough to navigate global banking risks?
+GS,2026-04-13,0.8897024104371667,positive,news,"Reuters Reports EQT, Glencore Sign Long-Term LNG Agreements with Commonwealth"
+GS,2026-04-13,0.6751947104930878,positive,news,Blackrock Municipal 2030 Target Term Trust Short Interest Surges in March
+GS,2026-04-13,0.3473624587059021,positive,news,"Goldman CEO Solomon sees private credit as attractive sector, despite retail concerns"
+GS,2026-04-13,-0.7949918434023857,negative,news,The Goldman Sachs Group Lowers Danaher (NYSE:DHR) Price Target to $230.00
+GS,2026-04-13,0.9246223494410515,positive,news,Stock Traders Buy High Volume of New Era Energy & Digital Put Options (NASDAQ:NUAI)
+GS,2026-04-13,-0.27756447345018387,neutral,news,"Oracle, Intel among market cap stock movers on Monday"
+GS,2026-04-13,0.9207862112671137,positive,news,"J.P.Morgan, Morgan Stanley urge buying the dip as US earnings stay resilient"
+GS,2026-04-13,0.9195129964500666,positive,news,Goldman Sachs Sees Private Credit as Attractive Despite Noise
+GS,2026-04-13,0.9388930052518845,positive,news,Why StoneX Group (SNEX) Is Up 8.5% After Record Q1 2026 Earnings From Acquisitions
+GS,2026-04-13,0.7506594657897949,positive,news,"J.P.Morgan, Morgan Stanley urge buying the dip as US earnings stay resilient"
+GS,2026-04-13,-0.8497664798051119,negative,news,Goldman CEO Sees Noise Persisting on Retail Private-Credit Funds
+GS,2026-04-13,-0.9620190421119332,negative,news,Goldman Sachs Double Downgrades Best Buy to Sell as Memory Cost Headwinds Threaten Margins
+GS,2026-04-13,0.15088453330099583,neutral,news,"Dow Jones Stocks In Spotlight: JPMorgan, Johnson & Johnson Among This Week's Earnings Reports"
+GS,2026-04-13,-0.9647845979779959,negative,news,Goldman Sachs Posts Record Equity Trading and a 19% Profit Jump. So Why Is the Stock Down 4%?
+GS,2026-04-13,0.9210984297096729,positive,news,Goldman CEO Warns Prolonged Conflict Could Stoke Inflation
+GS,2026-04-13,-0.8589947335422039,negative,news,Lucid Group (NASDAQ:LCID) Sets New 1-Year Low on Analyst Downgrade
+GS,2026-04-13,-0.6581202745437622,negative,news,Fidelity National Information Services (NYSE:FIS) Price Target Cut to $65.00 by Analysts at The Goldman Sachs Group
+GS,2026-04-13,0.7838416146114469,positive,news,Morgan Stanley debuts first US bank-affiliated Bitcoin ETF with $25M+ inflows
+GS,2026-04-13,0.9300399851053953,positive,news,Citigroup Increases Johnson Controls International (NYSE:JCI) Price Target to $150.00
+PYPL,2026-04-14,-0.9447097387164831,negative,news,PayPal Stock Is Down 18% in 2026. Can 14% Annual Returns Through 2028 Materialize?
+PYPL,2026-04-14,-0.9633363373577595,negative,news,"PYPL Shareholder Alert: Investors With Losses May Seek to Lead the Class Action in PayPal Holdings, Inc. Securities Lawsuit — The Gross Law Firm"
+PYPL,2026-04-14,-0.8915621880441904,negative,news,"Portnoy Law Firm Announces Class Action on Behalf of PayPal Holdings, Inc. Investors"
+PYPL,2026-04-14,-0.887369898147881,negative,news,"ENPH Shareholder Alert: Enphase Energy, Inc. Securities Class Action Lawsuit Investors With Losses May Join -- The Gross Law Firm"
+PYPL,2026-04-14,0.381848668679595,neutral,news,American Express Bets on Agentic Shopping With New Tools
+PYPL,2026-04-14,-0.7542940936982632,negative,news,SHAREHOLDER ALERT Bernstein Liebhard LLP Announces A
+PYPL,2026-04-13,-0.5750162042677402,negative,news,"PYPL Investors Have Opportunity to Lead PayPal Holdings, Inc. Securities Fraud Lawsuit"
+PYPL,2026-04-13,-0.2573101446032524,neutral,news,Rosen Law Firm Encourages PayPal Investors to Secure Counsel Before Deadline
+PYPL,2026-04-13,0.5848746597766876,positive,news,PayPal (NASDAQ:PYPL) Stock Price Up 5% on Analyst Upgrade
+PYPL,2026-04-13,-0.9629897745326161,negative,news,"Faruqi & Faruqi, LLP Highlights Class Action Against PayPal Holdings (PYPL) and Upcoming Lead Plaintiff Deadline of April 20, 2026"
+PYPL,2026-04-13,-0.49005214124917984,negative,news,"PYPL DEADLINE: ROSEN, TOP RANKED GLOBAL COUNSEL, Encourages PayPal Holdings, Inc. Investors ..."
+PYPL,2026-04-13,-0.8399798441678286,negative,news,"PYPL DEADLINE: ROSEN, TOP RANKED GLOBAL COUNSEL, Encourages PayPal Holdings, Inc. Investors with Losses in Excess of $100K to Secure Counsel Before Important April 20 Deadline in Securities Class Action – PYPL"
+PYPL,2026-04-13,0.9362235367298126,positive,news,Thomson Reuters Corp Stock (TRI) Moved Up by 5.07% on Apr 13: What Signal Does It Send?
+PYPL,2026-04-13,-0.34761977195739746,neutral,news,"PYPL Investors Have Opportunity to Lead PayPal Holdings, Inc. Securities Fraud Lawsuit"
+PYPL,2026-04-13,0.9384420793503523,positive,news,PayPal Holdings Inc Stock (PYPL) Moved Up by 5.76% on Apr 13: Key Drivers Unveiled
+PYPL,2026-04-13,-0.0035687945783138275,neutral,news,"PayPal Holdings, Inc. Trade Ideas — SWB:2PP"
+PYPL,2026-04-13,-0.7385905645787716,negative,news,"Bronstein, Gewirtz & Grossman LLC Urges PayPal Holdings, Inc. Investors to Act: Class Action Filed Alleging Investor Harm"
+PYPL,2026-04-13,-0.8734742924571037,negative,news,"Bronstein, Gewirtz & Grossman LLC Urges PayPal Holdings, Inc. Investors to Act: Class Action Filed Alleging Investor Harm Nationally Recognized Firm Urges Paypal Investors to Explore Class Action Representation"
+PYPL,2026-04-13,-0.9461584370583296,negative,news,"Sumitomo Mitsui Trust Group Inc. Cuts Holdings in PayPal Holdings, Inc. $PYPL"
+PYPL,2026-04-13,-0.6002551503479481,negative,news,"PYPL Investors Have Opportunity to Lead PayPal Holdings, Inc. Securities Fraud Lawsuit with the Schall Law Firm"
+PYPL,2026-04-12,-0.9222618471831083,negative,news,"Class Action Lawsuit Reminder from Pomerantz LLP for Shareholders of PayPal Holdings, Inc. – PYPL"
+PYPL,2026-04-12,-0.8610376417636871,negative,news,"PayPal Holdings, Inc. (PYPL) Class Action Lawsuit Seeks Recovery"
+PYPL,2026-04-12,-0.9048840422183275,negative,news,"PayPal Holdings, Inc. (PYPL) Class Action Lawsuit Seeks Recovery for Investors; April 20, 2026, Deadline - Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-12,-0.9589689029380679,negative,news,"PayPal Holdings, Inc. (PYPL) Class Action Lawsuit Seeks Recovery for Investors; April 20, 2026, Deadline - Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-12,-0.9321308452636003,negative,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-12,0.1382846236228943,positive,news,"PayPal Holdings, Inc. $PYPL Shares Bought by U.S. Capital Wealth Advisors LLC"
+PYPL,2026-04-12,0.05783851444721222,neutral,news,"PayPal Holdings, Inc. Trade Ideas — SWB:2PP"
+PYPL,2026-04-12,-0.9470088016241789,negative,news,"Robeco Institutional Asset Management B.V. Sells 66,396 Shares of PayPal Holdings, Inc. $PYPL"
+PYPL,2026-04-12,-0.19528589397668839,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-12,0.31539184506982565,neutral,news,"Burney Co. Purchases 77,684 Shares of PayPal Holdings, Inc. $PYPL"
+PYPL,2026-04-12,0.0062973760068416595,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-12,-0.9067013803869486,negative,news,"Kessler Topaz Meltzer & Check, LLP - PayPal Holdings, Inc."
+PYPL,2026-04-12,-0.17997610941529274,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-12,0.17245100904256105,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-12,-0.9352586641907692,negative,news,"PAYPAL HOLDINGS INC CMN - Ro Khanna Congressional Trade on Mar. 23, 2026"
+PYPL,2026-04-11,0.20028768852353096,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-11,0.14887088257819414,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-11,0.03651793673634529,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-11,0.02096310444176197,neutral,news,PYPG Options Volatility — NASDAQ:PYPG
+PYPL,2026-04-11,0.44298372603952885,neutral,news,"'Not Going to Stop at Bitcoin': Morgan Stanley Weighs Tokenization, Tax Solutions in Crypto Push"
+PYPL,2026-04-11,0.0560950618237257,neutral,news,"PayPal Holdings, Inc. Trade Ideas — BSESOF:2PP"
+PYPL,2026-04-11,-0.858718641102314,negative,news,"PayPal Holdings, Inc. Class Action Lawsuit: Investors Face April 20, 2026, Deadline – Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-11,-0.9012869009748101,negative,news,"PayPal Holdings, Inc. Class Action Lawsuit: Investors Face April 20, 2026, Deadline – Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-11,-0.9431729791685939,negative,news,"PayPal Holdings, Inc. Class Action Lawsuit: Investors Face April 20, 2026, Deadline – Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-10,0.5911459177732468,positive,news,"PYPL Price Today: PayPal Holdings, Inc. Stock Price, Quote & Chart"
+PYPL,2026-04-10,0.910352143459022,positive,news,MercadoLibre Inc. stock (US58733R1023): Is its e-commerce dominance in Latin America strong enough f
+PYPL,2026-04-10,-0.9599890103563666,negative,news,"PayPal Holdings, Inc. Class Action Lawsuit: Investors Face April 20, 2026, Deadline – Contact Kessler Topaz Meltzer & Check, LLP"
+PYPL,2026-04-10,0.46024174988269806,positive,news,SOFI's Valuation Reflects Growth Expectations but Raises Questions
+PYPL,2026-04-10,-0.9642866719514132,negative,news,"PYPL Shareholder Alert: April 20, 2026 Lead Plaintiff"
+LLY,2026-04-14,0.9387786230072379,positive,news,"With nearly a quarter billion in Q1, J&J targets $100B revenue in 2026"
+LLY,2026-04-14,0.9334212178364396,positive,news,Amgen Inc. stock (US0311621009): Is obesity drug momentum strong enough to drive new upside?
+LLY,2026-04-14,0.6697925049811602,positive,news,Eli Lilly to buy Houston cancer-fighting startup CrossBridge Bio in $300M deal
+LLY,2026-04-14,0.8820939725264907,positive,news,CrossBridge Bio Enters an Agreement to be Acquired by Eli Lilly to Advance Next-Generation Dual-Payload Antibody-Drug Conjugates
+LLY,2026-04-14,0.9424213785678148,positive,news,"Merck & Co., Inc. $MRK Shares Acquired by Norris Perne & French LLP MI"
+LLY,2026-04-14,0.692592604085803,positive,news,"The Zacks Analyst Blog Highlights Eli Lilly, Mastercard, Advanced Micro Devices and Stratus Properties"
+LLY,2026-04-14,0.9213237911462784,positive,news,"Merck & Co., Inc. (NYSE:MRK) Receives Consensus Rating of ""Moderate Buy"" from Brokerages"
+LLY,2026-04-14,0.3588699661195278,neutral,news,Brand Marketer of the Month—Eli Lilly CMO on bringing health into cultural moments and challenging obesity stigmas
+LLY,2026-04-14,0.9064360484480858,positive,news,Amgen Inc. stock (US0311621009): Is obesity drug momentum strong enough to unlock new upside?
+LLY,2026-04-14,0.841126520652324,positive,news,Evotec SE stock (DE0005664809): Is its drug discovery model strong enough to unlock new upside?
+LLY,2026-04-14,0.9311637999489903,positive,news,Why Institutions Are Turning Bullish on Biohaven—and the Catalyst That Could Unlock Its Value
+LLY,2026-04-13,0.9280341770499945,positive,news,Amgen Inc. stock (US0311621009): Is obesity drug momentum strong enough to unlock new upside?
+LLY,2026-04-13,0.543180258013308,positive,news,"David Ricks: Pharmaceutical Visionary, Lifelong Lilly Leader, and Chairman and CEO of Eli Lilly and Company"
+LLY,2026-04-13,-0.13221175968647003,neutral,news,Auto-Callable Geared Buffer Notes on Eli Lilly (RBMCF) with Memory Coupon
+LLY,2026-04-13,0.904178386554122,positive,news,RVTY Unveils Signals BioDesign for Faster Molecular Cloning & R&D Data
+LLY,2026-04-13,0.8870799788273871,positive,news,AbbVie inks $745M deal with Chinese biotech Haisco for two acute pain assets
+LLY,2026-04-13,0.8009787681512535,positive,news,The Science of Scale: An In-Depth Look at Regeneron Pharmaceuticals (REGN) in 2026
+LLY,2026-04-13,-0.7378712361678481,negative,news,FLNA|Cassava Sciences Ord Shs|Price:1.640|Chg%:-0.08
+LLY,2026-04-13,0.7931249914690852,positive,news,Regeneron enters radiopharma ring with up to $4.3B Telix alliance
+LLY,2026-04-13,0.9084763927385211,positive,news,Leerink Says AC Immune (ACIU) Eli Lilly Tau Program Amendment Is Great News
+LLY,2026-04-13,0.8064269130118191,positive,news,Muscle-preservation therapy for GLP-1 treatment moves into U.S. production
+LLY,2026-04-13,0.9202555436640978,positive,news,Eli Lilly & Co (NYSE:LLY) Presents a Prime Case for Affordable Growth Investing
+LLY,2026-04-13,0.8415033430792391,positive,news,The Science of Scale: An In-Depth Look at Regeneron Pharmaceuticals (REGN) in 2026
+LLY,2026-04-13,0.8080964311957359,positive,news,AbbVie strikes up to $745M pain-drug deal with China's Haisco
+LLY,2026-04-12,0.887916935607791,positive,news,Jim Cramer on Regeneron (REGN): “I Think The Stock’s Breaking Out Here”
+LLY,2026-04-12,0.8739705318585038,positive,news,Jim Cramer on Regeneron (REGN): “I Think The Stock’s Breaking Out Here”
+LLY,2026-04-12,0.9374008048325777,positive,news,Jackson Square Capital LLC Boosts Eli Lilly and Company Holdings
+LLY,2026-04-11,0.9253607615828514,positive,news,Did FDA-Cleared Duchenne Trial for Ryoncil Just Shift Mesoblast's (ASX:MSB) Investment Narrative?
+LLY,2026-04-11,-0.9622210459783673,negative,news,Massachusetts Financial Firm Trims Elevance Health Stock Position
+LLY,2026-04-11,0.8973042871803045,positive,news,Steadtrust LLC Acquires $1.3M Stake in Eli Lilly
+LLY,2026-04-11,0.9358024653047323,positive,news,Eli Lilly Price Target Raised to $880 by Rothschild & Co Redburn
+LLY,2026-04-11,0.8253727983683348,positive,news,8-Day Rally Sends Canadian Imperial Bank of Commerce Stock Up 12%
+LLY,2026-04-11,0.9362429995089769,positive,news,AbbVie (ABBV) Receives a Buy from RBC Capital
+LLY,2026-04-11,0.8730674954131246,positive,news,Biogen’s Alloy Antisense Deal Adds New Dimension To Genetic Medicine Bet
+LLY,2026-04-11,0.9311801260337234,positive,news,"LENZ Stock Price, Quote & Chart | LENZ THERAPEUTICS INC (NASDAQ:LENZ)"
+LLY,2026-04-11,0.8279171707108617,positive,news,8-Day Rally Sends Canadian Imperial Bank of Commerce Stock Up 12%
+LLY,2026-04-10,-0.1609160080552101,neutral,news,AC Immune revises collaboration with Eli Lilly on tau-targeting Alzheimer’s therapy
+LLY,2026-04-10,0.8680692128837109,positive,news,7-Day Rally Sends Microchip Technology Stock Up 19%
+LLY,2026-04-10,0.105206698179245,neutral,news,Avalo Therapeutics (NASDAQ: AVTX) sets 2026 virtual meeting and ESPP changes
+LLY,2026-04-10,0.9185492061078548,positive,news,Pfizer Inc. stock (US7170811035): Is its post-COVID pivot strong enough to unlock new upside?
+LLY,2026-04-10,0.7974567944183946,positive,news,"LifeMD® Now Offering Eli Lilly and Company’s Foundayo™ (orforglipron), a New GLP-1 Pill for Weight Management"
+LLY,2026-04-10,0.9129716427996755,positive,news,LifeMD adds Eli Lilly’s oral weight loss drug to platform By Investing.com
+LLY,2026-04-10,0.7283019376918674,positive,news,"LifeMD® Now Offering Eli Lilly and Company’s Foundayo™ (orforglipron), a New GLP-1 Pill for Weight Management"
+LLY,2026-04-10,0.9236022429540753,positive,news,Novartis AG stock: Why Fabhalta momentum matters for investors now
+LLY,2026-04-10,0.4252367587760091,neutral,news,"LifeMD® Now Offering Eli Lilly and Company’s Foundayo™ (orforglipron), a New GLP-1 Pill for Weight Management"
+LLY,2026-04-10,0.6779054189100862,positive,news,"A new weight-loss pill hits LifeMD, starting at $149 a month"
+LLY,2026-04-10,0.8656678758561611,positive,news,Eli Lilly vs. Novo Nordisk: The Obesity Drug Race Has a New Leader
+LLY,2026-04-10,-0.04717513173818588,neutral,news,"Top 12 Pharma Companies: Eli Lilly Shoots To The Top, Merck Tumbles"
+LLY,2026-04-10,0.5070550441741943,positive,news,"Encompass Wealth Advisors LLC Sells 3,010 Shares of Amgen Inc. $AMGN"
+LLY,2026-04-10,0.92921581864357,positive,news,Prime Capital Investment Advisors LLC Has $6.32 Million Stake in Amgen Inc. $AMGN
+CI,2026-04-14,0.15297269355505705,neutral,news,"Analysts Offer Insights on Healthcare Companies: Teleflex (TFX), Cigna (CI) and BioNTech SE (BNTX)"
+CI,2026-04-13,-0.0029672514647245407,neutral,news,"Orix Corp - Notice regarding transfer of equity interest (change in subsidiary) IX NTI Holdings, LLC (U.S. PE investment network Connex)"
+CI,2026-04-13,0.9234969858080149,positive,news,UnitedHealth Group Incorporated stock (US91324P1021): Is healthcare's AI and trade pivot strong enou
+CI,2026-04-13,0.06282704509794712,neutral,news,"RBC Adjusts Price Target on Rapid7 to $6 From $12, Maintains Sector Perform Rating"
+CI,2026-04-13,-0.9171752370893955,negative,news,"TD Cowen Adjusts Price Target on MetLife to $87 From $88, Maintains Buy Rating"
+CI,2026-04-13,-0.7366939932107925,negative,news,"Stanley Laman Group Ltd. Sells 83,559 Shares of Healthcare Services Group, Inc. $HCSG"
+CI,2026-04-12,0.919313782826066,positive,news,UnitedHealth Group Incorporated stock (US91324P1021): Is its integrated care model strong enough to unlock new upside?
+CI,2026-04-12,0.4793232399970293,positive,news,CVS Health Corporation (CVS): Legal Clarity and Core Strengths Support the Bull Case
+CI,2026-04-11,0.9351125173270702,positive,news,Elevance Health: The Multi-Year Re-Rating Opportunity
+CI,2026-04-11,0.9354607742279768,positive,news,CVS Health Tops Daily Volume Chart as Medicare Boost and Institutional Buying Surge Past $540 Million
+CI,2026-04-11,0.9414305202662945,positive,news,R - Elevance Health: The Multi-Year Re-Rating Opportunity
+CI,2026-04-10,0.002086091786623001,neutral,news,Abrdn Total Dynamic Dividend Fund : U.S. Closed-End Funds Record Date Announcement (Monthly) (AA-100426-206644-89)
+CI,2026-04-10,0.3220626022666693,neutral,news,BTIG Initiates Infleqtion at Buy With $22 Price Target
+CI,2026-04-09,-0.009471088647842407,negative,news,"Elevance Health, Inc. Experiences Valuation Adjustment Amidst Competitive Market Landscape"
+CI,2026-04-09,0.497068053111434,positive,news,Aetna Better Health® of Virginia opens new community resource center in Roanoke
+CI,2026-04-09,0.8770706541836262,positive,news,NGL Energy Partners LP announces $100 million LP common unit repurchase program
+CI,2026-04-08,0.4392775595188141,positive,news,Insulet (NasdaqGS:PODD) Stock Price
+CI,2026-04-08,-0.5567703098058701,negative,news,"Wells Fargo Adjusts Price Target on Builders FirstSource to $87 From $120, Maintains Equalweight Rating"
+CI,2026-04-08,0.8964131744578481,positive,news,Mail Order Pharmacy Market to Get an Explosive Growth | CVS Health
+CI,2026-04-07,0.799922339618206,positive,news,Insurers get a 2.48% MA pay bump after close call with a flat rate
+CI,2026-04-07,0.9364777263253927,positive,news,Healthcare Services Group (NASDAQ:HCSG) Share Price Passes Above Two Hundred Day Moving Average - Here's What Happened
+CI,2026-04-07,0.9153452217578888,positive,news,CVS Stock Rises After CMS Medicare Advantage Update
+CI,2026-04-07,0.9193941205739975,positive,news,"RBC Capital Adjusts Karyopharm Therapeutics PT to $16 From $23, Maintains Outperform Rating"
+CI,2026-04-07,-0.6017720177769661,negative,news,"Keefe Bruyette & Woods Adjusts Cincinnati Financial PT to $190 From $191, Maintains Outperform Rating"
+CI,2026-04-07,0.7767182169482112,positive,news,Daytona Street Capital LLC Invests $2.69 Million in CVS Health Corporation $CVS
+CI,2026-04-07,0.574721485376358,positive,news,Fulton Breakefield Broenniman LLC Has $14.87 Million Stock Position in UnitedHealth Group Incorporated $UNH
+CI,2026-04-07,-0.01771656423807144,neutral,news,The Cigna Group's First Quarter 2026 Earnings Release Details
+CI,2026-04-06,0.5350217577069998,positive,news,Canaccord Genuity Initiates Tyra Bioscience at Buy With $50 Price Target
+CI,2026-04-06,0.013585787266492844,neutral,news,UnitedHealth Group Incorporated Trade Ideas — LS:869561
+CI,2026-04-06,-0.8507589995861053,negative,news,"Morgan Stanley Lowers Price Target on MetLife to $89 From $93, Keeps Overweight Rating"
+CI,2026-04-04,0.06981279887259007,neutral,news,"DGX Stock News Today | Earnings, Events & Price Alerts"
+CI,2026-04-03,-0.010118583217263222,neutral,news,The Cigna Group's First Quarter 2026 Earnings Release Details
+CI,2026-04-03,0.7744559785351157,positive,news,1 Value Stock to Keep an Eye On and 2 We Avoid
+CI,2026-04-02,-0.005565274506807327,neutral,news,The Cigna Group's First Quarter 2026 Earnings Release Details
+CI,2026-04-02,0.08210575673729181,neutral,news,Northfield Bancorp : Looking for a New Career Opportunity? Northfield Bank is Hiring - Meet us on April 14!
+CI,2026-04-02,0.8425784260034561,positive,news,"Goldman Sachs Adjusts Price Target on Equifax to $192 From $208, Maintains Neutral Rating"
+CI,2026-04-02,-0.005785016342997551,neutral,news,The Cigna Group's First Quarter 2026 Earnings Release Details
+CI,2026-04-02,0.07643718831241131,neutral,news,"Cigna posts Q1 results by 6:30 a.m. ET, holds investor call April 30"
+CI,2026-04-01,-0.9608168145641685,negative,news,Cancer screening rates dip in US as cost concerns deter access
+CI,2026-04-01,0.1839843187481165,neutral,news,"Tidemark Capital, Inc., General Atlantic Service Company, L.P., Hg Saturn 1 managed by HgCapital LLP completed the acquisition of OneStream, Inc. (NasdaqGS:OS) from Tidemark Capital, Inc. and KKR & Co. Inc.."
+CI,2026-04-01,0.9300740659236908,positive,news,Bernstein Bullish on The Cigna Group (CI) Amid Leadership Change and Improved Backdrop
+CI,2026-04-01,0.6221763519570231,positive,news,"New Era Energy & Digital, Inc. and Stream Data Centers Enter Joint Venture For Texas Critical Data Centers Campus"
+CI,2026-04-01,-0.9460375141352415,negative,news,Meyer Handelman Co. Lowers Stock Position in Cigna Group $CI
+CI,2026-04-01,0.6829882711172104,positive,news,Aprea Therapeutics Announces Closing of Oversubscribed $30 Million Private Placement
+CI,2026-04-01,0.05989123973995447,neutral,news,"MFS Charter Income Trust announces Monthly dividend, payable on April 30, 2026"
+CI,2026-04-01,0.9376447191461921,positive,news,Vivos Therapeutics’ Supported Practices Achieve In-Network Status in Nevada
+CI,2026-04-01,0.022818103432655334,neutral,news,"Certain Performance Share Units of Alignment Healthcare, Inc. are subject to a Lock-Up Agreement Ending on 1-APR-2026."
+CI,2026-03-31,0.0787966139614582,neutral,news,"Progyny (NASDAQ: PGNY) schedules virtual 2026 meeting; board, audit ratification on ballot"
+CI,2026-03-31,0.8259770832955837,positive,news,"Celebrating Cigna Healthcare Singapore's 15 years of connected, world-class healthcare #CignaHealthcareSingapore"
+CI,2026-03-31,0.919315910898149,positive,news,FatPipe And TD SYNNEX Enter Distribution Agreement
+RTX,2026-04-14,0.9292392963543534,positive,news,RXT's Blue Canyon Technologies expands reaction wheel production capacity
+RTX,2026-04-14,0.7935158610343933,positive,news,"Serbia and Israel to Jointly Manufacture Combat Drones, Serbian President Says"
+RTX,2026-04-14,0.9264645194634795,positive,news,"RTX puts $1M+ into spacecraft wheel line, targets 2,400 a year"
+RTX,2026-04-14,0.900181433185935,positive,news,RTX unit Raytheon signs $3.7B contract to supply Patriot interceptors to Ukraine
+RTX,2026-04-14,0.44861084781587124,neutral,news,RTX's Collins Aerospace and Air Canada unveil Aurora suites and economy seats across the carrier's A321XLR fleet
+RTX,2026-04-14,0.9289877749979496,positive,news,Critical capability: Combat-proven air defense
+RTX,2026-04-14,0.9337008325383067,positive,news,News | RTX's Raytheon to deliver Patriot interceptors to Ukraine
+RTX,2026-04-14,0.20585915073752403,neutral,news,"Analysts Offer Insights on Industrial Goods Companies: Northrop Grumman (NOC), Deere (DE) and RTX (RTX)"
+RTX,2026-04-14,0.05591805186122656,neutral,news,"Analysts Offer Insights on Industrial Goods Companies: Northrop Grumman (NOC), Deere (DE) and RTX (RTX)"
+RTX,2026-04-14,0.9242761470377445,positive,news,"57,838 Shares in The Boeing Company $BA Bought by Third View Private Wealth LLC"
+RTX,2026-04-14,0.9280542507767677,positive,news,"Third View Private Wealth LLC Buys Shares of 16,625 RTX Corporation $RTX"
+RTX,2026-04-14,0.8440973563119769,positive,news,Third View Private Wealth LLC Purchases New Stake in Northrop Grumman Corporation $NOC
+RTX,2026-04-14,0.7624071119353175,positive,news,RTX's Collins Aerospace and Air Canada unveil Aurora suites and economy seats across the carrier's A321XLR fleet
+RTX,2026-04-14,0.6928946617990732,positive,news,Air Canada's new A321XLRs get 14 lie-flat suites and 168 seats
+RTX,2026-04-14,0.19381418079137802,neutral,news,Is It Time To Rethink Redwire (RDW) After Its 3 Year Surge?
+RTX,2026-04-13,0.18737404700368643,neutral,news,Commercial Metals Names Mike Dumais to Board of Directors
+RTX,2026-04-13,-0.6151855830103159,negative,news,Investigation underway after early morning fire at Raytheon building in Warner Robins
+RTX,2026-04-13,0.883536365814507,positive,news,Raytheon tests event-based infrared camera for tracking fast-moving targets (RTX:NYSE)
+RTX,2026-04-13,0.7692151069641113,positive,news,U.S.-Iran Ceasefire: Short Interest Surges for This Defense ETF
+RTX,2026-04-13,0.035334992222487926,neutral,news,XLCS Partners advises Sherwood Aviation on sale to HEICO Corporation
+RTX,2026-04-13,-0.05012407898902893,neutral,news,"Jefferies Maintains RTX Corp(RTX.US) With Hold Rating, Cuts Target Price to $210"
+RTX,2026-04-13,0.24190709181129932,neutral,news,Safe Pro Launches Next Gen AI Powered NODE-X for Drone Footage at U.S. Army Exercise
+RTX,2026-04-13,0.9341383278369904,positive,news,Northrop Grumman advances Sentinel ICBM development By Investing.com
+RTX,2026-04-13,0.7840394545346498,positive,news,RTX’s Collins Aerospace launches PHEDRE Consortium to advance next-generation propeller technologies
+RTX,2026-04-13,0.8437393507920206,positive,news,News | Bell selects five RTX systems for U.S Army's Future Long Range Assault Aircraft
+RTX,2026-04-13,0.9101299941539764,positive,news,Collins Aerospace wins contracts for Army assault aircraft
+RTX,2026-04-13,0.7755961325019598,positive,news,Army’s new MV-75 aircraft gets five flight systems from RTX
+RTX,2026-04-13,0.7051530899479985,positive,news,RTX's Raytheon demonstrates first-of-its-kind event-based mid-wave infrared camera
+RTX,2026-04-13,0.940780408680439,positive,news,Does RTX’s New Dutch Patriot Deal Reshape the Bull Case for RTX (RTX)?
+RTX,2026-04-13,0.6245460566133261,positive,news,News | RTX's Raytheon demonstrates first-of-its-kind event-based mid-wave infrared camera
+RTX,2026-04-13,0.3931143041700125,neutral,news,Raytheon's new infrared camera tracks fast threats with less power
+RTX,2026-04-13,-0.9555830219760537,negative,news,State of Alaska Department of Revenue Cuts Stock Holdings in RTX Corporation $RTX
+RTX,2026-04-13,0.9087027236819267,positive,news,"The Zacks Analyst Blog Highlights LMT, RTX, NOC, ITA, PPA and SHLD"
+RTX,2026-04-13,0.09339433908462524,neutral,news,"The Zacks Analyst Blog Highlights LMT, RTX, NOC, ITA, PPA and SHLD"
+RTX,2026-04-13,0.9223404657095671,positive,news,Lockheed Martin (LMT) in 2026: The Digital Pivot of the Defense Titan
+RTX,2026-04-13,0.9129795152693987,positive,news,Lockheed Martin (LMT) in 2026: The Digital Pivot of the Defense Titan
+RTX,2026-04-13,0.8085400592535734,positive,news,RTX: The Industrial Backbone of a New Geopolitical Era (2026 Analysis)
+RTX,2026-04-13,0.9056615103036165,positive,news,MEADS fire control radar demonstrates capability
+RTX,2026-04-12,0.8329069968312979,positive,news,RTX Corporation (RTX) secures $3.8 billion contract modification for lots 18-19 of F135 engine
+RTX,2026-04-12,-0.9214274771511555,negative,news,Analysis of RTX's Performance Amid Iran War
+RTX,2026-04-12,0.6203468590974808,positive,news,RTX Is Outperforming Everything. Is It Still the Smartest Buy Right Now?
+RTX,2026-04-11,-0.9607535628601909,negative,news,Assessing Redwire (RDW) Valuation After New UK Defence Hub And ESA Quantum Satellite Contract
+RTX,2026-04-11,0.8892109617590904,positive,news,Will HII’s GrayMatter Robotics Physical AI Pact Reshape Its Efficiency‑Driven Shipyard Investment Narrative?
+RTX,2026-04-11,-0.9145970828831196,negative,news,Cantor Fitzgerald Investment Advisors L.P. Has $3.41 Million Stake in RTX Corporation $RTX
+RTX,2026-04-11,-0.9376210384070873,negative,news,"Cantor Fitzgerald Investment Advisors L.P. Sells 3,124 Shares of Lockheed Martin Corporation $LMT"
+RTX,2026-04-10,0.9380600899457932,positive,news,Howmet Aerospace Expands Supply Chain Role With US$1.8b CAM Acquisition
+RTX,2026-04-10,-0.221966952085495,negative,news,Is GE (GE) Turning Governance Scrutiny Into a Strategic Advantage for Its Aerospace Story?
+RTX,2026-04-10,-0.8838690258562565,negative,news,Boston Scientific Corporation (BSX) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit
+RTX,2026-04-10,0.9405048321932554,positive,news,"Hillman Solutions Delivers Record FY2025 Results, Eyes Growth Through Digital Expansion"
+RTX,2026-04-10,-0.9542744886130095,negative,news,"Shareholders who lost money in Medpace Holdings, Inc. (NASDAQ: MEDP) Should Contact Wolf Haldenstein Immediately"
+CVX,2026-04-14,0.9309434005990624,positive,news,What SLB (SLB)'s New Deepwater Subsea Wins Mean For Shareholders
+CVX,2026-04-14,0.8974610166624188,positive,news,Chevron Corp. stock (US1667641005): Why does its integrated energy model matter more now for U.S. in
+CVX,2026-04-14,0.9210570212453604,positive,news,[6-K] BP PLC Current Report (Foreign Issuer) | BP SEC Filing - Form 6-K
+CVX,2026-04-14,0.058961122296750546,neutral,news,"The Zacks Analyst Blog Highlights Chevron, HSBC and Advantest"
+CVX,2026-04-14,0.021496962755918503,neutral,news,"The Zacks Analyst Blog Highlights Chevron, HSBC and Advantest"
+CVX,2026-04-14,0.928924048319459,positive,news,Exxon Mobil Corporation stock (US30231G1022): Is supply chain resilience now the real test for energ
+CVX,2026-04-14,0.8880819529294968,positive,news,BP Flags Exceptional Oil Trading Gain as Energy Prices Soar
+CVX,2026-04-14,-0.00883200392127037,neutral,news,"ORIX Corp (8591.T) Stock Price, News & Analyst Forecast"
+CVX,2026-04-14,0.9314718414098024,positive,news,Chevron consolidates Venezuela holdings through asset swap with PDVSA
+CVX,2026-04-13,-0.6675464324653149,negative,news,United CEO has pitched possible combination with rival American
+CVX,2026-04-13,0.4244586154818535,positive,news,"Petrobras in initial talks to buy back Brazil refinery from Mubadala, sources say"
+CVX,2026-04-13,-0.03385750576853752,neutral,news,"Mitsubishi UFJ Financial Group Inc. (8306.T) Stock Price, News & Analyst Forecast"
+CVX,2026-04-13,0.8837811015546322,positive,news,A Look At Transocean (RIG) Valuation After Strong Recent Share Price Momentum
+CVX,2026-04-13,0.9275876116007566,positive,news,Chevron Consolidates Venezuela Heavy Oil Position in Asset Swap
+CVX,2026-04-13,0.9252073923125863,positive,news,Exxon Mobil Corporation stock (US30231G1022): Is energy transition strategy strong enough to unlock new upside?
+CVX,2026-04-13,0.419450968503952,positive,news,"Atlas Energy Solutions (AESI) Stock Is Up, What You Need To Know"
+CVX,2026-04-13,0.9276781026273966,positive,news,Venezuela Set To Award Oil Fields To Chevron To Help Grow Output
+CVX,2026-04-13,0.8512316928245127,positive,news,Argentine generator Central Puerto enters Vaca Muerta
+CVX,2026-04-13,0.8963244827464223,positive,news,Venezuela Set to Award Oil Fields to Chevron to Help Grow Output
+CVX,2026-04-13,0.7998103499412537,positive,news,Chevron Corp. stock outperforms competitors on strong trading day
+CVX,2026-04-13,0.9078367538750172,positive,news,"Investment Strategies for Volatile Markets: Analyzing Coca-Cola, Chevron, McDonald's - News and Statistics"
+CVX,2026-04-13,0.8411535532213748,positive,news,Eni Invests $70 Million in NMG to Strengthen Graphite Supply Chain
+CVX,2026-04-13,0.9360861117020249,positive,news,UBS reiterates Chevron stock Buy rating on renewable diesel capacity
+CVX,2026-04-13,0.9055060837417841,positive,news,The Permian Juggernaut: A Comprehensive Research Feature on Diamondback Energy (FANG)
+CVX,2026-04-13,-0.9476168202236295,negative,news,"Halliburton, Baker Hughes plan stakeholder meeting"
+CVX,2026-04-13,0.9348229486495256,positive,news,Mizuho raises Chevron stock price target on free cash flow outlook By Investing.com
+CVX,2026-04-13,-0.938663731329143,negative,news,"These Stocks Are Today’s Movers: Goldman Sachs, Chevron, Sandisk, Fastenal, Leggett & Platt, Ideaya, and More"
+CVX,2026-04-13,0.9234684528782964,positive,news,"In the era of hundred-dollar oil prices, BP PLC is making a low-cost bet on the next super oil field in Namibia with its 'return to oil and gas' strategy."
+CVX,2026-04-13,-0.9530015829950571,negative,news,Morgan Stanley maintains oil price forecasts and predicts slow recovery in supply
+CVX,2026-04-13,0.9361114073544741,positive,news,UBS raises Occidental Petroleum stock price target on stronger outlook
+CVX,2026-04-13,0.842200392857194,positive,news,Chevron (CVX) in 2026: The New Era of Energy Addition and the Guyana Catalyst
+CVX,2026-04-13,0.903669667430222,positive,news,Exxon Mobil (XOM) in 2026: The Rise of the Modern Supermajor
+CVX,2026-04-13,0.5863739075139165,positive,news,"Energy Transition Market to Hit US$ 5.58 Trillion by 2033 | Top Companies 2026 - NextEra Energy, Inc., Iberdrola, S.A., Ørsted A/S"
+CVX,2026-04-13,0.7914636731147766,positive,news,Biofuel Market to Hit US$ 252.19 Billion by 2032 | Top Companies
+CVX,2026-04-13,0.8760155914351344,positive,news,The Permian Juggernaut: A Comprehensive Research Feature on Diamondback Energy (FANG)
+CVX,2026-04-13,0.9383100382983685,positive,news,Johnson & Johnson (JNJ) is Gaining from Its Strong Innovative Medicine Growth
+CVX,2026-04-13,0.8054090314544737,positive,news,Chevron confirms oil discovery at Bandit prospect in Gulf of America
+CVX,2026-04-13,0.9290033290162683,positive,news,"NAT just locked in about $75,000 a day for a year from a major customer"
+CVX,2026-04-13,-0.9199169594794512,negative,news,"Energy prices have probably peaked. What that means for stocks, according to Morgan Stanley’s Mike Wilson."
+CVX,2026-04-13,-0.9618441155180335,negative,news,"Oceaneering International, Inc. (NYSE:OII) Receives Average Rating of ""Hold"" from Analysts"
+CVX,2026-04-12,0.9238088093698025,positive,news,"Oil Surges 7% on Hormuz Blockade, U.S. Gulf Tanker Rush — 3 Stocks to Buy Now"
+CVX,2026-04-12,-0.7171442359685898,negative,news,Zurn Elkay Water Solutions Cor $ZWS Shares Sold by Tudor Investment Corp ET AL
+CVX,2026-04-12,0.3210707902908325,positive,news,"Analysts Offer Insights on Energy Companies: Venture Global, Inc. Class A (VG) and Chevron (CVX)"
+CVX,2026-04-12,0.5616954397410154,positive,news,Chevron Oil Discovery in Gulf of Mexico's Bandit Prospect | 2026 Update - News and Statistics
+CVX,2026-04-11,0.9284165389835835,positive,news,Amplify Junior Silver Miners ETF: Friedens-Euphorie!
+CVX,2026-04-11,0.8082843385636806,positive,news,"Analysts Are Bullish on These Energy Stocks: Valero Energy (VLO), Propetro Holding (PUMP)"
+CMCSA,2026-04-14,0.7251953091472387,positive,news,"More than 7,000 Wilton homes and businesses gain multi-g internet"
+CMCSA,2026-04-14,0.8794588642194867,positive,news,"136,357 Shares in Comcast Corporation $CMCSA Purchased by Third View Private Wealth LLC"
+CMCSA,2026-04-14,-0.9510387219488621,negative,news,Timber Creek Capital Management LLC Has $2.64 Million Position in Comcast Corporation $CMCSA
+CMCSA,2026-04-14,-0.017324209213256836,neutral,news,Comcast Agrees to $117.5 Million Settlement Over 2023 Data Breach
+CMCSA,2026-04-14,0.9327170187607408,positive,news,Assetmark Inc. Increases Stake in Comcast Corporation
+CMCSA,2026-04-14,0.3987467288970947,positive,news,Netgear Nighthawk Router: WiFi 7 Upgrade Push Faces Tough Competition
+CMCSA,2026-04-14,0.6706863455474377,positive,news,T-Mobile US Inc. stock (US8725901040): Is 5G leadership strong enough to unlock new upside?
+CMCSA,2026-04-13,0.7732101138681173,positive,news,"Super Mario Dominates Box Office: Will Nintendo, Comcast Or AMC Stock Be The Biggest Winner?"
+CMCSA,2026-04-13,-0.9654892263934016,negative,news,Comcast price returns lower - Forecast today - 13-04-2026
+CMCSA,2026-04-13,0.8990257978439331,positive,news,"T-Mobile US, Inc. stock (US8725901040): Is its 5G dominance strong enough to unlock new upside?"
+CMCSA,2026-04-12,0.8934764973819256,positive,news,Verizon Communications Inc. stock (US92343V1044): Is wireless infrastructure demand strong enough for steady upside?
+CMCSA,2026-04-12,0.932430793531239,positive,news,Comcast Shares Acquired by Sumitomo Mitsui Trust Group
+CMCSA,2026-04-12,-0.9643681095913053,negative,news,"Cambiar Investors LLC Lowers Stock Position in The TJX Companies, Inc. $TJX"
+CMCSA,2026-04-11,0.07602690625935793,neutral,news,3 Major Brands You Might Not Realize Are Owned By Comcast
+CMCSA,2026-04-11,-0.8948938678950071,negative,news,The Reason You Don't See McDonald's Inside Walmart Stores Anymore
+CMCSA,2026-04-11,0.9354526996612549,positive,news,Howard Capital Management Boosts Comcast Stock Holdings
+CMCSA,2026-04-11,0.9206454111263156,positive,news,"Gray Television Expands Telemundo Partnership, Targets Spanish-Speaking and Sports Audiences"
+CMCSA,2026-04-11,0.9329493809491396,positive,news,Liberty Broadband Stock Rises Above 50-Day Moving Average
+CMCSA,2026-04-11,-0.9471196327358484,negative,news,Cantor Fitzgerald Trims Comcast Stake by 20%
+CMCSA,2026-04-11,0.4346209168434143,positive,news,"Cantor Fitzgerald Investment Advisors L.P. Sells 73,190 Shares of Comcast Corporation $CMCSA"
+CMCSA,2026-04-10,-0.8687752261757851,negative,news,A Look At Constellation Energy (CEG) Valuation After 2026 Outlook Miss And Three Mile Island Delay Concerns
+CMCSA,2026-04-10,0.9267450366169214,positive,news,Fox Corp. (Class B) stock (US35137L2043): Is its media content moat strong enough for streaming wars
+CMCSA,2026-04-10,0.9179139388725162,positive,news,Universal Electronics stock (US91366Y1001): Is its smart home pivot strong enough to unlock new upsi
+CMCSA,2026-04-10,0.9329946553334594,positive,news,Universal Electronics stock (US91366Y1001): Is its smart home pivot strong enough to unlock new upsi
+CMCSA,2026-04-10,-0.9154107421636581,negative,news,"US judge extends temporary order halting Nexstar, Tegna merger"
+CMCSA,2026-04-10,-0.9673249833285809,negative,news,Comcast Corp. Cl A stock underperforms Friday when compared to competitors
+CMCSA,2026-04-10,0.5445969477295876,positive,news,Disney Just Made Another Major Executive Change To Reshape the Communications Structure
+CMCSA,2026-04-10,-0.7578683122992516,negative,news,Roffman Miller Associates Inc. PA Has $5.08 Million Holdings in Diageo plc $DEO
+CMCSA,2026-04-10,-0.8922443855553865,negative,news,Federal judge extends restraining order on $6.2B merger of local TV giants Nexstar and Tegna
+CMCSA,2026-04-10,0.6238840203732252,positive,news,Oak Thistle LLC Takes $1.32 Million Position in Comcast Corporation $CMCSA
+CMCSA,2026-04-10,0.6260076239705086,positive,news,APPLE INC : Jefferies is Neutral
+CMCSA,2026-04-10,0.9267733050510287,positive,news,Comcast Corporation $CMCSA Shares Purchased by Foundation Resource Management Inc.
+CMCSA,2026-04-09,0.07177037559449673,neutral,news,'Malcolm in the Middle: Life's Still Unfair' Cast Talks 'Magical' Reunion 25 Years in the Making
+CMCSA,2026-04-09,0.9391283513978124,positive,news,Comcast (CMCSA) Stock: Strategic Streaming Bundle Expansion Strengthens Competitive Edge
+CMCSA,2026-04-09,0.0011124741286039352,neutral,news,"VSNT SEC Filings - Versant Media 10-K, 10-Q, 8-K Forms"
+CMCSA,2026-04-09,-0.03224921226501465,neutral,news,Comcast Announces New CHRO Vicki Williams
+CMCSA,2026-04-09,0.8812608933076262,positive,news,Xfinity says its new streaming bundles can cut bills by up to 45%
+CMCSA,2026-04-09,-0.9417276168242097,negative,news,The surprise reason behind the Comcast-Scripps TV blackout in Florida
+CMCSA,2026-04-09,0.7072822600603104,positive,news,Comcast Corp. Cl A stock underperforms Thursday when compared to competitors despite daily gains
+CMCSA,2026-04-09,0.08542759530246258,neutral,news,Liberty Broadband Corp stock: What you need to know for smart investing now
+CMCSA,2026-04-09,0.9238947760313749,positive,news,"Costar Group Inc - Q1 2026 office leasing hits 120 million sq ft, up 25% year over year"
+CMCSA,2026-04-09,-0.8980569560080767,negative,news,The Hidden Risk on Company Balance Sheets
+CMCSA,2026-04-09,-0.9445539712905884,negative,news,"Monte Financial Group LLC Sells 155,647 Shares of Comcast Corporation $CMCSA"
+CMCSA,2026-04-09,-0.9626874756067991,negative,news,"Performance Food Group (PFGC): Buy, Sell, or Hold Post Q4 Earnings?"
+CMCSA,2026-04-09,0.8430049163289368,positive,news,Comcast Technology Solutions Selected by Great American Media for Managed Channel Origination and Distribution
+CMCSA,2026-04-08,0.3601206839084625,positive,news,Denison Mines Sets May 12 AGM as Phoenix Uranium Project Moves Into Construction Phase
+CMCSA,2026-04-08,0.9193229824304581,positive,news,Lenoir City Public Utility Makes Speedy Progress On Tennessee Fiber Build
+CMCSA,2026-04-08,-0.955070192925632,negative,news,Yousif Capital Management LLC Cuts Position in Comcast Corporation $CMCSA
+CMCSA,2026-04-08,0.8371536489576101,positive,news,CMCSA - Comcast Corporation – Broadband Expansion and Launch of Integrated Connectivity Solutions for Residential and SME Growth
+CMCSA,2026-04-08,-0.033337488770484924,neutral,news,Comcast $117.5M Data Breach Class Action Settlement
+PM,2026-04-14,0.21467819809913635,neutral,news,"79% say more must be done on smoking harm, PMI U.S. paper says"
+PM,2026-04-14,-0.9616161342710257,negative,news,Robeco Institutional Asset Management B.V. Lowers Stock Position in Philip Morris International Inc. $PM
+PM,2026-04-14,-0.9533299002796412,negative,news,Philip Morris Ferrari Hypersail Tie Up Meets Valuation Discount Debate
+PM,2026-04-14,0.8185460474342108,positive,news,British American Tobacco plc stock (GB0002875804): Is the shift to non-combustibles now the real growth test?
+PM,2026-04-14,0.9316689940169454,positive,news,"Assetmark Inc. Buys 114,618 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-13,0.48587164282798767,positive,news,Philip Morris International Inc. stock outperforms competitors on strong trading day
+PM,2026-04-13,0.8492649509571493,positive,news,"Philip Morris International Joins Ferrari Hypersail as Principal Partner, Building on 50-Year Relationship"
+PM,2026-04-13,0.7532325005158782,positive,news,"Philip Morris International Joins Ferrari Hypersail as Principal Partner, Building on 50-Year Relationship"
+PM,2026-04-13,-0.9585279766470194,negative,news,State of Alaska Department of Revenue Reduces Stock Position in Philip Morris International Inc. $PM
+PM,2026-04-13,0.00596686452627182,neutral,news,"Altria Group, Inc. Trade Ideas — BSESOF:PHM7"
+PM,2026-04-12,-0.9453161526471376,negative,news,Philip Morris International Inc. $PM Shares Sold by Sumitomo Mitsui Trust Group Inc.
+PM,2026-04-12,0.8793270662426949,positive,news,"Altfest L J & Co. Inc. Purchases 14,583 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-11,0.8229379039257765,positive,news,Massachusetts Financial Services Co. MA Boosts Stake in Philip Morris International Inc. $PM
+PM,2026-04-11,0.9169138874858618,positive,news,Factory Mutual Insurance Co. Has $67.11 Million Stock Position in Philip Morris International Inc. $PM
+PM,2026-04-11,-0.9285856168717146,negative,news,Cantor Fitzgerald Investment Advisors L.P. Reduces Stake in Philip Morris International Inc. $PM
+PM,2026-04-11,0.4077717363834381,positive,news,Philip Morris Is Maintained at Buy by Stifel
+PM,2026-04-10,0.17964615300297737,neutral,news,Philip Morris & 3 More Stocks With Strong Interest Coverage to Buy Now
+PM,2026-04-10,-0.44405604153871536,negative,news,How Investors Are Reacting To Philip Morris International (PM) FDA Scrutiny Of ZYN And ZYN Ultra
+PM,2026-04-10,0.9392599444836378,positive,news,"WCM Investment Management, LLC Increases Stake in Sea Ltd"
+PM,2026-04-09,0.8995232013985515,positive,news,"Oak Thistle LLC Purchases 8,892 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-09,0.9139783531427383,positive,news,"Goldman Sachs Maintains Philip Morris International(PM.US) With Buy Rating, Maintains Target Price $205"
+PM,2026-04-08,-0.026109842583537102,neutral,news,"NextNav (NN) outlines 2026 virtual meeting, board elections and EY audit vote"
+PM,2026-04-08,0.8122501969337463,positive,news,"Philip Morris International Inc. stock rises Wednesday, still underperforms market"
+PM,2026-04-08,0.9336784146726131,positive,news,Stock Yards Bank & Trust Co. Increases Holdings in Philip Morris International Inc. $PM
+PM,2026-04-07,0.7679074928164482,positive,news,Eastern Company stock: What investors need to know about this Egyptian market player
+PM,2026-04-07,-0.9648790853098035,negative,news,Philip Morris International Inc. stock underperforms Tuesday when compared to competitors
+PM,2026-04-07,-0.608245000243187,negative,news,"67,665 Shares in Philip Morris International Inc. $PM Acquired by Talbot Financial LLC"
+PM,2026-04-07,0.6105374395847321,positive,news,Will Philip Morris International Overcome FDA Worries About Nicotine Pouch Use?
+PM,2026-04-07,-0.47820934653282166,negative,news,Is Wall Street Underestimating Philip Morris International Stock’s Potential?
+PM,2026-04-07,0.9178976640105247,positive,news,Philip Morris International Stock Pulls Back to Support – Smart Entry?
+PM,2026-04-07,-0.9676391980610788,negative,news,Philip Morris International Inc Stock (PM) Moved Down by 4.79% on Apr 1: A Full Analysis
+PM,2026-04-06,0.9301486685872078,positive,news,Philip Morris International Inc. stock outperforms competitors on strong trading day
+PM,2026-04-06,-0.9362063482403755,negative,news,Stratos Wealth Partners LTD. Reduces Stake in Philip Morris International Inc. $PM
+PM,2026-04-06,0.743580779992044,positive,news,E-cigarette and Vape Market to Get an Explosive Growth |Juul
+PM,2026-04-05,0.7746069552376866,positive,news,"World Investment Advisors Purchases 34,392 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-05,0.13907960057258606,neutral,news,"How Altria Makes Money: Cigarettes and Cigars, Oral Tobacco Products, and Wine"
+PM,2026-04-05,0.8636420927941799,positive,news,"Savvy Advisors Inc. Buys 8,802 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-05,-0.8383315242826939,negative,news,"SteelPeak Wealth LLC Sells 26,069 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-05,-0.933593513444066,negative,news,FDA Delays Put Altria Nicotine Pouch Story Under The Microscope
+PM,2026-04-04,0.1575661040842533,neutral,news,Business ethics and integrity | PMI
+PM,2026-04-04,0.8538631675764918,positive,news,Philip Morris International Inc. (PM) Strengthens Case for for IQOS Modified Risk Status with FDA Committee Review
+PM,2026-04-04,0.9345865398645401,positive,news,Perpetual Ltd Increases Stake in Philip Morris International Inc. $PM
+PM,2026-04-04,0.8035178082063794,positive,news,"11,856 Shares in Philip Morris International Inc. $PM Acquired by First American Bank"
+PM,2026-04-03,-0.9614782184362411,negative,news,"Aberdeen Group plc Sells 89,923 Shares of Philip Morris International Inc. $PM"
+PM,2026-04-03,0.8057055119425058,positive,news,PTC Tops Autodesk Stock on Price & Potential
+PM,2026-04-03,0.5734060555696487,positive,news,"Between American Electric Power and Constellation Energy, Which Stock Looks Set to Break Out?"
+PM,2026-04-03,-0.9577764505520463,negative,news,Dorman Products Stock To $71?
+PM,2026-04-03,0.9018029244616628,positive,news,Altria Group Inc. stock: Navigating the shift to smoke-free products amid stable dividend appeal for North American investors
+PM,2026-04-03,-0.21860540099442005,neutral,news,Is 13.6% Fall In Philip Morris International (PM) Stock A Buying Opportunity?
+PM,2026-04-02,-0.8646900206804276,negative,news,BTC Capital Management Inc. Trims Stock Position in Warrior Met Coal $HCC
+KHC,2026-04-14,0.4884465942159295,positive,news,The Kraft Heinz Co. unveils restaurant-style Mac & Cheese
+KHC,2026-04-14,-0.9623902840539813,negative,news,Has The Selloff In Kraft Heinz (KHC) Created An Opportunity For Long‑Term Investors
+KHC,2026-04-14,0.3298593107610941,neutral,news,"Ore-Ida Introduces “Ore-Ida or Nothing”, New Creative Platform Celebrating its Legacy as the Inventor of Tater Tots"
+KHC,2026-04-14,-0.8915709163993597,negative,news,"General Mills sues Liberty Mutual, ACE over ultra-processed food coverage"
+KHC,2026-04-14,-0.4003770053386688,neutral,news,Candy now tastes different. It’s not just you.
+KHC,2026-04-14,-0.8189007565379143,negative,news,"Kraft Heinz Company (NASDAQ:KHC) Receives Consensus Rating of ""Reduce"" from Brokerages"
+KHC,2026-04-13,0.8605038970708847,positive,news,BTIG initiates Kraft Heinz stock coverage with neutral rating
+KHC,2026-04-13,0.9087993949651718,positive,news,BTIG initiates Utz Brands stock with buy rating on valuation By Investing.com
+KHC,2026-04-13,-0.948948529548943,negative,news,The Kraft Heinz Company (KHC) – One of the 13 NASDAQ Stocks with Highest Dividends
+KHC,2026-04-13,-0.000406753271818161,neutral,news,"Jack in the Box names Eduardo Luz to board, two directors to retire"
+KHC,2026-04-13,-0.9669784419238567,negative,news,Conagra Brands (CAG) Falls 5.4% Amid Rising Oil Prices Concerns
+KHC,2026-04-13,-0.96627601608634,negative,news,Kraft Heinz Co. stock underperforms Monday when compared to competitors
+KHC,2026-04-13,-0.9542167615145445,negative,news,Conagra Brands names Smucker executive John Brase as new CEO
+KHC,2026-04-13,-0.004561683163046837,neutral,news,"The Kraft Heinz Company to Report First Quarter 2026 Results on May 6, 2026"
+KHC,2026-04-13,-0.010189233347773552,neutral,news,"The Kraft Heinz Company to Report First Quarter 2026 Results on May 6, 2026"
+KHC,2026-04-13,0.8739835838787258,positive,news,Hershey seeking to add to its presence in protein
+KHC,2026-04-13,0.3522295104339719,neutral,news,Conagra Brands names new CEO
+KHC,2026-04-13,0.856062519364059,positive,news,The J.M. Smucker Company stock (US8326961037): Why its pet food and coffee positioning matters more
+KHC,2026-04-13,0.9330519801005721,positive,news,"Iridian Asset Management LLC CT Purchases 50,044 Shares of Post Holdings, Inc. $POST"
+KHC,2026-04-13,0.9235374080017209,positive,news,Kraft Heinz Company $KHC Shares Purchased by Robeco Institutional Asset Management B.V.
+KHC,2026-04-13,0.31885262578725815,neutral,news,The Best Reservation in Town is Now at Home with All-New Kraft Mac & Cheese Restaurant Edition
+KHC,2026-04-12,0.9337056800723076,positive,news,Coca-Cola Dividend: 64-Year Streak for Income Investors in 2026 - News and Statistics
+KHC,2026-04-12,-0.315238282084465,negative,news,Are Analyst Cautions Reframing Kraft Heinz’s (KHC) Turnaround Story Around Brand Relevance Instead of Earnings Resilience?
+KHC,2026-04-11,0.16391146183013916,positive,news,"Massachusetts Financial Services Co. MA Trims Stock Position in PepsiCo, Inc. $PEP"
+KHC,2026-04-11,0.8681539855897427,positive,news,Kraft Heinz 'relishes' five-year condiment partnership deal with NFL
+KHC,2026-04-11,-0.7303180694580078,negative,news,"KHC Stock Price, Quote & Chart | KRAFT HEINZ CO/THE (NASDAQ:KHC)"
+KHC,2026-04-11,-0.9221508540213108,negative,news,Is J. M. Smucker (SJM) Share Price Slump Creating A Potential Opportunity?
+KHC,2026-04-10,-0.9681336185894907,negative,news,More Than 150 Jobs Lost as General Mills Shutters Plant in June
+KHC,2026-04-10,0.8534039314836264,positive,news,Clorox Co. stock (US1890541097): Is consumer staples stability strong enough for upside now?
+KHC,2026-04-10,-0.014400240033864975,neutral,news,FIRST TR ETF VI (FTXG) ETF Holders - Institutional Ownership
+KHC,2026-04-10,0.8761093756183982,positive,news,The Flavor Revolution: McCormick and Unilever Join Forces in $65 Billion 'Flavor Powerhouse' Merger
+KHC,2026-04-10,0.8831960652023554,positive,news,The Flavor Revolution: McCormick and Unilever Join Forces in $65 Billion 'Flavor Powerhouse' Merger
+KHC,2026-04-10,-0.9674332477152348,negative,news,Kraft Heinz (KHC) Receives a Hold from Wells Fargo
+KHC,2026-04-09,0.8133761496283114,positive,news,McCormick to combine with Unilever Foods (UL) in Reverse Morris Trust deal
+KHC,2026-04-09,0.6212865114212036,positive,news,Here’s Why Callaway Golf (CALY) Is a Hot Growth Stock to Invest In
+KHC,2026-04-09,0.9344022553414106,positive,news,"93% Analysts Say Buy, But Is Companhia de Saneamento Básico do Estado de São Paulo – SABESP (SBS) Worth It?"
+KHC,2026-04-09,0.11336006969213486,neutral,news,Futu Holdings (FUTU) Declares Cash Dividend
+KHC,2026-04-09,0.9322386309504509,positive,news,Here’s Why ​ArcBest Corporation (ARCB) Is a Hot Growth Stock to Invest In Right Now
+KHC,2026-04-09,0.9300132002681494,positive,news,Kraft Heinz Co. stock outperforms competitors on strong trading day
+KHC,2026-04-09,0.9112158752977848,positive,news,Cal-Maine’s Shift Toward Premium Eggs Softens Hit from Falling Prices
+KHC,2026-04-09,-0.9561814488843083,negative,news,Jim Cramer Comments On Very Important Details About Conagra (CAG)
+KHC,2026-04-09,0.9336995724588633,positive,news,Jim Cramer Shares Why ONEOK (OKE) Is His Favorite Gas Stock
+KHC,2026-04-09,-0.9639227548614144,negative,news,BNP Paribas Exane Has Lowered Expectations for Kraft Heinz (NASDAQ:KHC) Stock Price
+KHC,2026-04-09,0.9303516810759902,positive,news,The Kraft Heinz Co stock: Pausing split plans signals bold turnaround bet
+KHC,2026-04-09,0.8248981218785048,positive,news,Nomad Foods Expands Executive Leadership with Two Newly Created Roles
+KHC,2026-04-09,-0.8165067136287689,negative,news,Ground Beef Prices Rising
+KHC,2026-04-09,0.8262399309314787,positive,news,Plant-Based Meat Snacks Market Forecast Report 2026-2032
+KHC,2026-04-09,0.8280223459005356,positive,news,Wheaton Precious Metals Corp. (WPM) Unit Commits $275M to Secure Gold Supplies in Australia
+KHC,2026-04-09,0.14960961416363716,neutral,news,Unilever food’s $44.8 billion deal puts Nigeria operations in focus
+KHC,2026-04-08,0.5512218596413732,positive,news,Statewide effort invites community to help provide meals for local families facing hunger
+BRK-B,2026-04-13,0.030458586290478706,neutral,news,Berkshire Hathaway Inc. Class B Trade Ideas — BSESOF:BRYN
+BRK-B,2026-04-13,-0.0203570406883955,neutral,news,Berkshire Hathaway Inc. Shs -B CAD hedged- Canadian Depositary Receipt Repr Shs B Reg S Trade Ideas
+BRK-B,2026-04-10,0.08903281763195992,neutral,news,Buffett Reflects On Apple Sale As Berkshire Balances Patience And Opportunity
+BRK-B,2026-04-09,-0.8572577778249979,negative,news,"Berkshire brokerage must face commission lawsuit despite settlement, judge rules - report (BRK.B:NYSE)"
+BRK-B,2026-04-09,-0.006068870425224304,neutral,news,Berkshire Hathaway Inc. Class B Trade Ideas — NYSE:BRK.B
+BRK-B,2026-04-08,0.015943337231874466,neutral,news,Berkshire Hathaway Inc. Class A Trade Ideas — BOATS:BRK.A
+BRK-B,2026-04-08,0.0023276470601558685,neutral,news,Berkshire Hathaway Inc. Class B Trade Ideas — BSESOF:BRYN
+BRK-B,2026-04-08,0.06910793110728264,neutral,news,Berkshire Hathaway Inc. Class A Trade Ideas — BOATS:BRK.A
+BRK-B,2026-04-03,0.7559389173984528,positive,news,Berkshire Hathaway (B) stock: Why it's lagging but analysts see upside
+BRK-B,2026-04-03,0.6565461242571473,positive,news,Berkshire Hathaway (BRK.B) Insures Ships Traveling Through the Strait of Hormuz
+BRK-B,2026-04-03,-0.14344192296266556,neutral,news,Berkshire Hathaway Inc. Class A Trade Ideas — BOATS:BRK.A
+BRK-B,2026-04-01,0.7916492000222206,positive,news,The Oracle’s Resilience: Berkshire Hathaway Snaps Eight-Day Slide as Buffett Eyes Market ‘Fear’
+BRK-B,2026-03-31,0.0005320385098457336,neutral,news,Berkshire Hathaway Inc. Class B Trade Ideas — HAN:BRYN
+BRK-B,2026-03-31,0.9355558231472969,positive,news,Warren Buffett's Energy Picks Soared as Berkshire Hathaway Had 8 Straight Losing Sessions
+BRK-B,2026-03-30,-0.9640937875956297,negative,news,Berkshire Hathaway (BRK.A) Records Longest Losing Streak Since 2018 Under New CEO Abel
+BRK-B,2026-03-29,-0.9540807586163282,negative,news,Berkshire Hathaway Stock Drops for 8 Days. Is It a Good Time to Buy?
+BRK-B,2026-03-29,-0.8227420970797539,negative,news,Berkshire Hathaway Just Notched an 8-Day Losing Streak. Is It a Good Time to Buy the Stock?
+BRK-B,2026-03-29,-0.9650931069627404,negative,news,Berkshire Hathaway (BRK.A) Records Longest Losing Streak Since 2018 Under New CEO Abel
+BRK-B,2026-03-29,0.1491612121462822,neutral,news,"OMAH Promises Monthly Income From Berkshire Holdings, With One Major Catch"
+BRK-B,2026-03-28,0.15933953132480383,neutral,news,Berkshire Hathaway Under Greg Abel Balancing Oxychem Deal And Cash Choices
+BRK-B,2026-03-28,-0.9628930734470487,negative,news,Berkshire shares suffer longest losing streak in more than 7 years
+BRK-B,2026-03-28,-0.024462968111038208,neutral,news,Cash per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN
+BRK-B,2026-03-28,0.06653385423123837,neutral,news,Ajit Jain (NYSE: BRK) reports charitable gift of Berkshire Hathaway Class B shares
+BRK-B,2026-03-27,-0.03942478075623512,neutral,news,Operating cash flow per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN
+BRK-B,2026-03-27,-0.006212102249264717,neutral,news,Berkshire Hathaway Inc. (Class B)
+BRK-B,2026-03-21,-0.7779207527637482,negative,news,Why Berkshire Hathaway Stock Barely Budged as Wall Street Sank on Oil Fears
+BRK-B,2026-03-20,-0.8119002282619476,negative,news,Berkshire Hathaway Inc stock faces valuation scrutiny amid leadership transition and cash pile chall
+BRK-B,2026-03-20,-0.6049224883317947,negative,news,Berkshire Hathaway Inc stock faces valuation scrutiny amid leadership transition and cash pile chall
+BRK-B,2026-03-19,0.022571058943867683,neutral,news,Warren Buffett (BRK) donates 2 Berkshire Hathaway Class A shares to charity
+BRK-B,2026-03-19,-0.9126001633703709,negative,news,Assessing Berkshire Hathaway (BRK.B) Valuation After Recent Share Price Weakness
+BRK-B,2026-03-19,-0.004322092980146408,neutral,news,Berkshire Hathaway Inc. Class B Trade Ideas — TURQUOISE:BRKN
+BRK-B,2026-03-18,0.04394290782511234,neutral,news,Gates Foundation's $86B Portfolio Heavily Concentrated in Berkshire Hathaway - News and Statistics
+BRK-B,2026-03-16,-0.8025069311261177,negative,news,Berkshire Hathaway Inc Stock (ISIN: US0846701086) Faces Post-Buffett Transition Amid $373B Cash Pile
+BRK-B,2026-03-15,-0.4987752567976713,negative,news,Berkshire Hathaway (NYSE:BRK.B) - Stock Analysis
+BRK-B,2026-03-08,-0.23477379977703094,neutral,news,Berkshire Hathaway Inc. Class B
+BRK-B,2026-03-06,0.890177421271801,positive,news,"After Earnings, Is Berkshire Hathaway Stock a Buy, a Sell, or Fairly Valued?"
+BRK-B,2026-03-05,0.8080037049949169,positive,news,Greg Abel Just Bought $15 Million of Warren Buffett’s Favorite Stock
+BRK-B,2026-03-05,0.8909239284694195,positive,news,Berkshire Hathaway resumes stock buybacks under CEO Abel after two-year break
+BRK-B,2026-03-05,0.005881277844309807,neutral,news,Berkshire Hathaway After Warren Buffett: An Early Read on What Investors Can Expect
+BRK-B,2026-03-05,0.8374935425817966,positive,news,"Berkshire Hathaway CEO Greg Abel Loads Up On $15M In Stock, BRK Resumes Share Buybacks"
+BRK-B,2026-03-03,-0.8957983925938606,negative,news,"Berkshire Hathaway stock steadies premarket after 5% slide as Abel’s first letter, PacifiCorp risk bite"
+BRK-B,2026-03-02,-0.9658215614035726,negative,news,"Berkshire Hathaway shares slide after earnings, CEO letter"
+BRK-B,2026-02-28,0.006723737344145775,neutral,news,"BRK.B Stock | Berkshire Hathaway B Price, Quote, News & Analysis"
+BRK-B,2026-02-28,0.7128500789403915,positive,news,"Warren Buffett Is ‘A Very Hard Act to Follow,’ Says Berkshire’s New CEO. He Wants to Make Berkshire ‘Even Stronger.’"
+BRK-B,2026-02-28,-0.1364227682352066,neutral,news,Berkshire Hathaway Inc. News Release
+BRK-B,2026-02-27,0.13269080594182014,neutral,news,"Berkshire Hathaway Is Set to Report Earnings Saturday, With Greg Abel's First Shareholder Letter as CEO"
+BRK-B,2026-02-27,-0.5508231054991484,negative,news,Check out Berkshire Hathaway's stock price (BRK.A) in real time
+BRK-B,2026-02-25,0.290149686858058,neutral,news,Warren Buffett’s Berkshire Hathaway Bought These Stocks. Should You?
+BRK-B,2026-02-23,0.07090344838798046,neutral,news,Berkshire Hathaway (B): Is Buffett’s ‘Cheap’ Share Still a Power Move?
+BRK-B,2026-02-22,0.07424312084913254,neutral,news,Berkshire Hathaway BRK.A: Unlocking Investment Value
+WFC,2026-04-14,-0.06715822778642178,neutral,sec_filing,WFC 8-K Filing - 2026-04-14
+JPM,2026-04-14,-0.07095570117235184,neutral,sec_filing,JPM 8-K Filing - 2026-04-14
+JPM,2026-04-14,-0.07095570117235184,neutral,sec_filing,JPM 8-K Filing - 2026-04-14
+AMZN,2026-04-14,-0.05669515207409859,neutral,sec_filing,AMZN 8-K Filing - 2026-04-14
+C,2026-04-14,-0.043889373540878296,neutral,sec_filing,C 8-K Filing - 2026-04-14
+JNJ,2026-04-14,-0.06270360201597214,neutral,sec_filing,JNJ 8-K Filing - 2026-04-14
+CAT,2026-04-13,-0.030708108097314835,neutral,sec_filing,CAT 8-K Filing - 2026-04-13
 GS,2026-04-13,-0.04942168481647968,neutral,sec_filing,GS 8-K Filing - 2026-04-13
+MPC,2026-04-13,-0.04055165499448776,neutral,sec_filing,MPC 8-K Filing - 2026-04-13
 GOOGL,2026-04-10,-0.05879989638924599,neutral,sec_filing,GOOGL 8-K Filing - 2026-04-10
-OXY,2026-04-10,-0.05577090382575989,neutral,sec_filing,OXY 8-K Filing - 2026-04-10
 CAT,2026-04-10,-0.03390050679445267,neutral,sec_filing,CAT 8-K Filing - 2026-04-10
-CVX,2026-04-09,-0.0316502433270216,neutral,sec_filing,CVX 8-K Filing - 2026-04-09
+OXY,2026-04-10,-0.05577090382575989,neutral,sec_filing,OXY 8-K Filing - 2026-04-10
 AMZN,2026-04-09,-0.05207393690943718,neutral,sec_filing,AMZN 8-K Filing - 2026-04-09
 EOG,2026-04-09,-0.05283371917903423,neutral,sec_filing,EOG 8-K Filing - 2026-04-09
+CVX,2026-04-09,-0.0316502433270216,neutral,sec_filing,CVX 8-K Filing - 2026-04-09
 SLB,2026-04-08,-0.05365506745874882,neutral,sec_filing,SLB 8-K Filing - 2026-04-08
-USB,2026-04-08,-0.057408783584833145,neutral,sec_filing,USB 8-K Filing - 2026-04-08
-XOM,2026-04-08,-0.023865364491939545,neutral,sec_filing,XOM 8-K Filing - 2026-04-08
-INTC,2026-04-08,-0.025281770154833794,neutral,sec_filing,INTC 8-K Filing - 2026-04-08
-COF,2026-04-07,-0.05630152486264706,neutral,sec_filing,COF 8-K Filing - 2026-04-07
+USB,2026-04-08,-0.05740881524980068,neutral,sec_filing,USB 8-K Filing - 2026-04-08
+INTC,2026-04-08,-0.02528172917664051,neutral,sec_filing,INTC 8-K Filing - 2026-04-08
+XOM,2026-04-08,-0.023865390568971634,neutral,sec_filing,XOM 8-K Filing - 2026-04-08
+COF,2026-04-07,-0.05630149506032467,neutral,sec_filing,COF 8-K Filing - 2026-04-07
 ORCL,2026-04-06,-0.029577016830444336,neutral,sec_filing,ORCL 8-K Filing - 2026-04-06
-CSCO,2026-04-06,-0.0640218984335661,neutral,sec_filing,CSCO 8-K Filing - 2026-04-06
-AVGO,2026-04-06,-0.04617438651621342,neutral,sec_filing,AVGO 8-K Filing - 2026-04-06
-PSX,2026-04-06,-0.039251863956451416,neutral,sec_filing,PSX 8-K Filing - 2026-04-06
-C,2026-04-03,-0.03721959330141544,neutral,sec_filing,C 8-K Filing - 2026-04-03
-INTC,2026-04-03,-0.02451992966234684,neutral,sec_filing,INTC 8-K Filing - 2026-04-03
-ABBV,2026-04-03,-0.05223179794847965,neutral,sec_filing,ABBV 8-K Filing - 2026-04-03
-TSLA,2026-04-02,-0.04335886240005493,neutral,sec_filing,TSLA 8-K Filing - 2026-04-02
+PSX,2026-04-06,-0.03925188444554806,neutral,sec_filing,PSX 8-K Filing - 2026-04-06
+AVGO,2026-04-06,-0.04617440328001976,neutral,sec_filing,AVGO 8-K Filing - 2026-04-06
+CSCO,2026-04-06,-0.06402185000479221,neutral,sec_filing,CSCO 8-K Filing - 2026-04-06
+C,2026-04-03,-0.037219561636447906,neutral,sec_filing,C 8-K Filing - 2026-04-03
+ABBV,2026-04-03,-0.05223185196518898,neutral,sec_filing,ABBV 8-K Filing - 2026-04-03
+INTC,2026-04-03,-0.024519944563508034,neutral,sec_filing,INTC 8-K Filing - 2026-04-03
+SBUX,2026-04-02,-0.031242167577147484,neutral,sec_filing,SBUX 8-K Filing - 2026-04-02
+GOOGL,2026-04-02,-0.053947584703564644,neutral,sec_filing,GOOGL 8-K Filing - 2026-04-02
+TSLA,2026-04-02,-0.04335886053740978,neutral,sec_filing,TSLA 8-K Filing - 2026-04-02
 AVGO,2026-04-02,-0.03956793621182442,neutral,sec_filing,AVGO 8-K Filing - 2026-04-02
-GOOGL,2026-04-02,-0.05394752696156502,neutral,sec_filing,GOOGL 8-K Filing - 2026-04-02
-SBUX,2026-04-02,-0.03124214895069599,neutral,sec_filing,SBUX 8-K Filing - 2026-04-02
-MU,2026-04-01,-0.026513418182730675,neutral,sec_filing,MU 8-K Filing - 2026-04-01
+MU,2026-04-01,-0.026513366028666496,neutral,sec_filing,MU 8-K Filing - 2026-04-01
 NKE,2026-04-01,-0.06070697866380215,neutral,sec_filing,NKE 10-Q Filing - 2026-04-01
+TMUS,2026-03-31,-0.06409978494048119,neutral,sec_filing,TMUS 8-K Filing - 2026-03-31
 XOM,2026-03-31,-0.031028231605887413,neutral,sec_filing,XOM 8-K Filing - 2026-03-31
 NKE,2026-03-31,-0.04764658771455288,neutral,sec_filing,NKE 8-K Filing - 2026-03-31
-TMUS,2026-03-31,-0.06409978494048119,neutral,sec_filing,TMUS 8-K Filing - 2026-03-31
 SBUX,2026-03-30,-0.035717956721782684,neutral,sec_filing,SBUX 8-K Filing - 2026-03-30
-WMT,2026-03-27,-0.06663712859153748,neutral,sec_filing,WMT 8-K Filing - 2026-03-27
 TMUS,2026-03-27,-0.0682508833706379,neutral,sec_filing,TMUS 8-K Filing - 2026-03-27
-CAT,2026-03-26,-0.035498032346367836,neutral,sec_filing,CAT 8-K Filing - 2026-03-26
+WMT,2026-03-27,-0.06663712859153748,neutral,sec_filing,WMT 8-K Filing - 2026-03-27
 ADBE,2026-03-25,-0.06865557841956615,neutral,sec_filing,ADBE 10-Q Filing - 2026-03-25
-TXN,2026-03-25,-0.0712870080024004,neutral,sec_filing,TXN 8-K Filing - 2026-03-25
 PYPL,2026-03-25,-0.060616401955485344,neutral,sec_filing,PYPL 8-K Filing - 2026-03-25
+TXN,2026-03-25,-0.0712870080024004,neutral,sec_filing,TXN 8-K Filing - 2026-03-25
 MU,2026-03-25,-0.029868463054299355,neutral,sec_filing,MU 8-K Filing - 2026-03-25
 CVX,2026-03-25,-0.032587235793471336,neutral,sec_filing,CVX 8-K Filing - 2026-03-25
 MDT,2026-03-24,-0.0658507663756609,neutral,sec_filing,MDT 8-K Filing - 2026-03-24
 TMO,2026-03-24,-0.05496080033481121,neutral,sec_filing,TMO 8-K Filing - 2026-03-24
-HON,2026-03-23,-0.04153749905526638,neutral,sec_filing,HON 8-K Filing - 2026-03-23
-ABT,2026-03-23,-0.029826773330569267,neutral,sec_filing,ABT 8-K Filing - 2026-03-23
 LOW,2026-03-23,-0.14283552579581738,neutral,sec_filing,LOW 10-K Filing - 2026-03-23
+ABT,2026-03-23,-0.029826773330569267,neutral,sec_filing,ABT 8-K Filing - 2026-03-23
+HON,2026-03-23,-0.04153749905526638,neutral,sec_filing,HON 8-K Filing - 2026-03-23
 DIS,2026-03-20,-0.036704374477267265,neutral,sec_filing,DIS 8-K Filing - 2026-03-20
-CVS,2026-03-19,-0.049309276044368744,neutral,sec_filing,CVS 8-K Filing - 2026-03-19
 QCOM,2026-03-19,-0.046762121841311455,neutral,sec_filing,QCOM 8-K Filing - 2026-03-19
 ACN,2026-03-19,-0.09015217795968056,neutral,sec_filing,ACN 10-Q Filing - 2026-03-19
 ACN,2026-03-19,-0.07556918449699879,neutral,sec_filing,ACN 8-K Filing - 2026-03-19
+CVS,2026-03-19,-0.049309276044368744,neutral,sec_filing,CVS 8-K Filing - 2026-03-19
+HD,2026-03-18,-0.028121234849095345,neutral,sec_filing,HD 10-K Filing - 2026-03-18
+PSX,2026-03-18,-0.03893051855266094,neutral,sec_filing,PSX 8-K Filing - 2026-03-18
 WFC,2026-03-18,-0.07463504932820797,neutral,sec_filing,WFC 8-K Filing - 2026-03-18
-PSX,2026-03-18,-0.03893055394291878,neutral,sec_filing,PSX 8-K Filing - 2026-03-18
-HD,2026-03-18,-0.028121212497353554,neutral,sec_filing,HD 10-K Filing - 2026-03-18
-WFC,2026-03-17,-0.07087687030434608,neutral,sec_filing,WFC 8-K Filing - 2026-03-17
-COF,2026-03-16,-0.06044858135282993,neutral,sec_filing,COF 8-K Filing - 2026-03-16
-AXP,2026-03-16,-0.06419171765446663,neutral,sec_filing,AXP 8-K Filing - 2026-03-16
-HON,2026-03-16,-0.048577507957816124,neutral,sec_filing,HON 8-K Filing - 2026-03-16
-CMCSA,2026-03-16,-0.04160940647125244,neutral,sec_filing,CMCSA 8-K Filing - 2026-03-16
-CRM,2026-03-16,-0.09598685055971146,neutral,sec_filing,CRM 8-K Filing - 2026-03-16
-DE,2026-03-16,-0.05719694867730141,neutral,sec_filing,DE 8-K Filing - 2026-03-16
-AMZN,2026-03-16,-0.05212309584021568,neutral,sec_filing,AMZN 8-K Filing - 2026-03-16
-WMT,2026-03-13,-0.05924816615879536,neutral,sec_filing,WMT 8-K Filing - 2026-03-13
+AXP,2026-03-16,-0.06419171020388603,neutral,sec_filing,AXP 8-K Filing - 2026-03-16
+DE,2026-03-16,-0.05719688721001148,neutral,sec_filing,DE 8-K Filing - 2026-03-16
+HON,2026-03-16,-0.04857746325433254,neutral,sec_filing,HON 8-K Filing - 2026-03-16
+CRM,2026-03-16,-0.09598692879080772,neutral,sec_filing,CRM 8-K Filing - 2026-03-16
+CMCSA,2026-03-16,-0.04160939157009125,neutral,sec_filing,CMCSA 8-K Filing - 2026-03-16
+COF,2026-03-16,-0.060448603704571724,neutral,sec_filing,COF 8-K Filing - 2026-03-16
+WMT,2026-03-13,-0.059248268604278564,neutral,sec_filing,WMT 8-K Filing - 2026-03-13
 AMAT,2026-03-13,-0.059957271441817284,neutral,sec_filing,AMAT 8-K Filing - 2026-03-13
-GS,2026-03-13,-0.04993448778986931,neutral,sec_filing,GS 8-K Filing - 2026-03-13
-VZ,2026-03-13,-0.05498901754617691,neutral,sec_filing,VZ 8-K Filing - 2026-03-13
-CRM,2026-03-13,-0.08697688020765781,neutral,sec_filing,CRM 8-K Filing - 2026-03-13
-ADI,2026-03-12,-0.04976571723818779,neutral,sec_filing,ADI 8-K Filing - 2026-03-12
-ADBE,2026-03-12,-0.04539185203611851,neutral,sec_filing,ADBE 8-K Filing - 2026-03-12
+CRM,2026-03-13,-0.08697684295475483,neutral,sec_filing,CRM 8-K Filing - 2026-03-13
+GS,2026-03-13,-0.04993446357548237,neutral,sec_filing,GS 8-K Filing - 2026-03-13
+VZ,2026-03-13,-0.054988980293273926,neutral,sec_filing,VZ 8-K Filing - 2026-03-13
 T,2026-03-12,-0.05606209300458431,neutral,sec_filing,T 8-K Filing - 2026-03-12
-SLB,2026-03-11,-0.06096013821661472,neutral,sec_filing,SLB 8-K Filing - 2026-03-11
-TGT,2026-03-11,-0.014326220378279686,neutral,sec_filing,TGT 10-K Filing - 2026-03-11
+ADBE,2026-03-12,-0.04539185203611851,neutral,sec_filing,ADBE 8-K Filing - 2026-03-12
+ADI,2026-03-12,-0.0497656874358654,neutral,sec_filing,ADI 8-K Filing - 2026-03-12
 COST,2026-03-11,-0.051760051399469376,neutral,sec_filing,COST 10-Q Filing - 2026-03-11
+TGT,2026-03-11,-0.014326220378279686,neutral,sec_filing,TGT 10-K Filing - 2026-03-11
 ORCL,2026-03-11,-0.07321811467409134,neutral,sec_filing,ORCL 10-Q Filing - 2026-03-11
-ABT,2026-03-09,-0.031644102185964584,neutral,sec_filing,ABT 8-K Filing - 2026-03-09
-USB,2026-03-09,-0.05865091271698475,neutral,sec_filing,USB 8-K Filing - 2026-03-09
+SLB,2026-03-11,-0.06096013821661472,neutral,sec_filing,SLB 8-K Filing - 2026-03-11
 VLO,2026-03-09,-0.04929444566369057,neutral,sec_filing,VLO 8-K Filing - 2026-03-09
-UNH,2026-03-09,-0.06308515183627605,neutral,sec_filing,UNH 8-K Filing - 2026-03-09
+ABT,2026-03-09,-0.031644102185964584,neutral,sec_filing,ABT 8-K Filing - 2026-03-09
 OXY,2026-03-09,-0.03742995671927929,neutral,sec_filing,OXY 8-K Filing - 2026-03-09
+USB,2026-03-09,-0.05865091271698475,neutral,sec_filing,USB 8-K Filing - 2026-03-09
+UNH,2026-03-09,-0.06308515183627605,neutral,sec_filing,UNH 8-K Filing - 2026-03-09
 NVDA,2026-03-06,-0.041685957461595535,neutral,sec_filing,NVDA 8-K Filing - 2026-03-06
 RTX,2026-03-05,-0.031104711815714836,neutral,sec_filing,RTX 8-K Filing - 2026-03-05
 COST,2026-03-05,-0.03576703183352947,neutral,sec_filing,COST 8-K Filing - 2026-03-05
 ABBV,2026-03-04,-0.05134749412536621,neutral,sec_filing,ABBV 8-K Filing - 2026-03-04
-CI,2026-03-03,-0.05226727016270161,neutral,sec_filing,CI 8-K Filing - 2026-03-03
 TGT,2026-03-03,-0.05216122604906559,neutral,sec_filing,TGT 8-K Filing - 2026-03-03
 DIS,2026-03-03,-0.04004612937569618,neutral,sec_filing,DIS 8-K Filing - 2026-03-03
+CI,2026-03-03,-0.05226727016270161,neutral,sec_filing,CI 8-K Filing - 2026-03-03
 IBM,2026-03-03,-0.03612147457897663,neutral,sec_filing,IBM 8-K Filing - 2026-03-03
 AXP,2026-03-02,-0.05519536882638931,neutral,sec_filing,AXP 8-K Filing - 2026-03-02
 SCHW,2026-03-02,-0.038073983043432236,neutral,sec_filing,SCHW 8-K Filing - 2026-03-02
 UNH,2026-03-02,-0.058771366253495216,neutral,sec_filing,UNH 8-K Filing - 2026-03-02
-CMCSA,2026-02-27,-0.039269810542464256,neutral,sec_filing,CMCSA 8-K Filing - 2026-02-27
-NFLX,2026-02-27,-0.025903185829520226,neutral,sec_filing,NFLX 8-K Filing - 2026-02-27
-CI,2026-02-27,-0.05930003896355629,neutral,sec_filing,CI 8-K Filing - 2026-02-27
-V,2026-02-27,-0.0615202896296978,neutral,sec_filing,V 8-K Filing - 2026-02-27
 DE,2026-02-27,-0.05859137326478958,neutral,sec_filing,DE 8-K Filing - 2026-02-27
-MPC,2026-02-26,-0.0037471670657396317,neutral,sec_filing,MPC 10-K Filing - 2026-02-26
+V,2026-02-27,-0.0615202896296978,neutral,sec_filing,V 8-K Filing - 2026-02-27
+CI,2026-02-27,-0.05930003896355629,neutral,sec_filing,CI 8-K Filing - 2026-02-27
+NFLX,2026-02-27,-0.025903185829520226,neutral,sec_filing,NFLX 8-K Filing - 2026-02-27
+CMCSA,2026-02-27,-0.039269810542464256,neutral,sec_filing,CMCSA 8-K Filing - 2026-02-27
 PFE,2026-02-26,-0.007662409916520119,neutral,sec_filing,PFE 10-K Filing - 2026-02-26
 TMO,2026-02-26,-0.012139886617660522,neutral,sec_filing,TMO 10-K Filing - 2026-02-26
-NVDA,2026-02-25,-0.0068726371973752975,neutral,sec_filing,NVDA 10-K Filing - 2026-02-25
-CHTR,2026-02-25,-0.07185499556362629,neutral,sec_filing,CHTR 8-K Filing - 2026-02-25
+MPC,2026-02-26,-0.0037471670657396317,neutral,sec_filing,MPC 10-K Filing - 2026-02-26
 LOW,2026-02-25,-0.44761878065764904,neutral,sec_filing,LOW 8-K Filing - 2026-02-25
-BAC,2026-02-25,-0.007236221805214882,neutral,sec_filing,BAC 10-K Filing - 2026-02-25
-SCHW,2026-02-25,-0.005023406818509102,neutral,sec_filing,SCHW 10-K Filing - 2026-02-25
-VLO,2026-02-25,-0.0090786162763834,neutral,sec_filing,VLO 10-K Filing - 2026-02-25
-MDT,2026-02-24,-0.07414371520280838,neutral,sec_filing,MDT 10-Q Filing - 2026-02-24
+NVDA,2026-02-25,-0.0068726371973752975,neutral,sec_filing,NVDA 10-K Filing - 2026-02-25
+BAC,2026-02-25,-0.007236206904053688,neutral,sec_filing,BAC 10-K Filing - 2026-02-25
+SCHW,2026-02-25,-0.005023404955863953,neutral,sec_filing,SCHW 10-K Filing - 2026-02-25
+CHTR,2026-02-25,-0.07185499556362629,neutral,sec_filing,CHTR 8-K Filing - 2026-02-25
+VLO,2026-02-25,-0.009078575298190117,neutral,sec_filing,VLO 10-K Filing - 2026-02-25
+GILD,2026-02-24,-0.005357692018151283,neutral,sec_filing,GILD 10-K Filing - 2026-02-24
 EOG,2026-02-24,-0.014015298336744308,neutral,sec_filing,EOG 10-K Filing - 2026-02-24
-GILD,2026-02-24,-0.005357697606086731,neutral,sec_filing,GILD 10-K Filing - 2026-02-24
+MDT,2026-02-24,-0.07414371520280838,neutral,sec_filing,MDT 10-Q Filing - 2026-02-24
 AAPL,2026-02-24,-0.03925923444330692,neutral,sec_filing,AAPL 8-K Filing - 2026-02-24
 MCD,2026-02-24,4.1233375668525696e-05,neutral,sec_filing,MCD 10-K Filing - 2026-02-24
+IBM,2026-02-24,-0.012037215754389763,neutral,sec_filing,IBM 10-K Filing - 2026-02-24
 AMD,2026-02-24,-0.054146844893693924,neutral,sec_filing,AMD 8-K Filing - 2026-02-24
 DHR,2026-02-24,-0.013951916247606277,neutral,sec_filing,DHR 10-K Filing - 2026-02-24
-IBM,2026-02-24,-0.012037215754389763,neutral,sec_filing,IBM 10-K Filing - 2026-02-24
 HD,2026-02-24,-0.06468277797102928,neutral,sec_filing,HD 8-K Filing - 2026-02-24
 MRK,2026-02-24,-0.037085821852087975,neutral,sec_filing,MRK 10-K Filing - 2026-02-24
-JPM,2026-02-23,-0.061165833845734596,neutral,sec_filing,JPM 8-K Filing - 2026-02-23
 GILD,2026-02-23,-0.036531729623675346,neutral,sec_filing,GILD 8-K Filing - 2026-02-23
 VZ,2026-02-23,-0.05094759725034237,neutral,sec_filing,VZ 8-K Filing - 2026-02-23
-KO,2026-02-20,-0.0497572235763073,neutral,sec_filing,KO 8-K Filing - 2026-02-20
-C,2026-02-20,-0.012276766821742058,neutral,sec_filing,C 10-K Filing - 2026-02-20
-PNC,2026-02-20,-0.02245384082198143,neutral,sec_filing,PNC 10-K Filing - 2026-02-20
 KO,2026-02-20,-0.0123268011957407,neutral,sec_filing,KO 10-K Filing - 2026-02-20
-MS,2026-02-19,-0.02393922582268715,neutral,sec_filing,MS 10-K Filing - 2026-02-19
+PNC,2026-02-20,-0.02245386131107807,neutral,sec_filing,PNC 10-K Filing - 2026-02-20
+KO,2026-02-20,-0.0497572235763073,neutral,sec_filing,KO 8-K Filing - 2026-02-20
 AMGN,2026-02-19,-0.04009502753615379,neutral,sec_filing,AMGN 8-K Filing - 2026-02-19
 AMAT,2026-02-19,-0.0659538023173809,neutral,sec_filing,AMAT 10-Q Filing - 2026-02-19
+MS,2026-02-19,-0.02393922582268715,neutral,sec_filing,MS 10-K Filing - 2026-02-19
 ADI,2026-02-18,-0.08472410589456558,neutral,sec_filing,ADI 10-Q Filing - 2026-02-18
-CSCO,2026-02-17,-0.09624617546796799,neutral,sec_filing,CSCO 10-Q Filing - 2026-02-17
 UPS,2026-02-17,-0.01579376310110092,neutral,sec_filing,UPS 10-K Filing - 2026-02-17
-COP,2026-02-17,-0.014857828617095947,neutral,sec_filing,COP 10-K Filing - 2026-02-17
+CSCO,2026-02-17,-0.09624617546796799,neutral,sec_filing,CSCO 10-Q Filing - 2026-02-17
 AMD,2026-02-17,-0.0546081755310297,neutral,sec_filing,AMD 8-K Filing - 2026-02-17
+COP,2026-02-17,-0.014857828617095947,neutral,sec_filing,COP 10-K Filing - 2026-02-17
 DHR,2026-02-17,-0.05015071853995323,neutral,sec_filing,DHR 8-K Filing - 2026-02-17
-BAC,2026-02-13,-0.04210480861365795,neutral,sec_filing,BAC 8-K Filing - 2026-02-13
-AMGN,2026-02-13,-0.007212964817881584,neutral,sec_filing,AMGN 10-K Filing - 2026-02-13
-JPM,2026-02-13,-0.024621134623885155,neutral,sec_filing,JPM 10-K Filing - 2026-02-13
-EMR,2026-02-13,-0.05456657335162163,neutral,sec_filing,EMR 8-K Filing - 2026-02-13
 V,2026-02-13,-0.053178492933511734,neutral,sec_filing,V 8-K Filing - 2026-02-13
+AMGN,2026-02-13,-0.007212964817881584,neutral,sec_filing,AMGN 10-K Filing - 2026-02-13
+BAC,2026-02-13,-0.04210480861365795,neutral,sec_filing,BAC 8-K Filing - 2026-02-13
+EMR,2026-02-13,-0.05456657335162163,neutral,sec_filing,EMR 8-K Filing - 2026-02-13
 LLY,2026-02-12,-0.0028610359877347946,neutral,sec_filing,LLY 10-K Filing - 2026-02-12
 PEP,2026-02-11,-0.023596880957484245,neutral,sec_filing,PEP 8-K Filing - 2026-02-11
-BMY,2026-02-11,-0.02208598516881466,neutral,sec_filing,BMY 10-K Filing - 2026-02-11
-MCD,2026-02-11,-0.042119042947888374,neutral,sec_filing,MCD 8-K Filing - 2026-02-11
-MS,2026-02-11,-0.06148880533874035,neutral,sec_filing,MS 8-K Filing - 2026-02-11
-MA,2026-02-11,-0.008865149691700935,neutral,sec_filing,MA 10-K Filing - 2026-02-11
 JNJ,2026-02-11,-0.011356022208929062,neutral,sec_filing,JNJ 10-K Filing - 2026-02-11
+MCD,2026-02-11,-0.042119042947888374,neutral,sec_filing,MCD 8-K Filing - 2026-02-11
+BMY,2026-02-11,-0.02208598516881466,neutral,sec_filing,BMY 10-K Filing - 2026-02-11
+MA,2026-02-11,-0.008865149691700935,neutral,sec_filing,MA 10-K Filing - 2026-02-11
+MS,2026-02-11,-0.06148880533874035,neutral,sec_filing,MS 8-K Filing - 2026-02-11
 CVS,2026-02-10,-0.006331389769911766,neutral,sec_filing,CVS 10-K Filing - 2026-02-10
 T,2026-02-09,-0.024308359250426292,neutral,sec_filing,T 10-K Filing - 2026-02-09
 EMR,2026-02-06,-0.06490618549287319,neutral,sec_filing,EMR 8-K Filing - 2026-02-06
-RTX,2026-02-06,-0.006855061277747154,neutral,sec_filing,RTX 10-K Filing - 2026-02-06
 TXN,2026-02-06,-0.014840871095657349,neutral,sec_filing,TXN 10-K Filing - 2026-02-06
 UPS,2026-02-06,-0.05940628796815872,neutral,sec_filing,UPS 8-K Filing - 2026-02-06
-BMY,2026-02-05,-0.059751588851213455,neutral,sec_filing,BMY 8-K Filing - 2026-02-05
+RTX,2026-02-06,-0.006855061277747154,neutral,sec_filing,RTX 10-K Filing - 2026-02-06
 MMM,2026-02-05,-0.06904142908751965,neutral,sec_filing,MMM 8-K Filing - 2026-02-05
 COP,2026-02-05,-0.07254488952457905,neutral,sec_filing,COP 8-K Filing - 2026-02-05
+BMY,2026-02-05,-0.059751588851213455,neutral,sec_filing,BMY 8-K Filing - 2026-02-05
 MA,2026-02-05,-0.04723723977804184,neutral,sec_filing,MA 8-K Filing - 2026-02-05
 QCOM,2026-02-04,-0.06316022761166096,neutral,sec_filing,QCOM 10-Q Filing - 2026-02-04
 LLY,2026-02-04,-0.03149148263037205,neutral,sec_filing,LLY 8-K Filing - 2026-02-04
-PEP,2026-02-03,-0.03615286946296692,neutral,sec_filing,PEP 8-K Filing - 2026-02-03
-MPC,2026-02-03,-0.04168980196118355,neutral,sec_filing,MPC 8-K Filing - 2026-02-03
-MMM,2026-02-03,-0.022182641550898552,neutral,sec_filing,MMM 10-K Filing - 2026-02-03
 PYPL,2026-02-03,-0.05933933146297932,neutral,sec_filing,PYPL 8-K Filing - 2026-02-03
+PEP,2026-02-03,-0.03615286946296692,neutral,sec_filing,PEP 8-K Filing - 2026-02-03
+MMM,2026-02-03,-0.022182641550898552,neutral,sec_filing,MMM 10-K Filing - 2026-02-03
 PFE,2026-02-03,-0.03985185734927654,neutral,sec_filing,PFE 8-K Filing - 2026-02-03
 MRK,2026-02-03,-0.041270727291703224,neutral,sec_filing,MRK 8-K Filing - 2026-02-03
-BA,2026-01-30,-0.010352298617362976,neutral,sec_filing,BA 10-K Filing - 2026-01-30
 CHTR,2026-01-30,-0.025258852168917656,neutral,sec_filing,CHTR 10-K Filing - 2026-01-30
 AAPL,2026-01-30,-0.08806090243160725,neutral,sec_filing,AAPL 10-Q Filing - 2026-01-30
+BA,2026-01-30,-0.010352298617362976,neutral,sec_filing,BA 10-K Filing - 2026-01-30
 GE,2026-01-29,-0.02423347346484661,neutral,sec_filing,GE 10-K Filing - 2026-01-29
-LMT,2026-01-29,-0.03156652860343456,neutral,sec_filing,LMT 8-K Filing - 2026-01-29
 TSLA,2026-01-29,-0.014051156118512154,neutral,sec_filing,TSLA 10-K Filing - 2026-01-29
+LMT,2026-01-29,-0.03156652860343456,neutral,sec_filing,LMT 8-K Filing - 2026-01-29
 LMT,2026-01-29,-0.0066258106380701065,neutral,sec_filing,LMT 10-K Filing - 2026-01-29
 META,2026-01-29,-0.013634778559207916,neutral,sec_filing,META 10-K Filing - 2026-01-29
 META,2026-01-28,-0.04864969104528427,neutral,sec_filing,META 8-K Filing - 2026-01-28
@@ -568,7 +865,6 @@ NFLX,2026-01-23,-0.004918642342090607,neutral,sec_filing,NFLX 10-K Filing - 2026
 PG,2026-01-23,-0.05847316421568394,neutral,sec_filing,PG 10-Q Filing - 2026-01-23
 GE,2026-01-22,-0.0587372537702322,neutral,sec_filing,GE 8-K Filing - 2026-01-22
 PG,2026-01-22,-0.05369303934276104,neutral,sec_filing,PG 8-K Filing - 2026-01-22
-JNJ,2026-01-21,-0.056518374010920525,neutral,sec_filing,JNJ 8-K Filing - 2026-01-21
 AAPL,2025-03-31 00:00:00,0.7458913400769234,positive,earnings,AAPL Earnings: EPS 1.65 vs 1.62253 expected
 AAPL,2025-06-30 00:00:00,0.7298223823308945,positive,earnings,AAPL Earnings: EPS 1.57 vs 1.42572 expected
 AAPL,2025-09-30 00:00:00,0.7320254147052765,positive,earnings,AAPL Earnings: EPS 1.85 vs 1.76993 expected
